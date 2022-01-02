@@ -1,3 +1,7 @@
 files:
   - source: /APKInstaller/APKInstaller/Strings/InstallPage/InstallStrings.resx
     translation: /APKInstaller/APKInstaller/Strings/InstallPage/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/CapabilitiesInfoControl/CapabilitiesInfoStrings.resx
+    translation: /APKInstaller/APKInstaller/Strings/CapabilitiesInfoControl/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/Permissions/Permissions.resx
+    translation: /APKInstaller/APKInstaller/Strings/Permissions/%file_name%.%locale%.resx
