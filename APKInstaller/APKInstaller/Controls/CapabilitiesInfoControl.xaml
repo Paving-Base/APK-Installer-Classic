@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="APKInstaller.Controls.CapabilitiesInfoControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:APKInstaller.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.CapabilitiesInfoControl"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Border
+        x:Name="Root"
+        Margin="-10"
+        Padding="10"
+        BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition x:Name="CapabilitiesHeight" Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                x:Name="HeaderTextBlock"
+                Grid.Row="0"
+                TextWrapping="Wrap"
+                ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+            <ScrollViewer
+                x:Name="CapabilitiesScrollViewer"
+                Grid.Row="1"
+                VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <TextBlock x:Name="RichTextBlockCapabilities" Opacity="0.6" />
+                    <TextBlock
+                        x:Name="RichTextBlockFullCapabilities"
+                        Opacity="0.6"
+                        Visibility="Collapsed" />
+                </Grid>
+            </ScrollViewer>
+            <Button
+                x:Name="MoreButton"
+                Grid.Row="2"
+                Padding="0"
+                AutomationProperties.Name="Show more capabilities"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="MoreButton_Click"
+                Content="{x:Static str:CapabilitiesInfoStrings.More}"
+                Foreground="{StaticResource SystemControlBackgroundAccentBrush}"
+                TabIndex="4" />
+        </Grid>
+    </Border>
+</UserControl>
