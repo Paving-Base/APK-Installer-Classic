@@ -3,18 +3,17 @@
 # APK Installer
 An Android Application Installer for Windows
 
-[![Crowdin](https://badges.crowdin.net/APKInstaller/localized.svg)](https://crowdin.com/project/APKInstaller)
+[![Crowdin](https://badges.crowdin.net/APK-Installer-Classic/localized.svg)](https://crowdin.com/project/APK-Installer-Classic)
 
-<a href="https://github.com/Paving-Base/APK-Installer/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/Paving-Base/APK-Installer.svg?label=License&style=flat-square"></a>
-<a href="https://github.com/Paving-Base/APK-Installer/issues"><img alt="GitHub" src="https://img.shields.io/github/issues/Paving-Base/APK-Installer.svg?label=Issues&style=flat-square"></a>
-<a href="https://github.com/Paving-Base/APK-Installer/stargazers"><img alt="GitHub" src="https://img.shields.io/github/stars/Paving-Base/APK-Installer.svg?label=Stars&style=flat-square"></a>
+<a href="https://github.com/Paving-Base/APK-Installer-Classic/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/Paving-Base/APK-Installer-Classic.svg?label=License&style=flat-square"></a>
+<a href="https://github.com/Paving-Base/APK-Installer-Classic/issues"><img alt="GitHub" src="https://img.shields.io/github/issues/Paving-Base/APK-Installer-Classic.svg?label=Issues&style=flat-square"></a>
+<a href="https://github.com/Paving-Base/APK-Installer-Classic/stargazers"><img alt="GitHub" src="https://img.shields.io/github/stars/Paving-Base/APK-Installer-Classic.svg?label=Stars&style=flat-square"></a>
 
-<a href="https://github.com/Paving-Base/APK-Installer/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/Paving-Base/APK-Installer/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a>
+<a href="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/Paving-Base/APK-Installer-Classic/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a>
 <a href="https://pan.baidu.com/s/1AgAvyemIIDA3pLEYeiWR7g"><img alt="Baidu Netdisk" src="https://img.shields.io/badge/download-%e5%af%86%e7%a0%81%ef%bc%9aAPKI-magenta.svg?label=%e4%b8%8b%e8%bd%bd&logo=baidu&style=for-the-badge"></a>
 
 ## 语言
  - [中文](README.md)
- - [English](README.en-US.md)
 
 ## 目录
 - [APK Installer](#apk-installer)
@@ -32,8 +31,8 @@ An Android Application Installer for Windows
 
 ## 如何安装应用
 ### 最低需求
-- Windows 10 Build 18362及以上
-- 设备需支持ARM64/x86/x64
+- Windows 7 Build 7231及以上
+- 设备需支持ARM/ARM64/x86/x64
 - 至少400MB的空余储存空间(用于储存安装包与安装应用)
 
 ### 使用应用安装脚本安装应用
@@ -64,17 +63,19 @@ An Android Application Installer for Windows
 
 ## 屏幕截图
 - 安装
-![安装](Images/Screenshots/Snipaste_2021-10-22_21-00-14.png)
+![安装](Images/Screenshots/Snipaste_2022-01-03_01-07-53.png)
 
 ## 使用到的模块
-- [WinUI](https://github.com/microsoft/microsoft-ui-xaml "WinUI")
+- [MicaWPF](https://github.com/Simnico99/MicaWPF "MicaWPF")
+- [Modern WPF](https://github.com/Kinnara/ModernWpf "Modern WPF")
 - [AAPTForNet](https://github.com/canheo136/QuickLook.Plugin.ApkViewer "AAPTForNet")
+- [Portable Downloader](https://github.com/madnik7/PortableDownloader "PortableDownloader")
 - [Advanced Sharp Adb Client](https://github.com/yungd1plomat/AdvancedSharpAdbClient "Advanced Sharp Adb Client")
-- [Windows Community Toolkit](https://github.com/CommunityToolkit/WindowsCommunityToolkit "Windows Community Toolkit")
+- [ModernWPF Community Toolkit](https://github.com/ModernWpf-Community/ModernWpfCommunityToolkit "Windows Community Toolkit")
 
 ## 鸣谢
 - 所有为 APK Installer 做出贡献的同志们
 - **铺路尚未成功，同志仍需努力！**
 
 ## Star 数量统计
-[![Star 数量统计](https://starchart.cc/Paving-Base/APK-Installer.svg)](https://starchart.cc/Paving-Base/APK-Installer "Star 数量统计")
+[![Star 数量统计](https://starchart.cc/Paving-Base/APK-Installer-Classic.svg)](https://starchart.cc/Paving-Base/APK-Installer-Classic "Star 数量统计")
