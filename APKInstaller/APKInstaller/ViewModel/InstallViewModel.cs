@@ -371,11 +371,11 @@ namespace APKInstaller.ViewModel
 
         public async Task Refresh()
         {
-            InitilizeADB();
-            InitilizeUI();
+            await InitilizeADB();
+            await InitilizeUI();
         }
 
-        public async void CheckADB(bool force = false)
+        public async Task CheckADB(bool force = false)
         {
         checkadb:
             if (!force && File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe")))
@@ -512,10 +512,10 @@ namespace APKInstaller.ViewModel
             WaitProgressText = _loader.GetString("UnzipComplete");
         }
 
-        public async void InitilizeADB()
+        public async Task InitilizeADB()
         {
             WaitProgressText = _loader.GetString("CheckingADB");
-            CheckADB();
+            await CheckADB();
             if (!string.IsNullOrEmpty(_path))
             {
                 WaitProgressText = _loader.GetString("StartingADB");
@@ -545,7 +545,7 @@ namespace APKInstaller.ViewModel
                         }
                         catch
                         {
-                            CheckADB(true);
+                            await CheckADB(true);
                             WaitProgressText = _loader.GetString("StartingADB");
                             await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
                         }
@@ -559,7 +559,7 @@ namespace APKInstaller.ViewModel
                     }
                     catch
                     {
-                        CheckADB(true);
+                        await CheckADB(true);
                         WaitProgressText = _loader.GetString("StartingADB");
                         await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
                     }
@@ -572,7 +572,7 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        public async void InitilizeUI()
+        public async Task InitilizeUI()
         {
             if (!string.IsNullOrEmpty(_path))
             {
@@ -617,8 +617,9 @@ namespace APKInstaller.ViewModel
                                 WaitProgressText = _loader.GetString("FoundWSA");
                                 ContentDialog dialog = new ContentDialog()
                                 {
-                                    Title = _loader.GetString("HowToConnect"),
                                     DefaultButton = ContentDialogButton.Close,
+                                    Title = _loader.GetString("WSANotConnect"),
+                                    Content = "WSA 可能没有启动，请打开 WSA 后重试",
                                     CloseButtonText = _loader.GetString("IKnow"),
                                     PrimaryButtonText = _loader.GetString("StartWSA"),
                                 };

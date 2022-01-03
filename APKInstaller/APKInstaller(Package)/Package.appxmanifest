@@ -31,8 +31,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="ms-resource:AppName"
-        Description="ms-resource:AppDescription"
+        DisplayName="APK Installer"
+        Description="An APK Installer. Written by @wherewhere and @Tangent-90."
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
@@ -50,6 +50,19 @@
           <uap:Rotation Preference="landscapeFlipped"/>
           <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
       </uap:VisualElements>
+	  <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="apk">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.apk</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>APK File</uap:DisplayName>
+            <uap:Logo>Images\256x256.png</uap:Logo>
+            <uap:InfoTip>Android Application Package</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
