@@ -153,9 +153,6 @@
   <data name="FoundWSA" xml:space="preserve">
     <value>WSA Found</value>
   </data>
-  <data name="HowToConnect" xml:space="preserve">
-    <value>How to connect WSA?</value>
-  </data>
   <data name="IKnow" xml:space="preserve">
     <value>I Know</value>
   </data>
@@ -238,6 +235,9 @@
   <data name="WaitingForInstallFormat" xml:space="preserve">
     <value>Waiting for install {0}</value>
     <comment>{0} - AppName.</comment>
+  </data>
+  <data name="WSANotConnect" xml:space="preserve">
+    <value>Can't connect WSA</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
     <value>WSA is Running</value>
