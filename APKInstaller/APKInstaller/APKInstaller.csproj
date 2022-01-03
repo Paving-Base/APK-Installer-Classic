@@ -15,6 +15,7 @@
 	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
 	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
 	<PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
+	<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -402,6 +403,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="platform-tools\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

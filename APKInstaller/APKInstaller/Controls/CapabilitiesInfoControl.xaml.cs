@@ -63,7 +63,7 @@ namespace APKInstaller.Controls
 
         private void GetTextBlock()
         {
-            if (CapabilitiesList == null) { return; }
+            if (CapabilitiesList == null || !CapabilitiesList.Any()) { return; }
             int Line = 0;
             foreach (string capability in CapabilitiesList)
             {

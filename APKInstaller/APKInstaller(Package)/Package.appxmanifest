@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="18184wherewhere.AndroidAppInstallerClassic"
+    Name="18184wherewhere.AndroidAppInstaller.Classic"
     Publisher="CN=2C3A37C0-35FC-4839-B08C-751C1C1AFBF5"
     Version="0.0.0.0" />
 
@@ -45,21 +45,20 @@
         </uap:DefaultTile >
         <uap:SplashScreen Image="Images\SplashScreen.png"  BackgroundColor="transparent"/>
         <uap:InitialRotationPreference>
-          <uap:Rotation Preference="landscape"/>
-          <uap:Rotation Preference="portrait"/>
           <uap:Rotation Preference="landscapeFlipped"/>
-          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
+          <uap:Rotation Preference="portraitFlipped"/>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="portrait"/></uap:InitialRotationPreference>
       </uap:VisualElements>
-	  <Extensions>
+      <Extensions>
         <uap:Extension Category="windows.fileTypeAssociation">
           <uap:FileTypeAssociation Name="apk">
             <uap:SupportedFileTypes>
               <uap:FileType>.apk</uap:FileType>
             </uap:SupportedFileTypes>
-            <uap:DisplayName>APK File</uap:DisplayName>
-            <uap:Logo>Images\256x256.png</uap:Logo>
             <uap:InfoTip>Android Application Package</uap:InfoTip>
-            <uap:EditFlags OpenIsSafe="true"/>
+            <uap:DisplayName>APK File</uap:DisplayName>
+            <uap:Logo>Images/256x256.png</uap:Logo>
           </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>
