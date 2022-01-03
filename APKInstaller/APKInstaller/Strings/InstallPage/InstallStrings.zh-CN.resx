@@ -153,9 +153,6 @@
   <data name="FoundWSA" xml:space="preserve">
     <value>找到 WSA</value>
   </data>
-  <data name="HowToConnect" xml:space="preserve">
-    <value>如何连接 Android 子系统</value>
-  </data>
   <data name="IKnow" xml:space="preserve">
     <value>知道了</value>
   </data>
@@ -238,6 +235,9 @@
   <data name="WaitingForInstallFormat" xml:space="preserve">
     <value>等待安装 {0}</value>
     <comment>{0} - AppName.</comment>
+  </data>
+  <data name="WSANotConnect" xml:space="preserve">
+    <value>Can't connect WSA</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
     <value>WSA 正在运行</value>
