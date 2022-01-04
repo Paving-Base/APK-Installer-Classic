@@ -31,8 +31,6 @@
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>
                 <ui:XamlControlsResources />
-                <!--  FluentWPF Controls  -->
-                <ResourceDictionary Source="pack://Application:,,,/FluentWPF;component/Styles/Controls.xaml" />
                 <!--  Other merged dictionaries here  -->
                 <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/SettingsUI.xaml" />
             </ResourceDictionary.MergedDictionaries>

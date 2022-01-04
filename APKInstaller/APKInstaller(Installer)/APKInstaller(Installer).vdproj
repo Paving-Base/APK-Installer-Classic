@@ -22,7 +22,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C435AC21110E4B1688033AEF6767C2E5"
+        "MsmKey" = "8:_70CDC99FD2074BD1A1F0445185DC780E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -438,15 +438,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A61E1F970C4348C8B06289E728F13B9F"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_604B6CC9FAE44F5C824AEB0FE4E25218"
             {
             "Name" = "8:APK Installer"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:An Android Application Installer for Windows"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_C435AC21110E4B1688033AEF6767C2E5"
+            "Target" = "8:_70CDC99FD2074BD1A1F0445185DC780E"
             "Folder" = "8:_DD6EE2B93FA241E89E3E15039EBDCF14"
             "WorkingFolder" = "8:_D6E9348344784531909F506D60EE039C"
             "Icon" = "8:_48189383AC234A2697715E85E210038E"
@@ -851,9 +851,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C435AC21110E4B1688033AEF6767C2E5"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70CDC99FD2074BD1A1F0445185DC780E"
             {
-            "SourcePath" = "8:..\\APKInstaller\\obj\\x64\\Release\\net6.0-windows10.0.22000.0\\apphost.exe"
+            "SourcePath" = "8:..\\APKInstaller\\obj\\Debug\\net6.0-windows10.0.20348.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D6E9348344784531909F506D60EE039C"
@@ -873,7 +873,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{C2896E2B-3D1C-48EA-B304-67C7B7EC25BA}"
+            "OutputProjectGuid" = "8:{62695051-B43B-4E23-8CC3-EF1EEF83BA66}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

@@ -28,7 +28,7 @@
             x:Name="CoreAppUI"
             Grid.Row="1"
             Margin="0,16,0,0"
-            Visibility="{Binding IsInitialized, Converter={StaticResource BooleanToVisibilityConverter}}">
+            Visibility="{Binding IsInitialized, Converter={StaticResource BoolToVisibilityConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />

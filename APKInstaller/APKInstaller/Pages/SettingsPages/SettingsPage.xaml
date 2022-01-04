@@ -1,14 +1,163 @@
-﻿<Page x:Class="APKInstaller.Pages.SettingsPages.SettingsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:APKInstaller.Pages.SettingsPages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsPage">
-
+﻿<ui:Page
+    x:Class="APKInstaller.Pages.SettingsPages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:APKInstaller.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:APKInstaller.Pages.SettingsPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="SettingsPage"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel>
+                <controls:SettingsGroup x:Uid="/SettingsPage/DeviceSettingsHeader" Margin="0,-32,0,0">
+                    <ui:ListView
+                        x:Name="SelectDeviceBox"
+                        Margin="-2,0"
+                        ItemsSource="{Binding DeviceList, Mode=OneWay}"
+                        SelectionChanged="SelectDeviceBox_SelectionChanged">
+                        <ui:ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ListViewItem Background="Transparent">
+                                    <controls:Setting
+                                        Description="{Binding State}"
+                                        Header="{Binding Name}"
+                                        Icon="&#xE8EA;"
+                                        Style="{StaticResource ListViewItemContentSettingStyle}" />
+                                </ListViewItem>
+                            </DataTemplate>
+                        </ui:ListView.ItemTemplate>
+                    </ui:ListView>
+                    <Expander IsExpanded="{Binding IsOnlyWSA, Converter={StaticResource BoolNegationConverter}}">
+                        <Expander.Header>
+                            <controls:Setting x:Uid="/SettingsPage/OnlyWSASettings" Icon="&#xE975;">
+                                <controls:Setting.ActionContent>
+                                    <ui:ToggleSwitch IsOn="{Binding IsOnlyWSA, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                                </controls:Setting.ActionContent>
+                            </controls:Setting>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <controls:Setting x:Uid="/SettingsPage/ConnectDevice" Style="{StaticResource ExpanderContentSettingStyle}">
+                                <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBox x:Name="ConnectIP" MinWidth="{StaticResource SettingActionControlMinWidth}" />
+                                    <Button
+                                        Width="40"
+                                        Height="36"
+                                        Click="Button_Click"
+                                        Content="&#xE71B;"
+                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                        Tag="Connect" />
+                                </ui:SimpleStackPanel>
+                            </controls:Setting>
+                        </Expander.Content>
+                    </Expander>
+                </controls:SettingsGroup>
+                <controls:SettingsGroup x:Uid="/SettingsPage/OthersSettingsHeader" Margin="0,-32,0,0">
+                    <controls:Setting x:Uid="/SettingsPage/ResetSettings" Icon="&#xE777;">
+                        <!--<controls:Setting.ActionContent>
+                            <Button Name="Reset" x:Uid="/SettingsPage/ResetSettingsButton">
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <StackPanel>
+                                            <TextBlock
+                                                x:Uid="/SettingsPage/ResetSettingsTitle"
+                                                Margin="0,0,0,12"
+                                                Style="{ThemeResource BaseTextBlockStyle}" />
+                                            <Button
+                                                x:Uid="/SettingsPage/ResetSettingsConfirm"
+                                                Click="Button_Click"
+                                                Tag="Reset" />
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </controls:Setting.ActionContent>-->
+                    </controls:Setting>
+                    <controls:Setting x:Uid="/SettingsPage/CloseADBSettings" Icon="&#xE756;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <Button
+                        x:Name="GoToTestPage"
+                        Click="Button_Click"
+                        Tag="TestPage">
+                        <Button.Content>
+                            <controls:Setting x:Uid="/SettingsPage/GoToTestPage" Icon="&#xEC7A;" />
+                        </Button.Content>
+                    </Button>
+                </controls:SettingsGroup>
+                <controls:SettingsGroup x:Uid="/SettingsPage/AboutSettingsHeader" Margin="0,-32,0,0">
+                    <controls:Setting Header="{Binding VersionTextBlockText}" Icon="&#xE117;">
+                        <controls:Setting.Description>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Style="{StaticResource SecondaryTextStyle}">
+                                    <Run x:Uid="/SettingsPage/LastChecked" />
+                                    <Run Text="{Binding UpdateDate, Mode=OneWay}" />
+                                </TextBlock>
+                                <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
+                                    <ui:HyperlinkButton
+                                        x:Uid="/SettingsPage/FeedbackLink"
+                                        Margin="0,0,2,0"
+                                        Click="Button_Click"
+                                        Tag="FeedBack" />
+                                    <ui:HyperlinkButton
+                                        x:Uid="/SettingsPage/ReleaseNotes"
+                                        Margin="2,0"
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/releases/" />
+                                </StackPanel>
+                            </StackPanel>
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <ui:SimpleStackPanel
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                Spacing="18">
+                                <ui:ProgressRing
+                                    Width="24"
+                                    Height="24"
+                                    Visibility="{Binding CheckingUpdate, Mode=OneWay}" />
+                                <TextBlock
+                                    x:Uid="/SettingsPage/CheckingUpdates"
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Visibility="{Binding CheckingUpdate, Mode=OneWay}" />
+                                <Button
+                                    x:Name="Update"
+                                    x:Uid="/SettingsPage/CheckUpdates"
+                                    HorizontalAlignment="Right"
+                                    Click="Button_Click"
+                                    Tag="CheckUpdate"
+                                    Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}" />
+                            </ui:SimpleStackPanel>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <!--<InfoBar
+                        x:Name="UpdateState"
+                        IsClosable="True"
+                        IsOpen="False">
+                        <InfoBar.ActionButton>
+                            <Button
+                                x:Name="GotoUpdate"
+                                x:Uid="/SettingsPage/GoToUpdate"
+                                HorizontalAlignment="Right"
+                                Click="GotoUpdate_Click"
+                                Tag="{x:Bind IssuePath}" />
+                        </InfoBar.ActionButton>
+                    </InfoBar>-->
+                </controls:SettingsGroup>
+            </StackPanel>
+        </ScrollViewer>
+        <!--<controls:TitleBar
+            x:Name="TitleBar"
+            x:Uid="/SettingsPage/TitleBar"
+            BackRequested="TitleBar_BackRequested"
+            BackgroundVisibility="Visible"
+            IsBackEnable="{x:Bind Frame.CanGoBack}" />-->
     </Grid>
-</Page>
+</ui:Page>
