@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
@@ -18,8 +19,8 @@
         <Button
             x:Name="AboutButton"
             Grid.RowSpan="2"
-            Width="28"
-            Height="28"
+            Width="{x:Static helper:UIHelper.TitleBarHeight}"
+            Height="{x:Static helper:UIHelper.TitleBarHeight}"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Transparent"

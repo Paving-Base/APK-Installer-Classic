@@ -61,6 +61,7 @@ namespace APKInstaller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("01/05/2022 00:35:00")]
         public global::System.DateTime UpdateDate {
             get {
                 return ((global::System.DateTime)(this["UpdateDate"]));

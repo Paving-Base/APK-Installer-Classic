@@ -22,7 +22,7 @@ namespace APKInstaller.Strings.SettingsPage {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SettingsStrings {
+    public class SettingsStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace APKInstaller.Strings.SettingsPage {
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("APKInstaller.Strings.SettingsPage.SettingsStrings", typeof(SettingsStrings).Assembly);
@@ -51,12 +51,255 @@ namespace APKInstaller.Strings.SettingsPage {
         ///   使用此强类型资源类的所有资源查找执行重写。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 About 的本地化字符串。
+        /// </summary>
+        public static string AboutSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("AboutSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Check Failed 的本地化字符串。
+        /// </summary>
+        public static string CheckFailed {
+            get {
+                return ResourceManager.GetString("CheckFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Checking For Updates 的本地化字符串。
+        /// </summary>
+        public static string CheckingUpdates_Text {
+            get {
+                return ResourceManager.GetString("CheckingUpdates.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Check For Updates 的本地化字符串。
+        /// </summary>
+        public static string CheckUpdates_Content {
+            get {
+                return ResourceManager.GetString("CheckUpdates.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Clear cache 的本地化字符串。
+        /// </summary>
+        public static string CleanCacheButton_Content {
+            get {
+                return ResourceManager.GetString("CleanCacheButton.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Close ADB when Closing Installer? 的本地化字符串。
+        /// </summary>
+        public static string CloseADBSettings_Header {
+            get {
+                return ResourceManager.GetString("CloseADBSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Connect device on network. 的本地化字符串。
+        /// </summary>
+        public static string ConnectDevice_Description {
+            get {
+                return ResourceManager.GetString("ConnectDevice.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Connect Device 的本地化字符串。
+        /// </summary>
+        public static string ConnectDevice_Header {
+            get {
+                return ResourceManager.GetString("ConnectDevice.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Content 的本地化字符串。
+        /// </summary>
+        public static string ContentSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("ContentSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Device 的本地化字符串。
+        /// </summary>
+        public static string DeviceSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("DeviceSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Feedback 的本地化字符串。
+        /// </summary>
+        public static string FeedbackLink_Content {
+            get {
+                return ResourceManager.GetString("FeedbackLink.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Find Update 的本地化字符串。
+        /// </summary>
+        public static string FindUpdate {
+            get {
+                return ResourceManager.GetString("FindUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Go to TestPage 的本地化字符串。
+        /// </summary>
+        public static string GoToTestPage_Header {
+            get {
+                return ResourceManager.GetString("GoToTestPage.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Go to Update 的本地化字符串。
+        /// </summary>
+        public static string GoToUpdate_Content {
+            get {
+                return ResourceManager.GetString("GoToUpdate.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Last Checked 的本地化字符串。
+        /// </summary>
+        public static string LastChecked_Text {
+            get {
+                return ResourceManager.GetString("LastChecked.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Disable it to connect to other device. 的本地化字符串。
+        /// </summary>
+        public static string OnlyWSASettings_Description {
+            get {
+                return ResourceManager.GetString("OnlyWSASettings.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Only for WSA? 的本地化字符串。
+        /// </summary>
+        public static string OnlyWSASettings_Header {
+            get {
+                return ResourceManager.GetString("OnlyWSASettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Others 的本地化字符串。
+        /// </summary>
+        public static string OthersSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("OthersSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Release notes 的本地化字符串。
+        /// </summary>
+        public static string ReleaseNotes_Content {
+            get {
+                return ResourceManager.GetString("ReleaseNotes.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Reset application 的本地化字符串。
+        /// </summary>
+        public static string ResetSettings_Header {
+            get {
+                return ResourceManager.GetString("ResetSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Reset 的本地化字符串。
+        /// </summary>
+        public static string ResetSettingsButton_Content {
+            get {
+                return ResourceManager.GetString("ResetSettingsButton.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Yes 的本地化字符串。
+        /// </summary>
+        public static string ResetSettingsConfirm_Content {
+            get {
+                return ResourceManager.GetString("ResetSettingsConfirm.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Are you sure you want to reset the app? 的本地化字符串。
+        /// </summary>
+        public static string ResetSettingsTitle_Text {
+            get {
+                return ResourceManager.GetString("ResetSettingsTitle.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select Device 的本地化字符串。
+        /// </summary>
+        public static string SelectDeviceBox_Header {
+            get {
+                return ResourceManager.GetString("SelectDeviceBox.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Settings 的本地化字符串。
+        /// </summary>
+        public static string TitleBar_Title {
+            get {
+                return ResourceManager.GetString("TitleBar.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Version 的本地化字符串。
+        /// </summary>
+        public static string UpdateSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("UpdateSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Up To Date 的本地化字符串。
+        /// </summary>
+        public static string UpToDate {
+            get {
+                return ResourceManager.GetString("UpToDate", resourceCulture);
             }
         }
     }

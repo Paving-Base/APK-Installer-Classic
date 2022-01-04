@@ -6,8 +6,10 @@
     xmlns:local="clr-namespace:APKInstaller"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mica="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="APK Installer"
     Width="652"
     Height="414"
+    ui:ThemeManager.IsThemeAware="True"
     SystemBackdropType="Mica"
     mc:Ignorable="d" />

@@ -41,6 +41,16 @@
                 BottomRight="4"
                 TopLeft="4"
                 TopRight="4" />
+            <Style
+                x:Key="IconButtonStyle"
+                BasedOn="{StaticResource DefaultButtonStyle}"
+                TargetType="Button">
+                <Setter Property="Width" Value="40" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+            <converter:BoolNegationConverter x:Key="BoolNegationConverter" />
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converter:IsEqualToVisibilityConverter x:Key="IsEqualToVisibilityConverter" />
             <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{DynamicResource SolidBackgroundFillColorBase}" />

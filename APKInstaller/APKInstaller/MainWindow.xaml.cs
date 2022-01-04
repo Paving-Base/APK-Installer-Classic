@@ -1,4 +1,5 @@
-﻿using APKInstaller.Pages;
+﻿using APKInstaller.Helpers;
+using APKInstaller.Pages;
 using MicaWPF.Controls;
 using System.Windows;
 
@@ -12,6 +13,7 @@ namespace APKInstaller
         public MainWindow()
         {
             InitializeComponent();
+            UIHelper.MainWindow = this;
             MainPage MainPage = new();
             Content = MainPage;
         }

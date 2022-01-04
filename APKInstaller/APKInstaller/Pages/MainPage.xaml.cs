@@ -13,6 +13,7 @@ namespace APKInstaller.Pages
         public MainPage()
         {
             InitializeComponent();
+            UIHelper.MainPage = this;
             _ = CoreAppFrame.Navigate(typeof(InstallPage));
         }
 

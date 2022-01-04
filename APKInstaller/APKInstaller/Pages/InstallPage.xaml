@@ -5,8 +5,8 @@
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:APKInstaller.Pages"
-    xmlns:str="clr-namespace:APKInstaller.Strings.InstallPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.InstallPage"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:viewmodel="clr-namespace:APKInstaller.ViewModel"
     Title="InstallPage"
@@ -87,10 +87,10 @@
                         Visibility="{Binding AppVersionVisibility}" />
                     <controls:CapabilitiesInfoControl
                         x:Name="AppCapabilities"
-                        Header="{x:Static str:InstallStrings.AppCapabilities_HeadText}"
                         Grid.Row="4"
                         Margin="0,24,0,0"
                         CapabilitiesList="{Binding ApkInfo.Permissions}"
+                        Header="{x:Static str:InstallStrings.AppCapabilities_HeadText}"
                         Visibility="{Binding AppCapabilitiesVisibility}" />
                 </Grid>
                 <Border
@@ -181,9 +181,9 @@
                     </Grid>
                     <TextBlock
                         x:Name="InstallOutputTextBlock"
-                        Text="{x:Static str:InstallStrings.InstallOutputTextBlock_Text}"
                         Grid.Row="0"
                         Margin="0,0,0,6"
+                        Text="{x:Static str:InstallStrings.InstallOutputTextBlock_Text}"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
                         Visibility="{Binding InstallOutputVisibility}" />
                     <ScrollViewer
