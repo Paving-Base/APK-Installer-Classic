@@ -4,6 +4,8 @@
     xmlns:s="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/Common.xaml" />
+        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/InfoBar.xaml" />
         <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/TextBlock.xaml" />
         <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/SettingButton.xaml" />
         <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/SettingExpander.xaml" />

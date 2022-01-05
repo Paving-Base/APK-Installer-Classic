@@ -780,7 +780,7 @@ namespace APKInstaller.ViewModel
                 }
                 else
                 {
-                    DeviceData? data = JsonSerializer.Deserialize<DeviceData>(Settings.Default.DefaultDevice);
+                    DeviceData? data = string.IsNullOrEmpty(Settings.Default.DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(Settings.Default.DefaultDevice);
                     if (data != null && data.Name == device.Name && data.Model == device.Model && data.Product == device.Product)
                     {
                         _device = data;

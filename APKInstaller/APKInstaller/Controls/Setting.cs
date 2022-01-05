@@ -116,12 +116,6 @@ namespace APKInstaller.Controls
             set => SetValue(ActionContentProperty, value);
         }
 
-        //public Visibility RightIconVisibility
-        //{
-        //    get => (Visibility)GetValue(RightIconVisibilityProperty);
-        //    set => SetValue(RightIconVisibilityProperty, value);
-        //}
-
         public override void OnApplyTemplate()
         {
             IsEnabledChanged -= Setting_IsEnabledChanged;

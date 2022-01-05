@@ -7,43 +7,50 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages.SettingsPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settingspages="clr-namespace:APKInstaller.ViewModel.SettingsPages"
     xmlns:str="clr-namespace:APKInstaller.Strings.SettingsPage"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="SettingsPage"
+    d:DataContext="{d:DesignInstance Type=settingspages:SettingsViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
             <StackPanel Margin="16">
-                <controls:SettingsGroup Margin="0,-32,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
+                <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
                     <ui:ListView
                         x:Name="SelectDeviceBox"
-                        Margin="-2,0"
+                        Margin="0,0,0,-10"
+                        HorizontalContentAlignment="Stretch"
+                        IsSelectionEnabled="{Binding IsOnlyWSA, Converter={StaticResource BoolNegationConverter}}"
                         ItemsSource="{Binding DeviceList, Mode=OneWay}"
                         SelectionChanged="SelectDeviceBox_SelectionChanged">
+                        <ui:ListView.ItemContainerStyle>
+                            <Style TargetType="ui:ListViewItem">
+                                <Setter Property="Margin" Value="0,1" />
+                            </Style>
+                        </ui:ListView.ItemContainerStyle>
                         <ui:ListView.ItemTemplate>
                             <DataTemplate>
-                                <ListViewItem Background="Transparent">
-                                    <controls:Setting
-                                        Description="{Binding State}"
-                                        Header="{Binding Name}"
-                                        Icon="&#xE8EA;"
-                                        Style="{StaticResource ListViewItemContentSettingStyle}" />
-                                </ListViewItem>
+                                <controls:Setting
+                                    Width="{Binding ActualWidth, ElementName=SelectDeviceBox, Mode=OneWay}"
+                                    Description="{Binding State}"
+                                    Header="{Binding Name}"
+                                    Icon="&#xE8EA;"
+                                    Style="{DynamicResource ListViewItemContentSettingStyle}" />
                             </DataTemplate>
                         </ui:ListView.ItemTemplate>
                     </ui:ListView>
-                    <Expander IsExpanded="{Binding IsOnlyWSA, Converter={StaticResource BoolNegationConverter}}" Style="{DynamicResource SettingExpanderStyle}">
+                    <Expander IsExpanded="{Binding IsOnlyWSA, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{DynamicResource SettingExpanderStyle}">
                         <Expander.Header>
                             <controls:Setting
-                                x:Uid="/SettingsPage/OnlyWSASettings"
                                 Description="{x:Static str:SettingsStrings.OnlyWSASettings_Description}"
                                 Header="{x:Static str:SettingsStrings.OnlyWSASettings_Header}"
                                 Icon="&#xE975;"
                                 Style="{DynamicResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
-                                    <ui:ToggleSwitch IsOn="{Binding IsOnlyWSA, Mode=TwoWay}" />
+                                    <ui:ToggleSwitch IsOn="{Binding IsOnlyWSA, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </Expander.Header>
@@ -66,30 +73,30 @@
                         </Expander.Content>
                     </Expander>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup Margin="0,-32,0,0" Header="{x:Static str:SettingsStrings.OthersSettingsHeader_Header}">
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.OthersSettingsHeader_Header}">
                     <controls:Setting Header="{x:Static str:SettingsStrings.ResetSettings_Header}" Icon="&#xE777;">
-                        <!--<controls:Setting.ActionContent>
-                            <Button Name="Reset" x:Uid="/SettingsPage/ResetSettingsButton">
-                                <Button.Flyout>
-                                    <Flyout>
+                        <controls:Setting.ActionContent>
+                            <Button Name="Reset" Content="{x:Static str:SettingsStrings.ResetSettingsButton_Content}">
+                                <ui:FlyoutService.Flyout>
+                                    <ui:Flyout>
                                         <StackPanel>
                                             <TextBlock
-                                                x:Uid="/SettingsPage/ResetSettingsTitle"
                                                 Margin="0,0,0,12"
-                                                Style="{ThemeResource BaseTextBlockStyle}" />
+                                                Style="{DynamicResource BaseTextBlockStyle}"
+                                                Text="{x:Static str:SettingsStrings.ResetSettingsTitle_Text}" />
                                             <Button
-                                                x:Uid="/SettingsPage/ResetSettingsConfirm"
                                                 Click="Button_Click"
+                                                Content="{x:Static str:SettingsStrings.ResetSettingsConfirm_Content}"
                                                 Tag="Reset" />
                                         </StackPanel>
-                                    </Flyout>
-                                </Button.Flyout>
+                                    </ui:Flyout>
+                                </ui:FlyoutService.Flyout>
                             </Button>
-                        </controls:Setting.ActionContent>-->
+                        </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting Header="{x:Static str:SettingsStrings.CloseADBSettings_Header}" Icon="&#xE756;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" />
+                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <Button
@@ -105,7 +112,7 @@
                         </Button.Content>
                     </Button>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup Margin="0,-32,0,0" Header="{x:Static str:SettingsStrings.AboutSettingsHeader_Header}">
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.AboutSettingsHeader_Header}">
                     <controls:Setting Header="{Binding VersionTextBlockText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">
@@ -134,13 +141,14 @@
                                 <ui:ProgressRing
                                     Width="24"
                                     Height="24"
-                                    Visibility="{Binding CheckingUpdate, Mode=OneWay}" />
+                                    IsActive="True"
+                                    Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"
                                     Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                     Text="{x:Static str:SettingsStrings.CheckingUpdates_Text}"
-                                    Visibility="{Binding CheckingUpdate, Mode=OneWay}" />
+                                    Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 <Button
                                     x:Name="Update"
                                     HorizontalAlignment="Right"
@@ -151,26 +159,30 @@
                             </ui:SimpleStackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    <!--<InfoBar
+                    <controls:InfoBar
                         x:Name="UpdateState"
+                        Title="{Binding UpdateStateTitle}"
                         IsClosable="True"
-                        IsOpen="False">
-                        <InfoBar.ActionButton>
+                        IsOpen="{Binding UpdateStateIsOpen}"
+                        Message="{Binding UpdateStateMessage}"
+                        Severity="{Binding UpdateStateSeverity}">
+                        <controls:InfoBar.ActionButton>
                             <Button
                                 x:Name="GotoUpdate"
-                                x:Uid="/SettingsPage/GoToUpdate"
                                 HorizontalAlignment="Right"
                                 Click="GotoUpdate_Click"
-                                Tag="{x:Bind IssuePath}" />
-                        </InfoBar.ActionButton>
-                    </InfoBar>-->
+                                Content="{x:Static str:SettingsStrings.GoToUpdate_Content}"
+                                Tag="{Binding GotoUpdateTag}"
+                                Visibility="{Binding GotoUpdateVisibility}" />
+                        </controls:InfoBar.ActionButton>
+                    </controls:InfoBar>
                 </controls:SettingsGroup>
             </StackPanel>
         </ScrollViewer>
         <controls:TitleBar
             x:Name="TitleBar"
-            BackgroundVisibility="Collapsed"
             Title="{x:Static str:SettingsStrings.TitleBar_Title}"
-            BackRequested="TitleBar_BackRequested"/>
+            BackRequested="TitleBar_BackRequested"
+            BackgroundVisibility="Collapsed" />
     </Grid>
 </ui:Page>
