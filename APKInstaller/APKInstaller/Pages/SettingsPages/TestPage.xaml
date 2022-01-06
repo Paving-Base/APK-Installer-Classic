@@ -74,7 +74,7 @@
             </StackPanel>
         </ScrollViewer>
         <controls:TitleBar
-            Title="Testing"
+            Title="Testings"
             BackRequested="TitleBar_BackRequested"
             BackgroundVisibility="Collapsed" />
     </Grid>

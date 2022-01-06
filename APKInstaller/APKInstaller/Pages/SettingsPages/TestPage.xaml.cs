@@ -1,4 +1,5 @@
 ﻿using APKInstaller.Helpers;
+using APKInstaller.Pages.ToolPages;
 using MicaWPF;
 using MicaWPF.Helpers;
 using ModernWpf.Controls;
@@ -14,23 +15,6 @@ namespace APKInstaller.Pages.SettingsPages
     /// </summary>
     public partial class TestPage : Page, INotifyPropertyChanged
     {
-        internal bool IsExtendsTitleBar
-        {
-            get => UIHelper.HasTitleBar /*? UIHelper.MainWindow.ExtendsContentIntoTitleBar : UIHelper.GetAppWindowForCurrentWindow().TitleBar.ExtendsContentIntoTitleBar*/;
-            set
-            {
-                if (UIHelper.HasTitleBar)
-                {
-                    //UIHelper.MainWindow.ExtendsContentIntoTitleBar = value;
-                }
-                else
-                {
-                    //UIHelper.GetAppWindowForCurrentWindow().TitleBar.ExtendsContentIntoTitleBar = value;
-                }
-                RaisePropertyChangedEvent();
-            }
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
@@ -51,10 +35,10 @@ namespace APKInstaller.Pages.SettingsPages
                     UIHelper.MainWindow.ResizeMode = ResizeMode.NoResize;
                     break;
                 case "Processes":
-                    //_ = Frame.Navigate(typeof(ProcessesPage));
+                    _ = Frame.Navigate(typeof(ProcessesPage));
                     break;
                 case "Applications":
-                    //_ = Frame.Navigate(typeof(ApplicationsPage));
+                    _ = Frame.Navigate(typeof(ApplicationsPage));
                     break;
                 default:
                     break;

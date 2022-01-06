@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using APKInstaller.Helpers;
+using ModernWpf.Controls;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ModernWpf.Controls;
 
 namespace APKInstaller.Controls
 {
@@ -21,26 +11,99 @@ namespace APKInstaller.Controls
     /// </summary>
     public partial class TitleBar : UserControl
     {
-        public bool IsBackButtonEnabled { get => BackButton.IsEnabled; set => BackButton.IsEnabled = value; }
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
+           "Title",
+           typeof(string),
+           typeof(TitleBar),
+           new PropertyMetadata(default(string), null));
 
+        public static readonly DependencyProperty TitleHeightProperty = DependencyProperty.Register(
+           "TitleHeight",
+           typeof(double),
+           typeof(TitleBar),
+           new PropertyMetadata(UIHelper.PageTitleHeight, null));
+
+        public static readonly DependencyProperty IsBackEnableProperty = DependencyProperty.Register(
+           "IsBackEnable",
+           typeof(bool),
+           typeof(TitleBar),
+           new PropertyMetadata(true, null));
+
+        public static readonly DependencyProperty RightAreaContentProperty = DependencyProperty.Register(
+           "RightAreaContent",
+           typeof(object),
+           typeof(TitleBar),
+           null);
+
+        public static readonly DependencyProperty BackgroundVisibilityProperty = DependencyProperty.Register(
+           "BackgroundVisibility",
+           typeof(Visibility),
+           typeof(TitleBar),
+           new PropertyMetadata(Visibility.Collapsed, null));
+
+        public static readonly DependencyProperty BackButtonVisibilityProperty = DependencyProperty.Register(
+           "BackButtonVisibility",
+           typeof(Visibility),
+           typeof(TitleBar),
+           new PropertyMetadata(Visibility.Visible, null));
+
+        public static readonly DependencyProperty RefreshButtonVisibilityProperty = DependencyProperty.Register(
+           "RefreshButtonVisibility",
+           typeof(Visibility),
+           typeof(TitleBar),
+           new PropertyMetadata(Visibility.Collapsed, null));
+
+        [Localizable(true)]
         public string Title
         {
-            get => TitleBlock.Text;
-            set => TitleBlock.Text = value ?? string.Empty;
+            get => (string)GetValue(TitleProperty);
+            set => SetValue(TitleProperty, value);
+        }
+
+        public double TitleHeight
+        {
+            get => (double)GetValue(TitleHeightProperty);
+            set => SetValue(TitleHeightProperty, value);
+        }
+
+        public bool IsBackEnable
+        {
+            get => (bool)GetValue(IsBackEnableProperty);
+            set => SetValue(IsBackEnableProperty, value);
+        }
+
+        public object RightAreaContent
+        {
+            get => GetValue(RightAreaContentProperty);
+            set => SetValue(RightAreaContentProperty, value);
+        }
+
+        public Visibility BackgroundVisibility
+        {
+            get => (Visibility)GetValue(BackgroundVisibilityProperty);
+            set => SetValue(BackgroundVisibilityProperty, value);
+        }
+
+        public Visibility BackButtonVisibility
+        {
+            get => (Visibility)GetValue(BackButtonVisibilityProperty);
+            set => SetValue(BackButtonVisibilityProperty, value);
+        }
+
+        public Visibility RefreshButtonVisibility
+        {
+            get => (Visibility)GetValue(RefreshButtonVisibilityProperty);
+            set => SetValue(RefreshButtonVisibilityProperty, value);
         }
 
         public event RoutedEventHandler? RefreshEvent;
         public event RoutedEventHandler? BackRequested;
 
-        public Visibility BackButtonVisibility { get => BackButton.Visibility; set => BackButton.Visibility = value; }
-        public Visibility RefreshButtonVisibility { get => RefreshButton.Visibility; set => RefreshButton.Visibility = value; }
-        public Visibility BackgroundVisibility { get => TitleBackground.Visibility; set => TitleBackground.Visibility = value; }
-
-        public bool IsBackEnable { get => BackButton.IsEnabled; set => BackButton.IsEnabled = value; }
-        public double TitleHeight { get => TitleGrid.Height; set => TitleGrid.Height = value; }
-        public object RightAreaContent { get => UserContentPresenter.Content; set => UserContentPresenter.Content = value; }
-
-        public TitleBar() => InitializeComponent();
+        public TitleBar()
+        {
+            InitializeComponent();
+            DataContext = this;
+        }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e) => RefreshEvent?.Invoke(sender, e);
 

@@ -7,15 +7,17 @@
     xmlns:local="clr-namespace:APKInstaller.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
+    d:DataContext="{d:DesignInstance Type=local:TitleBar}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid
         x:Name="TitleGrid"
-        Height="{x:Static helper:UIHelper.PageTitleHeight}"
+        Height="{Binding TitleHeight}"
         VerticalAlignment="Top">
         <Border
             x:Name="TitleBackground"
+            Visibility="{Binding BackgroundVisibility}"
             Grid.ColumnSpan="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
@@ -33,7 +35,9 @@
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 Click="BackButton_Click"
-                Style="{StaticResource IconButtonStyle}">
+                IsEnabled="{Binding IsBackEnable}"
+                Style="{StaticResource IconButtonStyle}"
+                Visibility="{Binding BackButtonVisibility}">
                 <ui:SymbolIcon Symbol="Back" />
             </Button>
             <TextBlock
@@ -41,12 +45,14 @@
                 Grid.Column="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontSize="18" />
-            <ContentPresenter
+                FontSize="18"
+                Text="{Binding Title}" />
+            <ui:ContentPresenterEx
                 x:Name="UserContentPresenter"
                 Grid.Column="2"
                 Height="40"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                Content="{Binding RightAreaContent}" />
             <ui:ProgressRing
                 x:Name="ProgressRing"
                 Grid.Column="3"
@@ -62,7 +68,7 @@
                 VerticalAlignment="Center"
                 Click="RefreshButton_Click"
                 Style="{StaticResource IconButtonStyle}"
-                Visibility="Collapsed">
+                Visibility="{Binding RefreshButtonVisibility}">
                 <ui:SymbolIcon Symbol="Refresh" />
             </Button>
         </Grid>

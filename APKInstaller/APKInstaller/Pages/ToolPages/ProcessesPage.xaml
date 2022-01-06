@@ -1,0 +1,51 @@
+﻿<ui:Page
+    x:Class="APKInstaller.Pages.ToolPages.ProcessesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:APKInstaller.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="clr-namespace:APKInstaller.Helpers"
+    xmlns:local="clr-namespace:APKInstaller.Pages.ToolPages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    Title="ProcessesPage"
+    d:DataContext="{d:DesignInstance Type=local:ProcessesPage}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ui:Page.Resources>
+        <local:ProcesseConverter x:Key="TextConverter" />
+    </ui:Page.Resources>
+    <Grid>
+        <DataGrid
+            x:Name="DataGrid"
+            Margin="{x:Static helper:UIHelper.StackPanelMargin}"
+            AutoGenerateColumns="False"
+            CanUserReorderColumns="True"
+            CanUserResizeColumns="True"
+            CanUserSortColumns="True"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name, Converter={StaticResource TextConverter}, ConverterParameter='Name'}" Header="Name" />
+                <DataGridTextColumn Binding="{Binding ProcessId}" Header="ProcessId" />
+                <DataGridTextColumn Binding="{Binding State, Converter={StaticResource TextConverter}, ConverterParameter='State'}" Header="State" />
+                <DataGridTextColumn Binding="{Binding ResidentSetSize, Converter={StaticResource TextConverter}, ConverterParameter='Size'}" Header="Resident Set Size" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Detail" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <controls:TitleBar
+            x:Name="TitleBar"
+            Title="Processes"
+            BackRequested="TitleBar_BackRequested"
+            BackgroundVisibility="Collapsed"
+            RefreshButtonVisibility="Visible"
+            RefreshEvent="TitleBar_RefreshEvent">
+            <controls:TitleBar.RightAreaContent>
+                <ComboBox
+                    VerticalAlignment="Center"
+                    Loaded="ComboBox_Loaded"
+                    SelectionChanged="ComboBox_SelectionChanged" />
+            </controls:TitleBar.RightAreaContent>
+        </controls:TitleBar>
+    </Grid>
+</ui:Page>
