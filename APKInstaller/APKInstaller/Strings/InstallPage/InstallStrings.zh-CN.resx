@@ -237,7 +237,7 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="WSANotConnect" xml:space="preserve">
-    <value>Can't connect WSA</value>
+    <value>无法连接 WSA</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
     <value>WSA 正在运行</value>
