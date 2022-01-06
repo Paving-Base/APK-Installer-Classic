@@ -47,7 +47,10 @@ namespace APKInstaller.Pages.SettingsPages
             switch ((sender as FrameworkElement).Tag as string)
             {
                 case "Connect":
-                    new AdvancedAdbClient().Connect(ConnectIP.Text);
+                    if (!string.IsNullOrEmpty(ConnectIP.Text))
+                    {
+                        new AdvancedAdbClient().Connect(ConnectIP.Text);
+                    }
                     break;
                 case "TestPage":
                     _ = Frame.Navigate(typeof(TestPage));

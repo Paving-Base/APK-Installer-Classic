@@ -17,11 +17,11 @@
         VerticalAlignment="Top">
         <Border
             x:Name="TitleBackground"
-            Visibility="{Binding BackgroundVisibility}"
             Grid.ColumnSpan="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Background="{DynamicResource ApplicationPageBackgroundThemeBrush}" />
+            Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
+            Visibility="{Binding BackgroundVisibility}" />
         <Grid Height="48" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40" />

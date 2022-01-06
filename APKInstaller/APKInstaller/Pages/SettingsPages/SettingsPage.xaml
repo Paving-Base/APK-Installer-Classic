@@ -56,19 +56,25 @@
                         </Expander.Header>
                         <Expander.Content>
                             <controls:Setting
-                                Description="{x:Static str:SettingsStrings.OnlyWSASettings_Description}"
+                                Description="{x:Static str:SettingsStrings.ConnectDevice_Description}"
                                 Header="{x:Static str:SettingsStrings.ConnectDevice_Header}"
                                 Style="{StaticResource ExpanderContentSettingStyle}">
-                                <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
-                                    <TextBox x:Name="ConnectIP" MinWidth="{StaticResource SettingActionControlMinWidth}" />
-                                    <Button
-                                        Width="40"
-                                        Height="36"
-                                        Click="Button_Click"
-                                        Content="&#xE71B;"
-                                        FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                        Tag="Connect" />
-                                </ui:SimpleStackPanel>
+                                <controls:Setting.ActionContent>
+                                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBox
+                                            x:Name="ConnectIP"
+                                            MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                            ui:ControlHelper.PlaceholderText="127.0.0.1:58526" />
+                                        <Button
+                                            Width="40"
+                                            Height="36"
+                                            Background="Transparent"
+                                            Click="Button_Click"
+                                            Content="&#xE71B;"
+                                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                            Tag="Connect" />
+                                    </ui:SimpleStackPanel>
+                                </controls:Setting.ActionContent>
                             </controls:Setting>
                         </Expander.Content>
                     </Expander>

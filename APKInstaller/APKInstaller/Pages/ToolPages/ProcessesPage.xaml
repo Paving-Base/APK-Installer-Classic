@@ -43,6 +43,7 @@
             <controls:TitleBar.RightAreaContent>
                 <ComboBox
                     VerticalAlignment="Center"
+                    ui:ControlHelper.PlaceholderText="Waiting for Device..."
                     Loaded="ComboBox_Loaded"
                     SelectionChanged="ComboBox_SelectionChanged" />
             </controls:TitleBar.RightAreaContent>
