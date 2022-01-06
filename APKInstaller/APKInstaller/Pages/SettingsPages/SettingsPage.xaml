@@ -34,10 +34,10 @@
                         <ui:ListView.ItemTemplate>
                             <DataTemplate>
                                 <controls:Setting
-                                    Width="{Binding ActualWidth, ElementName=SelectDeviceBox, Mode=OneWay}"
                                     Description="{Binding State}"
                                     Header="{Binding Name}"
                                     Icon="&#xE8EA;"
+                                    Loaded="Setting_Loaded"
                                     Style="{DynamicResource ListViewItemContentSettingStyle}" />
                             </DataTemplate>
                         </ui:ListView.ItemTemplate>

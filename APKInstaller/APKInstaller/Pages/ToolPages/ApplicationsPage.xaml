@@ -7,24 +7,33 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages.ToolPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolpages="clr-namespace:APKInstaller.ViewModel.ToolPages"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="ApplicationsPage"
+    d:DataContext="{d:DesignInstance Type=toolpages:ApplicationsViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Page.Resources>
-        <local:ApplicationConverter x:Key="ApplicationConverter" />
+        <toolpages:ApplicationConverter x:Key="ApplicationConverter" />
     </Page.Resources>
     <Grid>
         <ui:ListView
             x:Name="ListView"
             Margin="{x:Static helper:UIHelper.ScrollViewerMargin}"
-            IsSelectionEnabled="False">
+            Padding="16,16,16,0"
+            IsSelectionEnabled="False"
+            ItemsSource="{Binding Applications}">
+            <ui:ListView.ItemContainerStyle>
+                <Style TargetType="ui:ListViewItem">
+                    <Setter Property="Margin" Value="0,1" />
+                </Style>
+            </ui:ListView.ItemContainerStyle>
             <ui:ListView.ItemTemplate>
                 <DataTemplate>
                     <controls:Setting
-                        Width="{Binding ActualWidth, ElementName=ListView, Mode=OneWay}"
                         Header="{Binding Name}"
+                        Loaded="Setting_Loaded"
                         Style="{DynamicResource ListViewItemContentSettingStyle}">
                         <controls:Setting.Icon>
                             <Grid>
@@ -50,30 +59,54 @@
                             </TextBlock>
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
-                            <Button Background="Transparent">
-                                <ui:SymbolIcon Symbol="More" />
-                                <ui:FlyoutService.Flyout>
-                                    <ui:MenuFlyout x:Name="MenuFlyout">
-                                        <MenuItem
-                                            x:Name="Stop"
-                                            Click="MenuFlyoutItem_Click"
-                                            Header="Stop"
-                                            Tag="{Binding Name}"
-                                            Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                        <MenuItem
-                                            x:Name="Start"
-                                            Click="MenuFlyoutItem_Click"
-                                            Header="Start"
-                                            Tag="{Binding Name}"
-                                            Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}" />
-                                        <MenuItem
-                                            Click="MenuFlyoutItem_Click"
-                                            Header="Uninstall"
-                                            Tag="{Binding Name}" />
-                                    </ui:MenuFlyout>
-                                </ui:FlyoutService.Flyout>
+                            <Button
+                                x:Name="More"
+                                Background="Transparent"
+                                Click="MenuFlyoutItem_Click">
+                                <Button.Content>
+                                    <ui:SymbolIcon Symbol="More" />
+                                </Button.Content>
                             </Button>
                         </controls:Setting.ActionContent>
+                        <controls:Setting.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem
+                                    x:Name="Stop"
+                                    Click="MenuFlyoutItem_Click"
+                                    Header="Stop"
+                                    Tag="{Binding Name}"
+                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon
+                                            FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                            Foreground="{DynamicResource SystemFillColorCriticalBrush}"
+                                            Glyph="&#xE73B;" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem
+                                    x:Name="Start"
+                                    Click="MenuFlyoutItem_Click"
+                                    Header="Start"
+                                    Tag="{Binding Name}"
+                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon
+                                            FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                            Foreground="{DynamicResource SystemFillColorSuccessBrush}"
+                                            Glyph="&#xF5B0;" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem
+                                    x:Name="Uninstall"
+                                    Click="MenuFlyoutItem_Click"
+                                    Header="Uninstall"
+                                    Tag="{Binding Name}">
+                                    <MenuItem.Icon>
+                                        <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="&#xE74D;" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </controls:Setting.ContextMenu>
                     </controls:Setting>
                 </DataTemplate>
             </ui:ListView.ItemTemplate>

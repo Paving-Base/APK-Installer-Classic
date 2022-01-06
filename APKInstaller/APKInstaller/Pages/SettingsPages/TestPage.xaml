@@ -22,9 +22,10 @@
                         Icon="&#xE737;">
                         <controls:Setting.ActionContent>
                             <ComboBox
+                                x:Name="OverlayComboBox"
+                                ui:ControlHelper.PlaceholderText="Resize Mode"
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 SelectedIndex="1"
-                                x:Name="OverlayComboBox"
                                 SelectionChanged="OverlayComboBox_SelectionChanged">
                                 <sys:String>No Resize</sys:String>
                                 <sys:String>Can Resize</sys:String>
@@ -40,6 +41,7 @@
                         <controls:Setting.ActionContent>
                             <ComboBox
                                 x:Name="BackdorpComboBox"
+                                ui:ControlHelper.PlaceholderText="Backdorp"
                                 Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 SelectedIndex="1"
                                 SelectionChanged="BackdorpComboBox_SelectionChanged">

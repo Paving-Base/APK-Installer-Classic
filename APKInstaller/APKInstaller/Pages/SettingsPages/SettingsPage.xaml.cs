@@ -1,7 +1,9 @@
 ﻿using AdvancedSharpAdbClient;
+using APKInstaller.Controls;
 using APKInstaller.Helpers;
 using APKInstaller.Properties;
 using APKInstaller.ViewModel.SettingsPages;
+using ModernWpf;
 using ModernWpf.Controls;
 using System;
 using System.Text.Json;
@@ -11,13 +13,14 @@ using System.Windows.Navigation;
 using Windows.Storage;
 using Windows.System;
 using ListView = ModernWpf.Controls.ListView;
+using Page = ModernWpf.Controls.Page;
 
 namespace APKInstaller.Pages.SettingsPages
 {
     /// <summary>
     /// SettingsPage.xaml 的交互逻辑
     /// </summary>
-    public partial class SettingsPage : ModernWpf.Controls.Page
+    public partial class SettingsPage : Page
     {
         internal SettingsViewModel? Provider;
 
@@ -84,6 +87,16 @@ namespace APKInstaller.Pages.SettingsPages
             {
                 Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
                 Settings.Default.Save();
+            }
+        }
+
+        private void Setting_Loaded(object sender, RoutedEventArgs e)
+        {
+            Setting Setting = sender as Setting;
+            ContentPresenter ContentPresenter = Setting.FindAscendant<ContentPresenter>();
+            if (ContentPresenter != null)
+            {
+                ContentPresenter.HorizontalAlignment = HorizontalAlignment.Stretch;
             }
         }
 
