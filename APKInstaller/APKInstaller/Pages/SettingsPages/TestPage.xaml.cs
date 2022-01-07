@@ -55,7 +55,7 @@ namespace APKInstaller.Pages.SettingsPages
 
         private void OverlayComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch((sender as ComboBox).SelectedItem as string)
+            switch ((sender as ComboBox).SelectedItem as string)
             {
                 case "No Resize":
                     UIHelper.MainWindow.ResizeMode = ResizeMode.NoResize;

@@ -6,20 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Threading.Tasks;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace APKInstaller.ViewModel.ToolPages
 {
-    internal class ApplicationsViewModel : INotifyPropertyChanged
+    public class ProcessesViewModel : INotifyPropertyChanged
     {
         public ComboBox? DeviceComboBox;
         public List<DeviceData>? devices;
-        private readonly ApplicationsPage _page;
+        private readonly ProcessesPage _page;
 
-        private List<string>? deviceList = new List<string>();
-        public List<string>? DeviceList
+        private List<string> deviceList = new List<string>();
+        public List<string> DeviceList
         {
             get => deviceList;
             set
@@ -29,13 +29,13 @@ namespace APKInstaller.ViewModel.ToolPages
             }
         }
 
-        private List<APKInfo>? applications;
-        public List<APKInfo>? Applications
+        private IEnumerable<AndroidProcess>? processes;
+        public IEnumerable<AndroidProcess>? Processes
         {
-            get => applications;
+            get => processes;
             set
             {
-                applications = value;
+                processes = value;
                 RaisePropertyChangedEvent();
             }
         }
@@ -47,15 +47,16 @@ namespace APKInstaller.ViewModel.ToolPages
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }
 
-        public ApplicationsViewModel(ApplicationsPage page)
+        public ProcessesViewModel(ProcessesPage page)
         {
             _page = page;
         }
 
         public void GetDevices()
         {
+            _page.TitleBar.ShowProgressRing();
             devices = new AdvancedAdbClient().GetDevices();
-            DeviceList?.Clear();
+            DeviceList.Clear();
             if (devices.Count > 0)
             {
                 foreach (DeviceData device in devices)
@@ -87,65 +88,41 @@ namespace APKInstaller.ViewModel.ToolPages
                     DeviceComboBox.SelectedIndex = 0;
                 }
             }
-            else if (Applications != null)
+            else if (Processes != null)
             {
-                Applications.Clear();
+                Processes = null;
             }
-        }
-
-        public List<APKInfo> CheckAPP(Dictionary<string, string> apps, int index)
-        {
-            List<APKInfo> Applications = new List<APKInfo>();
-            AdvancedAdbClient client = new AdvancedAdbClient();
-            PackageManager manager = new PackageManager(client, devices[index]);
-            _page.RunOnUIThread(() => _page.TitleBar.ShowProgressRing());
-            foreach (KeyValuePair<string, string> app in apps)
-            {
-                if (!string.IsNullOrEmpty(app.Key))
-                {
-                    ConsoleOutputReceiver receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand($"pidof {app.Key}", devices[index], receiver);
-                    bool isactive = !string.IsNullOrEmpty(receiver.ToString());
-                    Applications.Add(new APKInfo()
-                    {
-                        Name = app.Key,
-                        IsActive = isactive,
-                        VersionInfo = manager.GetVersionInfo(app.Key),
-                    });
-                }
-            }
-            return Applications;
-        }
-
-        public async Task Refresh()
-        {
-            _page.TitleBar.ShowProgressRing();
-            GetDevices();
-            int index = DeviceComboBox.SelectedIndex;
-            PackageManager manager = new PackageManager(new AdvancedAdbClient(), devices[DeviceComboBox.SelectedIndex]);
-            Applications = await Task.Run(() => { return CheckAPP(manager.Packages, index); });
             _page.TitleBar.HideProgressRing();
         }
     }
 
-    internal class ApplicationConverter : IValueConverter
+    internal class ProcesseConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             switch ((string)parameter)
             {
-                case "State": return (bool)value ? "Running" : "Stop";
+                case "Size": return ((double)(int)value).GetSizeString();
+                case "Name": return ((string)value).Split('/').Last().Split(':').First().Split('@').First();
+                case "State":
+                    switch ((AndroidProcessState)value)
+                    {
+                        case AndroidProcessState.Unknown: return "Unknown";
+                        case AndroidProcessState.D: return "Sleep(D)";
+                        case AndroidProcessState.R: return "Running";
+                        case AndroidProcessState.S: return "Sleep(S)";
+                        case AndroidProcessState.T: return "Stopped";
+                        case AndroidProcessState.W: return "Paging";
+                        case AndroidProcessState.X: return "Dead";
+                        case AndroidProcessState.Z: return "Defunct";
+                        case AndroidProcessState.K: return "Wakekill";
+                        case AndroidProcessState.P: return "Parked";
+                        default: return value.ToString();
+                    }
                 default: return value.ToString();
             }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => value;
-    }
-
-    internal class APKInfo
-    {
-        public string? Name { get; set; }
-        public bool IsActive { get; set; }
-        public VersionInfo? VersionInfo { get; set; }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APKInstaller.Helpers
 {
@@ -20,7 +16,7 @@ namespace APKInstaller.Helpers
 
         private static Version GetOSVersion()
         {
-            var osv = new RTL_OSVERSIONINFOEX();
+            RTL_OSVERSIONINFOEX osv = new RTL_OSVERSIONINFOEX();
             osv.dwOSVersionInfoSize = (uint)Marshal.SizeOf(osv);
             int ret = RtlGetVersion(out osv);
             Debug.Assert(ret == 0);

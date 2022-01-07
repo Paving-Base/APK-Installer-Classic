@@ -5,6 +5,7 @@ using AdvancedSharpAdbClient.DeviceCommands;
 using APKInstaller.Helpers;
 using APKInstaller.Pages;
 using APKInstaller.Pages.SettingsPages;
+using APKInstaller.Properties;
 using APKInstaller.Strings.InstallPage;
 using ModernWpf.Controls;
 using PortableDownloader;
@@ -17,15 +18,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
+using System.Resources;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Windows.Storage;
 using Windows.System;
-using System.Resources;
-using APKInstaller.Properties;
-using System.Text.Json;
 
 namespace APKInstaller.ViewModel
 {
@@ -608,7 +606,7 @@ namespace APKInstaller.ViewModel
                         ActionButtonText = _loader.GetString("Install");
                         InfoMessage = _loader.GetString("WaitingDevice");
                         ActionVisibility = MessagesToUserVisibility = Visibility.Visible;
-                        AppName = string.Format(_loader.GetString("WaitingForInstallFormat")?? string.Empty, ApkInfo.AppName);
+                        AppName = string.Format(_loader.GetString("WaitingForInstallFormat") ?? string.Empty, ApkInfo.AppName);
                         if (IsOnlyWSA)
                         {
                             WaitProgressText = _loader.GetString("FindingWSA");

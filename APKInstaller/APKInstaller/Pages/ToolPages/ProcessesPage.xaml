@@ -5,16 +5,16 @@
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
-    xmlns:local="clr-namespace:APKInstaller.Pages.ToolPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolpages="clr-namespace:APKInstaller.ViewModel.ToolPages"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="ProcessesPage"
-    d:DataContext="{d:DesignInstance Type=local:ProcessesPage}"
+    d:DataContext="{d:DesignInstance Type=toolpages:ProcessesViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <ui:Page.Resources>
-        <local:ProcesseConverter x:Key="TextConverter" />
+        <toolpages:ProcesseConverter x:Key="TextConverter" />
     </ui:Page.Resources>
     <Grid>
         <DataGrid
@@ -24,7 +24,8 @@
             CanUserReorderColumns="True"
             CanUserResizeColumns="True"
             CanUserSortColumns="True"
-            IsReadOnly="True">
+            IsReadOnly="True"
+            ItemsSource="{Binding Processes}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name, Converter={StaticResource TextConverter}, ConverterParameter='Name'}" Header="Name" />
                 <DataGridTextColumn Binding="{Binding ProcessId}" Header="ProcessId" />

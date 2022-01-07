@@ -8,12 +8,9 @@ using APKInstaller.Strings.SettingsPage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
 using System.Resources;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using Windows.ApplicationModel;
 
@@ -42,7 +39,7 @@ namespace APKInstaller.ViewModel.SettingsPages
             get => _isOnlyWSA;
             set
             {
-                Settings.Default.IsOnlyWSA= value;
+                Settings.Default.IsOnlyWSA = value;
                 Settings.Default.Save();
                 _isOnlyWSA = Settings.Default.IsOnlyWSA;
                 if (!value) { ChooseDevice(); }
@@ -56,7 +53,7 @@ namespace APKInstaller.ViewModel.SettingsPages
             get => _isCloseADB;
             set
             {
-                Settings.Default.IsCloseADB= value;
+                Settings.Default.IsCloseADB = value;
                 Settings.Default.Save();
                 _isCloseADB = Settings.Default.IsCloseADB;
             }
@@ -68,7 +65,7 @@ namespace APKInstaller.ViewModel.SettingsPages
             get => _updateDate;
             set
             {
-                Settings.Default.UpdateDate=value;
+                Settings.Default.UpdateDate = value;
                 Settings.Default.Save();
                 _updateDate = Settings.Default.UpdateDate;
                 RaisePropertyChangedEvent();

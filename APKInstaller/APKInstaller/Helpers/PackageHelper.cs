@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Management.Deployment;
@@ -21,7 +20,7 @@ namespace APKInstaller.Helpers
             }
             catch
             {
-                return(false, null);
+                return (false, null);
             }
         }
 

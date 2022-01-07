@@ -1,7 +1,6 @@
 ﻿using APKInstaller.Helpers;
 using APKInstaller.Pages;
 using MicaWPF.Controls;
-using System.Windows;
 
 namespace APKInstaller
 {

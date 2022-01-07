@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Windows.Networking.Connectivity;
 
 namespace APKInstaller.Models
@@ -51,7 +47,7 @@ namespace APKInstaller.Models
                     break;
             }
 
-            var names = profile.GetNetworkNames();
+            IReadOnlyList<string>? names = profile.GetNetworkNames();
             if (names?.Count > 0)
             {
                 networkNames.AddRange(names);

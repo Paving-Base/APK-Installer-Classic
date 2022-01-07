@@ -30,7 +30,7 @@ namespace APKInstaller.Pages.SettingsPages
         {
             base.OnNavigatedTo(e);
             Provider = new SettingsViewModel(this);
-            this.DataContext = Provider;
+            DataContext = Provider;
             //#if DEBUG
             GoToTestPage.Visibility = Visibility.Visible;
             //#endif
@@ -53,6 +53,7 @@ namespace APKInstaller.Pages.SettingsPages
                     if (!string.IsNullOrEmpty(ConnectIP.Text))
                     {
                         new AdvancedAdbClient().Connect(ConnectIP.Text);
+                        Provider.DeviceList = new AdvancedAdbClient().GetDevices();
                     }
                     break;
                 case "TestPage":

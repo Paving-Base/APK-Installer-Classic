@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace APKInstaller.Helpers
 {
@@ -18,7 +14,7 @@ namespace APKInstaller.Helpers
                 if (OSVersionHelper.IsWindows8OrGreater)
                 {
                     int length = 0;
-                    var sb = new StringBuilder(0);
+                    StringBuilder? sb = new StringBuilder(0);
                     GetCurrentPackageFullName(ref length, sb);
 
                     sb.Length = length;

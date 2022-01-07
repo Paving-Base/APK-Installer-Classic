@@ -5,24 +5,11 @@ using APKInstaller.Helpers;
 using APKInstaller.ViewModel.ToolPages;
 using ModernWpf;
 using ModernWpf.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ListView = ModernWpf.Controls.ListView;
 using Page = ModernWpf.Controls.Page;
 
 namespace APKInstaller.Pages.ToolPages
@@ -42,6 +29,12 @@ namespace APKInstaller.Pages.ToolPages
             Provider = new ApplicationsViewModel(this);
             DataContext = Provider;
             ADBHelper.Monitor.DeviceChanged += OnDeviceChanged;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            ADBHelper.Monitor.DeviceChanged -= OnDeviceChanged;
         }
 
         private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => Provider.GetDevices());

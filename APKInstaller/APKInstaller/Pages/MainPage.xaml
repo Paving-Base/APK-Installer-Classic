@@ -26,6 +26,7 @@
             Background="Transparent"
             BorderThickness="2"
             Click="Button_Click"
+            Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}"
             IsTabStop="True">
             <StackPanel>
                 <TextBlock
