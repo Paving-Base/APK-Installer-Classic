@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	<Authors>wherewhere</Authors>
-	<VersionPrefix>0.0.0</VersionPrefix>
+	<VersionPrefix>0.0.1</VersionPrefix>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
 	<Description>An Android Application Installer for Windows</Description>
 	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
@@ -15,6 +15,13 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <None Remove="publish\**" />
+    <Page Remove="publish\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="favicon.ico" />

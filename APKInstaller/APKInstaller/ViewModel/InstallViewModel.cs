@@ -670,6 +670,8 @@ namespace APKInstaller.ViewModel
                 ResetUI();
                 ApkInfo = new ApkInfo();
                 AppName = _loader.GetString("NoPackageWranning");
+                CancelOperationVisibility = Visibility.Visible;
+                CancelOperationButtonText = "Close";
                 AppVersionVisibility = AppPublisherVisibility = AppCapabilitiesVisibility = Visibility.Collapsed;
             }
             IsInitialized = true;
