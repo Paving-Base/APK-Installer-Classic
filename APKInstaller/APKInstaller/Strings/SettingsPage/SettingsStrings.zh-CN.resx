@@ -120,17 +120,26 @@
   <data name="AboutSettingsHeader.Header" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
+    <value>当安装包来自 URL 链接时自动下载。</value>
+  </data>
+  <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
+    <value>是否自动下载在线安装包？</value>
+  </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>检查失败</value>
   </data>
   <data name="CheckingUpdates.Text" xml:space="preserve">
-    <value>检查更新中…</value>
+    <value>正在检查更新……</value>
   </data>
   <data name="CheckUpdates.Content" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="CleanCacheButton.Content" xml:space="preserve">
     <value>清除缓存</value>
+  </data>
+  <data name="CloseADBSettings.Description" xml:space="preserve">
+    <value>关闭 ADB 可能会使其他正在运行的安装程序崩溃。</value>
   </data>
   <data name="CloseADBSettings.Header" xml:space="preserve">
     <value>关闭安装程序时是否关闭ADB？</value>
@@ -146,6 +155,9 @@
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>设备</value>
+  </data>
+  <data name="EULA.Content" xml:space="preserve">
+    <value>用户协议</value>
   </data>
   <data name="FeedbackLink.Content" xml:space="preserve">
     <value>反馈</value>
