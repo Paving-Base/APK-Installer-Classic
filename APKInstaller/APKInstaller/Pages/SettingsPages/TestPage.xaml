@@ -24,7 +24,6 @@
                             <ComboBox
                                 x:Name="OverlayComboBox"
                                 ui:ControlHelper.PlaceholderText="Resize Mode"
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 SelectedIndex="1"
                                 SelectionChanged="OverlayComboBox_SelectionChanged">
                                 <sys:String>No Resize</sys:String>
@@ -42,7 +41,6 @@
                             <ComboBox
                                 x:Name="BackdorpComboBox"
                                 ui:ControlHelper.PlaceholderText="Backdorp"
-                                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
                                 SelectedIndex="1"
                                 SelectionChanged="BackdorpComboBox_SelectionChanged">
                                 <sys:String>None</sys:String>

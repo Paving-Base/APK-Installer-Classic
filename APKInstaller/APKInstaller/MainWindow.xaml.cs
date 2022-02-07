@@ -23,7 +23,7 @@ namespace APKInstaller
 
         private void MicaWindow_Closed(object sender, EventArgs e)
         {
-            if (Settings.Default.IsCloseADB)
+            if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
             {
                 new AdvancedAdbClient().KillAdb();
             }

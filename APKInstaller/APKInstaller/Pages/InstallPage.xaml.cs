@@ -31,6 +31,7 @@ namespace APKInstaller.Pages
                     if (File.Exists(filePathFormMainArgs))
                     {
                         _path = filePathFormMainArgs;
+                        Provider = new InstallViewModel(_path, this);
                     }
                 }
                 else if (arguments[1] == "-f" && arguments[2].EndsWith(".apk"))
@@ -39,15 +40,21 @@ namespace APKInstaller.Pages
                     if (File.Exists(filePathFormMainArgs))
                     {
                         _path = filePathFormMainArgs;
+                        Provider = new InstallViewModel(_path, this);
                     }
+                }
+                else if (arguments[1].Contains(":?source=") || arguments[1].Contains("://"))
+                {
+                    Provider = new InstallViewModel(new Uri(arguments[1]), this);
                 }
             }
 
-            //ModernWpf.MessageBox.Show(string.Join('\n',arguments), "Arguments", MessageBoxButton.OK);
+            Provider ??= new InstallViewModel(_path, this);
 
-            Provider = new InstallViewModel(_path, this);
+            //ModernWpf.MessageBox.Show(string.Join('\n', arguments), "Arguments", MessageBoxButton.OK);
+
             DataContext = Provider;
-            await Provider.Refresh();
+            await Provider?.Refresh();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

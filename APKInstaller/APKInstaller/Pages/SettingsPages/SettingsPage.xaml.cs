@@ -83,8 +83,15 @@ namespace APKInstaller.Pages.SettingsPages
             object vs = (sender as ListView).SelectedItem;
             if (vs != null && vs is DeviceData device)
             {
-                Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
-                Settings.Default.Save();
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.DefaultDevice, JsonSerializer.Serialize(device));
+                }
+                else
+                {
+                    Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
+                    Settings.Default.Save();
+                }
             }
         }
 

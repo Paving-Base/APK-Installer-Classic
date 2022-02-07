@@ -50,14 +50,14 @@ namespace APKInstaller.ViewModel
         private bool NetAPKExist => _path != APKTemp || File.Exists(_path);
 
         private bool _disposedValue;
-        private static bool IsOnlyWSA => Settings.Default.IsOnlyWSA;
+        private static bool IsOnlyWSA => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
         private readonly ResourceManager _loader = new ResourceManager(typeof(InstallStrings));
 
         public string? InstallFormat => _loader.GetString("InstallFormat");
         public string? VersionFormat => _loader.GetString("VersionFormat");
         public string? PackageNameFormat => _loader.GetString("PackageNameFormat");
 
-        private bool AutoGetNetAPK = Settings.Default.AutoGetNetAPK;
+        private bool AutoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK):Settings.Default.AutoGetNetAPK;
 
         private ApkInfo? _apkInfo = null;
         public ApkInfo? ApkInfo
@@ -70,28 +70,44 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        private string _ADBPath = Settings.Default.ADBPath;
+        private string _ADBPath = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath): Settings.Default.ADBPath;
         public string ADBPath
         {
             get => _ADBPath;
             set
             {
-                Settings.Default.ADBPath = value;
-                Settings.Default.Save();
-                _ADBPath = Settings.Default.ADBPath;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
+                    _ADBPath = SettingsHelper.Get<string>(SettingsHelper.ADBPath);
+                }
+                else
+                {
+                    Settings.Default.ADBPath = value;
+                    Settings.Default.Save();
+                    _ADBPath = Settings.Default.ADBPath;
+                }
                 RaisePropertyChangedEvent();
             }
         }
 
-        private bool _isOpenApp = Settings.Default.IsOpenApp;
+        private bool _isOpenApp = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp):Settings.Default.IsOpenApp;
         public bool IsOpenApp
         {
             get => _isOpenApp;
             set
             {
-                Settings.Default.IsOpenApp = value;
-                Settings.Default.Save();
-                _isOpenApp = Settings.Default.IsOpenApp;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
+                    _ADBPath = SettingsHelper.Get<string>(SettingsHelper.ADBPath);
+                }
+                else
+                {
+                    Settings.Default.IsOpenApp = value;
+                    Settings.Default.Save();
+                    _isOpenApp = Settings.Default.IsOpenApp;
+                }
                 RaisePropertyChangedEvent();
             }
         }
@@ -558,7 +574,7 @@ namespace APKInstaller.ViewModel
         public async Task CheckADB(bool force = false)
         {
         checkadb:
-            if (!force && File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe")))
+            if (!force && File.Exists(ADBPath))
             {
                 WaitProgressText = _loader.GetString("ADBExist");
             }
@@ -597,7 +613,7 @@ namespace APKInstaller.ViewModel
                     {
                         try
                         {
-                            DownloadADB();
+                            await DownloadADB();
                         }
                         catch (Exception ex)
                         {
@@ -659,11 +675,11 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        public async void DownloadADB()
+        public async Task DownloadADB()
         {
-            if (!Directory.Exists(ADBTemp.Substring(0, ADBTemp.LastIndexOf(@"\"))))
+            if (!Directory.Exists(ADBTemp[..ADBTemp.LastIndexOf(@"\")]))
             {
-                Directory.CreateDirectory(ADBTemp.Substring(0, ADBTemp.LastIndexOf(@"\")));
+                _ = Directory.CreateDirectory(ADBTemp[..ADBTemp.LastIndexOf(@"\")]);
             }
             else if (Directory.Exists(ADBTemp))
             {
@@ -685,7 +701,7 @@ namespace APKInstaller.ViewModel
             WaitProgressIndeterminate = false;
             while (downloader.IsStarted)
             {
-                WaitProgressText = $"{((double)downloader.BytesPerSecond).GetSizeString()}/s";
+                WaitProgressText = $"{(double)downloader.CurrentSize * 100 / downloader.TotalSize:N2}%\n{((double)downloader.BytesPerSecond).GetSizeString()}/s";
                 WaitProgressValue = (double)downloader.CurrentSize * 100 / downloader.TotalSize;
                 await Task.Delay(1);
             }
@@ -716,20 +732,25 @@ namespace APKInstaller.ViewModel
             await Task.Delay(1);
             IArchive archive = ArchiveFactory.Open(ADBTemp);
             WaitProgressIndeterminate = false;
+            string LocalData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "APKInstaller");
+            if (!Directory.Exists(LocalData))
+            {
+                _ = Directory.CreateDirectory(LocalData);
+            }
             foreach (IArchiveEntry entry in archive.Entries)
             {
                 WaitProgressValue = archive.Entries.GetProgressValue(entry);
                 WaitProgressText = string.Format(_loader.GetString("UnzippingFormat") ?? string.Empty, archive.Entries.ToList().IndexOf(entry) + 1, archive.Entries.Count());
                 if (!entry.IsDirectory)
                 {
-                    entry.WriteToDirectory(AppDomain.CurrentDomain.BaseDirectory, new ExtractionOptions() { ExtractFullPath = true, Overwrite = true });
+                    entry.WriteToDirectory(LocalData, new ExtractionOptions() { ExtractFullPath = true, Overwrite = true });
                 }
                 await Task.Delay(1);
             }
             WaitProgressValue = 0;
             WaitProgressIndeterminate = true;
             WaitProgressText = _loader.GetString("UnzipComplete");
-            ADBPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe");
+            ADBPath = Path.Combine(LocalData, @"platform-tools\adb.exe");
         }
 
         public async Task InitilizeADB()
@@ -761,13 +782,13 @@ namespace APKInstaller.ViewModel
                         }
                         try
                         {
-                            await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
+                            await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
                         }
                         catch
                         {
                             await CheckADB(true);
                             WaitProgressText = _loader.GetString("StartingADB");
-                            await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
+                            await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
                         }
                     }
                 }
@@ -775,13 +796,13 @@ namespace APKInstaller.ViewModel
                 {
                     try
                     {
-                        await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
+                        await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
                     }
                     catch
                     {
                         await CheckADB(true);
                         WaitProgressText = _loader.GetString("StartingADB");
-                        await Task.Run(() => new AdbServer().StartServer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"platform-tools\adb.exe"), restartServerIfNewer: false));
+                        await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
                     }
                 }
                 if (IsOnlyWSA)
@@ -1048,9 +1069,9 @@ namespace APKInstaller.ViewModel
         {
             if (_url != null)
             {
-                if (!Directory.Exists(APKTemp.Substring(0, APKTemp.LastIndexOf(@"\"))))
+                if (!Directory.Exists(APKTemp[..APKTemp.LastIndexOf(@"\")]))
                 {
-                    Directory.CreateDirectory(APKTemp.Substring(0, APKTemp.LastIndexOf(@"\")));
+                    Directory.CreateDirectory(APKTemp[..APKTemp.LastIndexOf(@"\")]);
                 }
                 else if (Directory.Exists(APKTemp))
                 {
@@ -1175,7 +1196,8 @@ namespace APKInstaller.ViewModel
                 }
                 else
                 {
-                    DeviceData? data = string.IsNullOrEmpty(Settings.Default.DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(Settings.Default.DefaultDevice);
+                    string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
+                    DeviceData ? data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
                     if (data != null && data.Name == device.Name && data.Model == device.Model && data.Product == device.Product)
                     {
                         _device = data;

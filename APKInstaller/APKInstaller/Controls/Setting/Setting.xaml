@@ -74,10 +74,11 @@
                                                 <Setter Property="TextWrapping" Value="Wrap" />
                                             </Style.Setters>
                                         </Style>
-                                        <Style BasedOn="{StaticResource TextButtonStyle}" TargetType="ui:HyperlinkButton">
+                                        <Style TargetType="ui:HyperlinkButton">
                                             <Style.Setters>
                                                 <Setter Property="FontSize" Value="12" />
                                                 <Setter Property="Padding" Value="0,0,0,0" />
+                                                <Setter Property="FontWeight" Value="SemiBold" />
                                             </Style.Setters>
                                         </Style>
                                     </ContentPresenter.Resources>

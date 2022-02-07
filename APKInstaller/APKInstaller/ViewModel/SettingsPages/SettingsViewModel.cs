@@ -33,54 +33,86 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private bool _isOnlyWSA = Settings.Default.IsOnlyWSA;
+        private bool _isOnlyWSA = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
         public bool IsOnlyWSA
         {
             get => _isOnlyWSA;
             set
             {
-                Settings.Default.IsOnlyWSA = value;
-                Settings.Default.Save();
-                _isOnlyWSA = Settings.Default.IsOnlyWSA;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.IsOnlyWSA, value);
+                    _isOnlyWSA = SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA);
+                }
+                else
+                {
+                    Settings.Default.IsOnlyWSA = value;
+                    Settings.Default.Save();
+                    _isOnlyWSA = Settings.Default.IsOnlyWSA;
+                }
                 if (!value) { ChooseDevice(); }
                 RaisePropertyChangedEvent();
             }
         }
 
-        private bool _isCloseADB = Settings.Default.IsCloseADB;
+        private bool _isCloseADB = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB;
         public bool IsCloseADB
         {
             get => _isCloseADB;
             set
             {
-                Settings.Default.IsCloseADB = value;
-                Settings.Default.Save();
-                _isCloseADB = Settings.Default.IsCloseADB;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.IsCloseADB, value);
+                    _isCloseADB = SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB);
+                }
+                else
+                {
+                    Settings.Default.IsCloseADB = value;
+                    Settings.Default.Save();
+                    _isCloseADB = Settings.Default.IsCloseADB;
+                }
             }
         }
 
-        private DateTime _updateDate = Settings.Default.UpdateDate;
+        private DateTime _updateDate = PackagedAppHelper.IsPackagedApp ? JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate)) : Settings.Default.UpdateDate;
         public DateTime UpdateDate
         {
             get => _updateDate;
             set
             {
-                Settings.Default.UpdateDate = value;
-                Settings.Default.Save();
-                _updateDate = Settings.Default.UpdateDate;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.UpdateDate, JsonSerializer.Serialize(value));
+                    _updateDate = JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate));
+                }
+                else
+                {
+                    Settings.Default.UpdateDate = value;
+                    Settings.Default.Save();
+                    _updateDate = Settings.Default.UpdateDate;
+                }
                 RaisePropertyChangedEvent();
             }
         }
 
-        private bool _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
+        private bool _autoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK): Settings.Default.AutoGetNetAPK;
         public bool AutoGetNetAPK
         {
             get => _autoGetNetAPK;
             set
             {
-                Settings.Default.AutoGetNetAPK = value;
-                Settings.Default.Save();
-                _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.AutoGetNetAPK, value);
+                    _autoGetNetAPK = SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK);
+                }
+                else
+                {
+                    Settings.Default.AutoGetNetAPK = value;
+                    Settings.Default.Save();
+                    _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
+                }
             }
         }
 
@@ -194,7 +226,7 @@ namespace APKInstaller.ViewModel.SettingsPages
             UpdateInfo? info = null;
             try
             {
-                info = await UpdateHelper.CheckUpdateAsync("Paving-Base", "APK-Installer");
+                info = await UpdateHelper.CheckUpdateAsync("Paving-Base", "APK-Installer-Classic");
             }
             catch (Exception ex)
             {
@@ -229,7 +261,8 @@ namespace APKInstaller.ViewModel.SettingsPages
 
         public void ChooseDevice()
         {
-            DeviceData? device = string.IsNullOrEmpty(Settings.Default.DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(Settings.Default.DefaultDevice);
+            string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
+            DeviceData? device = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
             if (device == null) { return; }
             foreach (DeviceData data in DeviceList)
             {

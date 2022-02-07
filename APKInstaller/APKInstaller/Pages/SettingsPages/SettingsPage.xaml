@@ -141,11 +141,11 @@
                                     <ui:HyperlinkButton
                                         Margin="0,0,2,0"
                                         Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" Cursor="Hand" />
                                     <ui:HyperlinkButton
                                         Margin="2,0,2,0"
                                         Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest" />
                                     <ui:HyperlinkButton
                                         Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.EULA_Content}"
