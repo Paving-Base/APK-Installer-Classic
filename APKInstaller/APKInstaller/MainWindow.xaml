@@ -10,6 +10,7 @@
     Title="APK Installer"
     Width="652"
     Height="414"
+    Closed="MicaWindow_Closed"
     ui:ThemeManager.IsThemeAware="True"
     SystemBackdropType="Mica"
     mc:Ignorable="d" />

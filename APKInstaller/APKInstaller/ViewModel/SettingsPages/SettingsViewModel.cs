@@ -72,6 +72,18 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
+        private bool _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
+        public bool AutoGetNetAPK
+        {
+            get => _autoGetNetAPK;
+            set
+            {
+                Settings.Default.AutoGetNetAPK = value;
+                Settings.Default.Save();
+                _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
+            }
+        }
+
         private bool _checkingUpdate;
         public bool CheckingUpdate
         {
@@ -155,8 +167,6 @@ namespace APKInstaller.ViewModel.SettingsPages
         {
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }
-
-        public string IssuePath = "https://github.com/Paving-Base/APK-Installer/issues";
 
         public static string VersionTextBlockText
         {

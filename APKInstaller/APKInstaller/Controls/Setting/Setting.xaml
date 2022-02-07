@@ -4,7 +4,7 @@
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:ui="http://schemas.modernwpf.com/2019">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Button.xaml" />
+        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Styles/Button.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="controls:Setting">
         <Setter Property="Padding" Value="16" />

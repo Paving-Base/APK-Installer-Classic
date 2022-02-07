@@ -70,6 +70,24 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Auto download when package is from URL. 的本地化字符串。
+        /// </summary>
+        public static string AutoGetNetAPKSettings_Description {
+            get {
+                return ResourceManager.GetString("AutoGetNetAPKSettings.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Auto Download Online Packages? 的本地化字符串。
+        /// </summary>
+        public static string AutoGetNetAPKSettings_Header {
+            get {
+                return ResourceManager.GetString("AutoGetNetAPKSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Check Failed 的本地化字符串。
         /// </summary>
         public static string CheckFailed {
@@ -79,7 +97,7 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
-        ///   查找类似 Checking For Updates 的本地化字符串。
+        ///   查找类似 Checking For Updates... 的本地化字符串。
         /// </summary>
         public static string CheckingUpdates_Text {
             get {
@@ -102,6 +120,15 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string CleanCacheButton_Content {
             get {
                 return ResourceManager.GetString("CleanCacheButton.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Close ADB may break other Installers when they still open. 的本地化字符串。
+        /// </summary>
+        public static string CloseADBSettings_Description {
+            get {
+                return ResourceManager.GetString("CloseADBSettings.Description", resourceCulture);
             }
         }
         
@@ -147,6 +174,15 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string DeviceSettingsHeader_Header {
             get {
                 return ResourceManager.GetString("DeviceSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 EULA 的本地化字符串。
+        /// </summary>
+        public static string EULA_Content {
+            get {
+                return ResourceManager.GetString("EULA.Content", resourceCulture);
             }
         }
         

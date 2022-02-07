@@ -1,4 +1,5 @@
-﻿using APKInstaller.ViewModel;
+﻿using APKInstaller.Pages.SettingsPages;
+using APKInstaller.ViewModel;
 using ModernWpf.Controls;
 using System;
 using System.IO;
@@ -19,11 +20,7 @@ namespace APKInstaller.Pages
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-#if !DEBUG
             string _path = string.Empty;
-#else
-            string _path = @"C:\Users\qq251\Downloads\Programs\Minecraft_1.17.40.06_sign.apk";
-#endif
             string[] arguments = Environment.GetCommandLineArgs();
 
             if (arguments.GetLength(0) > 1)
@@ -56,7 +53,7 @@ namespace APKInstaller.Pages
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            Provider.Dispose();
+            Provider?.Dispose();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -64,10 +61,19 @@ namespace APKInstaller.Pages
             switch ((sender as FrameworkElement).Name)
             {
                 case "ActionButton":
-                    Provider.InstallAPP();
+                    Provider?.InstallAPP();
+                    break;
+                case "DownloadButton":
+                    Provider?.LoadNetAPK();
+                    break;
+                case "FileSelectButton":
+                    Provider?.OpenAPK();
+                    break;
+                case "DeviceSelectButton":
+                    _ = Frame.Navigate(typeof(SettingsPage));
                     break;
                 case "SecondaryActionButton":
-                    Provider.OpenAPP();
+                    Provider?.OpenAPP();
                     break;
                 case "CancelOperationButton":
                     Application.Current.Shutdown();

@@ -133,11 +133,65 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Choose ADB 的本地化字符串。
+        /// </summary>
+        public static string ChooseADB {
+            get {
+                return ResourceManager.GetString("ChooseADB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Click here to read them 的本地化字符串。
         /// </summary>
         public static string ClickToRead {
             get {
                 return ResourceManager.GetString("ClickToRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Close 的本地化字符串。
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Devices 的本地化字符串。
+        /// </summary>
+        public static string Devices {
+            get {
+                return ResourceManager.GetString("Devices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Download 的本地化字符串。
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Download Failed 的本地化字符串。
+        /// </summary>
+        public static string DownloadFailed {
+            get {
+                return ResourceManager.GetString("DownloadFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Please check your network connection or the URL and try again. 的本地化字符串。
+        /// </summary>
+        public static string DownloadFailedInfo {
+            get {
+                return ResourceManager.GetString("DownloadFailedInfo", resourceCulture);
             }
         }
         
@@ -169,6 +223,24 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Go to Setting 的本地化字符串。
+        /// </summary>
+        public static string GoToSetting {
+            get {
+                return ResourceManager.GetString("GoToSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 How to connect WSA? 的本地化字符串。
+        /// </summary>
+        public static string HowToConnect {
+            get {
+                return ResourceManager.GetString("HowToConnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 I Know 的本地化字符串。
         /// </summary>
         public static string IKnow {
@@ -196,6 +268,15 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Installing... 的本地化字符串。
+        /// </summary>
+        public static string Installing {
+            get {
+                return ResourceManager.GetString("Installing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Reason: 的本地化字符串。
         /// </summary>
         public static string InstallOutputTextBlock_Text {
@@ -210,6 +291,15 @@ namespace APKInstaller.Strings.InstallPage {
         public static string InvalidPackage {
             get {
                 return ResourceManager.GetString("InvalidPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 The URL is either Incomplete or invalid. 的本地化字符串。
+        /// </summary>
+        public static string InvalidURL {
+            get {
+                return ResourceManager.GetString("InvalidURL", resourceCulture);
             }
         }
         
@@ -241,6 +331,51 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Cannot find Android Device 的本地化字符串。
+        /// </summary>
+        public static string NoDevice {
+            get {
+                return ResourceManager.GetString("NoDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 You can install WSA. Or go to Settings to connect Device. 的本地化字符串。
+        /// </summary>
+        public static string NoDeviceInfo {
+            get {
+                return ResourceManager.GetString("NoDeviceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 You can go to Settings to connect Device. 的本地化字符串。
+        /// </summary>
+        public static string NoDeviceInfo10 {
+            get {
+                return ResourceManager.GetString("NoDeviceInfo10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Cannot connect Internet 的本地化字符串。
+        /// </summary>
+        public static string NoInternet {
+            get {
+                return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Please connect to the internet before opening the app. 的本地化字符串。
+        /// </summary>
+        public static string NoInternetInfo {
+            get {
+                return ResourceManager.GetString("NoInternetInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 For proper functioning of the app, try to launch an Android app package. 的本地化字符串。
         /// </summary>
         public static string NoPackageWranning {
@@ -255,6 +390,24 @@ namespace APKInstaller.Strings.InstallPage {
         public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Online Package 的本地化字符串。
+        /// </summary>
+        public static string OnlinePackage {
+            get {
+                return ResourceManager.GetString("OnlinePackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Open APK File 的本地化字符串。
+        /// </summary>
+        public static string OpenAPK {
+            get {
+                return ResourceManager.GetString("OpenAPK", resourceCulture);
             }
         }
         
@@ -295,6 +448,24 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Retry 的本地化字符串。
+        /// </summary>
+        public static string Retry {
+            get {
+                return ResourceManager.GetString("Retry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select 的本地化字符串。
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Starting ADB Server... 的本地化字符串。
         /// </summary>
         public static string StartingADB {
@@ -322,7 +493,7 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
-        ///   查找类似 Unzip complete 的本地化字符串。
+        ///   查找类似 Unzip completed 的本地化字符串。
         /// </summary>
         public static string UnzipComplete {
             get {

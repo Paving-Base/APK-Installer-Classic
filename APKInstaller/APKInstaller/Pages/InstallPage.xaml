@@ -101,7 +101,7 @@
                     Margin="12,0,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top">
-                    <Image x:Name="AppIcon" Source="{Binding ApkInfo.Icon.RealPath}" />
+                    <controls:ImageEx x:Name="AppIcon" Source="{Binding ApkInfo.Icon.RealPath}" />
                 </Border>
             </Grid>
             <Grid
@@ -120,7 +120,7 @@
                     FontWeight="SemiBold"
                     TextTrimming="CharacterEllipsis"
                     ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
-                <Image
+                <controls:ImageEx
                     x:Name="AppBigPicture"
                     Grid.Row="1"
                     Width="150"
@@ -143,11 +143,15 @@
                     Margin="0,24,0,0"
                     Opacity="1"
                     Visibility="{Binding IsInstalling, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-                    <TextBlock x:Name="ProgressText" ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                    <TextBlock
+                        x:Name="ProgressText"
+                        Text="{Binding ProgressText}"
+                        ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                     <ProgressBar
                         x:Name="AppxInstallBar"
                         Height="12"
-                        IsIndeterminate="True" />
+                        IsIndeterminate="{Binding AppxInstallBarIndeterminate}"
+                        Value="{Binding AppxInstallBarValue}" />
                 </StackPanel>
                 <Grid
                     x:Name="OutputInfoContainer"
@@ -198,6 +202,7 @@
                             x:Name="TextOutput"
                             Margin="6,6,6,6"
                             Text="{Binding TextOutput}"
+                            TextWrapping="Wrap"
                             ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                     </ScrollViewer>
                 </Grid>
@@ -262,6 +267,42 @@
                             TabIndex="1"
                             Visibility="Collapsed" />
                         <Button
+                            x:Name="FileSelectButton"
+                            Width="120"
+                            Height="32"
+                            Margin="12,0,0,0"
+                            Click="Button_Click"
+                            IsEnabled="{Binding FileSelectButtonEnable}"
+                            Style="{StaticResource AccentButtonStyle}"
+                            TabIndex="1"
+                            Visibility="{Binding FileSelectVisibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="FileSelectButtonImage" Stretch="Uniform" />
+                                <TextBlock
+                                    x:Name="FileSelectButtonText"
+                                    Text="{Binding FileSelectButtonText}"
+                                    ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            x:Name="DownloadButton"
+                            Width="120"
+                            Height="32"
+                            Margin="12,0,0,0"
+                            Click="Button_Click"
+                            IsEnabled="{Binding DownloadButtonEnable}"
+                            Style="{StaticResource AccentButtonStyle}"
+                            TabIndex="1"
+                            Visibility="{Binding DownloadVisibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="DownloadButtonImage" Stretch="Uniform" />
+                                <TextBlock
+                                    x:Name="DownloadButtonText"
+                                    Text="{Binding DownloadButtonText}"
+                                    ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
                             x:Name="CancelOperationButton"
                             Width="120"
                             Height="32"
@@ -275,6 +316,24 @@
                                 <TextBlock
                                     x:Name="CancelOperationButtonText"
                                     Text="{Binding CancelOperationButtonText}"
+                                    ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            x:Name="DeviceSelectButton"
+                            Width="120"
+                            Height="32"
+                            Margin="12,0,0,0"
+                            Click="Button_Click"
+                            IsEnabled="{Binding DeviceSelectButtonEnable}"
+                            Style="{StaticResource AccentButtonStyle}"
+                            TabIndex="1"
+                            Visibility="{Binding DeviceSelectVisibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="DeviceSelectButtonImage" Stretch="Uniform" />
+                                <TextBlock
+                                    x:Name="DeviceSelectButtonText"
+                                    Text="{Binding DeviceSelectButtonText}"
                                     ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                             </StackPanel>
                         </Button>

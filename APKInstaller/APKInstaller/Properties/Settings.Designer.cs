@@ -118,5 +118,29 @@ namespace APKInstaller.Properties {
                 this["IsBackgroundColorFollowSystem"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ADBPath {
+            get {
+                return ((string)(this["ADBPath"]));
+            }
+            set {
+                this["ADBPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoGetNetAPK {
+            get {
+                return ((bool)(this["AutoGetNetAPK"]));
+            }
+            set {
+                this["AutoGetNetAPK"] = value;
+            }
+        }
     }
 }

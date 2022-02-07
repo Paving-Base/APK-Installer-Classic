@@ -1,6 +1,5 @@
 ﻿using APKInstaller.Helpers;
 using ModernWpf.Controls;
-using ModernWpf.Toolkit.UI.Controls;
 using System;
 using System.ComponentModel;
 using System.Net.Http;
@@ -76,9 +75,9 @@ namespace APKInstaller.Controls.Dialogs
             DataContext = this;
         }
 
-        private void MarkdownText_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            _ = Launcher.LaunchUriAsync(new Uri(e.Link));
-        }
+        //private void MarkdownText_LinkClicked(object sender, LinkClickedEventArgs e)
+        //{
+        //    _ = Launcher.LaunchUriAsync(new Uri(e.Link));
+        //}
     }
 }
