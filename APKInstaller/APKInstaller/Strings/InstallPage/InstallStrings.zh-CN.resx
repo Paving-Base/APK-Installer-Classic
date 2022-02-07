@@ -136,34 +136,34 @@
     <value>无法打开应用程序包</value>
   </data>
   <data name="Checking" xml:space="preserve">
-    <value>检查中......</value>
+    <value>检查中……</value>
   </data>
   <data name="CheckingADB" xml:space="preserve">
-    <value>检查 ADB ......</value>
+    <value>检查 ADB ……</value>
   </data>
   <data name="ChooseADB" xml:space="preserve">
-    <value>Choose ADB</value>
+    <value>选择 ADB</value>
   </data>
   <data name="ClickToRead" xml:space="preserve">
     <value>点击阅读</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Close</value>
+    <value>关闭</value>
   </data>
   <data name="Devices" xml:space="preserve">
-    <value>Devices</value>
+    <value>设备</value>
   </data>
   <data name="Download" xml:space="preserve">
-    <value>Download</value>
+    <value>下载</value>
   </data>
   <data name="DownloadFailed" xml:space="preserve">
-    <value>Download Failed</value>
+    <value>下载失败</value>
   </data>
   <data name="DownloadFailedInfo" xml:space="preserve">
-    <value>Please check your network connection or the URL and try again.</value>
+    <value>请检查您的网络连接或 URL 链接并重试。</value>
   </data>
   <data name="FindingWSA" xml:space="preserve">
-    <value>正在寻找 WSA ......</value>
+    <value>正在寻找 WSA ……</value>
   </data>
   <data name="Finished" xml:space="preserve">
     <value>完成</value>
@@ -172,10 +172,10 @@
     <value>找到 WSA</value>
   </data>
   <data name="GoToSetting" xml:space="preserve">
-    <value>Go to Setting</value>
+    <value>前往设置页面</value>
   </data>
   <data name="HowToConnect" xml:space="preserve">
-    <value>How to connect WSA?</value>
+    <value>如何连接 Android 子系统</value>
   </data>
   <data name="IKnow" xml:space="preserve">
     <value>知道了</value>
@@ -188,7 +188,7 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="Installing" xml:space="preserve">
-    <value>Installing...</value>
+    <value>安装中……</value>
   </data>
   <data name="InstallOutputTextBlock.Text" xml:space="preserve">
     <value>原因:</value>
@@ -197,31 +197,31 @@
     <value>安装包已损坏或无效。</value>
   </data>
   <data name="InvalidURL" xml:space="preserve">
-    <value>The URL is either Incomplete or invalid.</value>
+    <value>URL 链接不完整或无效。</value>
   </data>
   <data name="Launch" xml:space="preserve">
     <value>启动</value>
   </data>
   <data name="LaunchingWSA" xml:space="preserve">
-    <value>正在启动 WSA ......</value>
+    <value>正在启动 WSA ……</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>加载中......</value>
+    <value>加载中……</value>
   </data>
   <data name="NoDevice" xml:space="preserve">
-    <value>Cannot find Android Device</value>
+    <value>找不到 Android 设备</value>
   </data>
   <data name="NoDeviceInfo" xml:space="preserve">
-    <value>You can install WSA. Or go to Settings to connect Device.</value>
+    <value>您可以安装 WSA。或者前往设置连接设备。</value>
   </data>
   <data name="NoDeviceInfo10" xml:space="preserve">
-    <value>You can go to Settings to connect Device.</value>
+    <value>您可以到设置中连接设备。</value>
   </data>
   <data name="NoInternet" xml:space="preserve">
-    <value>Cannot connect Internet</value>
+    <value>无法连接到网络</value>
   </data>
   <data name="NoInternetInfo" xml:space="preserve">
-    <value>Please connect to the internet before opening the app.</value>
+    <value>请连接网络后再打开应用。</value>
   </data>
   <data name="NoPackageWranning" xml:space="preserve">
     <value>为了使应用程序正常运行，请尝试打开 Android 应用程序包。</value>
@@ -230,10 +230,10 @@
     <value>好的</value>
   </data>
   <data name="OnlinePackage" xml:space="preserve">
-    <value>Online Package</value>
+    <value>在线安装包</value>
   </data>
   <data name="OpenAPK" xml:space="preserve">
-    <value>Open APK File</value>
+    <value>打开 APK 文件</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
     <value>包名称: {0}</value>
@@ -251,25 +251,25 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="Retry" xml:space="preserve">
-    <value>Retry</value>
+    <value>重试</value>
   </data>
   <data name="Select" xml:space="preserve">
-    <value>Select</value>
+    <value>选取</value>
   </data>
   <data name="StartingADB" xml:space="preserve">
-    <value>启动 ADB 服务......</value>
+    <value>启动 ADB 服务……</value>
   </data>
   <data name="StartWSA" xml:space="preserve">
     <value>启动 WSA</value>
   </data>
   <data name="UnzipADB" xml:space="preserve">
-    <value>解压 ADB ......</value>
+    <value>解压 ADB ……</value>
   </data>
   <data name="UnzipComplete" xml:space="preserve">
-    <value>Unzip completed</value>
+    <value>解压完成</value>
   </data>
   <data name="UnzippingFormat" xml:space="preserve">
-    <value>解压中 {0}/{1} ......</value>
+    <value>解压中 {0}/{1} ……</value>
     <comment>{0} - Have done num. {1} - All num.</comment>
   </data>
   <data name="Update" xml:space="preserve">
@@ -284,10 +284,10 @@
     <comment>{0} - AppVersion.</comment>
   </data>
   <data name="WaitDownload" xml:space="preserve">
-    <value>等待下载中......</value>
+    <value>等待下载中……</value>
   </data>
   <data name="WaitingDevice" xml:space="preserve">
-    <value>等待设备连接......</value>
+    <value>等待设备连接……</value>
   </data>
   <data name="WaitingForInstallFormat" xml:space="preserve">
     <value>等待安装 {0}</value>
