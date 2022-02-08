@@ -178,10 +178,10 @@
     <value>如何连接 Android 子系统</value>
   </data>
   <data name="HowToConnectInfo" xml:space="preserve">
-    <value>1. Please make sure APK Installer has been updated to the latest version
-2. Make sure you have the Android Subsystem installed and running
-3. Turn on developer mode and make sure the IP address is displayed successfully
-4. Reopen APK Installer and continue your installation</value>
+    <value>1. 请确保 APK Installer 已经更新到了最新版本
+2. 请确保您已经安装并运行了 Android 子系统
+3. 打开开发人员模式，并确保成功显示了 IP 地址
+4. 重新打开 APK Installer，继续您的安装</value>
   </data>
   <data name="IKnow" xml:space="preserve">
     <value>知道了</value>
