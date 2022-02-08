@@ -241,6 +241,18 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 1. Please make sure APK Installer has been updated to the latest version
+        ///2. Make sure you have the Android Subsystem installed and running
+        ///3. Turn on developer mode and make sure the IP address is displayed successfully
+        ///4. Reopen APK Installer and continue your installation 的本地化字符串。
+        /// </summary>
+        public static string HowToConnectInfo {
+            get {
+                return ResourceManager.GetString("HowToConnectInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 I Know 的本地化字符串。
         /// </summary>
         public static string IKnow {
@@ -561,15 +573,6 @@ namespace APKInstaller.Strings.InstallPage {
         public static string WaitingForInstallFormat {
             get {
                 return ResourceManager.GetString("WaitingForInstallFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Can&apos;t connect WSA 的本地化字符串。
-        /// </summary>
-        public static string WSANotConnect {
-            get {
-                return ResourceManager.GetString("WSANotConnect", resourceCulture);
             }
         }
         

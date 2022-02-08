@@ -877,7 +877,34 @@ namespace APKInstaller.ViewModel
                     WaitProgressText = _loader.GetString("Checking");
                     if (CheckDevice() && _device != null && NetAPKExist)
                     {
-                        CheckAPK();
+                        if (NetAPKExist)
+                        {
+                            CheckAPK();
+                        }
+                        else
+                        {
+                            ResetUI();
+                            Regex[] UriRegex = new Regex[] { new Regex(@":\?source=(.*)"), new Regex(@"://(.*)") };
+                            string Uri = UriRegex[0].IsMatch(_url.ToString()) ? UriRegex[0].Match(_url.ToString()).Groups[1].Value : UriRegex[1].Match(_url.ToString()).Groups[1].Value;
+                            Uri Url = Uri.ValidateAndGetUri();
+                            if (Url != null)
+                            {
+                                _url = Url;
+                                AppName = _loader.GetString("OnlinePackage");
+                                DownloadButtonText = _loader.GetString("Download");
+                                CancelOperationButtonText = _loader.GetString("Close");
+                                DownloadVisibility = CancelOperationVisibility = Visibility.Visible;
+                                AppVersionVisibility = AppPublisherVisibility = AppCapabilitiesVisibility = Visibility.Collapsed;
+                                if (AutoGetNetAPK)
+                                {
+                                    LoadNetAPK();
+                                }
+                            }
+                            else
+                            {
+                                PackageError(_loader.GetString("InvalidURL"));
+                            }
+                        }
                     }
                     else
                     {
@@ -923,8 +950,8 @@ namespace APKInstaller.ViewModel
                                 ContentDialog dialog = new ContentDialog
                                 {
                                     DefaultButton = ContentDialogButton.Close,
-                                    Title = _loader.GetString("WSANotConnect"),
-                                    Content = "WSA 可能没有启动，请打开 WSA 后重试",
+                                    Title = _loader.GetString("HowToConnect"),
+                                    Content = _loader.GetString("HowToConnectInfo"),
                                     CloseButtonText = _loader.GetString("IKnow"),
                                     PrimaryButtonText = _loader.GetString("StartWSA"),
                                 };
