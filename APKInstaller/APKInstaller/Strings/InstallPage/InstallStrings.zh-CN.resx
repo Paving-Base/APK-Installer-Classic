@@ -177,6 +177,12 @@
   <data name="HowToConnect" xml:space="preserve">
     <value>如何连接 Android 子系统</value>
   </data>
+  <data name="HowToConnectInfo" xml:space="preserve">
+    <value>1. 请确保 APK Installer 已经更新到了最新版本
+2. 请确保您已经安装并运行了 Android 子系统
+3. 打开开发人员模式，并确保成功显示了 IP 地址
+4. 重新打开 APK Installer，继续您的安装</value>
+  </data>
   <data name="IKnow" xml:space="preserve">
     <value>知道了</value>
   </data>
@@ -292,9 +298,6 @@
   <data name="WaitingForInstallFormat" xml:space="preserve">
     <value>等待安装 {0}</value>
     <comment>{0} - AppName.</comment>
-  </data>
-  <data name="WSANotConnect" xml:space="preserve">
-    <value>无法连接 WSA</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
     <value>WSA 正在运行</value>
