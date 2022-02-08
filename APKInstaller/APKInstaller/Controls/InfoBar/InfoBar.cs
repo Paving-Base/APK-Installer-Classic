@@ -36,7 +36,7 @@ namespace APKInstaller.Controls
     /// </summary>
     public class InfoBar : ContentControl
     {
-        private InfoBar _infoBar;
+        private InfoBar? _infoBar;
 
         public InfoBar()
         {
@@ -63,7 +63,7 @@ namespace APKInstaller.Controls
 
         public static readonly DependencyProperty SeverityProperty = DependencyProperty.Register(
            "Severity",
-           typeof(InfoBarSeverity),
+           typeof(InfoBarSeverity?),
            typeof(InfoBar),
            new PropertyMetadata(InfoBarSeverity.Informational, OnSeverityChanged));
 
@@ -112,9 +112,9 @@ namespace APKInstaller.Controls
         }
 
         [Localizable(true)]
-        public InfoBarSeverity Severity
+        public InfoBarSeverity? Severity
         {
-            get => (InfoBarSeverity)GetValue(SeverityProperty);
+            get => (InfoBarSeverity?)GetValue(SeverityProperty);
             set => SetValue(SeverityProperty, value);
         }
 

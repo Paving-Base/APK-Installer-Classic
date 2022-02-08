@@ -21,8 +21,8 @@ namespace APKInstaller.ViewModel.SettingsPages
         private readonly SettingsPage _page;
         private readonly ResourceManager _loader = new ResourceManager(typeof(SettingsStrings));
 
-        private IEnumerable<DeviceData> _deviceList;
-        public IEnumerable<DeviceData> DeviceList
+        private IEnumerable<DeviceData>? _deviceList;
+        public IEnumerable<DeviceData>? DeviceList
         {
             get => _deviceList;
             set
@@ -127,8 +127,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string _gotoUpdateTag;
-        public string GotoUpdateTag
+        private string? _gotoUpdateTag;
+        public string? GotoUpdateTag
         {
             get => _gotoUpdateTag;
             set
@@ -160,8 +160,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string _updateStateMessage;
-        public string UpdateStateMessage
+        private string? _updateStateMessage;
+        public string? UpdateStateMessage
         {
             get => _updateStateMessage;
             set
@@ -171,8 +171,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private InfoBarSeverity _updateStateSeverity;
-        public InfoBarSeverity UpdateStateSeverity
+        private InfoBarSeverity? _updateStateSeverity;
+        public InfoBarSeverity? UpdateStateSeverity
         {
             get => _updateStateSeverity;
             set
@@ -182,8 +182,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string _updateStateTitle;
-        public string UpdateStateTitle
+        private string? _updateStateTitle;
+        public string? UpdateStateTitle
         {
             get => _updateStateTitle;
             set
