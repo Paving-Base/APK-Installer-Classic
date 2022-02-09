@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APKInstaller.Win32
 {
@@ -83,12 +79,15 @@ namespace APKInstaller.Win32
             public UFlags uFlags;
             public int uCallbackMessage;
             public IntPtr hIcon;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x80)] public string szTip;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x80)]
+            public string szTip;
             public int dwState;
             public int dwStateMask;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x100)] public string szInfo;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x100)]
+            public string szInfo;
             public int uTimeoutOrVersion;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x40)] public string szInfoTitle;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x40)]
+            public string szInfoTitle;
             public int dwInfoFlags;
         }
 

@@ -3,13 +3,9 @@ using AdvancedSharpAdbClient.DeviceCommands;
 using APKInstaller.Helpers;
 using APKInstaller.ViewModel.ToolPages;
 using ModernWpf.Controls;
-using System;
-using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Navigation;
 using Page = ModernWpf.Controls.Page;
 
@@ -51,7 +47,7 @@ namespace APKInstaller.Pages.ToolPages
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AdvancedAdbClient client = new AdvancedAdbClient();
-            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider.devices[(sender as ComboBox).SelectedIndex]);
+            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider?.devices[(sender as ComboBox).SelectedIndex]);
         }
 
         private void TitleBar_RefreshEvent(object sender, RoutedEventArgs e)
@@ -59,16 +55,16 @@ namespace APKInstaller.Pages.ToolPages
             TitleBar.ShowProgressRing();
             Provider?.GetDevices();
             TitleBar.ShowProgressRing();
-            if (Provider.devices == null) { return; }
+            if (Provider?.devices == null) { return; }
             AdvancedAdbClient client = new AdvancedAdbClient();
-            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider.devices[Provider.DeviceComboBox.SelectedIndex]);
+            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider?.devices[Provider.DeviceComboBox.SelectedIndex]);
             TitleBar.HideProgressRing();
         }
 
         private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             Provider.DeviceComboBox = sender as ComboBox;
-            await Task.Run(() => this.RunOnUIThread(() => Provider.GetDevices()));
+            await Task.Run(() => this.RunOnUIThread(() => Provider?.GetDevices()));
         }
     }
 }

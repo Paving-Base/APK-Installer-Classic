@@ -96,7 +96,7 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private bool _autoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK): Settings.Default.AutoGetNetAPK;
+        private bool _autoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
         public bool AutoGetNetAPK
         {
             get => _autoGetNetAPK;

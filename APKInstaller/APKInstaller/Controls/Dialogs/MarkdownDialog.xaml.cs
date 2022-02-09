@@ -1,9 +1,7 @@
 ﻿using APKInstaller.Helpers;
 using ModernWpf.Controls;
-using System;
 using System.ComponentModel;
 using System.Net.Http;
-using Windows.System;
 
 namespace APKInstaller.Controls.Dialogs
 {

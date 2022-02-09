@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace APKInstaller.Controls
 {
@@ -54,7 +44,7 @@ namespace APKInstaller.Controls
         }
 
         // Using a DependencyProperty as the backing store for BxSource.  This enables animation, styling, binding, etc...
-        public new static readonly DependencyProperty SourceProperty =
+        public static new readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Source", typeof(string), typeof(ImageEx), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender | FrameworkPropertyMetadataOptions.AffectsMeasure, new PropertyChangedCallback(OnSourceChanged), null), null);
 
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -65,7 +55,10 @@ namespace APKInstaller.Controls
         private void UpdateSource()
         {
             if (Source == null || string.IsNullOrEmpty(Source) || !File.Exists(Source))
+            {
                 return;
+            }
+
             using (BinaryReader reader = new BinaryReader(File.Open(Source, FileMode.Open)))
             {
                 try

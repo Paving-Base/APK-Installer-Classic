@@ -25,8 +25,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 using Windows.System;
 
 namespace APKInstaller.ViewModel
@@ -36,7 +34,7 @@ namespace APKInstaller.ViewModel
         private DeviceData? _device;
         private readonly InstallPage _page;
 
-        private string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
+        private readonly string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
         private string APKTemp => Path.Combine(TempPath, @"NetAPKTemp.apk");
         private string ADBTemp => Path.Combine(TempPath, @"platform-tools.zip");
 
@@ -57,7 +55,7 @@ namespace APKInstaller.ViewModel
         public string? VersionFormat => _loader.GetString("VersionFormat");
         public string? PackageNameFormat => _loader.GetString("PackageNameFormat");
 
-        private bool AutoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK):Settings.Default.AutoGetNetAPK;
+        private readonly bool AutoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
 
         private ApkInfo? _apkInfo = null;
         public ApkInfo? ApkInfo
@@ -70,7 +68,7 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        private string _ADBPath = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath): Settings.Default.ADBPath;
+        private string _ADBPath = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
         public string ADBPath
         {
             get => _ADBPath;
@@ -91,7 +89,7 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        private bool _isOpenApp = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp):Settings.Default.IsOpenApp;
+        private bool _isOpenApp = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp) : Settings.Default.IsOpenApp;
         public bool IsOpenApp
         {
             get => _isOpenApp;
@@ -686,7 +684,11 @@ namespace APKInstaller.ViewModel
                     OpenFileDialog? FileOpen = new OpenFileDialog();
                     FileOpen.Filter = ".exe|*.exe";
                     FileOpen.Title = _loader.GetString("ChooseADB");
-                    if (FileOpen.ShowDialog() == false) return;
+                    if (FileOpen.ShowDialog() == false)
+                    {
+                        return;
+                    }
+
                     ADBPath = FileOpen.FileName;
                 }
                 else
@@ -1157,8 +1159,8 @@ namespace APKInstaller.ViewModel
                 while (downloader.IsStarted)
                 {
                     ProgressText = $"{(double)downloader.CurrentSize * 100 / downloader.TotalSize:N2}% {((double)downloader.BytesPerSecond).GetSizeString()}/s";
-                    AppxInstallBarValue = (double)downloader.CurrentSize * 100 / downloader.TotalSize;
                     ProgressHelper.SetValue(Convert.ToInt32(downloader.CurrentSize), Convert.ToInt32(downloader.TotalSize), true);
+                    AppxInstallBarValue = (double)downloader.CurrentSize * 100 / downloader.TotalSize;
                     await Task.Delay(1);
                 }
                 ProgressHelper.SetState(ProgressState.Indeterminate, true);
@@ -1218,8 +1220,8 @@ namespace APKInstaller.ViewModel
         private void PackageError(string? message)
         {
             ResetUI();
-            ApkInfo = new ApkInfo();
             TextOutput = message;
+            ApkInfo ??= new ApkInfo();
             AppName = _loader.GetString("CannotOpenPackage");
             ProgressHelper.SetState(ProgressState.Error, true);
             TextOutputVisibility = InstallOutputVisibility = Visibility.Visible;
@@ -1265,7 +1267,7 @@ namespace APKInstaller.ViewModel
                 else
                 {
                     string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
-                    DeviceData ? data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
+                    DeviceData? data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
                     if (data != null && data.Name == device.Name && data.Model == device.Model && data.Product == device.Product)
                     {
                         _device = data;
@@ -1318,7 +1320,11 @@ namespace APKInstaller.ViewModel
             OpenFileDialog? FileOpen = new OpenFileDialog();
             FileOpen.Filter = ".apk|*.apk";
             FileOpen.Title = _loader.GetString("OpenAPK");
-            if (FileOpen.ShowDialog() == false) return;
+            if (FileOpen.ShowDialog() == false)
+            {
+                return;
+            }
+
             _path = FileOpen.FileName;
             await Refresh();
         }

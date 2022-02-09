@@ -1,9 +1,5 @@
 ﻿using APKInstaller.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
@@ -18,7 +14,7 @@ namespace APKInstaller.Helpers
     /// </summary>
     public static class ProgressHelper
     {
-        private static ShobjidlCore.ITaskbarList? _taskbarList;
+        private static readonly ShobjidlCore.ITaskbarList? _taskbarList;
 
         static ProgressHelper()
         {
@@ -94,7 +90,9 @@ namespace APKInstaller.Helpers
         private static IntPtr GetHandle()
         {
             if (Application.Current.MainWindow != null)
+            {
                 return new WindowInteropHelper(Application.Current.MainWindow).Handle;
+            }
 
             return IntPtr.Zero;
         }
