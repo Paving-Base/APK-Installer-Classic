@@ -26,6 +26,11 @@ namespace AAPTForNet
         {
             Dictionary<string, Icon> iconTable = ExtractIconTable(path);
 
+            if (iconTable.Count == 0)
+            {
+                return Icon.Default;
+            }
+
             if (iconTable.Values.All(i => i.isRefernce))
             {
                 string refID = iconTable.Values.FirstOrDefault().IconName;
@@ -41,6 +46,7 @@ namespace AAPTForNet
 
             Icon largestIcon = ExtractLargestIcon(iconTable);
             largestIcon.RealPath = ExtractIconImage(path, largestIcon);
+
             return largestIcon;
         }
 

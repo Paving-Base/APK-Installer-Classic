@@ -25,6 +25,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Windows.Storage;
 using Windows.System;
 
 namespace APKInstaller.ViewModel
@@ -760,7 +761,7 @@ namespace APKInstaller.ViewModel
             WaitProgressText = _loader.GetString("UnzipADB");
             await Task.Delay(1);
             IArchive archive = ArchiveFactory.Open(ADBTemp);
-            string LocalData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "APKInstaller");
+            string LocalData = PackagedAppHelper.IsPackagedApp ? ApplicationData.Current.LocalFolder.Path : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "APKInstaller");
             if (!Directory.Exists(LocalData))
             {
                 _ = Directory.CreateDirectory(LocalData);

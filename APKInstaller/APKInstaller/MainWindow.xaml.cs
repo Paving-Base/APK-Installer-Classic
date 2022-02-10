@@ -30,7 +30,7 @@ namespace APKInstaller
             string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
             if (Directory.Exists(TempPath))
             {
-                Directory.Delete(TempPath, true);
+                try { Directory.Delete(TempPath, true); } catch { }
             }
         }
     }
