@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:APKInstaller (Installer)"
-"LanguageId" = "3:1033"
+"LanguageId" = "3:0"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:1033"
+"UILanguageId" = "3:0"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -22,7 +22,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_70CDC99FD2074BD1A1F0445185DC780E"
+        "MsmKey" = "8:_91245DD6378F41C1AE6EA0DFB57940C7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -200,7 +200,7 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1033"
+        "LangId" = "3:0"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
@@ -208,7 +208,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:APK Installer"
         "ProductCode" = "8:{68BAA00B-9243-474B-B429-85FB171D1A69}"
-        "PackageCode" = "8:{2141E444-B4F7-45BD-B071-3806BAE86C2F}"
+        "PackageCode" = "8:{DACF42BC-4084-4A98-BBF6-F3D6834FEC16}"
         "UpgradeCode" = "8:{0DC3C868-A1DB-406B-948A-70B2EFA37138}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -438,7 +438,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_604B6CC9FAE44F5C824AEB0FE4E25218"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_350911B997444013A10ABCA29F30E1B7"
             {
             "Name" = "8:APK Installer"
             "Arguments" = "8:"
@@ -446,7 +446,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_70CDC99FD2074BD1A1F0445185DC780E"
+            "Target" = "8:_91245DD6378F41C1AE6EA0DFB57940C7"
             "Folder" = "8:_DD6EE2B93FA241E89E3E15039EBDCF14"
             "WorkingFolder" = "8:_D6E9348344784531909F506D60EE039C"
             "Icon" = "8:_48189383AC234A2697715E85E210038E"
@@ -851,9 +851,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_70CDC99FD2074BD1A1F0445185DC780E"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_91245DD6378F41C1AE6EA0DFB57940C7"
             {
-            "SourcePath" = "8:..\\APKInstaller\\obj\\Release\\net6.0-windows10.0.20348.0\\apphost.exe"
+            "SourcePath" = "8:..\\APKInstaller\\obj\\x64\\Release\\net6.0-windows10.0.20348.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D6E9348344784531909F506D60EE039C"
@@ -873,7 +873,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{62695051-B43B-4E23-8CC3-EF1EEF83BA66}"
+            "OutputProjectGuid" = "8:{7DB197ED-388E-4D76-8388-D7EAE5210723}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

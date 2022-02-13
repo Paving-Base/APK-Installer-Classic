@@ -589,6 +589,10 @@ namespace APKInstaller.ViewModel
         public async Task CheckADB(bool force = false)
         {
         checkadb:
+            if (string.IsNullOrEmpty(ADBPath))
+            {
+                ADBPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"APKInstaller\platform-tools\adb.exe");
+            }
             if (!force && File.Exists(ADBPath))
             {
                 WaitProgressText = _loader.GetString("ADBExist");
