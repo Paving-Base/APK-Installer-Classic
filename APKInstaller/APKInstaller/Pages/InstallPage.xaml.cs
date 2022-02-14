@@ -52,7 +52,7 @@ namespace APKInstaller.Pages
             Provider ??= new InstallViewModel(_path, this);
             DataContext = Provider;
 
-            ModernWpf.MessageBox.Show(string.Join('\n', arguments), "Arguments", MessageBoxButton.OK);
+            //ModernWpf.MessageBox.Show(string.Join('\n', arguments), "Arguments", MessageBoxButton.OK);
 
             await Provider?.Refresh();
         }

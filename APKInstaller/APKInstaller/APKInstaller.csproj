@@ -6,7 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	<Authors>wherewhere</Authors>
-	<VersionPrefix>0.0.2</VersionPrefix>
+	<VersionPrefix>0.0.3</VersionPrefix>
+	<LangVersion>preview</LangVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
 	<Description>An Android Application Installer for Windows</Description>
 	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
@@ -459,6 +460,15 @@
 
   <ItemGroup>
     <None Update="256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ADB\adb.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ADB\AdbWinApi.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ADB\AdbWinUsbApi.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">

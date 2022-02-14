@@ -4,7 +4,9 @@ using APKInstaller.Pages;
 using APKInstaller.Properties;
 using MicaWPF.Controls;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace APKInstaller
 {
@@ -23,9 +25,13 @@ namespace APKInstaller
 
         private void MicaWindow_Closed(object sender, EventArgs e)
         {
-            if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
+            Process[] processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
+            if (processes.Count() <= 1)
             {
-                new AdvancedAdbClient().KillAdb();
+                if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
+                {
+                    new AdvancedAdbClient().KillAdb();
+                }
             }
             string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
             if (Directory.Exists(TempPath))

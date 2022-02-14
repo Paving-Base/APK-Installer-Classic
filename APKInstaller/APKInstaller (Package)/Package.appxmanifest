@@ -59,6 +59,7 @@
             <uap:DisplayName>APK File</uap:DisplayName>
             <uap:InfoTip>Android Application Package</uap:InfoTip>
             <uap:Logo>Images/256x256.png</uap:Logo>
+            <uap:EditFlags OpenIsSafe="true"/>
           </uap:FileTypeAssociation>
         </uap:Extension>
         <uap:Extension Category="windows.protocol">
@@ -66,6 +67,18 @@
             <uap:DisplayName>APK Installer</uap:DisplayName>
             <uap:Logo>Images\256x256.png</uap:Logo>
           </uap:Protocol>
+        </uap:Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="splitapk">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.apks</uap:FileType>
+              <uap:FileType>.apkm</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Split APK File</uap:DisplayName>
+            <uap:Logo>Images/256x256.png</uap:Logo>
+            <uap:InfoTip>Android Application Package</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>
     </Application>

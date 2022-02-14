@@ -44,7 +44,7 @@ namespace APKInstaller.ViewModel
         private string _path = string.Empty;
 #else
         private Uri? _url = new Uri("apkinstaller:?source=https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web");
-        private string _path = @"C:\Users\qq251\Downloads\Programs\Minecraft_1.17.40.06_sign.apk";
+        private string _path = @"C:\Users\qq251\Downloads\Programs\Skit_com,pavelrekun,skit,premium_2,4,1.apks";
 #endif
         private bool NetAPKExist => _path != APKTemp || File.Exists(_path);
 
@@ -589,9 +589,9 @@ namespace APKInstaller.ViewModel
         public async Task CheckADB(bool force = false)
         {
         checkadb:
-            if (string.IsNullOrEmpty(ADBPath))
+            if (!File.Exists(ADBPath))
             {
-                ADBPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"APKInstaller\platform-tools\adb.exe");
+                ADBPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ADB\adb.exe");
             }
             if (!force && File.Exists(ADBPath))
             {
@@ -1323,7 +1323,7 @@ namespace APKInstaller.ViewModel
         public async void OpenAPK()
         {
             OpenFileDialog? FileOpen = new OpenFileDialog();
-            FileOpen.Filter = ".apk|*.apk";
+            FileOpen.Filter = ".apk|*.apk|.apks|*.apks|.apkm|*.apkm";
             FileOpen.Title = _loader.GetString("OpenAPK");
             if (FileOpen.ShowDialog() == false)
             {

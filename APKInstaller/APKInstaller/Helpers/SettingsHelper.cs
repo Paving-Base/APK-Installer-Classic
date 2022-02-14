@@ -26,7 +26,7 @@ namespace APKInstaller.Helpers
         {
             if (!LocalSettings.Values.ContainsKey(ADBPath))
             {
-                LocalSettings.Values.Add(ADBPath, Path.Combine(ApplicationData.Current.LocalFolder.Path, @"platform-tools\adb.exe"));
+                LocalSettings.Values.Add(ADBPath, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"ADB\adb.exe"));
             }
             if (!LocalSettings.Values.ContainsKey(IsOpenApp))
             {
@@ -50,7 +50,7 @@ namespace APKInstaller.Helpers
             }
             if (!LocalSettings.Values.ContainsKey(IsCloseADB))
             {
-                LocalSettings.Values.Add(IsCloseADB, false);
+                LocalSettings.Values.Add(IsCloseADB, true);
             }
             if (!LocalSettings.Values.ContainsKey(AutoGetNetAPK))
             {

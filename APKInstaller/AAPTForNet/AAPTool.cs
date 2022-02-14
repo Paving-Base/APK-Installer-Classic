@@ -1,15 +1,17 @@
 ﻿using AAPTForNet.Models;
-
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 
 namespace AAPTForNet
 {
     /// <summary>
     /// Android Assert Packing Tool for NET
     /// </summary>
-    public class AAPTool : System.Diagnostics.Process
+    public class AAPTool : Process
     {
         private enum DumpTypes
         {
@@ -19,6 +21,7 @@ namespace AAPTForNet
         }
 
         private static readonly string AppPath = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+        private static readonly string TempPath = Path.Combine(Path.GetTempPath(), $@"APKInstaller\Caches\{GetCurrentProcess().Id}\AppPackages");
 
         protected AAPTool()
         {
@@ -131,27 +134,82 @@ namespace AAPTForNet
         /// <returns>Filled apk if dump process is not failed</returns>
         public static ApkInfo Decompile(string path)
         {
-            DumpModel manifest = ApkExtractor.ExtractManifest(path);
-            if (!manifest.isSuccess)
+            List<string> apks = new List<string>();
+            using (ZipArchive archive = ZipFile.OpenRead(path))
             {
-                return new ApkInfo();
-            }
-
-            ApkInfo apk = ApkParser.Parse(manifest);
-            apk.FullPath = path;
-
-            if (apk.Icon.isImage)
-            {
-                // Included icon in manifest, extract it from apk
-                apk.Icon.RealPath = ApkExtractor.ExtractIconImage(path, apk.Icon);
-                if (apk.Icon.isHighDensity)
+                if (!Directory.Exists(TempPath))
                 {
-                    return apk;
+                    Directory.CreateDirectory(TempPath);
+                }
+
+                foreach (ZipArchiveEntry entry in archive.Entries.Where(x => !x.FullName.Contains("/")))
+                {
+                    if (entry.Name.ToLower().EndsWith(".apk"))
+                    {
+                        string APKTemp = Path.Combine(TempPath, entry.FullName);
+                        entry.ExtractToFile(APKTemp, true);
+                        apks.Add(APKTemp);
+                    }
+                }
+
+                if (!apks.Any())
+                {
+                    apks.Add(path);
                 }
             }
 
-            apk.Icon = ApkExtractor.ExtractLargestIcon(path);
-            return apk;
+            List<ApkInfo> apkInfos = new List<ApkInfo>();
+            foreach (string apkpath in apks)
+            {
+                DumpModel manifest = ApkExtractor.ExtractManifest(apkpath);
+                if (!manifest.isSuccess)
+                {
+                    continue;
+                }
+
+                ApkInfo apk = ApkParser.Parse(manifest);
+                apk.FullPath = apkpath;
+
+                if (apk.Icon.isImage)
+                {
+                    // Included icon in manifest, extract it from apk
+                    apk.Icon.RealPath = ApkExtractor.ExtractIconImage(apkpath, apk.Icon);
+                    if (apk.Icon.isHighDensity)
+                    {
+                        apkInfos.Add(apk);
+                        continue;
+                    }
+                }
+
+                apk.Icon = ApkExtractor.ExtractLargestIcon(apkpath);
+                apkInfos.Add(apk);
+            }
+
+            if (!apkInfos.Any()) { return new ApkInfo(); }
+
+            if (apkInfos.Count <= 1) { return apkInfos.First(); }
+
+            List<ApkInfos> packages = apkInfos.GroupBy(x => x.PackageName).Select(x => new ApkInfos { PackageName = x.Key, Apks = x.ToList() }).ToList();
+
+            if (packages.Count > 1) { throw new Exception("This is a Multiple Package."); }
+
+            List<ApkInfo> infos = new List<ApkInfo>();
+            foreach (ApkInfos package in packages)
+            {
+                foreach (ApkInfo baseapk in package.Apks.Where(x => !x.IsSplit))
+                {
+                    baseapk.SplitApks = package.Apks.Where(x => x.IsSplit).Where(x => x.VersionCode == baseapk.VersionCode).ToList();
+                    infos.Add(baseapk);
+                }
+            }
+
+            if (infos.Count > 1) { throw new Exception("There are more than one base APK in this Package."); }
+
+            if (!infos.Any()) { throw new Exception("There are all dependents in this Package."); }
+
+            ApkInfo info = infos.First();
+
+            return info;
         }
     }
 }
