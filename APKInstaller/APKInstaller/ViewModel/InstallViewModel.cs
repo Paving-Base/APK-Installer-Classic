@@ -792,57 +792,66 @@ namespace APKInstaller.ViewModel
 
         public async Task InitilizeADB()
         {
-            WaitProgressText = _loader.GetString("CheckingADB");
-            await CheckADB();
             if (!string.IsNullOrEmpty(_path) || _url != null)
             {
-                WaitProgressText = _loader.GetString("StartingADB");
-                Process[] processes = Process.GetProcessesByName("adb");
-                if (processes != null && processes.Length > 1)
+                AdbServer ADBServer = new AdbServer();
+                if (!ADBServer.GetStatus().IsRunning)
                 {
-                    foreach (Process process in processes)
-                    {
-                        process.Kill();
-                    }
-                }
-                if (processes != null && processes.Length == 1)
-                {
-                    try
-                    {
-                        await Task.Run(() => new AdbServer().StartServer(processes.First().MainModule?.FileName, restartServerIfNewer: false));
-                    }
-                    catch
+                    WaitProgressText = _loader.GetString("CheckingADB");
+                    await CheckADB();
+                    WaitProgressText = _loader.GetString("StartingADB");
+                    Process[] processes = Process.GetProcessesByName("adb");
+                    if (processes != null && processes.Length > 1)
                     {
                         foreach (Process process in processes)
                         {
                             process.Kill();
                         }
+                    }
+                    if (processes != null && processes.Length == 1)
+                    {
                         try
                         {
-                            await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
+                            await Task.Run(() => ADBServer.StartServer(processes.First().MainModule?.FileName, restartServerIfNewer: false));
+                        }
+                        catch
+                        {
+                            foreach (Process process in processes)
+                            {
+                                process.Kill();
+                            }
+                            try
+                            {
+                                await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));
+                            }
+                            catch
+                            {
+                                await CheckADB(true);
+                                WaitProgressText = _loader.GetString("StartingADB");
+                                await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));
                         }
                         catch
                         {
                             await CheckADB(true);
                             WaitProgressText = _loader.GetString("StartingADB");
-                            await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
+                            await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));
                         }
                     }
                 }
-                else
+                WaitProgressText = _loader.GetString("Loading");
+                if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
                 {
-                    try
-                    {
-                        await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
-                    }
-                    catch
-                    {
-                        await CheckADB(true);
-                        WaitProgressText = _loader.GetString("StartingADB");
-                        await Task.Run(() => new AdbServer().StartServer(ADBPath, restartServerIfNewer: false));
-                    }
+                    _ = AddressHelper.ConnectHyperV();
                 }
-                if (IsOnlyWSA)
+                else if (IsOnlyWSA)
                 {
                     new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
                 }
@@ -978,9 +987,17 @@ namespace APKInstaller.ViewModel
                                             IsWSARunning = ps != null && ps.Length > 0;
                                         });
                                     }
+                                    WaitProgressText = _loader.GetString("WaitingADBStart");
                                     while (!CheckDevice())
                                     {
-                                        new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
+                                        if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+                                        {
+                                            await AddressHelper.ConnectHyperV();
+                                        }
+                                        else if (IsOnlyWSA)
+                                        {
+                                            new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
+                                        }
                                         await Task.Delay(100);
                                     }
                                     WaitProgressText = _loader.GetString("WSARunning");
@@ -1235,11 +1252,7 @@ namespace APKInstaller.ViewModel
 
         private void OnDeviceChanged(object? sender, DeviceDataEventArgs e)
         {
-            if (IsOnlyWSA)
-            {
-                new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
-            }
-            if (!IsInstalling)
+            if (IsInitialized && !IsInstalling)
             {
                 _page.RunOnUIThread(() =>
                 {

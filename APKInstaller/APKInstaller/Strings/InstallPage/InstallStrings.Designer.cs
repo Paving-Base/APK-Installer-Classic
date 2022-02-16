@@ -334,6 +334,15 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Launch when ready 的本地化字符串。
+        /// </summary>
+        public static string LaunchWhenReadyCheckbox_Content {
+            get {
+                return ResourceManager.GetString("LaunchWhenReadyCheckbox.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Loading... 的本地化字符串。
         /// </summary>
         public static string Loading {
@@ -555,6 +564,16 @@ namespace APKInstaller.Strings.InstallPage {
         public static string WaitDownload {
             get {
                 return ResourceManager.GetString("WaitDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Waiting ADB Start...
+        ///This may takes long time. Sit back and relax. 的本地化字符串。
+        /// </summary>
+        public static string WaitingADBStart {
+            get {
+                return ResourceManager.GetString("WaitingADBStart", resourceCulture);
             }
         }
         
