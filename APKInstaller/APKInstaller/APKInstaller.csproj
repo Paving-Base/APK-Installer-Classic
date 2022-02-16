@@ -460,7 +460,7 @@
 
   <ItemGroup>
     <None Update="256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ADB\adb.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

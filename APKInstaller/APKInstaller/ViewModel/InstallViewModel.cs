@@ -35,9 +35,9 @@ namespace APKInstaller.ViewModel
         private DeviceData? _device;
         private readonly InstallPage _page;
 
-        private readonly string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
-        private string APKTemp => Path.Combine(TempPath, @"NetAPKTemp.apk");
-        private string ADBTemp => Path.Combine(TempPath, @"platform-tools.zip");
+        private readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
+        private string APKTemp => Path.Combine(TempPath, "NetAPKTemp.apk");
+        private string ADBTemp => Path.Combine(TempPath, "platform-tools.zip");
 
 #if !DEBUG
         private Uri? _url;
@@ -798,18 +798,10 @@ namespace APKInstaller.ViewModel
                 if (!ADBServer.GetStatus().IsRunning)
                 {
                     WaitProgressText = _loader.GetString("CheckingADB");
-                    await CheckADB();
-                    WaitProgressText = _loader.GetString("StartingADB");
                     Process[] processes = Process.GetProcessesByName("adb");
-                    if (processes != null && processes.Length > 1)
+                    if (processes != null)
                     {
-                        foreach (Process process in processes)
-                        {
-                            process.Kill();
-                        }
-                    }
-                    if (processes != null && processes.Length == 1)
-                    {
+                        WaitProgressText = _loader.GetString("StartingADB");
                         try
                         {
                             await Task.Run(() => ADBServer.StartServer(processes.First().MainModule?.FileName, restartServerIfNewer: false));
@@ -820,6 +812,7 @@ namespace APKInstaller.ViewModel
                             {
                                 process.Kill();
                             }
+                            await CheckADB();
                             try
                             {
                                 await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));
@@ -834,6 +827,8 @@ namespace APKInstaller.ViewModel
                     }
                     else
                     {
+                        await CheckADB();
+                        WaitProgressText = _loader.GetString("StartingADB");
                         try
                         {
                             await Task.Run(() => ADBServer.StartServer(ADBPath, restartServerIfNewer: false));

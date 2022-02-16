@@ -12,7 +12,7 @@ namespace AAPTForNet
     internal class ApkExtractor
     {
         private static int id = 0;
-        private static readonly string tempPath = Path.Combine(Path.GetTempPath(), $@"APKInstaller\Caches\{Environment.ProcessId}");
+        private static readonly string tempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
 
         public static DumpModel ExtractManifest(string path)
         {
@@ -259,8 +259,8 @@ namespace AAPTForNet
 
             string IconPath = Path.Combine(tempPath, $@"AAPToolTempImage-{id++}.png");
 
-            TryExtractIconImage(path, icon.IconName, tempPath);
-            return tempPath;
+            TryExtractIconImage(path, icon.IconName, IconPath);
+            return IconPath;
         }
 
         private static void TryExtractIconImage(string path, string iconName, string desFile)
