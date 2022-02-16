@@ -146,6 +146,7 @@
                     <TextBlock
                         x:Name="ProgressText"
                         Text="{Binding ProgressText}"
+                        TextTrimming="CharacterEllipsis"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                     <ProgressBar
                         x:Name="AppxInstallBar"
@@ -174,12 +175,14 @@
                             Grid.Row="0"
                             Margin="0,0,0,6"
                             Text="{Binding InfoMessage}"
+                            TextWrapping="Wrap"
                             ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                         <TextBlock
                             x:Name="WarningMessageModificationPackage"
                             Grid.Row="1"
                             Margin="0,0,0,6"
                             FontWeight="Bold"
+                            TextWrapping="Wrap"
                             ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
                             Visibility="Collapsed" />
                     </Grid>
@@ -188,6 +191,7 @@
                         Grid.Row="0"
                         Margin="0,0,0,6"
                         Text="{x:Static str:InstallStrings.InstallOutputTextBlock_Text}"
+                        TextWrapping="Wrap"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"
                         Visibility="{Binding InstallOutputVisibility}" />
                     <ScrollViewer
@@ -347,7 +351,7 @@
                         VerticalAlignment="Center"
                         HorizontalContentAlignment="Left"
                         VerticalContentAlignment="Top"
-                        Content="Launch when ready"
+                        Content="{x:Static str:InstallStrings.LaunchWhenReadyCheckbox_Content}"
                         IsChecked="{Binding IsOpenApp, Mode=TwoWay}"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"
                         Visibility="{Binding LaunchWhenReadyVisibility}" />
@@ -380,7 +384,8 @@
                 x:Name="WaitProgressText"
                 Margin="0,6,0,0"
                 Text="{Binding WaitProgressText}"
-                TextAlignment="Center" />
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
 </ui:Page>

@@ -11,7 +11,6 @@
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
-"BackwardsCompatibleGUIDGeneration" = "8:TRUE"
     "Hierarchy"
     {
         "Entry"
@@ -202,7 +201,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:APK Installer"
         "ProductCode" = "8:{68BAA00B-9243-474B-B429-85FB171D1A69}"
-        "PackageCode" = "8:{872D9DBD-CEF1-4870-88B0-34A3C968E319}"
+        "PackageCode" = "8:{D2E77F4A-9C80-4A88-ADFD-35B8AD9D4874}"
         "UpgradeCode" = "8:{0DC3C868-A1DB-406B-948A-70B2EFA37138}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

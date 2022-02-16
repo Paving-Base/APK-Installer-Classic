@@ -25,18 +25,24 @@ namespace APKInstaller
 
         private void MicaWindow_Closed(object sender, EventArgs e)
         {
-            Process[] processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
-            if (processes.Count() <= 1)
-            {
-                if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
-                {
-                    new AdvancedAdbClient().KillAdb();
-                }
-            }
-            string TempPath = Path.Combine(Path.GetTempPath(), @$"APKInstaller\Caches\{Environment.ProcessId}");
+            string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
             if (Directory.Exists(TempPath))
             {
                 try { Directory.Delete(TempPath, true); } catch { }
+            }
+
+            Process[] processes = Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName);
+            if (processes.Length <= 1)
+            {
+                if (Directory.Exists(TempPath[..TempPath.LastIndexOf(@"\")]))
+                {
+                    try { Directory.Delete(TempPath[..TempPath.LastIndexOf(@"\")], true); } catch { }
+                }
+
+                if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
+                {
+                    try { new AdvancedAdbClient().KillAdb(); } catch { }
+                }
             }
         }
     }
