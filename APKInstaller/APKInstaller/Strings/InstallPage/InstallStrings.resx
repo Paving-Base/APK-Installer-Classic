@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutADB" xml:space="preserve">
-    <value>ADB, the Android Debug Bridge, is needed for APK Installer to work. Click OK to download it. By downloading, you accept the Google Terms and Conditions for ADB.</value>
+    <value>ADB, the Android Debug Bridge, is needed for APK Installer to work. Click "Download" to download it. By downloading, you accept the Google Terms and Conditions for ADB. If you have already downloaded ADB, click "Select" to select it.</value>
   </data>
   <data name="ADBExist" xml:space="preserve">
     <value>ADB Exist</value>
@@ -305,6 +305,10 @@ This may takes long time. Sit back and relax.</value>
   <data name="WaitingForInstallFormat" xml:space="preserve">
     <value>Waiting for install {0}</value>
     <comment>{0} - AppName.</comment>
+  </data>
+  <data name="WaitingWSAStart" xml:space="preserve">
+    <value>Waiting WSA Start...
+This may takes long time. Sit back and relax.</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
     <value>WSA is Running</value>

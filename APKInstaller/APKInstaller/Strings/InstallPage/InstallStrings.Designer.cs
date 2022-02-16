@@ -61,7 +61,7 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
-        ///   查找类似 ADB, the Android Debug Bridge, is needed for APK Installer to work. Click OK to download it. By downloading, you accept the Google Terms and Conditions for ADB. 的本地化字符串。
+        ///   查找类似 ADB, the Android Debug Bridge, is needed for APK Installer to work. Click &quot;Download&quot; to download it. By downloading, you accept the Google Terms and Conditions for ADB. If you have already downloaded ADB, click &quot;Select&quot; to select it. 的本地化字符串。
         /// </summary>
         public static string AboutADB {
             get {
@@ -592,6 +592,16 @@ namespace APKInstaller.Strings.InstallPage {
         public static string WaitingForInstallFormat {
             get {
                 return ResourceManager.GetString("WaitingForInstallFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Waiting WSA Start...
+        ///This may takes long time. Sit back and relax. 的本地化字符串。
+        /// </summary>
+        public static string WaitingWSAStart {
+            get {
+                return ResourceManager.GetString("WaitingWSAStart", resourceCulture);
             }
         }
         
