@@ -982,7 +982,7 @@ namespace APKInstaller.ViewModel
                                             IsWSARunning = ps != null && ps.Length > 0;
                                         });
                                     }
-                                    WaitProgressText = _loader.GetString("WaitingADBStart");
+                                    WaitProgressText = _loader.GetString("WaitingWSAStart");
                                     while (!CheckDevice())
                                     {
                                         if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)

@@ -568,16 +568,6 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
-        ///   查找类似 Waiting ADB Start...
-        ///This may takes long time. Sit back and relax. 的本地化字符串。
-        /// </summary>
-        public static string WaitingADBStart {
-            get {
-                return ResourceManager.GetString("WaitingADBStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 Waiting for Device... 的本地化字符串。
         /// </summary>
         public static string WaitingDevice {
@@ -592,6 +582,16 @@ namespace APKInstaller.Strings.InstallPage {
         public static string WaitingForInstallFormat {
             get {
                 return ResourceManager.GetString("WaitingForInstallFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Waiting WSA Start...
+        ///This may takes long time. Sit back and relax. 的本地化字符串。
+        /// </summary>
+        public static string WaitingWSAStart {
+            get {
+                return ResourceManager.GetString("WaitingWSAStart", resourceCulture);
             }
         }
         
