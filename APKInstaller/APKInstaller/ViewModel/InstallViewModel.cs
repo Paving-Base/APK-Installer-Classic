@@ -842,13 +842,16 @@ namespace APKInstaller.ViewModel
                     }
                 }
                 WaitProgressText = _loader.GetString("Loading");
-                if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+                if (IsOnlyWSA)
                 {
-                    _ = AddressHelper.ConnectHyperV();
-                }
-                else if (IsOnlyWSA)
-                {
-                    new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
+                    if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+                    {
+                        await AddressHelper.ConnectHyperV();
+                    }
+                    else
+                    {
+                        new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
+                    }
                 }
                 ADBHelper.Monitor.DeviceChanged += OnDeviceChanged;
             }
@@ -1304,7 +1307,7 @@ namespace APKInstaller.ViewModel
                 ActionVisibility = SecondaryActionVisibility = TextOutputVisibility = InstallOutputVisibility = Visibility.Collapsed;
                 await Task.Run(() =>
                 {
-                    new AdvancedAdbClient().Install(_device, File.Open(_path, FileMode.Open, FileAccess.Read));
+                    new AdvancedAdbClient().Install(_device, File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read));
                 });
                 if (IsOpenApp)
                 {
