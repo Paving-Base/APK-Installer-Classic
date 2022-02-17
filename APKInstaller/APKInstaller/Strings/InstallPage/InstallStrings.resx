@@ -189,6 +189,10 @@
   <data name="Install" xml:space="preserve">
     <value>Install</value>
   </data>
+  <data name="InstalledFormat" xml:space="preserve">
+    <value>{0} is ready!</value>
+    <comment>{0} - AppName.</comment>
+  </data>
   <data name="InstallFormat" xml:space="preserve">
     <value>Install {0}?</value>
     <comment>{0} - AppName.</comment>

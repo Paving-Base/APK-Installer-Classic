@@ -1309,6 +1309,7 @@ namespace APKInstaller.ViewModel
                 {
                     new AdvancedAdbClient().Install(_device, File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read));
                 });
+                AppName = string.Format(_loader.GetString("InstalledFormat"), ApkInfo?.AppName);
                 if (IsOpenApp)
                 {
                     _ = Task.Run(async () =>

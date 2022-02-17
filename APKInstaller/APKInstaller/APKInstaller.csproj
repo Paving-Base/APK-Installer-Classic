@@ -26,6 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="256x256.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="256x256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="favicon.ico" />
   </ItemGroup>
 
@@ -459,9 +466,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="ADB\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
