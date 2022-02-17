@@ -189,6 +189,10 @@
   <data name="Install" xml:space="preserve">
     <value>安装</value>
   </data>
+  <data name="InstalledFormat" xml:space="preserve">
+    <value>{0} 已准备就绪!</value>
+    <comment>{0} - AppName.</comment>
+  </data>
   <data name="InstallFormat" xml:space="preserve">
     <value>安装 {0}?</value>
     <comment>{0} - AppName.</comment>
