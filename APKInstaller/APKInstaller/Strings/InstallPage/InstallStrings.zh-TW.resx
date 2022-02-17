@@ -189,6 +189,10 @@
   <data name="Install" xml:space="preserve">
     <value>安裝</value>
   </data>
+  <data name="InstalledFormat" xml:space="preserve">
+    <value>{0} is ready!</value>
+    <comment>{0} - AppName.</comment>
+  </data>
   <data name="InstallFormat" xml:space="preserve">
     <value>安裝 {0}?</value>
     <comment>{0} - AppName.</comment>
@@ -294,6 +298,10 @@
   </data>
   <data name="WaitDownload" xml:space="preserve">
     <value>等待下載中……</value>
+  </data>
+  <data name="WaitingADBStart" xml:space="preserve">
+    <value>Waiting ADB Start...
+This may takes long time. Sit back and relax.</value>
   </data>
   <data name="WaitingDevice" xml:space="preserve">
     <value>等待設備連接……</value>
