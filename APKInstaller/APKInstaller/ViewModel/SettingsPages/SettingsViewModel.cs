@@ -33,85 +33,105 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private bool _isOnlyWSA = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
         public bool IsOnlyWSA
         {
-            get => _isOnlyWSA;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.IsOnlyWSA, value);
-                    _isOnlyWSA = SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA);
                 }
                 else
                 {
                     Settings.Default.IsOnlyWSA = value;
                     Settings.Default.Save();
-                    _isOnlyWSA = Settings.Default.IsOnlyWSA;
                 }
                 if (!value) { ChooseDevice(); }
-                RaisePropertyChangedEvent();
             }
         }
 
-        private bool _isCloseADB = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB;
-        public bool IsCloseADB
+        public static bool IsCloseADB
         {
-            get => _isCloseADB;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.IsCloseADB, value);
-                    _isCloseADB = SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB);
                 }
                 else
                 {
                     Settings.Default.IsCloseADB = value;
                     Settings.Default.Save();
-                    _isCloseADB = Settings.Default.IsCloseADB;
                 }
             }
         }
 
-        private DateTime _updateDate = PackagedAppHelper.IsPackagedApp ? JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate)) : Settings.Default.UpdateDate;
-        public DateTime UpdateDate
+        public static bool IsCloseAPP
         {
-            get => _updateDate;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP) : Settings.Default.IsCloseAPP;
+            set
+            {
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.IsCloseAPP, value);
+                }
+                else
+                {
+                    Settings.Default.IsCloseAPP = value;
+                    Settings.Default.Save();
+                }
+            }
+        }
+
+        public static bool ShowDialogs
+        {
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs) : Settings.Default.ShowDialogs;
+            set
+            {
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.ShowDialogs, value);
+                }
+                else
+                {
+                    Settings.Default.ShowDialogs = value;
+                    Settings.Default.Save();
+                }
+            }
+        }
+
+        public static DateTime UpdateDate
+        {
+            get => PackagedAppHelper.IsPackagedApp ? JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate)) : Settings.Default.UpdateDate;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.UpdateDate, JsonSerializer.Serialize(value));
-                    _updateDate = JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate));
                 }
                 else
                 {
                     Settings.Default.UpdateDate = value;
                     Settings.Default.Save();
-                    _updateDate = Settings.Default.UpdateDate;
                 }
-                RaisePropertyChangedEvent();
             }
         }
 
-        private bool _autoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
-        public bool AutoGetNetAPK
+        public static bool AutoGetNetAPK
         {
-            get => _autoGetNetAPK;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.AutoGetNetAPK, value);
-                    _autoGetNetAPK = SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK);
                 }
                 else
                 {
                     Settings.Default.AutoGetNetAPK = value;
                     Settings.Default.Save();
-                    _autoGetNetAPK = Settings.Default.AutoGetNetAPK;
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AAPTForNet.Models
+namespace AAPT2ForNet.Models
 {
     public class SDKInfo
     {
@@ -37,10 +37,10 @@ namespace AAPTForNet.Models
             "Oreo",
             "Oreo",
             "Pie",
-            "Android10",
-            "Android11",  // API level 30
-            "Android12",
-            "Android13"
+            "Q",
+            "R",  // API level 30
+            "S",
+            "T"
         };
 
         private static readonly string[] AndroidVersionCodes = {
@@ -64,7 +64,7 @@ namespace AAPTForNet.Models
             "4.2",
             "4.3",
             "4.4",
-            "Unknown",  // API level 20
+            "4.4W",  // API level 20
             "5.0",
             "5.1",
             "6.0",

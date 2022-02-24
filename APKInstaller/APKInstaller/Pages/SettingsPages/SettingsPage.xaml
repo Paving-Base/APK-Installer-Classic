@@ -79,6 +79,40 @@
                         </Expander.Content>
                     </Expander>
                 </controls:SettingsGroup>
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ContentSettingsHeader_Header}">
+                    <controls:Setting
+                        Description="{x:Static str:SettingsStrings.ShowDialogsSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.ShowDialogsSettings_Header}"
+                        Icon="&#xE82F;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding ShowDialogs, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting
+                        Description="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Header}"
+                        Icon="&#xE896;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding AutoGetNetAPK, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting
+                        Description="{x:Static str:SettingsStrings.CloseAPPSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.CloseAPPSettings_Header}"
+                        Icon="&#xEDAE;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding IsCloseAPP, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting
+                        Description="{x:Static str:SettingsStrings.CloseADBSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.CloseADBSettings_Header}"
+                        Icon="&#xE756;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingsGroup>
                 <controls:SettingsGroup Header="{x:Static str:SettingsStrings.OthersSettingsHeader_Header}">
                     <controls:Setting Header="{x:Static str:SettingsStrings.ResetSettings_Header}" Icon="&#xE777;">
                         <controls:Setting.ActionContent>
@@ -98,22 +132,6 @@
                                     </ui:Flyout>
                                 </ui:FlyoutService.Flyout>
                             </Button>
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
-                    <controls:Setting
-                        Description="{x:Static str:SettingsStrings.CloseADBSettings_Description}"
-                        Header="{x:Static str:SettingsStrings.CloseADBSettings_Header}"
-                        Icon="&#xE756;">
-                        <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
-                        </controls:Setting.ActionContent>
-                    </controls:Setting>
-                    <controls:Setting
-                        Description="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Description}"
-                        Header="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Header}"
-                        Icon="&#xE896;">
-                        <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding AutoGetNetAPK, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <Button
@@ -141,7 +159,8 @@
                                     <ui:HyperlinkButton
                                         Margin="0,0,2,0"
                                         Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" Cursor="Hand" />
+                                        Cursor="Hand"
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
                                     <ui:HyperlinkButton
                                         Margin="2,0,2,0"
                                         Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}"

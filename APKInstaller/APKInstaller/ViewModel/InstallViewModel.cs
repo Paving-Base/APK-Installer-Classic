@@ -49,14 +49,16 @@ namespace APKInstaller.ViewModel
         private bool NetAPKExist => _path != APKTemp || File.Exists(_path);
 
         private bool _disposedValue;
-        private static bool IsOnlyWSA => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
         private readonly ResourceManager _loader = new ResourceManager(typeof(InstallStrings));
 
         public string? InstallFormat => _loader.GetString("InstallFormat");
         public string? VersionFormat => _loader.GetString("VersionFormat");
         public string? PackageNameFormat => _loader.GetString("PackageNameFormat");
 
-        private readonly bool AutoGetNetAPK = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
+        private static bool IsOnlyWSA => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
+        private static bool IsCloseAPP => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP) : Settings.Default.IsCloseAPP;
+        private static bool ShowDialogs => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs) : Settings.Default.ShowDialogs;
+        private static bool AutoGetNetAPK => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
 
         private ApkInfo? _apkInfo = null;
         public ApkInfo? ApkInfo
@@ -69,45 +71,38 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        private string _ADBPath = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
         public string ADBPath
         {
-            get => _ADBPath;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                    _ADBPath = SettingsHelper.Get<string>(SettingsHelper.ADBPath);
                 }
                 else
                 {
                     Settings.Default.ADBPath = value;
                     Settings.Default.Save();
-                    _ADBPath = Settings.Default.ADBPath;
                 }
                 RaisePropertyChangedEvent();
             }
         }
 
-        private bool _isOpenApp = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp) : Settings.Default.IsOpenApp;
         public bool IsOpenApp
         {
-            get => _isOpenApp;
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp) : Settings.Default.IsOpenApp;
             set
             {
                 if (PackagedAppHelper.IsPackagedApp)
                 {
                     SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                    _ADBPath = SettingsHelper.Get<string>(SettingsHelper.ADBPath);
                 }
                 else
                 {
                     Settings.Default.IsOpenApp = value;
                     Settings.Default.Save();
-                    _isOpenApp = Settings.Default.IsOpenApp;
                 }
-                RaisePropertyChangedEvent();
             }
         }
 
@@ -898,26 +893,7 @@ namespace APKInstaller.ViewModel
                         else
                         {
                             ResetUI();
-                            Regex[] UriRegex = new Regex[] { new Regex(@":\?source=(.*)"), new Regex(@"://(.*)") };
-                            string Uri = UriRegex[0].IsMatch(_url.ToString()) ? UriRegex[0].Match(_url.ToString()).Groups[1].Value : UriRegex[1].Match(_url.ToString()).Groups[1].Value;
-                            Uri Url = Uri.ValidateAndGetUri();
-                            if (Url != null)
-                            {
-                                _url = Url;
-                                AppName = _loader.GetString("OnlinePackage");
-                                DownloadButtonText = _loader.GetString("Download");
-                                CancelOperationButtonText = _loader.GetString("Close");
-                                DownloadVisibility = CancelOperationVisibility = Visibility.Visible;
-                                AppVersionVisibility = AppPublisherVisibility = AppCapabilitiesVisibility = Visibility.Collapsed;
-                                if (AutoGetNetAPK)
-                                {
-                                    LoadNetAPK();
-                                }
-                            }
-                            else
-                            {
-                                PackageError(_loader.GetString("InvalidURL"));
-                            }
+                            CheckOnlinePackage();
                         }
                     }
                     else
@@ -934,110 +910,11 @@ namespace APKInstaller.ViewModel
                         }
                         else
                         {
-                            Regex[] UriRegex = new Regex[] { new Regex(@":\?source=(.*)"), new Regex(@"://(.*)") };
-                            string Uri = UriRegex[0].IsMatch(_url.ToString()) ? UriRegex[0].Match(_url.ToString()).Groups[1].Value : UriRegex[1].Match(_url.ToString()).Groups[1].Value;
-                            Uri Url = Uri.ValidateAndGetUri();
-                            if (Url != null)
-                            {
-                                _url = Url;
-                                AppName = _loader.GetString("OnlinePackage");
-                                DownloadButtonText = _loader.GetString("Download");
-                                CancelOperationButtonText = _loader.GetString("Close");
-                                DownloadVisibility = CancelOperationVisibility = Visibility.Visible;
-                                AppVersionVisibility = AppPublisherVisibility = AppCapabilitiesVisibility = Visibility.Collapsed;
-                                if (AutoGetNetAPK)
-                                {
-                                    LoadNetAPK();
-                                }
-                            }
-                            else
-                            {
-                                PackageError(_loader.GetString("InvalidURL"));
-                            }
+                            CheckOnlinePackage();
                         }
-                        if (IsOnlyWSA)
+                        if (ShowDialogs && await ShowDeviceDialog())
                         {
-                            WaitProgressText = _loader.GetString("FindingWSA");
-                            if ((await PackageHelper.FindPackagesByName("MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe")).isfound)
-                            {
-                                WaitProgressText = _loader.GetString("FoundWSA");
-                                ContentDialog dialog = new ContentDialog
-                                {
-                                    DefaultButton = ContentDialogButton.Close,
-                                    Title = _loader.GetString("HowToConnect"),
-                                    Content = _loader.GetString("HowToConnectInfo"),
-                                    CloseButtonText = _loader.GetString("IKnow"),
-                                    PrimaryButtonText = _loader.GetString("StartWSA"),
-                                };
-                                ProgressHelper.SetState(ProgressState.None, true);
-                                ContentDialogResult result = await dialog.ShowAsync();
-                                ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                                if (result == ContentDialogResult.Primary)
-                                {
-                                    WaitProgressText = _loader.GetString("LaunchingWSA");
-                                    _ = await Launcher.LaunchUriAsync(new Uri("wsa://"));
-                                    bool IsWSARunning = false;
-                                    while (!IsWSARunning)
-                                    {
-                                        await Task.Run(() =>
-                                        {
-                                            Process[] ps = Process.GetProcessesByName("vmmemWSA");
-                                            IsWSARunning = ps != null && ps.Length > 0;
-                                        });
-                                    }
-                                    WaitProgressText = _loader.GetString("WaitingWSAStart");
-                                    while (!CheckDevice())
-                                    {
-                                        if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
-                                        {
-                                            await AddressHelper.ConnectHyperV();
-                                        }
-                                        else if (IsOnlyWSA)
-                                        {
-                                            new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
-                                        }
-                                        await Task.Delay(100);
-                                    }
-                                    WaitProgressText = _loader.GetString("WSARunning");
-                                    goto checkdevice;
-                                }
-                            }
-                            else
-                            {
-                                ContentDialog dialog = new ContentDialog
-                                {
-                                    Title = _loader.GetString("NoDevice"),
-                                    DefaultButton = ContentDialogButton.Close,
-                                    CloseButtonText = _loader.GetString("IKnow"),
-                                    PrimaryButtonText = _loader.GetString("GoToSetting"),
-                                    Content = _loader.GetString("NoDeviceInfo"),
-                                };
-                                ProgressHelper.SetState(ProgressState.None, true);
-                                ContentDialogResult result = await dialog.ShowAsync();
-                                ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                                if (result == ContentDialogResult.Primary)
-                                {
-                                    UIHelper.Navigate(typeof(SettingsPage), null);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            ContentDialog dialog = new ContentDialog
-                            {
-                                Title = _loader.GetString("NoDevice"),
-                                DefaultButton = ContentDialogButton.Close,
-                                CloseButtonText = _loader.GetString("IKnow"),
-                                PrimaryButtonText = _loader.GetString("GoToSetting"),
-                                Content = _loader.GetString("NoDeviceInfo10"),
-                            };
-                            ProgressHelper.SetState(ProgressState.None, true);
-                            ContentDialogResult result = await dialog.ShowAsync();
-                            ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                            if (result == ContentDialogResult.Primary)
-                            {
-                                UIHelper.Navigate(typeof(SettingsPage), null);
-                            }
+                            goto checkdevice;
                         }
                     }
                 }
@@ -1056,19 +933,115 @@ namespace APKInstaller.ViewModel
             IsInitialized = true;
         }
 
+        private async Task<bool> ShowDeviceDialog()
+        {
+            if (IsOnlyWSA)
+            {
+                WaitProgressText = _loader.GetString("FindingWSA");
+                if ((await PackageHelper.FindPackagesByName("MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe")).isfound)
+                {
+                    WaitProgressText = _loader.GetString("FoundWSA");
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        DefaultButton = ContentDialogButton.Close,
+                        Title = _loader.GetString("HowToConnect"),
+                        Content = _loader.GetString("HowToConnectInfo"),
+                        CloseButtonText = _loader.GetString("IKnow"),
+                        PrimaryButtonText = _loader.GetString("StartWSA"),
+                    };
+                    ProgressHelper.SetState(ProgressState.None, true);
+                    ContentDialogResult result = await dialog.ShowAsync();
+                    ProgressHelper.SetState(ProgressState.Indeterminate, true);
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        WaitProgressText = _loader.GetString("LaunchingWSA");
+                        _ = await Launcher.LaunchUriAsync(new Uri("wsa://"));
+                        bool IsWSARunning = false;
+                        while (!IsWSARunning)
+                        {
+                            await Task.Run(() =>
+                            {
+                                Process[] ps = Process.GetProcessesByName("vmmemWSA");
+                                IsWSARunning = ps != null && ps.Length > 0;
+                            });
+                        }
+                        WaitProgressText = _loader.GetString("WaitingWSAStart");
+                        while (!CheckDevice())
+                        {
+                            if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+                            {
+                                await AddressHelper.ConnectHyperV();
+                            }
+                            else if (IsOnlyWSA)
+                            {
+                                new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
+                            }
+                            await Task.Delay(100);
+                        }
+                        WaitProgressText = _loader.GetString("WSARunning");
+                        return true;
+                    }
+                }
+                else
+                {
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        Title = _loader.GetString("NoDevice"),
+                        DefaultButton = ContentDialogButton.Close,
+                        CloseButtonText = _loader.GetString("IKnow"),
+                        PrimaryButtonText = _loader.GetString("GoToSetting"),
+                        Content = _loader.GetString("NoDeviceInfo"),
+                    };
+                    ProgressHelper.SetState(ProgressState.None, true);
+                    ContentDialogResult result = await dialog.ShowAsync();
+                    ProgressHelper.SetState(ProgressState.Indeterminate, true);
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        UIHelper.Navigate(typeof(SettingsPage), null);
+                    }
+                }
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = _loader.GetString("NoDevice"),
+                    DefaultButton = ContentDialogButton.Close,
+                    CloseButtonText = _loader.GetString("IKnow"),
+                    PrimaryButtonText = _loader.GetString("GoToSetting"),
+                    Content = _loader.GetString("NoDeviceInfo10"),
+                };
+                ProgressHelper.SetState(ProgressState.None, true);
+                ContentDialogResult result = await dialog.ShowAsync();
+                ProgressHelper.SetState(ProgressState.Indeterminate, true);
+                if (result == ContentDialogResult.Primary)
+                {
+                    UIHelper.Navigate(typeof(SettingsPage), null);
+                }
+            }
+            return false;
+        }
+
+        public async Task ReinitilizeUI()
+        {
+            if ((!string.IsNullOrEmpty(_path) || _url != null) && NetAPKExist)
+            {
+            checkdevice:
+                if (CheckDevice() && _device != null)
+                {
+                    CheckAPK();
+                }
+                else if (ShowDialogs && await ShowDeviceDialog())
+                {
+                    goto checkdevice;
+                }
+            }
+        }
+
         public void CheckAPK()
         {
             ResetUI();
             AdvancedAdbClient client = new AdvancedAdbClient();
-            if (_device == null)
-            {
-                ActionButtonEnable = false;
-                ActionButtonText = _loader.GetString("Install");
-                InfoMessage = _loader.GetString("WaitingDevice");
-                ActionVisibility = MessagesToUserVisibility = Visibility.Visible;
-                AppName = string.Format(_loader.GetString("WaitingForInstallFormat") ?? string.Empty, ApkInfo?.AppName);
-                return;
-            }
             PackageManager manager = new PackageManager(client, _device);
             VersionInfo? info = null;
             if (ApkInfo != null)
@@ -1094,6 +1067,30 @@ namespace APKInstaller.ViewModel
                 AppName = string.Format(_loader.GetString("ReinstallFormat") ?? string.Empty, ApkInfo?.AppName);
                 TextOutput = string.Format(_loader.GetString("ReinstallOutput") ?? string.Empty, ApkInfo?.AppName);
                 ActionVisibility = SecondaryActionVisibility = TextOutputVisibility = Visibility.Visible;
+            }
+        }
+
+        public void CheckOnlinePackage()
+        {
+            Regex[] UriRegex = new Regex[] { new Regex(@":\?source=(.*)"), new Regex(@"://(.*)") };
+            string Uri = UriRegex[0].IsMatch(_url.ToString()) ? UriRegex[0].Match(_url.ToString()).Groups[1].Value : UriRegex[1].Match(_url.ToString()).Groups[1].Value;
+            Uri Url = Uri.ValidateAndGetUri();
+            if (Url != null)
+            {
+                _url = Url;
+                AppName = _loader.GetString("OnlinePackage");
+                DownloadButtonText = _loader.GetString("Download");
+                CancelOperationButtonText = _loader.GetString("Close");
+                DownloadVisibility = CancelOperationVisibility = Visibility.Visible;
+                AppVersionVisibility = AppPublisherVisibility = AppCapabilitiesVisibility = Visibility.Collapsed;
+                if (AutoGetNetAPK)
+                {
+                    LoadNetAPK();
+                }
+            }
+            else
+            {
+                PackageError(_loader.GetString("InvalidURL"));
             }
         }
 
@@ -1316,6 +1313,11 @@ namespace APKInstaller.ViewModel
                     {
                         await Task.Delay(1000);// 据说如果安装完直接启动会崩溃。。。
                         OpenAPP();
+                        if (IsCloseAPP)
+                        {
+                            await Task.Delay(5000);
+                            _page.RunOnUIThread(() => Application.Current.Shutdown());
+                        }
                     });
                 }
                 IsInstalling = false;

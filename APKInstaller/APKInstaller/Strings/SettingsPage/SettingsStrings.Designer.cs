@@ -142,6 +142,24 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Close Installer after APK has installed and start. 的本地化字符串。
+        /// </summary>
+        public static string CloseAPPSettings_Description {
+            get {
+                return ResourceManager.GetString("CloseAPPSettings.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Close Installer when Ready ? 的本地化字符串。
+        /// </summary>
+        public static string CloseAPPSettings_Header {
+            get {
+                return ResourceManager.GetString("CloseAPPSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Connect device on network. 的本地化字符串。
         /// </summary>
         public static string ConnectDevice_Description {
@@ -309,6 +327,24 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string SelectDeviceBox_Header {
             get {
                 return ResourceManager.GetString("SelectDeviceBox.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Show helpers when no device is connected? 的本地化字符串。
+        /// </summary>
+        public static string ShowDialogsSettings_Description {
+            get {
+                return ResourceManager.GetString("ShowDialogsSettings.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Show Helpers? 的本地化字符串。
+        /// </summary>
+        public static string ShowDialogsSettings_Header {
+            get {
+                return ResourceManager.GetString("ShowDialogsSettings.Header", resourceCulture);
             }
         }
         

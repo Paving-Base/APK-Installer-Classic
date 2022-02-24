@@ -34,7 +34,7 @@ namespace APKInstaller.Pages.SettingsPages
             //#if DEBUG
             GoToTestPage.Visibility = Visibility.Visible;
             //#endif
-            if (Provider.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
+            if (SettingsViewModel.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
             ADBHelper.Monitor.DeviceChanged += Provider.OnDeviceChanged;
             Provider.DeviceList = new AdvancedAdbClient().GetDevices();
         }
@@ -53,7 +53,7 @@ namespace APKInstaller.Pages.SettingsPages
                     if (!string.IsNullOrEmpty(ConnectIP.Text))
                     {
                         new AdvancedAdbClient().Connect(ConnectIP.Text);
-                        Provider.DeviceList = new AdvancedAdbClient().GetDevices();
+                        Provider.OnDeviceChanged(null, null);
                     }
                     break;
                 case "TestPage":
