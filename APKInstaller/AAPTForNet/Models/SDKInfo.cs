@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AAPT2ForNet.Models
+namespace AAPTForNet.Models
 {
     public class SDKInfo
     {
@@ -92,7 +92,7 @@ namespace AAPT2ForNet.Models
 
         public static SDKInfo GetInfo(int sdkVer)
         {
-            int index = (sdkVer < 1 || sdkVer > AndroidCodeNames.Length - 1) ? 0 : sdkVer;
+            int index = sdkVer < 1 || sdkVer > AndroidCodeNames.Length - 1 ? 0 : sdkVer;
 
             return new SDKInfo(sdkVer.ToString(),
                 AndroidVersionCodes[index], AndroidCodeNames[index]);
