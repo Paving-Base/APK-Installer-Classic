@@ -1,10 +1,20 @@
 ﻿using APKInstaller.Pages.SettingsPages;
 using APKInstaller.ViewModel;
-using ModernWpf.Controls;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace APKInstaller.Pages
 {
@@ -15,11 +25,10 @@ namespace APKInstaller.Pages
     {
         internal InstallViewModel? Provider;
 
-        public InstallPage() => InitializeComponent();
-
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        public InstallPage()
         {
-            base.OnNavigatedTo(e);
+            InitializeComponent();
+
             string _path = string.Empty;
             string[] arguments = Environment.GetCommandLineArgs();
 
@@ -51,16 +60,6 @@ namespace APKInstaller.Pages
 
             Provider ??= new InstallViewModel(_path, this);
             DataContext = Provider;
-
-            //ModernWpf.MessageBox.Show(string.Join('\n', arguments), "Arguments", MessageBoxButton.OK);
-
-            await Provider?.Refresh();
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            Provider?.Dispose();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -77,7 +76,7 @@ namespace APKInstaller.Pages
                     Provider?.OpenAPK();
                     break;
                 case "DeviceSelectButton":
-                    _ = Frame.Navigate(typeof(SettingsPage));
+                    NavigationService.Navigate(new SettingsPage());
                     break;
                 case "SecondaryActionButton":
                     Provider?.OpenAPP();
@@ -87,5 +86,7 @@ namespace APKInstaller.Pages
                     break;
             }
         }
+
+        private async void InitialLoadingUI_Loaded(object sender, RoutedEventArgs e) => await Provider?.Refresh();
     }
 }

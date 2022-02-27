@@ -8,7 +8,6 @@ using APKInstaller.Pages.SettingsPages;
 using APKInstaller.Properties;
 using APKInstaller.Strings.InstallPage;
 using Microsoft.Win32;
-using ModernWpf.Controls;
 using Downloader;
 using SharpCompress.Archives;
 using SharpCompress.Common;
@@ -25,8 +24,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Windows.Storage;
-using Windows.System;
 using DownloadProgressChangedEventArgs = Downloader.DownloadProgressChangedEventArgs;
 
 namespace APKInstaller.ViewModel
@@ -55,10 +52,10 @@ namespace APKInstaller.ViewModel
         public string? VersionFormat => _loader.GetString("VersionFormat");
         public string? PackageNameFormat => _loader.GetString("PackageNameFormat");
 
-        private static bool IsOnlyWSA => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
-        private static bool IsCloseAPP => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP) : Settings.Default.IsCloseAPP;
-        private static bool ShowDialogs => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs) : Settings.Default.ShowDialogs;
-        private static bool AutoGetNetAPK => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
+        private static bool IsOnlyWSA => Settings.Default.IsOnlyWSA;
+        private static bool IsCloseAPP => Settings.Default.IsCloseAPP;
+        private static bool ShowDialogs => Settings.Default.ShowDialogs;
+        private static bool AutoGetNetAPK => Settings.Default.AutoGetNetAPK;
 
         private ApkInfo? _apkInfo = null;
         public ApkInfo? ApkInfo
@@ -73,36 +70,22 @@ namespace APKInstaller.ViewModel
 
         public string ADBPath
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
+            get => Settings.Default.ADBPath;
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                }
-                else
-                {
-                    Settings.Default.ADBPath = value;
-                    Settings.Default.Save();
-                }
+                Settings.Default.ADBPath = value;
+                Settings.Default.Save();
                 RaisePropertyChangedEvent();
             }
         }
 
         public bool IsOpenApp
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp) : Settings.Default.IsOpenApp;
+            get => Settings.Default.IsOpenApp;
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                }
-                else
-                {
-                    Settings.Default.IsOpenApp = value;
-                    Settings.Default.Save();
-                }
+                Settings.Default.IsOpenApp = value;
+                Settings.Default.Save();
             }
         }
 
@@ -594,83 +577,24 @@ namespace APKInstaller.ViewModel
             }
             else
             {
-                StackPanel StackPanel = new StackPanel();
-                StackPanel.Children.Add(
-                    new TextBlock()
-                    {
-                        TextWrapping = TextWrapping.Wrap,
-                        Text = _loader.GetString("AboutADB")
-                    });
-                StackPanel.Children.Add(
-                    new HyperlinkButton
-                    {
-                        Content = _loader.GetString("ClickToRead"),
-                        NavigateUri = new Uri("https://developer.android.google.cn/studio/releases/platform-tools?hl=zh-cn")
-                    });
-                ContentDialog dialog = new ContentDialog
-                {
-                    Title = _loader.GetString("ADBMissing"),
-                    PrimaryButtonText = _loader.GetString("Download"),
-                    SecondaryButtonText = _loader.GetString("Select"),
-                    CloseButtonText = _loader.GetString("Cancel"),
-                    Content = new ScrollViewer()
-                    {
-                        Content = StackPanel
-                    },
-                    DefaultButton = ContentDialogButton.Primary
-                };
                 ProgressHelper.SetState(ProgressState.None, true);
-                ContentDialogResult result = await dialog.ShowAsync();
+                MessageBoxResult result = MessageBox.Show(_loader.GetString("ADBMissing"), _loader.GetString("AboutADB"), MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
                 ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                if (result == ContentDialogResult.Primary)
+                if (result == MessageBoxResult.Yes)
                 {
                 downloadadb:
-                    if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
+                    try
                     {
-                        try
-                        {
-                            await DownloadADB();
-                        }
-                        catch (Exception ex)
-                        {
-                            ContentDialog dialogs = new ContentDialog
-                            {
-                                Title = _loader.GetString("DownloadFailed"),
-                                PrimaryButtonText = _loader.GetString("Retry"),
-                                CloseButtonText = _loader.GetString("Cancel"),
-                                Content = new TextBlock { Text = ex.Message },
-                                DefaultButton = ContentDialogButton.Primary
-                            };
-                            ProgressHelper.SetState(ProgressState.None, true);
-                            ContentDialogResult results = await dialogs.ShowAsync();
-                            ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                            if (results == ContentDialogResult.Primary)
-                            {
-                                goto downloadadb;
-                            }
-                            else
-                            {
-                                Application.Current.Shutdown();
-                                return;
-                            }
-                        }
+                        await DownloadADB();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        ContentDialog dialogs = new ContentDialog
-                        {
-                            Title = _loader.GetString("NoInternet"),
-                            PrimaryButtonText = _loader.GetString("Retry"),
-                            CloseButtonText = _loader.GetString("Cancel"),
-                            Content = new TextBlock { Text = _loader.GetString("NoInternetInfo") },
-                            DefaultButton = ContentDialogButton.Primary
-                        };
                         ProgressHelper.SetState(ProgressState.None, true);
-                        ContentDialogResult results = await dialogs.ShowAsync();
+                        MessageBoxResult results = MessageBox.Show(ex.Message, _loader.GetString("DownloadFailed"), MessageBoxButton.OKCancel, MessageBoxImage.Error);
                         ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                        if (results == ContentDialogResult.Primary)
+                        if (results == MessageBoxResult.OK)
                         {
-                            goto checkadb;
+                            goto downloadadb;
                         }
                         else
                         {
@@ -679,7 +603,7 @@ namespace APKInstaller.ViewModel
                         }
                     }
                 }
-                else if (result == ContentDialogResult.Secondary)
+                else if (result == MessageBoxResult.No)
                 {
                     OpenFileDialog? FileOpen = new OpenFileDialog();
                     FileOpen.Filter = ".exe|*.exe";
@@ -701,9 +625,9 @@ namespace APKInstaller.ViewModel
 
         public async Task DownloadADB()
         {
-            if (!Directory.Exists(ADBTemp[..ADBTemp.LastIndexOf(@"\")]))
+            if (!Directory.Exists(ADBTemp.Substring(0, ADBTemp.LastIndexOf(@"\"))))
             {
-                _ = Directory.CreateDirectory(ADBTemp[..ADBTemp.LastIndexOf(@"\")]);
+                _ = Directory.CreateDirectory(ADBTemp.Substring(0, ADBTemp.LastIndexOf(@"\")));
             }
             else if (Directory.Exists(ADBTemp))
             {
@@ -753,17 +677,9 @@ namespace APKInstaller.ViewModel
                 if (exception != null)
                 {
                     ProgressHelper.SetState(ProgressState.Error, true);
-                    ContentDialog dialog = new ContentDialog
-                    {
-                        Content = exception.Message,
-                        Title = _loader.GetString("DownloadFailed"),
-                        PrimaryButtonText = _loader.GetString("Retry"),
-                        CloseButtonText = _loader.GetString("Cancel"),
-                        DefaultButton = ContentDialogButton.Primary
-                    };
-                    ContentDialogResult result = await dialog.ShowAsync();
+                    MessageBoxResult result = MessageBox.Show(_loader.GetString("DownloadFailed"), exception.Message, MessageBoxButton.OKCancel, MessageBoxImage.Error);
                     ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                    if (result == ContentDialogResult.Primary)
+                    if (result == MessageBoxResult.OK)
                     {
                         goto downloadadb;
                     }
@@ -778,7 +694,7 @@ namespace APKInstaller.ViewModel
             }
             WaitProgressText = _loader.GetString("UnzipADB");
             await Task.Delay(1);
-            string LocalData = PackagedAppHelper.IsPackagedApp ? ApplicationData.Current.LocalFolder.Path : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "APKInstaller");
+            string LocalData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "APKInstaller");
             if (!Directory.Exists(LocalData))
             {
                 _ = Directory.CreateDirectory(LocalData);
@@ -873,14 +789,7 @@ namespace APKInstaller.ViewModel
                 WaitProgressText = _loader.GetString("Loading");
                 if (IsOnlyWSA)
                 {
-                    if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
-                    {
-                        await AddressHelper.ConnectHyperV();
-                    }
-                    else
-                    {
-                        new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
-                    }
+                    new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
                 }
                 ADBHelper.Monitor.DeviceChanged += OnDeviceChanged;
             }
@@ -972,24 +881,16 @@ namespace APKInstaller.ViewModel
             if (IsOnlyWSA)
             {
                 WaitProgressText = _loader.GetString("FindingWSA");
-                if ((await PackageHelper.FindPackagesByName("MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe")).isfound)
+                if ((await PackageHelper.FindPackagesByName("MicrosoftCorporationII.WindowsSubsystemForAndroid")).isfound)
                 {
                     WaitProgressText = _loader.GetString("FoundWSA");
-                    ContentDialog dialog = new ContentDialog
-                    {
-                        DefaultButton = ContentDialogButton.Close,
-                        Title = _loader.GetString("HowToConnect"),
-                        Content = _loader.GetString("HowToConnectInfo"),
-                        CloseButtonText = _loader.GetString("IKnow"),
-                        PrimaryButtonText = _loader.GetString("StartWSA"),
-                    };
                     ProgressHelper.SetState(ProgressState.None, true);
-                    ContentDialogResult result = await dialog.ShowAsync();
+                    MessageBoxResult result = MessageBox.Show(_loader.GetString("HowToConnectInfo"), _loader.GetString("HowToConnect"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                    if (result == ContentDialogResult.Primary)
+                    if (result == MessageBoxResult.OK)
                     {
                         WaitProgressText = _loader.GetString("LaunchingWSA");
-                        _ = await Launcher.LaunchUriAsync(new Uri("wsa://"));
+                        _ = Process.Start("wsa://");
                         bool IsWSARunning = false;
                         while (!IsWSARunning)
                         {
@@ -1002,14 +903,7 @@ namespace APKInstaller.ViewModel
                         WaitProgressText = _loader.GetString("WaitingWSAStart");
                         while (!CheckDevice())
                         {
-                            if (NetworkHelper.Instance.ConnectionInformation.IsInternetAvailable)
-                            {
-                                await AddressHelper.ConnectHyperV();
-                            }
-                            else if (IsOnlyWSA)
-                            {
-                                new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
-                            }
+                            new AdvancedAdbClient().Connect(new DnsEndPoint("127.0.0.1", 58526));
                             await Task.Delay(100);
                         }
                         WaitProgressText = _loader.GetString("WSARunning");
@@ -1018,39 +912,23 @@ namespace APKInstaller.ViewModel
                 }
                 else
                 {
-                    ContentDialog dialog = new ContentDialog
-                    {
-                        Title = _loader.GetString("NoDevice"),
-                        DefaultButton = ContentDialogButton.Close,
-                        CloseButtonText = _loader.GetString("IKnow"),
-                        PrimaryButtonText = _loader.GetString("GoToSetting"),
-                        Content = _loader.GetString("NoDeviceInfo"),
-                    };
                     ProgressHelper.SetState(ProgressState.None, true);
-                    ContentDialogResult result = await dialog.ShowAsync();
+                    MessageBoxResult result = MessageBox.Show(_loader.GetString("NoDeviceInfo"), _loader.GetString("NoDevice"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                    if (result == ContentDialogResult.Primary)
+                    if (result == MessageBoxResult.OK)
                     {
-                        UIHelper.Navigate(typeof(SettingsPage), null);
+                        _page.NavigationService.Navigate(new SettingsPage());
                     }
                 }
             }
             else
             {
-                ContentDialog dialog = new ContentDialog
-                {
-                    Title = _loader.GetString("NoDevice"),
-                    DefaultButton = ContentDialogButton.Close,
-                    CloseButtonText = _loader.GetString("IKnow"),
-                    PrimaryButtonText = _loader.GetString("GoToSetting"),
-                    Content = _loader.GetString("NoDeviceInfo10"),
-                };
                 ProgressHelper.SetState(ProgressState.None, true);
-                ContentDialogResult result = await dialog.ShowAsync();
+                MessageBoxResult result = MessageBox.Show(_loader.GetString("NoDeviceInfo10"), _loader.GetString("NoDevice"), MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                if (result == ContentDialogResult.Primary)
+                if (result == MessageBoxResult.OK)
                 {
-                    UIHelper.Navigate(typeof(SettingsPage), null);
+                    _page.NavigationService.Navigate(new SettingsPage());
                 }
             }
             return false;
@@ -1184,9 +1062,9 @@ namespace APKInstaller.ViewModel
         {
             if (_url != null)
             {
-                if (!Directory.Exists(APKTemp[..APKTemp.LastIndexOf(@"\")]))
+                if (!Directory.Exists(APKTemp.Substring(0, APKTemp.LastIndexOf(@"\"))))
                 {
-                    Directory.CreateDirectory(APKTemp[..APKTemp.LastIndexOf(@"\")]);
+                    Directory.CreateDirectory(APKTemp.Substring(0, APKTemp.LastIndexOf(@"\")));
                 }
                 else if (Directory.Exists(APKTemp))
                 {
@@ -1237,17 +1115,9 @@ namespace APKInstaller.ViewModel
                     if (exception != null)
                     {
                         ProgressHelper.SetState(ProgressState.Error, true);
-                        ContentDialog dialog = new ContentDialog
-                        {
-                            Content = exception.Message,
-                            Title = _loader.GetString("DownloadFailed"),
-                            PrimaryButtonText = _loader.GetString("Retry"),
-                            CloseButtonText = _loader.GetString("Cancel"),
-                            DefaultButton = ContentDialogButton.Primary
-                        };
-                        ContentDialogResult result = await dialog.ShowAsync();
+                        MessageBoxResult result = MessageBox.Show(exception.Message, _loader.GetString("DownloadFailed"), MessageBoxButton.OKCancel, MessageBoxImage.Error);
                         ProgressHelper.SetState(ProgressState.Indeterminate, true);
-                        if (result == ContentDialogResult.Primary)
+                        if (result == MessageBoxResult.OK)
                         {
                             goto downloadapk;
                         }
@@ -1332,7 +1202,7 @@ namespace APKInstaller.ViewModel
                 }
                 else
                 {
-                    string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
+                    string DefaultDevice = Settings.Default.DefaultDevice;
                     DeviceData? data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
                     if (data != null && data.Name == device.Name && data.Model == device.Model && data.Product == device.Product)
                     {

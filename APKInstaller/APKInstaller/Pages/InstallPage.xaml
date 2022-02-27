@@ -1,4 +1,4 @@
-﻿<ui:Page
+﻿<Page
     x:Class="APKInstaller.Pages.InstallPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,8 +7,8 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nmwc="clr-namespace:NMT.Wpf.Controls;assembly=WindowsProgressRing"
     xmlns:str="clr-namespace:APKInstaller.Strings.InstallPage"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:viewmodel="clr-namespace:APKInstaller.ViewModel"
     Title="InstallPage"
     d:DataContext="{d:DesignInstance Type=viewmodel:InstallViewModel}"
@@ -24,7 +24,8 @@
             x:Name="CustomTitleBar"
             Grid.Row="0"
             Height="{x:Static helper:UIHelper.TitleBarHeight}"
-            HorizontalAlignment="Stretch" />
+            HorizontalAlignment="Stretch"
+            Visibility="Collapsed" />
         <Grid
             x:Name="CoreAppUI"
             Grid.Row="1"
@@ -199,7 +200,7 @@
                         x:Name="TextOutputScrollViewer"
                         Grid.Row="1"
                         MaxHeight="56"
-                        BorderBrush="{DynamicResource SystemControlBackgroundAccentBrush}"
+                        BorderBrush="{DynamicResource ResourceKey={x:Static SystemParameters.WindowGlassBrush}}"
                         BorderThickness="3,3,3,3"
                         ScrollViewer.VerticalScrollBarVisibility="Auto"
                         Visibility="{Binding TextOutputVisibility}">
@@ -240,13 +241,6 @@
                                     ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                             </StackPanel>
                         </Button>
-                        <ui:HyperlinkButton
-                            x:Name="HyperLinkButton"
-                            Width="120"
-                            Height="32"
-                            Margin="12,0,0,0"
-                            TabIndex="1"
-                            Visibility="Collapsed" />
                         <Button
                             x:Name="SecondaryActionButton"
                             Width="120"
@@ -264,13 +258,6 @@
                                     ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
                             </StackPanel>
                         </Button>
-                        <ui:HyperlinkButton
-                            x:Name="SecondaryHyperLinkButton"
-                            Width="120"
-                            Height="32"
-                            Margin="12,0,0,0"
-                            TabIndex="1"
-                            Visibility="Collapsed" />
                         <Button
                             x:Name="FileSelectButton"
                             Width="120"
@@ -356,16 +343,6 @@
                         IsChecked="{Binding IsOpenApp, Mode=TwoWay}"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"
                         Visibility="{Binding LaunchWhenReadyVisibility}" />
-                    <StackPanel
-                        x:Name="TermsAndConditionsGrid"
-                        Grid.Row="2"
-                        Visibility="Collapsed">
-                        <ui:HyperlinkButton
-                            x:Name="MoreDetailsHyperLink"
-                            HorizontalAlignment="Center"
-                            Content="See more"
-                            ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" />
-                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>
@@ -374,13 +351,15 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            Loaded="InitialLoadingUI_Loaded"
             Visibility="{Binding IsInitialized, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
-            <ui:ProgressRing
+            <nmwc:WindowsProgressRing
                 x:Name="WaitProgressRing"
                 Width="50"
                 Height="50"
                 HorizontalAlignment="Center"
-                IsActive="True" />
+                Foreground="{DynamicResource ResourceKey={x:Static SystemParameters.WindowGlassBrush}}"
+                Items="5" />
             <TextBlock
                 x:Name="WaitProgressText"
                 Margin="0,6,0,0"
@@ -389,4 +368,4 @@
                 TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
-</ui:Page>
+</Page>

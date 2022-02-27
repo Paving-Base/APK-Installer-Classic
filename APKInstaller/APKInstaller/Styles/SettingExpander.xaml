@@ -32,10 +32,7 @@
     </Style>
 
     <!--  Setting expander style  -->
-    <Style
-        x:Key="SettingExpanderStyle"
-        BasedOn="{StaticResource DefaultExpanderStyle}"
-        TargetType="Expander">
+    <Style x:Key="SettingExpanderStyle" TargetType="Expander">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="BorderThickness" Value="{DynamicResource CardBorderThickness}" />
@@ -52,10 +49,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <ControlTemplate.Resources>
-                        <StreamGeometry x:Key="ChevronDown">M 18.935547 4.560547 L 19.814453 5.439453 L 10 15.253906 L 0.185547 5.439453 L 1.064453 4.560547 L 10 13.496094 Z</StreamGeometry>
-                        <StreamGeometry x:Key="ChevronUp">M 19.091797 14.970703 L 10 5.888672 L 0.908203 14.970703 L 0.029297 14.091797 L 10 4.111328 L 19.970703 14.091797 Z</StreamGeometry>
-                    </ControlTemplate.Resources>
                     <Border Padding="{TemplateBinding Padding}">
                         <Grid Background="Transparent" SnapsToDevicePixels="False">
                             <Grid.ColumnDefinitions>
@@ -77,24 +70,24 @@
                                 BorderBrush="Transparent"
                                 BorderThickness="2"
                                 CornerRadius="4">
-                                <local:FontIconFallback
+                                <TextBlock
                                     x:Name="arrow"
                                     Grid.Column="1"
                                     Width="12"
                                     Height="12"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Data="{StaticResource ChevronDown}"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                    FontFamily="Segoe MDL2 Assets"
                                     FontSize="12"
                                     Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
-                                    SnapsToDevicePixels="false" />
+                                    SnapsToDevicePixels="false"
+                                    Text="" />
                             </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="true">
-                            <Setter TargetName="arrow" Property="Data" Value="{StaticResource ChevronUp}" />
+                            <Setter TargetName="arrow" Property="Text" Value="" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="arrow" Property="Foreground" Value="{DynamicResource SystemControlPageTextBaseMediumBrush}" />

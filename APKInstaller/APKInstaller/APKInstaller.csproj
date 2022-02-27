@@ -1,52 +1,32 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
 	<Authors>wherewhere</Authors>
-	<VersionPrefix>0.0.3</VersionPrefix>
+    <OutputType>WinExe</OutputType>
 	<LangVersion>preview</LangVersion>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+	<VersionPrefix>0.0.0</VersionPrefix>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <TargetFramework>net4.6.2</TargetFramework>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
 	<Description>An Android Application Installer for Windows</Description>
 	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
 	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
 	<PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AppPackages\**" />
-    <EmbeddedResource Remove="AppPackages\**" />
-    <None Remove="AppPackages\**" />
-    <Page Remove="AppPackages\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="256x256.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="favicon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-	  <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.2" />
-	  <PackageReference Include="Downloader" Version="2.3.3" />
-	  <PackageReference Include="MicaWPF" Version="1.3.4" />
-	  <PackageReference Include="ModernWpf.MessageBox.Mica" Version="0.5.3" />
-	  <PackageReference Include="ModernWpfUI" Version="0.9.4" />
-	  <PackageReference Include="SharpCompress" Version="0.30.1" />
+    <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.0" />
+    <PackageReference Include="Downloader" Version="2.3.3" />
+    <PackageReference Include="SharpCompress" Version="0.30.1" />
+    <PackageReference Include="System.Text.Json" Version="6.0.2" />
+    <PackageReference Include="WindowsProgressRing" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AAPTForNet\AAPTForNet.csproj" />
+    <ProjectReference Include="..\APPXManager\APPXManager.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -464,8 +444,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
-
+	
   <ItemGroup>
+    <None Update="256x256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="ADB\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -476,32 +459,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Themes\Dark\Color.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Dark\Common.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\HighContrast\Color.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\HighContrast\Common.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Light\Common.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>

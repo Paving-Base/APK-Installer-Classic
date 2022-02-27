@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
 
 namespace APKInstaller.Helpers
 {
     public static class CachesHelper
     {
-        public static readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
+        public static readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Process.GetCurrentProcess().Id}");
     
         public static void CleanCaches(bool isall)
         {
             if (isall)
             {
-                if (Directory.Exists(TempPath[..TempPath.LastIndexOf(@"\")]))
+                if (Directory.Exists(TempPath.Substring(0, TempPath.LastIndexOf(@"\"))))
                 {
-                    try { Directory.Delete(TempPath[..TempPath.LastIndexOf(@"\")], true); } catch { }
+                    try { Directory.Delete(TempPath.Substring(0, TempPath.LastIndexOf(@"\")), true); } catch { }
                 }
             }   
             else

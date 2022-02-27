@@ -7,7 +7,7 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <ui:SimpleStackPanel Orientation="Vertical" Spacing="2" />
+                    <StackPanel controls:Spacing.Vertical="2" Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
@@ -26,10 +26,15 @@
                             x:Name="HeaderPresenter"
                             Grid.Row="0"
                             Margin="1,8,0,8"
-                            AutomationProperties.HeadingLevel="Level2"
                             Style="{DynamicResource BodyStrongTextBlockStyle}"
                             Text="{TemplateBinding Header}" />
-                        <ItemsPresenter Grid.Row="1" />
+                        <ItemsPresenter Grid.Row="1">
+                            <ItemsPresenter.Resources>
+                                <Style TargetType="controls:Setting">
+                                    <Setter Property="Margin" Value="0,2" />
+                                </Style>
+                            </ItemsPresenter.Resources>
+                        </ItemsPresenter>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

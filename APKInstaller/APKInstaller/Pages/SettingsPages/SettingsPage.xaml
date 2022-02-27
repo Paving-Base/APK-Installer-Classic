@@ -1,4 +1,4 @@
-﻿<ui:Page
+﻿<Page
     x:Class="APKInstaller.Pages.SettingsPages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,9 +7,9 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages.SettingsPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nmwc="clr-namespace:NMT.Wpf.Controls;assembly=WindowsProgressRing"
     xmlns:settingspages="clr-namespace:APKInstaller.ViewModel.SettingsPages"
     xmlns:str="clr-namespace:APKInstaller.Strings.SettingsPage"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="SettingsPage"
     d:DataContext="{d:DesignInstance Type=settingspages:SettingsViewModel}"
     d:DesignHeight="450"
@@ -19,19 +19,19 @@
         <ScrollViewer Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
             <StackPanel Margin="16">
                 <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
-                    <ui:ListView
+                    <ListView
                         x:Name="SelectDeviceBox"
                         Margin="0,0,0,-10"
                         HorizontalContentAlignment="Stretch"
-                        IsSelectionEnabled="{Binding IsOnlyWSA, Converter={StaticResource BoolNegationConverter}}"
+                        BorderThickness="0"
                         ItemsSource="{Binding DeviceList, Mode=OneWay}"
                         SelectionChanged="SelectDeviceBox_SelectionChanged">
-                        <ui:ListView.ItemContainerStyle>
-                            <Style TargetType="ui:ListViewItem">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
                                 <Setter Property="Margin" Value="0,1" />
                             </Style>
-                        </ui:ListView.ItemContainerStyle>
-                        <ui:ListView.ItemTemplate>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
                             <DataTemplate>
                                 <controls:Setting
                                     Description="{Binding State}"
@@ -40,9 +40,12 @@
                                     Loaded="Setting_Loaded"
                                     Style="{DynamicResource ListViewItemContentSettingStyle}" />
                             </DataTemplate>
-                        </ui:ListView.ItemTemplate>
-                    </ui:ListView>
-                    <Expander IsExpanded="{Binding IsOnlyWSA, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" Style="{DynamicResource SettingExpanderStyle}">
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Expander
+                        IsExpanded="{Binding IsOnlyWSA, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
+                        Loaded="Expander_Loaded"
+                        Style="{DynamicResource SettingExpanderStyle}">
                         <Expander.Header>
                             <controls:Setting
                                 Description="{x:Static str:SettingsStrings.OnlyWSASettings_Description}"
@@ -50,7 +53,7 @@
                                 Icon="&#xE975;"
                                 Style="{DynamicResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.ActionContent>
-                                    <ui:ToggleSwitch IsOn="{Binding IsOnlyWSA, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                                    <CheckBox IsChecked="{Binding IsOnlyWSA, Mode=TwoWay}" />
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </Expander.Header>
@@ -60,20 +63,17 @@
                                 Header="{x:Static str:SettingsStrings.ConnectDevice_Header}"
                                 Style="{StaticResource ExpanderContentSettingStyle}">
                                 <controls:Setting.ActionContent>
-                                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
-                                        <TextBox
-                                            x:Name="ConnectIP"
-                                            MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                            ui:ControlHelper.PlaceholderText="127.0.0.1:58526" />
+                                    <StackPanel controls:Spacing.Horizontal="8" Orientation="Horizontal">
+                                        <TextBox x:Name="ConnectIP" MinWidth="{StaticResource SettingActionControlMinWidth}" />
                                         <Button
                                             Width="40"
                                             Height="36"
                                             Background="Transparent"
                                             Click="Button_Click"
                                             Content="&#xE71B;"
-                                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                            FontFamily="Segoe MDL2 Assets"
                                             Tag="Connect" />
-                                    </ui:SimpleStackPanel>
+                                    </StackPanel>
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </Expander.Content>
@@ -85,7 +85,7 @@
                         Header="{x:Static str:SettingsStrings.ShowDialogsSettings_Header}"
                         Icon="&#xE82F;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding ShowDialogs, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                            <CheckBox IsChecked="{Binding ShowDialogs, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
@@ -93,7 +93,7 @@
                         Header="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Header}"
                         Icon="&#xE896;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding AutoGetNetAPK, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                            <CheckBox IsChecked="{Binding AutoGetNetAPK, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
@@ -101,7 +101,7 @@
                         Header="{x:Static str:SettingsStrings.CloseAPPSettings_Header}"
                         Icon="&#xEDAE;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding IsCloseAPP, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                            <CheckBox IsChecked="{Binding IsCloseAPP, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
@@ -109,7 +109,7 @@
                         Header="{x:Static str:SettingsStrings.CloseADBSettings_Header}"
                         Icon="&#xE756;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding IsCloseADB, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                            <CheckBox IsChecked="{Binding IsCloseADB, Mode=TwoWay}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
@@ -117,7 +117,7 @@
                     <controls:Setting Header="{x:Static str:SettingsStrings.ResetSettings_Header}" Icon="&#xE777;">
                         <controls:Setting.ActionContent>
                             <Button Name="Reset" Content="{x:Static str:SettingsStrings.ResetSettingsButton_Content}">
-                                <ui:FlyoutService.Flyout>
+                                <!--<ui:FlyoutService.Flyout>
                                     <ui:Flyout>
                                         <StackPanel>
                                             <TextBlock
@@ -130,7 +130,7 @@
                                                 Tag="Reset" />
                                         </StackPanel>
                                     </ui:Flyout>
-                                </ui:FlyoutService.Flyout>
+                                </ui:FlyoutService.Flyout>-->
                             </Button>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
@@ -156,31 +156,26 @@
                                     <Run Text="{Binding UpdateDate, Mode=OneWay}" />
                                 </TextBlock>
                                 <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
-                                    <ui:HyperlinkButton
-                                        Margin="0,0,2,0"
-                                        Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
-                                        Cursor="Hand"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
-                                    <ui:HyperlinkButton
-                                        Margin="2,0,2,0"
-                                        Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest" />
-                                    <ui:HyperlinkButton
-                                        Margin="2,0"
-                                        Content="{x:Static str:SettingsStrings.EULA_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/blob/main/Privacy.md" />
+                                    <!--<TextBlock>
+                                        <Hyperlink
+                                            Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
+                                            Cursor="Hand"
+                                            NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
+                                        <Hyperlink Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}" NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest" />
+                                        <Hyperlink Content="{x:Static str:SettingsStrings.EULA_Content}" NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/blob/main/Privacy.md" />
+                                    </TextBlock>-->
                                 </StackPanel>
                             </StackPanel>
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
-                            <ui:SimpleStackPanel
+                            <StackPanel
                                 VerticalAlignment="Center"
-                                Orientation="Horizontal"
-                                Spacing="18">
-                                <ui:ProgressRing
+                                controls:Spacing.Horizontal="18"
+                                Orientation="Horizontal">
+                                <nmwc:WindowsProgressRing
                                     Width="24"
                                     Height="24"
-                                    IsActive="True"
+                                    Items="5"
                                     Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 <TextBlock
                                     VerticalAlignment="Center"
@@ -195,7 +190,7 @@
                                     Content="{x:Static str:SettingsStrings.CheckUpdates_Content}"
                                     Tag="CheckUpdate"
                                     Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}" />
-                            </ui:SimpleStackPanel>
+                            </StackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:InfoBar
@@ -224,4 +219,4 @@
             BackRequested="TitleBar_BackRequested"
             BackgroundVisibility="Collapsed" />
     </Grid>
-</ui:Page>
+</Page>

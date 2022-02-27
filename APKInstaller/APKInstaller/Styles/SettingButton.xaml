@@ -20,10 +20,7 @@
     </Style>
 
     <!--  Setting button style  -->
-    <Style
-        x:Key="SettingButtonStyle"
-        BasedOn="{StaticResource DefaultButtonStyle}"
-        TargetType="Button">
+    <Style x:Key="SettingButtonStyle" TargetType="Button">
         <Setter Property="Margin" Value="1" />
         <Setter Property="Padding" Value="16,0" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />

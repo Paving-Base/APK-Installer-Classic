@@ -1,4 +1,4 @@
-﻿<ui:Page
+﻿<Page
     x:Class="APKInstaller.Pages.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,7 +6,6 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="MainPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -19,7 +18,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Transparent"
-            BorderThickness="2"
+            BorderThickness="0"
             Canvas.ZIndex="1"
             Click="Button_Click"
             IsTabStop="True"
@@ -35,6 +34,9 @@
                     Text="" />
             </StackPanel>
         </Button>
-        <ui:Frame x:Name="CoreAppFrame" Background="Transparent" />
+        <Frame
+            x:Name="CoreAppFrame"
+            Background="Transparent"
+            NavigationUIVisibility="Hidden" />
     </Grid>
-</ui:Page>
+</Page>

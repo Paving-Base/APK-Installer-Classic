@@ -1,5 +1,4 @@
 ﻿using APKInstaller.Helpers;
-using ModernWpf.Controls;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -109,16 +108,8 @@ namespace APKInstaller.Controls
 
         private void BackButton_Click(object sender, RoutedEventArgs e) => BackRequested?.Invoke(sender, e);
 
-        public void ShowProgressRing()
-        {
-            ProgressRing.IsActive = true;
-            ProgressRing.Visibility = Visibility.Visible;
-        }
+        public void ShowProgressRing() => ProgressRing.Visibility = Visibility.Visible;
 
-        public void HideProgressRing()
-        {
-            ProgressRing.Visibility = Visibility.Collapsed;
-            ProgressRing.IsActive = false;
-        }
+        public void HideProgressRing() => ProgressRing.Visibility = Visibility.Collapsed;
     }
 }

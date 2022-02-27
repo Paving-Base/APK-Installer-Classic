@@ -5,25 +5,7 @@
     xmlns:s="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.modernwpf.com/2019">
     <ResourceDictionary.MergedDictionaries>
-        <ui:ThemeResources>
-            <ui:ThemeResources.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Light/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Dark/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/HighContrast/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-            </ui:ThemeResources.ThemeDictionaries>
-        </ui:ThemeResources>
+        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Common.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <s:Double x:Key="InfoBarIconFontSize">16</s:Double>
@@ -46,22 +28,22 @@
                         IsEnabled="{TemplateBinding IsEnabled}">
                         <controls:Setting.Icon>
                             <Grid Margin="2">
-                                <ui:FontIcon
+                                <TextBlock
                                     x:Name="IconBackground"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                    FontFamily="Segoe MDL2 Assets"
                                     FontSize="{StaticResource InfoBarIconFontSize}"
                                     Foreground="{DynamicResource SystemFillColorAttentionBrush}"
-                                    Glyph="{StaticResource InfoBarIconBackgroundGlyph}" />
-                                <ui:FontIcon
+                                    Text="{StaticResource InfoBarIconBackgroundGlyph}" />
+                                <TextBlock
                                     x:Name="StandardIcon"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                    FontFamily="Segoe MDL2 Assets"
                                     FontSize="{StaticResource InfoBarIconFontSize}"
                                     Foreground="{DynamicResource TextFillColorInverseBrush}"
-                                    Glyph="{StaticResource InfoBarInformationalIconGlyph}" />
+                                    Text="{StaticResource InfoBarInformationalIconGlyph}" />
                             </Grid>
                         </controls:Setting.Icon>
                         <controls:Setting.ActionContent>
-                            <ui:ContentPresenterEx
+                            <ContentPresenter
                                 x:Name="ContentPresenter"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
@@ -70,22 +52,22 @@
                     </controls:Setting>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Severity" Value="Error">
-                            <Setter TargetName="StandardIcon" Property="Glyph" Value="{StaticResource InfoBarErrorIconGlyph}" />
+                            <Setter TargetName="StandardIcon" Property="Text" Value="{StaticResource InfoBarErrorIconGlyph}" />
                             <Setter TargetName="IconBackground" Property="Foreground" Value="{DynamicResource SystemFillColorCriticalBrush}" />
                             <Setter TargetName="ContentRoot" Property="Background" Value="{DynamicResource SystemFillColorCriticalBackgroundBrush}" />
                         </Trigger>
                         <Trigger Property="Severity" Value="Success">
-                            <Setter TargetName="StandardIcon" Property="Glyph" Value="{StaticResource InfoBarSuccessIconGlyph}" />
+                            <Setter TargetName="StandardIcon" Property="Text" Value="{StaticResource InfoBarSuccessIconGlyph}" />
                             <Setter TargetName="IconBackground" Property="Foreground" Value="{DynamicResource SystemFillColorSuccessBrush}" />
                             <Setter TargetName="ContentRoot" Property="Background" Value="{DynamicResource SystemFillColorSuccessBackgroundBrush}" />
                         </Trigger>
                         <Trigger Property="Severity" Value="Warning">
-                            <Setter TargetName="StandardIcon" Property="Glyph" Value="{StaticResource InfoBarWarningIconGlyph}" />
+                            <Setter TargetName="StandardIcon" Property="Text" Value="{StaticResource InfoBarWarningIconGlyph}" />
                             <Setter TargetName="IconBackground" Property="Foreground" Value="{DynamicResource SystemFillColorCautionBrush}" />
                             <Setter TargetName="ContentRoot" Property="Background" Value="{DynamicResource SystemFillColorCautionBackgroundBrush}" />
                         </Trigger>
                         <Trigger Property="Severity" Value="Informational">
-                            <Setter TargetName="StandardIcon" Property="Glyph" Value="{StaticResource InfoBarInformationalIconGlyph}" />
+                            <Setter TargetName="StandardIcon" Property="Text" Value="{StaticResource InfoBarInformationalIconGlyph}" />
                             <Setter TargetName="IconBackground" Property="Foreground" Value="{DynamicResource SystemFillColorAttentionBrush}" />
                             <Setter TargetName="ContentRoot" Property="Background" Value="{DynamicResource SystemFillColorAttentionBackgroundBrush}" />
                         </Trigger>

@@ -55,6 +55,7 @@ namespace APKInstaller.Controls
         {
             if (CapabilitiesList == null || !CapabilitiesList.Any()) { return; }
             int Line = 0;
+            RichTextBlockCapabilities.Text = RichTextBlockFullCapabilities.Text = string.Empty;
             foreach (string capability in CapabilitiesList)
             {
                 if (!string.IsNullOrEmpty(capability))
@@ -67,8 +68,8 @@ namespace APKInstaller.Controls
                     Line++;
                 }
             }
-            RichTextBlockCapabilities.Text = RichTextBlockCapabilities.Text[0..^2];
-            RichTextBlockFullCapabilities.Text = RichTextBlockFullCapabilities.Text[0..^2];
+            RichTextBlockCapabilities.Text = RichTextBlockCapabilities.Text.Substring(0, RichTextBlockCapabilities.Text.Length - 2);
+            RichTextBlockFullCapabilities.Text = RichTextBlockFullCapabilities.Text.Substring(0, RichTextBlockFullCapabilities.Text.Length - 2);
         }
 
         private void MoreButton_Click(object sender, RoutedEventArgs e)

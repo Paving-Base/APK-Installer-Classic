@@ -1,27 +1,27 @@
 ﻿using APKInstaller.Helpers;
 using APKInstaller.Pages.ToolPages;
-using MicaWPF;
-using MicaWPF.Helpers;
-using ModernWpf.Controls;
-using System.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Page = ModernWpf.Controls.Page;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace APKInstaller.Pages.SettingsPages
 {
     /// <summary>
     /// TestPage.xaml 的交互逻辑
     /// </summary>
-    public partial class TestPage : Page, INotifyPropertyChanged
+    public partial class TestPage : Page
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
-        {
-            if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
-        }
-
         public TestPage() => InitializeComponent();
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,10 +35,10 @@ namespace APKInstaller.Pages.SettingsPages
                     UIHelper.MainWindow.ResizeMode = ResizeMode.NoResize;
                     break;
                 case "Processes":
-                    _ = Frame.Navigate(typeof(ProcessesPage));
+                    _ = NavigationService.Navigate(new ProcessesPage());
                     break;
                 case "Applications":
-                    _ = Frame.Navigate(typeof(ApplicationsPage));
+                    _ = NavigationService.Navigate(new ApplicationsPage());
                     break;
                 default:
                     break;
@@ -47,9 +47,9 @@ namespace APKInstaller.Pages.SettingsPages
 
         private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                Frame.GoBack();
+                NavigationService.GoBack();
             }
         }
 
@@ -68,29 +68,6 @@ namespace APKInstaller.Pages.SettingsPages
                     break;
                 case "Can Resize With Grip":
                     UIHelper.MainWindow.ResizeMode = ResizeMode.CanResizeWithGrip;
-                    break;
-            }
-        }
-
-        private void BackdorpComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            switch ((sender as ComboBox).SelectedItem as string)
-            {
-                case "None":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.None;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.None, 20);
-                    break;
-                case "Mica":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Mica;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Mica, 20);
-                    break;
-                case "Tabbed":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Tabbed;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Tabbed, 20);
-                    break;
-                case "Acrylic":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Acrylic;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Acrylic, 20);
                     break;
             }
         }

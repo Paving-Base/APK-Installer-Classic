@@ -21,6 +21,7 @@
                     <Border
                         x:Name="RootGrid"
                         MinHeight="48"
+                        Margin="{TemplateBinding Margin}"
                         Padding="{TemplateBinding Padding}"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
@@ -39,16 +40,23 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <ui:ContentPresenterEx
+                            <ContentPresenter
                                 x:Name="IconPresenter"
                                 MaxWidth="26"
                                 Margin="2,0,18,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                ui:FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                ui:Foreground="{DynamicResource CardPrimaryForegroundBrush}"
-                                Content="{TemplateBinding Icon}"
-                                FontSize="20" />
+                                Content="{TemplateBinding Icon}">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Setters>
+                                            <Setter Property="FontSize" Value="20" />
+                                            <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+                                            <Setter Property="Foreground" Value="{DynamicResource CardPrimaryForegroundBrush}" />
+                                        </Style.Setters>
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
 
                             <StackPanel
                                 Grid.Column="1"
@@ -62,30 +70,26 @@
                                     Foreground="{DynamicResource CardPrimaryForegroundBrush}"
                                     Text="{TemplateBinding Header}" />
 
-                                <ui:ContentPresenterEx
-                                    x:Name="DescriptionPresenter"
-                                    Content="{TemplateBinding Description}"
-                                    FontSize="{DynamicResource SecondaryTextFontSize}"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                    TextWrapping="Wrap">
+                                <ContentPresenter x:Name="DescriptionPresenter" Content="{TemplateBinding Description}">
                                     <ContentPresenter.Resources>
                                         <Style TargetType="TextBlock">
                                             <Style.Setters>
                                                 <Setter Property="TextWrapping" Value="Wrap" />
+                                                <Setter Property="FontSize" Value="{DynamicResource SecondaryTextFontSize}" />
+                                                <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
                                             </Style.Setters>
                                         </Style>
-                                        <Style TargetType="ui:HyperlinkButton">
+                                        <Style TargetType="Hyperlink">
                                             <Style.Setters>
                                                 <Setter Property="FontSize" Value="12" />
-                                                <Setter Property="Padding" Value="0,0,0,0" />
                                                 <Setter Property="FontWeight" Value="SemiBold" />
                                             </Style.Setters>
                                         </Style>
                                     </ContentPresenter.Resources>
-                                </ui:ContentPresenterEx>
+                                </ContentPresenter>
                             </StackPanel>
 
-                            <ui:ContentPresenterEx
+                            <ContentPresenter
                                 x:Name="ContentPresenter"
                                 Grid.Column="2"
                                 HorizontalAlignment="Right"
@@ -102,25 +106,22 @@
                                 BorderBrush="Transparent"
                                 BorderThickness="2"
                                 CornerRadius="4">
-                                <ui:FontIcon
+                                <TextBlock
                                     x:Name="ExpandCollapseChevron"
                                     Width="12"
                                     Height="12"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                                    FontFamily="Segoe MDL2 Assets"
                                     FontSize="12"
-                                    Glyph="{TemplateBinding RightIcon}"
-                                    RenderTransformOrigin="0.5, 0.5" />
+                                    RenderTransformOrigin="0.5, 0.5"
+                                    Text="{TemplateBinding RightIcon}" />
                             </Border>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="IconPresenter" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                             <Setter TargetName="HeaderPresenter" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
-                            <Setter TargetName="ContentPresenter" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
-                            <Setter TargetName="DescriptionPresenter" Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />
                             <Setter TargetName="ExpandCollapseChevron" Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">

@@ -1,7 +1,19 @@
 ﻿using APKInstaller.Helpers;
 using APKInstaller.Pages.SettingsPages;
-using ModernWpf.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace APKInstaller.Pages
 {
@@ -14,7 +26,7 @@ namespace APKInstaller.Pages
         {
             InitializeComponent();
             UIHelper.MainPage = this;
-            _ = CoreAppFrame.Navigate(typeof(InstallPage));
+            _ = CoreAppFrame.Navigate(new InstallPage());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -22,7 +34,7 @@ namespace APKInstaller.Pages
             switch ((sender as FrameworkElement).Name)
             {
                 case "AboutButton":
-                    _ = CoreAppFrame.Navigate(typeof(SettingsPage));
+                    _ = CoreAppFrame.Navigate(new SettingsPage());
                     break;
                 default:
                     break;

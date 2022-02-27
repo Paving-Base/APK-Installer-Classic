@@ -3,17 +3,14 @@ using APKInstaller.Controls;
 using APKInstaller.Helpers;
 using APKInstaller.Properties;
 using APKInstaller.ViewModel.SettingsPages;
-using ModernWpf;
-using ModernWpf.Controls;
 using System;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
-using Windows.Storage;
-using Windows.System;
-using ListView = ModernWpf.Controls.ListView;
-using Page = ModernWpf.Controls.Page;
+using System.Windows.Shapes;
 
 namespace APKInstaller.Pages.SettingsPages
 {
@@ -24,11 +21,9 @@ namespace APKInstaller.Pages.SettingsPages
     {
         internal SettingsViewModel? Provider;
 
-        public SettingsPage() => InitializeComponent();
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        public SettingsPage()
         {
-            base.OnNavigatedTo(e);
+            InitializeComponent();
             Provider = new SettingsViewModel(this);
             DataContext = Provider;
             //#if DEBUG
@@ -37,12 +32,6 @@ namespace APKInstaller.Pages.SettingsPages
             if (SettingsViewModel.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
             ADBHelper.Monitor.DeviceChanged += Provider.OnDeviceChanged;
             Provider.DeviceList = new AdvancedAdbClient().GetDevices();
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            ADBHelper.Monitor.DeviceChanged -= Provider.OnDeviceChanged;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -57,10 +46,7 @@ namespace APKInstaller.Pages.SettingsPages
                     }
                     break;
                 case "TestPage":
-                    _ = Frame.Navigate(typeof(TestPage));
-                    break;
-                case "LogFolder":
-                    _ = await Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists));
+                    _ = NavigationService.Navigate(new TestPage());
                     break;
                 case "CheckUpdate":
                     Provider?.CheckUpdate();
@@ -72,9 +58,9 @@ namespace APKInstaller.Pages.SettingsPages
 
         private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                Frame.GoBack();
+                NavigationService.GoBack();
             }
         }
 
@@ -83,15 +69,8 @@ namespace APKInstaller.Pages.SettingsPages
             object vs = (sender as ListView).SelectedItem;
             if (vs != null && vs is DeviceData device)
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.DefaultDevice, JsonSerializer.Serialize(device));
-                }
-                else
-                {
-                    Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
-                    Settings.Default.Save();
-                }
+                Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
+                Settings.Default.Save();
             }
         }
 
@@ -105,6 +84,44 @@ namespace APKInstaller.Pages.SettingsPages
             }
         }
 
-        private void GotoUpdate_Click(object sender, RoutedEventArgs e) => _ = Launcher.LaunchUriAsync(new Uri((sender as FrameworkElement).Tag.ToString()));
+        private void GotoUpdate_Click(object sender, RoutedEventArgs e) => Process.Start((sender as FrameworkElement).Tag.ToString());
+
+        private void Expander_Loaded(object sender, RoutedEventArgs e)
+        {
+            Expander Expander = sender as Expander;
+            ToggleButton ToggleButton = Expander.FindDescendant<ToggleButton>();
+            if (ToggleButton != null)
+            {
+                ToggleButton.Margin = new Thickness(11, 0, 11, 0);
+                Grid Grid = ToggleButton.FindDescendant<Grid>();
+                if (Grid != null)
+                {
+                    ColumnDefinitionCollection? ColumnDefinitions = Grid.ColumnDefinitions;
+                    if (ColumnDefinitions.Count >= 2)
+                    {
+                        Grid.ColumnDefinitions.RemoveAt(0);
+                        Grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+                    }
+                    Path Path = Grid.FindDescendant<Path>();
+                    if (Path != null)
+                    {
+                        Grid.SetColumn(Path, 1);
+                        Path.Margin = new Thickness(4, 0, 4, 0);
+                    }
+                    Ellipse Ellipse = Grid.FindDescendant<Ellipse>();
+                    if (Ellipse != null)
+                    {
+                        Grid.SetColumn(Ellipse, 1);
+                        Ellipse.Margin = new Thickness(4, 0, 4, 0);
+                    }
+                    ContentPresenter ContentPresenter = Grid.FindDescendant<ContentPresenter>();
+                    if (ContentPresenter != null)
+                    {
+                        Grid.SetColumn(ContentPresenter, 0);
+                        ContentPresenter.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    }
+                }
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nmwc="clr-namespace:NMT.Wpf.Controls;assembly=WindowsProgressRing"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     d:DataContext="{d:DesignInstance Type=local:TitleBar}"
     d:DesignHeight="450"
@@ -20,7 +21,7 @@
             Grid.ColumnSpan="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
+            Background="{DynamicResource {x:Static SystemColors.WindowFrameBrush}}"
             Visibility="{Binding BackgroundVisibility}" />
         <Grid
             Height="48"
@@ -41,7 +42,10 @@
                 IsEnabled="{Binding IsBackEnable}"
                 Style="{StaticResource IconButtonStyle}"
                 Visibility="{Binding BackButtonVisibility}">
-                <ui:SymbolIcon Symbol="Back" />
+                <TextBlock
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Text="&#xE72B;" />
             </Button>
             <TextBlock
                 x:Name="TitleBlock"
@@ -50,20 +54,20 @@
                 VerticalAlignment="Center"
                 FontSize="18"
                 Text="{Binding Title}" />
-            <ui:ContentPresenterEx
+            <ContentPresenter
                 x:Name="UserContentPresenter"
                 Grid.Column="2"
                 Height="40"
                 VerticalAlignment="Center"
                 Content="{Binding RightAreaContent}" />
-            <ui:ProgressRing
+            <nmwc:WindowsProgressRing
                 x:Name="ProgressRing"
                 Grid.Column="3"
                 Width="24"
                 Height="24"
                 Margin="8,0"
                 VerticalAlignment="Center"
-                IsActive="False"
+                Items="5"
                 Visibility="Collapsed" />
             <Button
                 x:Name="RefreshButton"
@@ -72,7 +76,10 @@
                 Click="RefreshButton_Click"
                 Style="{StaticResource IconButtonStyle}"
                 Visibility="{Binding RefreshButtonVisibility}">
-                <ui:SymbolIcon Symbol="Refresh" />
+                <TextBlock
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Text="&#xE72C;" />
             </Button>
         </Grid>
     </Grid>

@@ -1,13 +1,13 @@
 ﻿using AdvancedSharpAdbClient;
 using APKInstaller.Pages;
 using APKInstaller.Strings.Permissions;
-using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Resources;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace APKInstaller.Helpers
 {
@@ -22,7 +22,7 @@ namespace APKInstaller.Helpers
 
     internal static partial class UIHelper
     {
-        public static bool HasTitleBar => false;
+        public static bool HasTitleBar => true;
         public static double TitleBarHeight => 28;
         public static double PageTitleHeight => HasTitleBar ? 48 : 48 + TitleBarHeight;
         public static Thickness StackPanelMargin => new Thickness(0, PageTitleHeight, 0, 0);
@@ -35,11 +35,11 @@ namespace APKInstaller.Helpers
         public static MainPage? MainPage;
         public static MainWindow? MainWindow;
 
-        public static void Navigate(Type pageType, NavigationTransitionInfo TransitionInfo, object? e = null)
+        public static void Navigate(Page pageType, object? e = null)
         {
             DispatcherHelper.RunOnMainThread(() =>
             {
-                _ = (MainPage?.CoreAppFrame.Navigate(pageType, e, TransitionInfo));
+                _ = MainPage?.CoreAppFrame?.Navigate(pageType, e);
             });
         }
     }

@@ -14,7 +14,7 @@
         x:Name="Root"
         Margin="-10"
         Padding="10"
-        BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}">
+        BorderBrush="{DynamicResource ResourceKey={x:Static SystemParameters.WindowGlassBrush}}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -42,12 +42,13 @@
                 x:Name="MoreButton"
                 Grid.Row="2"
                 Padding="0"
+                HorizontalAlignment="Left"
                 AutomationProperties.Name="Show more capabilities"
                 Background="Transparent"
                 BorderThickness="0"
                 Click="MoreButton_Click"
                 Content="{x:Static str:CapabilitiesInfoStrings.More}"
-                Foreground="{StaticResource SystemControlBackgroundAccentBrush}"
+                Foreground="{DynamicResource ResourceKey={x:Static SystemParameters.WindowGlassBrush}}"
                 TabIndex="4" />
         </Grid>
     </Border>

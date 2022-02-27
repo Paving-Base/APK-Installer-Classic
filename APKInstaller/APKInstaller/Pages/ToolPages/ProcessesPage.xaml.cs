@@ -2,12 +2,20 @@
 using AdvancedSharpAdbClient.DeviceCommands;
 using APKInstaller.Helpers;
 using APKInstaller.ViewModel.ToolPages;
-using ModernWpf.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using Page = ModernWpf.Controls.Page;
+using System.Windows.Shapes;
 
 namespace APKInstaller.Pages.ToolPages
 {
@@ -18,29 +26,21 @@ namespace APKInstaller.Pages.ToolPages
     {
         private ProcessesViewModel? Provider;
 
-        public ProcessesPage() => InitializeComponent();
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        public ProcessesPage()
         {
-            base.OnNavigatedTo(e);
+            InitializeComponent();
             Provider = new ProcessesViewModel(this);
             DataContext = Provider;
             ADBHelper.Monitor.DeviceChanged += OnDeviceChanged;
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            ADBHelper.Monitor.DeviceChanged -= OnDeviceChanged;
         }
 
         private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => Provider?.GetDevices());
 
         private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
         {
-            if (Frame.CanGoBack)
+            if (NavigationService.CanGoBack)
             {
-                Frame.GoBack();
+                NavigationService.GoBack();
             }
         }
 
