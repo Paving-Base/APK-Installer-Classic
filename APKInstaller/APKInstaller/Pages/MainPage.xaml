@@ -12,22 +12,18 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         <Button
             x:Name="AboutButton"
-            Grid.RowSpan="2"
             Width="{x:Static helper:UIHelper.TitleBarHeight}"
             Height="{x:Static helper:UIHelper.TitleBarHeight}"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Transparent"
             BorderThickness="2"
+            Canvas.ZIndex="1"
             Click="Button_Click"
-            Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}"
-            IsTabStop="True">
+            IsTabStop="True"
+            Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
             <StackPanel>
                 <TextBlock
                     Margin="-10"
@@ -39,9 +35,6 @@
                     Text="" />
             </StackPanel>
         </Button>
-        <ui:Frame
-            x:Name="CoreAppFrame"
-            Grid.Row="1"
-            Background="Transparent" />
+        <ui:Frame x:Name="CoreAppFrame" Background="Transparent" />
     </Grid>
 </ui:Page>

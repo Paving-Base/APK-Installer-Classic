@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:str="clr-namespace:APKInstaller.Strings.InstallPage"
@@ -22,7 +23,7 @@
         <Grid
             x:Name="CustomTitleBar"
             Grid.Row="0"
-            Height="28"
+            Height="{x:Static helper:UIHelper.TitleBarHeight}"
             HorizontalAlignment="Stretch" />
         <Grid
             x:Name="CoreAppUI"
