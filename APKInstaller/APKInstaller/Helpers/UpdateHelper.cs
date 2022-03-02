@@ -44,7 +44,11 @@ namespace APKInstaller.Helpers
 
             if (result != null)
             {
+#if NET5_OR_GREATER
                 if (currentVersion == new PackageVersion())
+#else
+                if (currentVersion.Equals(new PackageVersion()))
+#endif
                 {
                     currentVersion = Package.Current.Id.Version;
                 }

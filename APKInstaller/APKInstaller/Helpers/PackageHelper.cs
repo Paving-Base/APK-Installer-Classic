@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
@@ -31,7 +32,11 @@ namespace APKInstaller.Helpers
             (bool isfound, IEnumerable<Package>? info) result = await FindPackagesByName("MicrosoftCorporationII.WindowsSubsystemForAndroid_8wekyb3d8bbwe");
             if (result.isfound)
             {
+#if NET5_OR_GREATER
                 _ = await Launcher.LaunchUriAsync(new Uri($"wsa://{packagename}"));
+#else
+                _ = Process.Start($"wsa://{packagename}");
+#endif
             }
         }
     }

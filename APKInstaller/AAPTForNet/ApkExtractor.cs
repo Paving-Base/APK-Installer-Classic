@@ -12,7 +12,12 @@ namespace AAPTForNet
     internal class ApkExtractor
     {
         private static int id = 0;
+
+#if NET5_0_OR_GREATER && !NETCOREAPP
         private static readonly string tempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
+#else
+        private static readonly string tempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Process.GetCurrentProcess().Id}");
+#endif
 
         public static DumpModel ExtractManifest(string path)
         {

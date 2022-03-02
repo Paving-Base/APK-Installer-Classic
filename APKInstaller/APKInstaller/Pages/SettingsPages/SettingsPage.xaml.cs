@@ -59,9 +59,6 @@ namespace APKInstaller.Pages.SettingsPages
                 case "TestPage":
                     _ = Frame.Navigate(typeof(TestPage));
                     break;
-                case "LogFolder":
-                    _ = await Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists));
-                    break;
                 case "CheckUpdate":
                     Provider?.CheckUpdate();
                     break;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,12 @@ namespace APKInstaller.Helpers
 {
     public static class CachesHelper
     {
+#if NET5_0_OR_GREATER && !NETCOREAPP
         public static readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}");
-    
+#else
+        public static readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Process.GetCurrentProcess().Id}");
+#endif
+
         public static void CleanCaches(bool isall)
         {
             if (isall)
