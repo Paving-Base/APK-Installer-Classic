@@ -297,7 +297,7 @@
     <comment>{0} - AppVersion.</comment>
   </data>
   <data name="WaitDownload" xml:space="preserve">
-    <value>Wait for download...</value>
+    <value>Czekam na pobranie...</value>
   </data>
   <data name="WaitingDevice" xml:space="preserve">
     <value>Czekanie na urządzenie...</value>
