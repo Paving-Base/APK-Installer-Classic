@@ -169,7 +169,7 @@
     <value>Finished</value>
   </data>
   <data name="FoundWSA" xml:space="preserve">
-    <value>WSA Found</value>
+    <value>WSA gefunden</value>
   </data>
   <data name="GoToSetting" xml:space="preserve">
     <value>Go to Setting</value>
@@ -222,7 +222,7 @@
     <value>Loading...</value>
   </data>
   <data name="NoDevice" xml:space="preserve">
-    <value>Cannot find Android Device</value>
+    <value>Kann das alte Gerät nicht finden</value>
   </data>
   <data name="NoDeviceInfo" xml:space="preserve">
     <value>You can install WSA. Or go to Settings to connect Device.</value>
@@ -246,17 +246,17 @@
     <value>Online Package</value>
   </data>
   <data name="OpenAPK" xml:space="preserve">
-    <value>Open APK File</value>
+    <value>APK-Datei öffnen</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
-    <value>Package Name: {0}</value>
+    <value>Installierte Pakete</value>
     <comment>{0} - Package Name.</comment>
   </data>
   <data name="Reinstall" xml:space="preserve">
     <value>Reinstall</value>
   </data>
   <data name="ReinstallFormat" xml:space="preserve">
-    <value>{0} is already installed</value>
+    <value>Diese App ist bereits installiert</value>
     <comment>{0} - AppName.</comment>
   </data>
   <data name="ReinstallOutput" xml:space="preserve">
@@ -273,7 +273,7 @@
     <value>Starting ADB Server...</value>
   </data>
   <data name="StartWSA" xml:space="preserve">
-    <value>Start WSA</value>
+    <value>WSA beginnen</value>
   </data>
   <data name="UnzipADB" xml:space="preserve">
     <value>Unzip ADB...</value>
