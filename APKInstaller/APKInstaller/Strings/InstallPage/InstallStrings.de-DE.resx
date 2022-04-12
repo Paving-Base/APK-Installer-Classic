@@ -279,31 +279,31 @@
     <value>Unzip ADB...</value>
   </data>
   <data name="UnzipComplete" xml:space="preserve">
-    <value>Unzip completed</value>
+    <value>Entpacken ist abgeschlossen</value>
   </data>
   <data name="UnzippingFormat" xml:space="preserve">
-    <value>Unzipping {0}/{1} ...</value>
+    <value>Entpacken von {0}/{1}...</value>
     <comment>{0} - Have done num. {1} - All num.</comment>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Update</value>
+    <value>Aktualisierungen</value>
   </data>
   <data name="UpdateFormat" xml:space="preserve">
-    <value>Update {0}?</value>
+    <value>Aktualisiert {0}?</value>
     <comment>{0} - AppName.</comment>
   </data>
   <data name="VersionFormat" xml:space="preserve">
-    <value>Version: {0}</value>
+    <value>Version {0}</value>
     <comment>{0} - AppVersion.</comment>
   </data>
   <data name="WaitDownload" xml:space="preserve">
-    <value>Wait for download...</value>
+    <value>Warten auf Download...</value>
   </data>
   <data name="WaitingDevice" xml:space="preserve">
-    <value>Waiting for Device...</value>
+    <value>Auf Bild warten...</value>
   </data>
   <data name="WaitingForInstallFormat" xml:space="preserve">
-    <value>Waiting for install {0}</value>
+    <value>Warte auf Phase: {0}</value>
     <comment>{0} - AppName.</comment>
   </data>
   <data name="WaitingWSAStart" xml:space="preserve">
@@ -311,6 +311,6 @@
 This may takes long time. Sit back and relax.</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
-    <value>WSA is Running</value>
+    <value>WSA wird Laufen</value>
   </data>
 </root>
