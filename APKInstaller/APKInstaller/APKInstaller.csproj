@@ -1,21 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <UseWPF>true</UseWPF>
-    <Nullable>enable</Nullable>
-	<Authors>wherewhere</Authors>
-    <OutputType>WinExe</OutputType>
-	<LangVersion>preview</LangVersion>
-	<VersionPrefix>0.0.3</VersionPrefix>
-    <Platforms>AnyCPU;x64;x86</Platforms>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-	<Description>An Android Application Installer for Windows</Description>
+	<Authors>wherewhere</Authors>
 	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved.</Copyright>
-	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
+	<Description>An Android Application Installer for Windows</Description>
+	<LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <OutputType>WinExe</OutputType>
 	<PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
-    <TargetFrameworks>net4.8;netcoreapp3.1;net6.0-windows10.0.22000.0;net7.0-windows10.0.22000.0</TargetFrameworks>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <TargetFramework>net4.8</TargetFramework>
+    <UseWPF>true</UseWPF>
+	<VersionPrefix>0.0.3</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
