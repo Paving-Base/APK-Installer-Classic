@@ -124,7 +124,7 @@
     <value>Autodescargar cuando el paquete viene de URL.</value>
   </data>
   <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
-    <value>Is Auto Download Online Packages?</value>
+    <value>¿Autodescargar Paquetes Online?</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>Comprobación Fallida</value>
@@ -142,25 +142,25 @@
     <value>Cerrar ADB puede romper otros Instaladores cuando estos aún siguen abiertos.</value>
   </data>
   <data name="CloseADBSettings.Header" xml:space="preserve">
-    <value>Is Close ADB when Closing Installer?</value>
+    <value>¿Cerrar ADB cuando se esté Cerrando el Instalador?</value>
   </data>
   <data name="CloseAPPSettings.Description" xml:space="preserve">
-    <value>Close Installer after APK has installed and start.</value>
+    <value>Cerrar el Instalador después de que la APK haya sido instalada y ejecutar.</value>
   </data>
   <data name="CloseAPPSettings.Header" xml:space="preserve">
-    <value>Is Close Installer when Ready ?</value>
+    <value>¿Cerrar el Instalador cuando esté Listo?</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
-    <value>Connect device on network.</value>
+    <value>Conecta el dispositivo a la red.</value>
   </data>
   <data name="ConnectDevice.Header" xml:space="preserve">
-    <value>Connect Device</value>
+    <value>Conectar Dispositivo</value>
   </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
-    <value>Content</value>
+    <value>Contenido</value>
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
-    <value>Device</value>
+    <value>Dispositivo</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
     <value>EULA</value>
@@ -181,7 +181,7 @@
     <value>Última Revisión: </value>
   </data>
   <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Disable it to connect to other device.</value>
+    <value>Desactivarlo para conectarlo a otro dispositivo.</value>
   </data>
   <data name="OnlyWSASettings.Header" xml:space="preserve">
     <value>¿Es Solo para WSA?</value>
@@ -196,28 +196,28 @@
     <value>Reiniciar aplicación</value>
   </data>
   <data name="ResetSettingsButton.Content" xml:space="preserve">
-    <value>Reset</value>
+    <value>Reiniciar</value>
   </data>
   <data name="ResetSettingsConfirm.Content" xml:space="preserve">
-    <value>Yes</value>
+    <value>Sí</value>
   </data>
   <data name="ResetSettingsTitle.Text" xml:space="preserve">
-    <value>Are you sure you want to reset the app?</value>
+    <value>¿Estás seguro de que quieres reiniciar la aplicación?</value>
   </data>
   <data name="SelectDeviceBox.Header" xml:space="preserve">
-    <value>Select Device</value>
+    <value>Seleccionar Dispositivo</value>
   </data>
   <data name="ShowDialogsSettings.Description" xml:space="preserve">
-    <value>Show helpers when no device is connected?</value>
+    <value>¿Mostrar ayudantes cuando ningún dispositivo está conectado?</value>
   </data>
   <data name="ShowDialogsSettings.Header" xml:space="preserve">
-    <value>Is Show Helpers?</value>
+    <value>¿Mostrar ayudantes?</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ajustes</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
-    <value>Version</value>
+    <value>Versión</value>
   </data>
   <data name="UpToDate" xml:space="preserve">
     <value>Hasta La Fecha</value>
