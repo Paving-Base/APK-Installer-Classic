@@ -1,27 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <UseWPF>true</UseWPF>
-    <Nullable>enable</Nullable>
-	<Authors>wherewhere</Authors>
-    <OutputType>WinExe</OutputType>
-	<LangVersion>preview</LangVersion>
-	<VersionPrefix>0.0.0</VersionPrefix>
-    <Platforms>AnyCPU;x64;x86</Platforms>
-    <TargetFramework>net4.6.2</TargetFramework>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-	<Description>An Android Application Installer for Windows</Description>
-	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
-	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
-	<PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
+    <Authors>wherewhere</Authors>
+    <Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved</Copyright>
+    <Description>An Android Application Installer for Windows</Description>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <OutputType>WinExe</OutputType>
+    <PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
+    <Platforms>AnyCPU;ARM64;x64;x86</Platforms>
+    <RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
+    <TargetFramework>net4.6.2</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <VersionPrefix>0.0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.0" />
-    <PackageReference Include="Downloader" Version="2.3.3" />
-    <PackageReference Include="SharpCompress" Version="0.30.1" />
-    <PackageReference Include="System.Text.Json" Version="6.0.2" />
+    <PackageReference Include="Downloader" Version="2.3.5" />
+    <PackageReference Include="NativeMethods" Version="0.0.3" />
+    <PackageReference Include="SharpCompress" Version="0.31.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.4" />
     <PackageReference Include="WindowsProgressRing" Version="1.0.0" />
+    <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -444,7 +445,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
-	
+    
   <ItemGroup>
     <None Update="256x256.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
