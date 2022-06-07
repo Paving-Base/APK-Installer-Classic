@@ -73,6 +73,7 @@
             <uap:SupportedFileTypes>
               <uap:FileType>.apks</uap:FileType>
               <uap:FileType>.apkm</uap:FileType>
+              <uap:FileType>.xapk</uap:FileType>
             </uap:SupportedFileTypes>
             <uap:DisplayName>Split APK File</uap:DisplayName>
             <uap:Logo>Images/256x256.png</uap:Logo>

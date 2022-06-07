@@ -1,8 +1,7 @@
 ﻿using APKInstaller.Helpers;
 using APKInstaller.Pages.ToolPages;
-using MicaWPF;
-using MicaWPF.Helpers;
 using ModernWpf.Controls;
+using ModernWpf.Controls.Primitives;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -77,20 +76,16 @@ namespace APKInstaller.Pages.SettingsPages
             switch ((sender as ComboBox).SelectedItem as string)
             {
                 case "None":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.None;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.None, 20);
+                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Auto);
                     break;
                 case "Mica":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Mica;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Mica, 20);
+                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Mica);
                     break;
                 case "Tabbed":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Tabbed;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Tabbed, 20);
+                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Tabbed);
                     break;
                 case "Acrylic":
-                    UIHelper.MainWindow.SystemBackdropType = BackdropType.Acrylic;
-                    UIHelper.MainWindow.EnableMica(WindowsTheme.Auto, true, BackdropType.Acrylic, 20);
+                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Acrylic);
                     break;
             }
         }

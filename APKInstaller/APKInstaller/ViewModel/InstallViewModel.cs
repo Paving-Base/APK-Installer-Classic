@@ -28,6 +28,7 @@ using System.Windows.Controls;
 using Windows.Storage;
 using Windows.System;
 using DownloadProgressChangedEventArgs = Downloader.DownloadProgressChangedEventArgs;
+using ModernWpf;
 
 namespace APKInstaller.ViewModel
 {
@@ -823,7 +824,7 @@ namespace APKInstaller.ViewModel
         {
             if (!string.IsNullOrEmpty(_path) || _url != null)
             {
-                AdbServer ADBServer = new AdbServer();
+                IAdbServer ADBServer = AdbServer.Instance;
                 if (!ADBServer.GetStatus().IsRunning)
                 {
                     WaitProgressText = _loader.GetString("CheckingADB");
@@ -1338,10 +1339,22 @@ namespace APKInstaller.ViewModel
                 CancelOperationButtonText = _loader.GetString("Cancel");
                 CancelOperationVisibility = LaunchWhenReadyVisibility = Visibility.Visible;
                 ActionVisibility = SecondaryActionVisibility = TextOutputVisibility = InstallOutputVisibility = Visibility.Collapsed;
-                await Task.Run(() =>
+                if (ApkInfo.IsSplit)
                 {
-                    new AdvancedAdbClient().Install(_device, File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read));
-                });
+                    await Task.Run(() => { new AdvancedAdbClient().InstallMultiple(_device, new Stream[] { File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read) }, ApkInfo.PackageName); });
+                }
+                else if (ApkInfo.IsBundle)
+                {
+                    await Task.Run(() =>
+                    {
+                        Stream[] streams = ApkInfo.SplitApks.Select(x => File.Open(x.FullPath, FileMode.Open, FileAccess.Read)).ToArray();
+                        new AdvancedAdbClient().InstallMultiple(_device, File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read), streams);
+                    });
+                }
+                else
+                {
+                    await Task.Run(() => { new AdvancedAdbClient().Install(_device, File.Open(ApkInfo.FullPath, FileMode.Open, FileAccess.Read)); });
+                }
                 AppName = string.Format(_loader.GetString("InstalledFormat"), ApkInfo?.AppName);
                 if (IsOpenApp)
                 {
@@ -1373,7 +1386,7 @@ namespace APKInstaller.ViewModel
         public async void OpenAPK()
         {
             OpenFileDialog? FileOpen = new OpenFileDialog();
-            FileOpen.Filter = ".apk|*.apk|.apks|*.apks|.apkm|*.apkm";
+            FileOpen.Filter = ".apk|*.apk|.apks|*.apks|.apkm|*.apkm|.xapk|*.xapk";
             FileOpen.Title = _loader.GetString("OpenAPK");
             if (FileOpen.ShowDialog() == false)
             {

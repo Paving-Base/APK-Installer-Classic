@@ -149,7 +149,7 @@
                         Text="{Binding ProgressText}"
                         TextTrimming="CharacterEllipsis"
                         ToolTipService.ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}" />
-                    <ProgressBar
+                    <ui:ProgressBar
                         x:Name="AppxInstallBar"
                         Height="12"
                         IsIndeterminate="{Binding AppxInstallBarIndeterminate}"
@@ -380,7 +380,9 @@
                 Width="50"
                 Height="50"
                 HorizontalAlignment="Center"
-                IsActive="True" />
+                IsActive="True"
+                IsIndeterminate="{Binding WaitProgressIndeterminate}"
+                Value="{Binding WaitProgressValue}" />
             <TextBlock
                 x:Name="WaitProgressText"
                 Margin="0,6,0,0"

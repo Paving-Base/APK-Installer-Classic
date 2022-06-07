@@ -5,6 +5,7 @@ using APKInstaller.Models;
 using APKInstaller.Pages.SettingsPages;
 using APKInstaller.Properties;
 using APKInstaller.Strings.SettingsPage;
+using ModernWpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

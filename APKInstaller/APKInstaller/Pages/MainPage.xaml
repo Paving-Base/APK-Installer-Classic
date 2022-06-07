@@ -19,11 +19,13 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Transparent"
+            BorderBrush="Transparent"
             BorderThickness="2"
             Canvas.ZIndex="1"
             Click="Button_Click"
             IsTabStop="True"
-            Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
+            Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}"
+            WindowChrome.IsHitTestVisibleInChrome="True">
             <StackPanel>
                 <TextBlock
                     Margin="-10"

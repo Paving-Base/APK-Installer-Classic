@@ -4,27 +4,6 @@
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:s="clr-namespace:System;assembly=mscorlib"
     xmlns:ui="http://schemas.modernwpf.com/2019">
-    <ResourceDictionary.MergedDictionaries>
-        <ui:ThemeResources>
-            <ui:ThemeResources.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Light/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Dark/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
-                    <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/HighContrast/Common.xaml" />
-                    </ResourceDictionary.MergedDictionaries>
-                </ResourceDictionary>
-            </ui:ThemeResources.ThemeDictionaries>
-        </ui:ThemeResources>
-    </ResourceDictionary.MergedDictionaries>
 
     <s:Double x:Key="InfoBarIconFontSize">16</s:Double>
     <s:String x:Key="InfoBarErrorIconGlyph">&#xF13D;</s:String>

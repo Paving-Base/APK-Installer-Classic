@@ -37,11 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="MicaWPF" Version="1.3.4" />
 	<PackageReference Include="Downloader" Version="2.3.3" />
-	<PackageReference Include="ModernWpfUI" Version="0.9.4" />
 	<PackageReference Include="SharpCompress" Version="0.30.1" />
-	<PackageReference Include="AdvancedSharpAdbClient" Version="2.5.2" />
 	<PackageReference Include="ModernWpf.MessageBox.Mica" Version="0.5.4" />
   </ItemGroup>
 	
@@ -52,6 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AdvancedSharpAdbClient\AdvancedSharpAdbClient\AdvancedSharpAdbClient.csproj" />
+    <ProjectReference Include="..\..\..\ModernWpf\ModernWpf.Controls\ModernWpf.Controls.csproj" />
+    <ProjectReference Include="..\..\..\ModernWpf\ModernWpf\ModernWpf.csproj" />
     <ProjectReference Include="..\AAPTForNet\AAPTForNet.csproj" />
   </ItemGroup>
 
@@ -492,19 +492,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\Dark\Common.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Themes\HighContrast\Color.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\HighContrast\Common.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\Light\Common.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
