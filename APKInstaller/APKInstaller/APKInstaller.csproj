@@ -1,57 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-	<Authors>wherewhere</Authors>
-	<Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved.</Copyright>
-	<Description>An Android Application Installer for Windows</Description>
-	<LangVersion>preview</LangVersion>
+    <Authors>wherewhere</Authors>
+    <Copyright>Copyright © 2017 - 2022 PavingBase. All Rights Reserved.</Copyright>
+    <Description>An Android Application Installer for Windows</Description>
+    <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <OutputType>WinExe</OutputType>
-	<PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
-    <Platforms>AnyCPU;x64;x86;ARM64;ARM</Platforms>
-	<RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-    <TargetFramework>net4.8</TargetFramework>
+    <PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <UseWPF>true</UseWPF>
-	<VersionPrefix>0.1.3</VersionPrefix>
+    <VersionPrefix>0.1.3</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AppPackages\**" />
-    <EmbeddedResource Remove="AppPackages\**" />
-    <None Remove="AppPackages\**" />
-    <Page Remove="AppPackages\**" />
+    <PackageReference Include="Downloader" Version="2.3.5" />
+    <PackageReference Include="SharpCompress" Version="0.31.0" />
+    <PackageReference Include="ModernWpf.MessageBox.Mica" Version="0.5.4" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="256x256.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="favicon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-	<PackageReference Include="Downloader" Version="2.3.5" />
-	<PackageReference Include="SharpCompress" Version="0.31.0" />
-	<PackageReference Include="ModernWpf.MessageBox.Mica" Version="0.5.4" />
-  </ItemGroup>
-	
+    
   <ItemGroup Condition="'$(TargetFramework)' == 'net4.8'">
-	<PackageReference Include="IndexRange" Version="1.0.2" />
-	<PackageReference Include="System.Net.Http" Version="4.3.4" />
-	<PackageReference Include="System.Text.Json" Version="6.0.4" />
+    <PackageReference Include="IndexRange" Version="1.0.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.Json" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\AdvancedSharpAdbClient\AdvancedSharpAdbClient\AdvancedSharpAdbClient.csproj" />
     <ProjectReference Include="..\..\..\ModernWpf\ModernWpf.Controls\ModernWpf.Controls.csproj" />
-    <ProjectReference Include="..\..\..\ModernWpf\ModernWpf\ModernWpf.csproj" />
     <ProjectReference Include="..\AAPTForNet\AAPTForNet.csproj" />
   </ItemGroup>
 
@@ -89,389 +67,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.af-ZA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ar-SA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ca-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.cs-CZ.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.de-DE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.el-GR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.es-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.fi-FI.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.he-IL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.hu-HU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.it-IT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.nl-NL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.no-NO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.pl-PL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.pt-BR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.pt-PT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CapabilitiesInfoStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ro-RO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.sr-SP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.sv-SE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.tr-TR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.uk-UA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\CapabilitiesInfoControl\CapabilitiesInfoStrings.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.af-ZA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ar-SA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ca-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.cs-CZ.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.de-DE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.el-GR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.es-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.fi-FI.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.he-IL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.hu-HU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.it-IT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.nl-NL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.no-NO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.pl-PL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.pt-BR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.pt-PT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>InstallStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ro-RO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.sr-SP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.sv-SE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.tr-TR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.uk-UA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\InstallPage\InstallStrings.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.af-ZA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ar-SA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ca-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.cs-CZ.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.de-DE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.el-GR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.es-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.fi-FI.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.he-IL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.hu-HU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.it-IT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.nl-NL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.no-NO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.pl-PL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.pt-BR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.pt-PT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Permissions.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ro-RO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.sr-SP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.sv-SE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.tr-TR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.uk-UA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\Permissions\Permissions.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.af-ZA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ar-SA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ca-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.cs-CZ.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.da-DK.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.de-DE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.el-GR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.en-US.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.es-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.fi-FI.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.he-IL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.hu-HU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.it-IT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ja-JP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ko-KR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.nl-NL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.no-NO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.pl-PL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.pt-BR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.pt-PT.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SettingsStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ro-RO.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.ru-RU.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.sr-SP.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.sv-SE.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.tr-TR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.uk-UA.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.vi-VN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.zh-CN.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Strings\SettingsPage\SettingsStrings.zh-TW.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Update="256x256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="ADB\adb.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -481,21 +79,6 @@
     <None Update="ADB\AdbWinUsbApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Themes\Dark\Color.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\HighContrast\Color.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
 </Project>

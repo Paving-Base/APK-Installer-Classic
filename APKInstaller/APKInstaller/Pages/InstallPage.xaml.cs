@@ -25,18 +25,9 @@ namespace APKInstaller.Pages
 
             if (arguments.GetLength(0) > 1)
             {
-                if (arguments[1].EndsWith(".apk"))
+                if (arguments[1].EndsWith(".apk") || arguments[1].EndsWith(".apks") || arguments[1].EndsWith(".mapk") || arguments[1].EndsWith(".xapk"))
                 {
                     string filePathFormMainArgs = arguments[1];
-                    if (File.Exists(filePathFormMainArgs))
-                    {
-                        _path = filePathFormMainArgs;
-                        Provider = new InstallViewModel(_path, this);
-                    }
-                }
-                else if (arguments[1] == "-f" && arguments[2].EndsWith(".apk"))
-                {
-                    string filePathFormMainArgs = arguments[2];
                     if (File.Exists(filePathFormMainArgs))
                     {
                         _path = filePathFormMainArgs;
