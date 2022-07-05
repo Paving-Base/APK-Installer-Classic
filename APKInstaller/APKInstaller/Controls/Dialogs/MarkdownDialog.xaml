@@ -12,12 +12,12 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ScrollViewer x:Name="MarkdownScrollViewer" Visibility="{Binding IsInitialized, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <ui:ScrollViewerEx x:Name="MarkdownScrollViewer" Visibility="{Binding IsInitialized, Converter={StaticResource BooleanToVisibilityConverter}}">
             <TextBlock
                 x:Name="MarkdownText"
                 Background="Transparent"
                 Text="# Helper" />
-        </ScrollViewer>
+        </ui:ScrollViewerEx>
         <StackPanel
             x:Name="InitialLoadingUI"
             HorizontalAlignment="Center"

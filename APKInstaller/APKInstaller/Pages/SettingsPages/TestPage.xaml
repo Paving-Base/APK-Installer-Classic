@@ -13,7 +13,7 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ScrollViewer Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
+        <ui:ScrollViewerEx Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
             <StackPanel Margin="16">
                 <controls:SettingsGroup Margin="0,-8,0,0" Header="UI Test">
                     <controls:Setting
@@ -72,7 +72,7 @@
                     </Button>
                 </controls:SettingsGroup>
             </StackPanel>
-        </ScrollViewer>
+        </ui:ScrollViewerEx>
         <controls:TitleBar
             Title="Testings"
             BackRequested="TitleBar_BackRequested"
