@@ -1,11 +1,11 @@
 ﻿using AdvancedSharpAdbClient;
-using APKInstaller.Controls;
 using APKInstaller.Helpers;
 using APKInstaller.Models;
 using APKInstaller.Pages.SettingsPages;
 using APKInstaller.Properties;
 using APKInstaller.Strings.SettingsPage;
 using ModernWpf;
+using ModernWpf.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

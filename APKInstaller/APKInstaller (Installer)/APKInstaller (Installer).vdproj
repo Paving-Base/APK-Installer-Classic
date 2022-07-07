@@ -19,12 +19,6 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
-        "Entry"
-        {
-        "MsmKey" = "8:_C5BD7CEA3EE946B082E9AA04DA205D11"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
     }
     "Configurations"
     {
@@ -43,6 +37,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -59,6 +69,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -167,7 +193,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:APK Installer"
         "ProductCode" = "8:{B33F10F4-8DE2-49EA-B512-935405B11256}"
-        "PackageCode" = "8:{3829C9CE-0C73-4EFB-833A-386A47D64FC1}"
+        "PackageCode" = "8:{E5271985-7C0F-42B0-8A5A-44723C9A7864}"
         "UpgradeCode" = "8:{64601921-B43E-4574-9049-9C5CD4696582}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -565,15 +591,15 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3AF47251F8C743A7A9C77F97A04C3D87"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4E4372978B804E4BBAAC970190FB971F"
             {
             "Name" = "8:APK Installer"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:An Android Application Installer for Windows"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_C5BD7CEA3EE946B082E9AA04DA205D11"
+            "Target" = "8:_F2947762EFCB447EA2CA1CFBF8DF2D31"
             "Folder" = "8:_98FC94B722AF4EC795E840C94192E78F"
             "WorkingFolder" = "8:_56914851F5BC492F8C6585ABF07E6DFB"
             "Icon" = "8:_13623AEB913D45CAAA8CB32FD2298677"
@@ -978,9 +1004,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C5BD7CEA3EE946B082E9AA04DA205D11"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F2947762EFCB447EA2CA1CFBF8DF2D31"
             {
-            "SourcePath" = "8:..\\APKInstaller\\obj\\Release\\net6.0-windows10.0.22000.0\\apphost.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_56914851F5BC492F8C6585ABF07E6DFB"
@@ -1000,7 +1026,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
-            "OutputProjectGuid" = "8:{0A7BFE98-6530-430A-AE39-3294A40E8DE4}"
+            "OutputProjectGuid" = "8:{28AF21CF-378F-4B7F-AF5A-868AD1AFD829}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

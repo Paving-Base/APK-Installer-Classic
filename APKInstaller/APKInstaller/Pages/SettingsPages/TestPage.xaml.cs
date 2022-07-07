@@ -76,16 +76,24 @@ namespace APKInstaller.Pages.SettingsPages
             switch ((sender as ComboBox).SelectedItem as string)
             {
                 case "None":
-                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Auto);
+                    WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.None);
+                    WindowHelper.SetUseAcrylicBackdrop(UIHelper.MainWindow, false);
+                    WindowHelper.SetUseAeroBackdrop(UIHelper.MainWindow, false);
                     break;
                 case "Mica":
                     WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Mica);
+                    WindowHelper.SetUseAcrylicBackdrop(UIHelper.MainWindow, false);
+                    WindowHelper.SetUseAeroBackdrop(UIHelper.MainWindow, false);
                     break;
                 case "Tabbed":
                     WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Tabbed);
+                    WindowHelper.SetUseAcrylicBackdrop(UIHelper.MainWindow, false);
+                    WindowHelper.SetUseAeroBackdrop(UIHelper.MainWindow, false);
                     break;
                 case "Acrylic":
                     WindowHelper.SetSystemBackdropType(UIHelper.MainWindow, BackdropType.Acrylic);
+                    WindowHelper.SetUseAcrylicBackdrop(UIHelper.MainWindow, true);
+                    WindowHelper.SetUseAeroBackdrop(UIHelper.MainWindow, true);
                     break;
             }
         }

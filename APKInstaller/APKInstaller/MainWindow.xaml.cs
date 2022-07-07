@@ -2,7 +2,6 @@
 using APKInstaller.Helpers;
 using APKInstaller.Pages;
 using APKInstaller.Properties;
-using MicaWPF.Controls;
 using ModernWpf;
 using System;
 using System.Diagnostics;

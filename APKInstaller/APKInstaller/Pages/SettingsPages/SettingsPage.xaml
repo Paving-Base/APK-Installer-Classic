@@ -198,14 +198,14 @@
                             </ui:SimpleStackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    <controls:InfoBar
+                    <ui:InfoBar
                         x:Name="UpdateState"
                         Title="{Binding UpdateStateTitle}"
                         IsClosable="True"
                         IsOpen="{Binding UpdateStateIsOpen}"
                         Message="{Binding UpdateStateMessage}"
                         Severity="{Binding UpdateStateSeverity}">
-                        <controls:InfoBar.ActionButton>
+                        <ui:InfoBar.ActionButton>
                             <Button
                                 x:Name="GotoUpdate"
                                 HorizontalAlignment="Right"
@@ -213,8 +213,8 @@
                                 Content="{x:Static str:SettingsStrings.GoToUpdate_Content}"
                                 Tag="{Binding GotoUpdateTag}"
                                 Visibility="{Binding GotoUpdateVisibility}" />
-                        </controls:InfoBar.ActionButton>
-                    </controls:InfoBar>
+                        </ui:InfoBar.ActionButton>
+                    </ui:InfoBar>
                 </controls:SettingsGroup>
             </StackPanel>
         </ui:ScrollViewerEx>

@@ -13,26 +13,26 @@
                     <ui:ThemeResources.ThemeDictionaries>
                         <ResourceDictionary x:Key="Light" ui:ThemeDictionary.Key="Light">
                             <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Light/Color.xaml" />
+                                <ResourceDictionary Source="/APKInstaller;component/Themes/Light/Color.xaml" />
                             </ResourceDictionary.MergedDictionaries>
                         </ResourceDictionary>
 
                         <ResourceDictionary x:Key="Dark" ui:ThemeDictionary.Key="Dark">
                             <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/Dark/Color.xaml" />
+                                <ResourceDictionary Source="/APKInstaller;component/Themes/Dark/Color.xaml" />
                             </ResourceDictionary.MergedDictionaries>
                         </ResourceDictionary>
 
                         <ResourceDictionary x:Key="HighContrast" ui:ThemeDictionary.Key="HighContrast">
                             <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/HighContrast/Color.xaml" />
+                                <ResourceDictionary Source="/APKInstaller;component/Themes/HighContrast/Color.xaml" />
                             </ResourceDictionary.MergedDictionaries>
                         </ResourceDictionary>
                     </ui:ThemeResources.ThemeDictionaries>
                 </ui:ThemeResources>
                 <ui:XamlControlsResources />
                 <!--  Other merged dictionaries here  -->
-                <ResourceDictionary Source="pack://Application:,,,/APKInstaller;component/Themes/SettingsUI.xaml" />
+                <ResourceDictionary Source="/APKInstaller;component/Themes/SettingsUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
             <CornerRadius
@@ -54,7 +54,6 @@
             <converter:BoolNegationConverter x:Key="BoolNegationConverter" />
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converter:IsEqualToVisibilityConverter x:Key="IsEqualToVisibilityConverter" />
-            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush" Color="{DynamicResource SolidBackgroundFillColorBase}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
