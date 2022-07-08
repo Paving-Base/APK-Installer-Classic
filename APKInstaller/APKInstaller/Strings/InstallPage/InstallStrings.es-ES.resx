@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutADB" xml:space="preserve">
-    <value>ADB, el Puente de Depuración de Android, es necesario para que el Instalador de APK funcione. Clica "Descargar" para descargarlo. Al descargar, aceptas los Términos y Condiciones de Google para ADB. Si ya has descargado ADB, clica "Seleccionar" para seleccionarlo.</value>
+    <value>ADB, el Puente de Depuración de Android, es necesario para que APK Installer funcione. Clica "Descargar" para descargarlo. Al descargar, aceptas los Términos y Condiciones de Google para ADB. Si ya has descargado ADB, clica "Seleccionar" para seleccionarlo.</value>
   </data>
   <data name="ADBExist" xml:space="preserve">
     <value>ADB Existe</value>
@@ -178,10 +178,10 @@
     <value>¿Cómo conectar WSA?</value>
   </data>
   <data name="HowToConnectInfo" xml:space="preserve">
-    <value>1. Por favor asegúrate de que el Instalador de APK ha sido actualizado a la última versión
+    <value>1. Por favor asegúrate de que APK Installer ha sido actualizado a la última versión
 2. Asegúrate de que tienes el Subsistema Android instalado y ejecutando
 3. Activa el modo de desarrollador y asegúrate de que la dirección IP se muestra con éxito
-4. Reabre el Instador de APK y continúa tu instalación</value>
+4. Reabre APK Installer y continúa tu instalación</value>
   </data>
   <data name="IKnow" xml:space="preserve">
     <value>Lo Sé</value>
@@ -246,7 +246,7 @@
     <value>Paquete En Línea</value>
   </data>
   <data name="OpenAPK" xml:space="preserve">
-    <value>Abrir Archivo APK</value>
+    <value>Abrir archivo APK</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
     <value>Nombre del Paquete: {0}</value>
