@@ -130,7 +130,7 @@
     <value>¿Autodescargar Paquetes Online?</value>
   </data>
   <data name="Change.Content" xml:space="preserve">
-    <value>Change</value>
+    <value>Cambiar</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>Comprobación Fallida</value>
@@ -160,7 +160,7 @@
     <value>¿Cerrar el Instalador cuando esté Listo?</value>
   </data>
   <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
-    <value>Configs</value>
+    <value>Configuraciones</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
     <value>Conecta el dispositivo a la red.</value>
@@ -169,7 +169,7 @@
     <value>Conectar Dispositivo</value>
   </data>
   <data name="ContactMeSettings.Header" xml:space="preserve">
-    <value>Contact Me</value>
+    <value>Contactarme</value>
   </data>
   <data name="ContactMeTextBlock.Text" xml:space="preserve">
     <value>Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊!</value>
@@ -181,7 +181,7 @@
     <value>Dispositivo</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
-    <value>Supports</value>
+    <value>Soportes</value>
   </data>
   <data name="DonateTextBlock.Text" xml:space="preserve">
     <value>APK Installer is an open source application, and it won't be inserted any ads for profit. If you like this app, don't forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕.</value>
@@ -205,7 +205,7 @@
     <value>Ir a Actualizar</value>
   </data>
   <data name="Group.Content" xml:space="preserve">
-    <value>Join Our Chat</value>
+    <value>Únete a nuestro chat</value>
   </data>
   <data name="LastChecked.Text" xml:space="preserve">
     <value>Última Revisión: </value>
