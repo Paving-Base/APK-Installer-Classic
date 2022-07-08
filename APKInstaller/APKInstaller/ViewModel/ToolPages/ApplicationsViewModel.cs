@@ -2,6 +2,7 @@
 using AdvancedSharpAdbClient.DeviceCommands;
 using APKInstaller.Helpers;
 using APKInstaller.Pages.ToolPages;
+using ModernWpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,12 @@ namespace APKInstaller.ViewModel.ToolPages
 {
     internal class ApplicationsViewModel : INotifyPropertyChanged
     {
-        public ComboBox? DeviceComboBox;
-        public List<DeviceData>? devices;
+        public ComboBox DeviceComboBox;
+        public List<DeviceData> devices;
         private readonly ApplicationsPage _page;
 
-        private List<string>? deviceList = new List<string>();
-        public List<string>? DeviceList
+        private List<string> deviceList = new List<string>();
+        public List<string> DeviceList
         {
             get => deviceList;
             set
@@ -30,8 +31,8 @@ namespace APKInstaller.ViewModel.ToolPages
             }
         }
 
-        private List<APKInfo>? applications;
-        public List<APKInfo>? Applications
+        private List<APKInfo> applications;
+        public List<APKInfo> Applications
         {
             get => applications;
             set
@@ -41,9 +42,9 @@ namespace APKInstaller.ViewModel.ToolPages
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
+        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string name = null)
         {
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }
@@ -145,8 +146,8 @@ namespace APKInstaller.ViewModel.ToolPages
 
     internal class APKInfo
     {
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public bool IsActive { get; set; }
-        public VersionInfo? VersionInfo { get; set; }
+        public VersionInfo VersionInfo { get; set; }
     }
 }

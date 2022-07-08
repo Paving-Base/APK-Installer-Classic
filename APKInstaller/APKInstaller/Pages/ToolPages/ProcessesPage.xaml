@@ -17,9 +17,29 @@
         <toolpages:ProcesseConverter x:Key="TextConverter" />
     </ui:Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:TitleBar
+            x:Name="TitleBar"
+            Title="Processes"
+            BackRequested="TitleBar_BackRequested"
+            IsBackButtonVisible="True"
+            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
+            IsRefreshButtonVisible="True"
+            IsRefreshEnabled="True"
+            RefreshRequested="TitleBar_RefreshEvent">
+            <ComboBox
+                x:Name="DeviceComboBox"
+                VerticalAlignment="Center"
+                ui:ControlHelper.PlaceholderText="Waiting for Device..."
+                Loaded="ComboBox_Loaded"
+                SelectionChanged="ComboBox_SelectionChanged" />
+        </controls:TitleBar>
         <DataGrid
             x:Name="DataGrid"
-            Margin="{x:Static helper:UIHelper.StackPanelMargin}"
+            Grid.Row="1"
             AutoGenerateColumns="False"
             CanUserReorderColumns="True"
             CanUserResizeColumns="True"
@@ -34,20 +54,5 @@
                 <DataGridTextColumn Binding="{Binding Name}" Header="Detail" />
             </DataGrid.Columns>
         </DataGrid>
-        <controls:TitleBar
-            x:Name="TitleBar"
-            Title="Processes"
-            BackRequested="TitleBar_BackRequested"
-            BackgroundVisibility="Collapsed"
-            RefreshButtonVisibility="Visible"
-            RefreshEvent="TitleBar_RefreshEvent">
-            <controls:TitleBar.RightAreaContent>
-                <ComboBox
-                    VerticalAlignment="Center"
-                    ui:ControlHelper.PlaceholderText="Waiting for Device..."
-                    Loaded="ComboBox_Loaded"
-                    SelectionChanged="ComboBox_SelectionChanged" />
-            </controls:TitleBar.RightAreaContent>
-        </controls:TitleBar>
     </Grid>
 </ui:Page>

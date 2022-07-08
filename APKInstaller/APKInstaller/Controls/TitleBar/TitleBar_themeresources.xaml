@@ -1,0 +1,127 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="http://schemas.modernwpf.com/2019">
+    <ResourceDictionary.MergedDictionaries>
+        <ui:ThemeResources>
+            <ui:ThemeResources.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/ModernWpf;component/ThemeResources/Dark.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                    <StaticResource x:Key="TitleBarForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="TitleBarDeactivatedForegroundBrush" ResourceKey="TextFillColorTertiaryBrush" />
+
+                    <!--  These colors cannot have an alpha channel, so they are hardcoded opaque versions of TextFill colors  -->
+                    <Color x:Key="TitleBarButtonForegroundColor">#FFFFFF</Color>
+                    <!--  TextFillColorPrimary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonHoverForegroundColor">#FFFFFF</Color>
+                    <!--  TextFillColorPrimary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonPressedForegroundColor">#CFCFCF</Color>
+                    <!--  TextFillColorSecondary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonInactiveForegroundColor">#717171</Color>
+                    <!--  TextFillColorTertiary over SolidBackgroundFillColorBase  -->
+
+                    <StaticResource x:Key="TitleBarBackgroudColor" ResourceKey="SolidBackgroundFillColorBase" />
+                    <StaticResource x:Key="TitleBarButtonBackgroundColor" ResourceKey="SubtleFillColorTransparent" />
+                    <StaticResource x:Key="TitleBarButtonHoverBackgroundColor" ResourceKey="SubtleFillColorSecondary" />
+                    <StaticResource x:Key="TitleBarButtonPressedBackgroundColor" ResourceKey="SubtleFillColorTertiary" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/ModernWpf;component/ThemeResources/Light.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                    <StaticResource x:Key="TitleBarForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="TitleBarDeactivatedForegroundBrush" ResourceKey="TextFillColorTertiaryBrush" />
+
+                    <!--  These colors cannot have an alpha channel, so they are hardcoded opaque versions of TextFill colors  -->
+                    <Color x:Key="TitleBarButtonForegroundColor">#191919</Color>
+                    <!--  TextFillColorPrimary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonHoverForegroundColor">#191919</Color>
+                    <!--  TextFillColorPrimary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonPressedForegroundColor">#606060</Color>
+                    <!--  TextFillColorSecondary over SolidBackgroundFillColorBase  -->
+                    <Color x:Key="TitleBarButtonInactiveForegroundColor">#9b9b9b</Color>
+                    <!--  TextFillColorTertiary over SolidBackgroundFillColorBase  -->
+
+                    <StaticResource x:Key="TitleBarBackgroudColor" ResourceKey="SolidBackgroundFillColorBase" />
+                    <StaticResource x:Key="TitleBarButtonBackgroundColor" ResourceKey="SubtleFillColorTransparent" />
+                    <StaticResource x:Key="TitleBarButtonHoverBackgroundColor" ResourceKey="SubtleFillColorSecondary" />
+                    <StaticResource x:Key="TitleBarButtonPressedBackgroundColor" ResourceKey="SubtleFillColorTertiary" />
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="HighContrast">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/ModernWpf;component/ThemeResources/HighContrast.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                    <StaticResource x:Key="TitleBarForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+                    <StaticResource x:Key="TitleBarDeactivatedForegroundBrush" ResourceKey="TextFillColorTertiaryBrush" />
+
+                    <StaticResource x:Key="TitleBarButtonForegroundColor" ResourceKey="TextFillColorPrimary" />
+                    <StaticResource x:Key="TitleBarButtonHoverForegroundColor" ResourceKey="TextFillColorPrimary" />
+                    <StaticResource x:Key="TitleBarButtonPressedForegroundColor" ResourceKey="TextFillColorSecondary" />
+                    <StaticResource x:Key="TitleBarButtonInactiveForegroundColor" ResourceKey="TextFillColorTertiary" />
+
+                    <StaticResource x:Key="TitleBarBackgroudColor" ResourceKey="SolidBackgroundFillColorBase" />
+                    <StaticResource x:Key="TitleBarButtonBackgroundColor" ResourceKey="SubtleFillColorTransparent" />
+                    <StaticResource x:Key="TitleBarButtonHoverBackgroundColor" ResourceKey="SubtleFillColorSecondary" />
+                    <StaticResource x:Key="TitleBarButtonPressedBackgroundColor" ResourceKey="SubtleFillColorTertiary" />
+                </ResourceDictionary>
+            </ui:ThemeResources.ThemeDictionaries>
+        </ui:ThemeResources>
+    </ResourceDictionary.MergedDictionaries>
+
+    <sys:Double x:Key="TitleBarCompactHeight">32</sys:Double>
+    <sys:Double x:Key="TitleBarExpandedHeight">48</sys:Double>
+
+    <Style x:Key="TitleBarIconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource NavigationViewBackButtonBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForegroundChecked}" />
+        <Setter Property="FontFamily" Value="{DynamicResource SymbolThemeFontFamily}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="MaxHeight" Value="{DynamicResource NavigationBackButtonHeight}" />
+        <Setter Property="Width" Value="{DynamicResource NavigationBackButtonWidth}" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ui:FocusVisualHelper.UseSystemFocusVisuals" Value="{DynamicResource UseSystemFocusVisuals}" />
+        <Setter Property="Margin" Value="4,2" />
+        <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        x:Name="RootGrid"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding ui:ControlHelper.CornerRadius}">
+                        <ui:FontIcon
+                            x:Name="Content"
+                            Width="16"
+                            Height="16"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Glyph="{TemplateBinding Content}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RootGrid" Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPointerOver}" />
+                            <Setter TargetName="Content" Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPointerOver}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="RootGrid" Property="Background" Value="{DynamicResource NavigationViewButtonBackgroundPressed}" />
+                            <Setter TargetName="Content" Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundPressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Content" Property="Foreground" Value="{DynamicResource NavigationViewButtonForegroundDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

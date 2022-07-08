@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolpages="clr-namespace:APKInstaller.ViewModel.ToolPages"
     xmlns:ui="http://schemas.modernwpf.com/2019"
@@ -17,9 +16,29 @@
         <toolpages:ApplicationConverter x:Key="ApplicationConverter" />
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:TitleBar
+            x:Name="TitleBar"
+            Title="Applications"
+            BackRequested="TitleBar_BackRequested"
+            IsBackButtonVisible="True"
+            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
+            IsRefreshButtonVisible="True"
+            IsRefreshEnabled="True"
+            RefreshRequested="TitleBar_RefreshEvent">
+            <ComboBox
+                x:Name="DeviceComboBox"
+                VerticalAlignment="Center"
+                ui:ControlHelper.PlaceholderText="Waiting for Device..."
+                Loaded="ComboBox_Loaded"
+                SelectionChanged="ComboBox_SelectionChanged" />
+        </controls:TitleBar>
         <ui:ListView
             x:Name="ListView"
-            Margin="{x:Static helper:UIHelper.ScrollViewerMargin}"
+            Grid.Row="1"
             Padding="16,16,16,0"
             IsSelectionEnabled="False"
             ItemsSource="{Binding Applications}">
@@ -110,20 +129,5 @@
                 </DataTemplate>
             </ui:ListView.ItemTemplate>
         </ui:ListView>
-        <controls:TitleBar
-            x:Name="TitleBar"
-            Title="Applications"
-            BackRequested="TitleBar_BackRequested"
-            BackgroundVisibility="Collapsed"
-            RefreshButtonVisibility="Visible"
-            RefreshEvent="TitleBar_RefreshEvent">
-            <controls:TitleBar.RightAreaContent>
-                <ComboBox
-                    VerticalAlignment="Center"
-                    ui:ControlHelper.PlaceholderText="Waiting for Device..."
-                    Loaded="ComboBox_Loaded"
-                    SelectionChanged="ComboBox_SelectionChanged" />
-            </controls:TitleBar.RightAreaContent>
-        </controls:TitleBar>
     </Grid>
 </ui:Page>

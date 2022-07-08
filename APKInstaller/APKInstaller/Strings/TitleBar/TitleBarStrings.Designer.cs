@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace APKInstaller.Strings.Permissions {
+namespace APKInstaller.Strings.TitleBar {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace APKInstaller.Strings.Permissions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Permissions {
+    public class TitleBarStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Permissions() {
+        internal TitleBarStrings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace APKInstaller.Strings.Permissions {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("APKInstaller.Strings.Permissions.Permissions", typeof(Permissions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("APKInstaller.Strings.TitleBar.TitleBarStrings", typeof(TitleBarStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,33 @@ namespace APKInstaller.Strings.Permissions {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Settings 的本地化字符串。
+        /// </summary>
+        public static string AboutButton_Tag {
+            get {
+                return ResourceManager.GetString("AboutButton.Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Back 的本地化字符串。
+        /// </summary>
+        public static string BackButton_Tag {
+            get {
+                return ResourceManager.GetString("BackButton.Tag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Refresh 的本地化字符串。
+        /// </summary>
+        public static string RefreshButton_Tag {
+            get {
+                return ResourceManager.GetString("RefreshButton.Tag", resourceCulture);
             }
         }
     }

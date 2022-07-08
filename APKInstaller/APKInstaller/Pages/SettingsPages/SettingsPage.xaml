@@ -16,7 +16,17 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ui:ScrollViewerEx Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:TitleBar
+            x:Name="TitleBar"
+            Title="{x:Static str:SettingsStrings.TitleBar_Title}"
+            BackRequested="TitleBar_BackRequested"
+            IsBackButtonVisible="True"
+            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}" />
+        <ui:ScrollViewerEx Grid.Row="1">
             <StackPanel Margin="16">
                 <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
                     <ui:ListView
@@ -58,12 +68,12 @@
                             <controls:Setting
                                 Description="{x:Static str:SettingsStrings.ConnectDevice_Description}"
                                 Header="{x:Static str:SettingsStrings.ConnectDevice_Header}"
-                                Style="{StaticResource ExpanderContentSettingStyle}">
+                                Style="{DynamicResource ExpanderContentSettingStyle}">
                                 <controls:Setting.ActionContent>
                                     <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
                                         <TextBox
                                             x:Name="ConnectIP"
-                                            MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                            MinWidth="{DynamicResource SettingActionControlMinWidth}"
                                             ui:ControlHelper.PlaceholderText="127.0.0.1:58526" />
                                         <Button
                                             Width="40"
@@ -71,7 +81,7 @@
                                             Background="Transparent"
                                             Click="Button_Click"
                                             Content="&#xE71B;"
-                                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                            FontFamily="{DynamicResource SymbolThemeFontFamily}"
                                             Tag="Connect" />
                                     </ui:SimpleStackPanel>
                                 </controls:Setting.ActionContent>
@@ -85,7 +95,7 @@
                         Header="{x:Static str:SettingsStrings.ShowDialogsSettings_Header}"
                         Icon="&#xE82F;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding ShowDialogs, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                            <ui:ToggleSwitch IsOn="{Binding ShowDialogs, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
@@ -101,7 +111,7 @@
                         Header="{x:Static str:SettingsStrings.CloseAPPSettings_Header}"
                         Icon="&#xEDAE;">
                         <controls:Setting.ActionContent>
-                            <ui:ToggleSwitch IsOn="{Binding IsCloseAPP, Mode=TwoWay}" Style="{StaticResource ToggleSwitchSettingStyle}" />
+                            <ui:ToggleSwitch IsOn="{Binding IsCloseAPP, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
@@ -113,8 +123,26 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.OthersSettingsHeader_Header}">
-                    <controls:Setting Header="{x:Static str:SettingsStrings.ResetSettings_Header}" Icon="&#xE777;">
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ConfigsSettingsHeader_Header}">
+                    <controls:Setting Header="{x:Static str:SettingsStrings.ADBPathSettings_Header}" Icon="&#xE8B7;">
+                        <controls:Setting.Description>
+                            <ui:HyperlinkButton
+                                Margin="0,0,2,0"
+                                Click="HyperlinkButton_Click"
+                                Content="{Binding ADBPath}"
+                                Tag="ADBPath" />
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <Button
+                                Click="Button_Click"
+                                Content="{x:Static str:SettingsStrings.Change_Content}"
+                                Tag="ADBPath" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting
+                        Description="{x:Static str:SettingsStrings.ResetSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.ResetSettings_Header}"
+                        Icon="&#xE777;">
                         <controls:Setting.ActionContent>
                             <Button Name="Reset" Content="{x:Static str:SettingsStrings.ResetSettingsButton_Content}">
                                 <ui:FlyoutService.Flyout>
@@ -134,24 +162,12 @@
                             </Button>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                    <Button
-                        x:Name="GoToTestPage"
-                        Click="Button_Click"
-                        Style="{DynamicResource SettingButtonStyle}"
-                        Tag="TestPage">
-                        <Button.Content>
-                            <controls:Setting
-                                Header="{x:Static str:SettingsStrings.GoToTestPage_Header}"
-                                Icon="&#xEC7A;"
-                                Style="{DynamicResource ButtonContentSettingStyle}" />
-                        </Button.Content>
-                    </Button>
                 </controls:SettingsGroup>
                 <controls:SettingsGroup Header="{x:Static str:SettingsStrings.AboutSettingsHeader_Header}">
                     <controls:Setting Header="{Binding VersionTextBlockText}" Icon="&#xE117;">
                         <controls:Setting.Description>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Style="{StaticResource SecondaryTextStyle}">
+                                <TextBlock Style="{DynamicResource SecondaryTextStyle}" TextWrapping="Wrap">
                                     <Run Text="{x:Static str:SettingsStrings.LastChecked_Text}" />
                                     <Run Text="{Binding UpdateDate, Mode=OneWay}" />
                                 </TextBlock>
@@ -159,16 +175,19 @@
                                     <ui:HyperlinkButton
                                         Margin="0,0,2,0"
                                         Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
-                                        Cursor="Hand"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/issues" />
                                     <ui:HyperlinkButton
-                                        Margin="2,0,2,0"
+                                        Margin="2,0"
+                                        Content="{x:Static str:SettingsStrings.TranslateLink_Content}"
+                                        NavigateUri="https://crowdin.com/project/APKInstaller" />
+                                    <ui:HyperlinkButton
+                                        Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/releases/latest" />
                                     <ui:HyperlinkButton
                                         Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.EULA_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/blob/main/Privacy.md" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/blob/main/Privacy.md" />
                                 </StackPanel>
                             </StackPanel>
                         </controls:Setting.Description>
@@ -180,7 +199,6 @@
                                 <ui:ProgressRing
                                     Width="24"
                                     Height="24"
-                                    IsActive="True"
                                     Visibility="{Binding CheckingUpdate, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 <TextBlock
                                     VerticalAlignment="Center"
@@ -215,13 +233,83 @@
                                 Visibility="{Binding GotoUpdateVisibility}" />
                         </ui:InfoBar.ActionButton>
                     </ui:InfoBar>
+                    <controls:Setting Header="{x:Static str:SettingsStrings.ContactMeSettings_Header}" Icon="&#xE779;">
+                        <controls:Setting.Description>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock
+                                    Style="{DynamicResource SecondaryTextStyle}"
+                                    Text="{x:Static str:SettingsStrings.ContactMeTextBlock_Text}"
+                                    TextWrapping="Wrap" />
+                                <StackPanel Margin="0,2,0,0" Orientation="Horizontal">
+                                    <ui:HyperlinkButton
+                                        Margin="0,0,2,0"
+                                        Content="Github"
+                                        NavigateUri="https://github.com/wherewhere" />
+                                    <ui:HyperlinkButton
+                                        Margin="2,0"
+                                        Content="Coolapk"
+                                        NavigateUri="http://www.coolapk.com/u/536381" />
+                                    <ui:HyperlinkButton
+                                        Margin="2,0"
+                                        Content="Twitter"
+                                        NavigateUri="https://twitter.com/wherewhere7" />
+                                    <ui:HyperlinkButton
+                                        Margin="2,0"
+                                        Content="Bilibili"
+                                        NavigateUri="https://space.bilibili.com/266112738" />
+                                </StackPanel>
+                            </StackPanel>
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <Button
+                                Click="Button_Click"
+                                Content="{x:Static str:SettingsStrings.Group_Content}"
+                                Tag="Group" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting Header="{x:Static str:SettingsStrings.DonateSettings_Header}" Icon="&#xEB51;">
+                        <controls:Setting.Description>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock
+                                    Style="{DynamicResource SecondaryTextStyle}"
+                                    Text="{x:Static str:SettingsStrings.DonateTextBlock_Text}"
+                                    TextWrapping="Wrap" />
+                                <StackPanel Orientation="Horizontal">
+                                    <ui:HyperlinkButton
+                                        Margin="0,0,2,0"
+                                        Content="爱发电"
+                                        NavigateUri="http://afdian.net/@wherewhere" />
+                                    <ui:HyperlinkButton
+                                        Margin="2,0"
+                                        Content="Patreon"
+                                        NavigateUri="https://patreon.com/wherewhere" />
+                                </StackPanel>
+                            </StackPanel>
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <Button
+                                Click="Button_Click"
+                                Content="{x:Static str:SettingsStrings.Rate_Content}"
+                                Tag="Rate" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingsGroup>
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.OthersSettingsHeader_Header}">
+                    <Button
+                        x:Name="GoToTestPage"
+                        Click="Button_Click"
+                        Style="{DynamicResource SettingButtonStyle}"
+                        Tag="TestPage">
+                        <Button.Content>
+                            <controls:Setting
+                                Description="{x:Static str:SettingsStrings.GoToTestPage_Description}"
+                                Header="{x:Static str:SettingsStrings.GoToTestPage_Header}"
+                                Icon="&#xEC7A;"
+                                Style="{DynamicResource ButtonContentSettingStyle}" />
+                        </Button.Content>
+                    </Button>
                 </controls:SettingsGroup>
             </StackPanel>
         </ui:ScrollViewerEx>
-        <controls:TitleBar
-            x:Name="TitleBar"
-            Title="{x:Static str:SettingsStrings.TitleBar_Title}"
-            BackRequested="TitleBar_BackRequested"
-            BackgroundVisibility="Collapsed" />
     </Grid>
 </ui:Page>

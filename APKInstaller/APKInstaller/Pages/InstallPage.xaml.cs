@@ -13,45 +13,58 @@ namespace APKInstaller.Pages
     /// </summary>
     public partial class InstallPage : Page
     {
-        internal InstallViewModel? Provider;
+        private bool IsCaches;
+        internal InstallViewModel Provider;
 
         public InstallPage() => InitializeComponent();
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string _path = string.Empty;
-            string[] arguments = Environment.GetCommandLineArgs();
-
-            if (arguments.GetLength(0) > 1)
+            if (InstallViewModel.Caches != null)
             {
-                if (arguments[1].EndsWith(".apk") || arguments[1].EndsWith(".apks") || arguments[1].EndsWith(".mapk") || arguments[1].EndsWith(".xapk"))
+                IsCaches = true;
+                Provider = InstallViewModel.Caches;
+            }
+            else
+            {
+                IsCaches = false;
+                string _path = string.Empty;
+                string[] arguments = Environment.GetCommandLineArgs();
+
+                if (arguments.GetLength(0) > 1)
                 {
-                    string filePathFormMainArgs = arguments[1];
-                    if (File.Exists(filePathFormMainArgs))
+                    if (arguments[1].EndsWith(".apk") || arguments[1].EndsWith(".apks") || arguments[1].EndsWith(".mapk") || arguments[1].EndsWith(".xapk"))
                     {
-                        _path = filePathFormMainArgs;
-                        Provider = new InstallViewModel(_path, this);
+                        string filePathFormMainArgs = arguments[1];
+                        if (File.Exists(filePathFormMainArgs))
+                        {
+                            _path = filePathFormMainArgs;
+                            Provider = new InstallViewModel(_path, this);
+                        }
+                    }
+                    else if (arguments[1].Contains(":?source=") || arguments[1].Contains("://"))
+                    {
+                        Provider = new InstallViewModel(new Uri(arguments[1]), this);
                     }
                 }
-                else if (arguments[1].Contains(":?source=") || arguments[1].Contains("://"))
-                {
-                    Provider = new InstallViewModel(new Uri(arguments[1]), this);
-                }
-            }
 
-            Provider ??= new InstallViewModel(_path, this);
+                Provider ??= new InstallViewModel(_path, this);
+            }
             DataContext = Provider;
 
             //ModernWpf.MessageBox.Show(string.Join('\n', arguments), "Arguments", MessageBoxButton.OK);
-
-            await Provider?.Refresh();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
             Provider?.Dispose();
+        }
+
+        private async void InitialLoadingUI_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Provider.Refresh(!IsCaches);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

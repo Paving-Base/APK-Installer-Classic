@@ -14,8 +14,8 @@ namespace APKInstaller.ViewModel.ToolPages
 {
     public class ProcessesViewModel : INotifyPropertyChanged
     {
-        public ComboBox? DeviceComboBox;
-        public List<DeviceData>? devices;
+        public ComboBox DeviceComboBox;
+        public List<DeviceData> devices;
         private readonly ProcessesPage _page;
 
         private List<string> deviceList = new List<string>();
@@ -29,8 +29,8 @@ namespace APKInstaller.ViewModel.ToolPages
             }
         }
 
-        private IEnumerable<AndroidProcess>? processes;
-        public IEnumerable<AndroidProcess>? Processes
+        private IEnumerable<AndroidProcess> processes;
+        public IEnumerable<AndroidProcess> Processes
         {
             get => processes;
             set
@@ -40,9 +40,9 @@ namespace APKInstaller.ViewModel.ToolPages
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
+        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string name = null)
         {
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }

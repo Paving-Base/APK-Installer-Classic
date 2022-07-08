@@ -10,9 +10,11 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Windows.Storage;
 using Windows.System;
 using ListView = ModernWpf.Controls.ListView;
 using Page = ModernWpf.Controls.Page;
+using TitleBar = APKInstaller.Controls.TitleBar;
 
 namespace APKInstaller.Pages.SettingsPages
 {
@@ -21,38 +23,71 @@ namespace APKInstaller.Pages.SettingsPages
     /// </summary>
     public partial class SettingsPage : Page
     {
-        internal SettingsViewModel? Provider;
+        internal SettingsViewModel Provider;
 
         public SettingsPage() => InitializeComponent();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            Provider = new SettingsViewModel(this);
+            if (SettingsViewModel.Caches != null)
+            {
+                Provider = SettingsViewModel.Caches;
+                if (AdbServer.Instance.GetStatus().IsRunning)
+                {
+                    Provider.DeviceList = new AdvancedAdbClient().GetDevices();
+                }
+            }
+            else
+            {
+                Provider = new SettingsViewModel(this);
+                if (SettingsViewModel.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
+                if (AdbServer.Instance.GetStatus().IsRunning)
+                {
+                    ADBHelper.Monitor.DeviceChanged += Provider.OnDeviceChanged;
+                    Provider.DeviceList = new AdvancedAdbClient().GetDevices();
+                }
+            }
             DataContext = Provider;
             //#if DEBUG
             GoToTestPage.Visibility = Visibility.Visible;
             //#endif
-            if (SettingsViewModel.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
-            ADBHelper.Monitor.DeviceChanged += Provider.OnDeviceChanged;
-            Provider.DeviceList = new AdvancedAdbClient().GetDevices();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            ADBHelper.Monitor.DeviceChanged -= Provider.OnDeviceChanged;
+            if (AdbServer.Instance.GetStatus().IsRunning) { ADBHelper.Monitor.DeviceChanged -= Provider.OnDeviceChanged; }
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as FrameworkElement).Tag as string)
             {
+                case "Rate":
+                    _ = Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9P2JFQ43FPPG"));
+                    break;
+                case "Group":
+                    _ = Launcher.LaunchUriAsync(new Uri("https://t.me/PavingBase"));
+                    break;
+                case "Reset":
+                    ApplicationData.Current.LocalSettings.Values.Clear();
+                    SettingsHelper.SetDefaultSettings();
+                    if (FlyoutService.GetFlyout(Reset) is Flyout flyout_reset)
+                    {
+                        flyout_reset.Hide();
+                    }
+                    _ = Frame.Navigate(typeof(SettingsPage));
+                    Frame.GoBack();
+                    break;
+                case "ADBPath":
+                    Provider?.ChangeADBPath();
+                    break;
                 case "Connect":
                     if (!string.IsNullOrEmpty(ConnectIP.Text))
                     {
                         new AdvancedAdbClient().Connect(ConnectIP.Text);
-                        Provider.OnDeviceChanged(null, null);
+                        Provider?.OnDeviceChanged(null, null);
                     }
                     break;
                 case "TestPage":
@@ -66,7 +101,7 @@ namespace APKInstaller.Pages.SettingsPages
             }
         }
 
-        private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
+        private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             if (Frame.CanGoBack)
             {
@@ -88,6 +123,19 @@ namespace APKInstaller.Pages.SettingsPages
                     Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
                     Settings.Default.Save();
                 }
+            }
+        }
+
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch ((sender as FrameworkElement).Tag as string)
+            {
+                case "ADBPath":
+                    _ = await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Provider.ADBPath[..Provider.ADBPath.LastIndexOf(@"\")]));
+                    break;
+                case "LogFolder":
+                    _ = await Launcher.LaunchFolderAsync(await ApplicationData.Current.LocalFolder.CreateFolderAsync("MetroLogs", CreationCollisionOption.OpenIfExists));
+                    break;
             }
         }
 

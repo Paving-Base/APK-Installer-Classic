@@ -6,37 +6,31 @@
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:local="clr-namespace:APKInstaller.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.TitleBar"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="MainPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <ui:Page.Resources>
+        <ResourceDictionary Source="/Controls/TitleBar/TitleBar_themeresources.xaml" />
+    </ui:Page.Resources>
     <Grid>
         <Button
             x:Name="AboutButton"
             Width="{x:Static helper:UIHelper.TitleBarHeight}"
             Height="{x:Static helper:UIHelper.TitleBarHeight}"
+            Margin="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="2"
             Canvas.ZIndex="1"
             Click="Button_Click"
+            Content="&#xE713;"
             IsTabStop="True"
+            Style="{DynamicResource TitleBarIconButtonStyle}"
+            ToolTip="{x:Static str:TitleBarStrings.AboutButton_Tag}"
             Visibility="{Binding CanGoBack, ElementName=CoreAppFrame, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}"
-            WindowChrome.IsHitTestVisibleInChrome="True">
-            <StackPanel>
-                <TextBlock
-                    Margin="-10"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="Segoe MDL2 Assets"
-                    FontSize="18"
-                    Foreground="Transparent"
-                    Text="" />
-            </StackPanel>
-        </Button>
+            WindowChrome.IsHitTestVisibleInChrome="True" />
         <ui:Frame x:Name="CoreAppFrame" Background="Transparent" />
     </Grid>
 </ui:Page>

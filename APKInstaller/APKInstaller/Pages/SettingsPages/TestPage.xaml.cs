@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using Page = ModernWpf.Controls.Page;
+using TitleBar = APKInstaller.Controls.TitleBar;
 
 namespace APKInstaller.Pages.SettingsPages
 {
@@ -14,9 +15,9 @@ namespace APKInstaller.Pages.SettingsPages
     /// </summary>
     public partial class TestPage : Page, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
+        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string name = null)
         {
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }
@@ -44,7 +45,7 @@ namespace APKInstaller.Pages.SettingsPages
             }
         }
 
-        private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
+        private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             if (Frame.CanGoBack)
             {

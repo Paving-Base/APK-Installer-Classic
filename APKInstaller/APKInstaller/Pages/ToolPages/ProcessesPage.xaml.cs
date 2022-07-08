@@ -2,12 +2,14 @@
 using AdvancedSharpAdbClient.DeviceCommands;
 using APKInstaller.Helpers;
 using APKInstaller.ViewModel.ToolPages;
+using ModernWpf;
 using ModernWpf.Controls;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Page = ModernWpf.Controls.Page;
+using TitleBar = APKInstaller.Controls.TitleBar;
 
 namespace APKInstaller.Pages.ToolPages
 {
@@ -16,7 +18,7 @@ namespace APKInstaller.Pages.ToolPages
     /// </summary>
     public partial class ProcessesPage : Page
     {
-        private ProcessesViewModel? Provider;
+        private ProcessesViewModel Provider;
 
         public ProcessesPage() => InitializeComponent();
 
@@ -36,7 +38,7 @@ namespace APKInstaller.Pages.ToolPages
 
         private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => Provider?.GetDevices());
 
-        private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
+        private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             if (Frame.CanGoBack)
             {
@@ -50,7 +52,7 @@ namespace APKInstaller.Pages.ToolPages
             Provider.Processes = DeviceExtensions.ListProcesses(client, Provider?.devices[(sender as ComboBox).SelectedIndex]);
         }
 
-        private void TitleBar_RefreshEvent(object sender, RoutedEventArgs e)
+        private void TitleBar_RefreshEvent(TitleBar sender, object args)
         {
             TitleBar.ShowProgressRing();
             Provider?.GetDevices();

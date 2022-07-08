@@ -13,7 +13,18 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <ui:ScrollViewerEx Margin="{x:Static helper:UIHelper.ScrollViewerMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <controls:TitleBar
+            x:Name="TitleBar"
+            Title="Testings"
+            BackRequested="TitleBar_BackRequested"
+            IsBackButtonVisible="True"
+            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
+            IsRefreshEnabled="True" />
+        <ui:ScrollViewerEx Grid.Row="1">
             <StackPanel Margin="16">
                 <controls:SettingsGroup Margin="0,-8,0,0" Header="UI Test">
                     <controls:Setting
@@ -73,9 +84,5 @@
                 </controls:SettingsGroup>
             </StackPanel>
         </ui:ScrollViewerEx>
-        <controls:TitleBar
-            Title="Testings"
-            BackRequested="TitleBar_BackRequested"
-            BackgroundVisibility="Collapsed" />
     </Grid>
 </ui:Page>

@@ -14,7 +14,7 @@
         x:Name="Root"
         Margin="-10"
         Padding="10"
-        BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}">
+        BorderBrush="{DynamicResource SystemControlBackgroundAccentBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -47,7 +47,7 @@
                 BorderThickness="0"
                 Click="MoreButton_Click"
                 Content="{x:Static str:CapabilitiesInfoStrings.More}"
-                Foreground="{StaticResource SystemControlBackgroundAccentBrush}"
+                Foreground="{DynamicResource SystemControlBackgroundAccentBrush}"
                 TabIndex="4" />
         </Grid>
     </Border>

@@ -374,6 +374,7 @@
             Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            Loaded="InitialLoadingUI_Loaded"
             Visibility="{Binding IsInitialized, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
             <ui:ProgressRing
                 x:Name="WaitProgressRing"

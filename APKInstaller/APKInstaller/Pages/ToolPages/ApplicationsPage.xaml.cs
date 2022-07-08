@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using Page = ModernWpf.Controls.Page;
+using TitleBar = APKInstaller.Controls.TitleBar;
 
 namespace APKInstaller.Pages.ToolPages
 {
@@ -19,11 +20,11 @@ namespace APKInstaller.Pages.ToolPages
     /// </summary>
     public partial class ApplicationsPage : Page
     {
-        private ApplicationsViewModel? Provider;
+        private ApplicationsViewModel Provider;
 
         public ApplicationsPage() => InitializeComponent();
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             Provider = new ApplicationsViewModel(this);
@@ -39,7 +40,7 @@ namespace APKInstaller.Pages.ToolPages
 
         private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => Provider.GetDevices());
 
-        private void TitleBar_BackRequested(object sender, RoutedEventArgs e)
+        private void TitleBar_BackRequested(TitleBar sender, object args)
         {
             if (Frame.CanGoBack)
             {
@@ -56,7 +57,7 @@ namespace APKInstaller.Pages.ToolPages
             TitleBar.HideProgressRing();
         }
 
-        private async void TitleBar_RefreshEvent(object sender, RoutedEventArgs e) => await Provider.Refresh();
+        private async void TitleBar_RefreshEvent(TitleBar sender, object args) => await Provider.Refresh();
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {

@@ -14,6 +14,9 @@ using System.Resources;
 using System.Text.Json;
 using System.Windows;
 using Windows.ApplicationModel;
+using Windows.Storage.Pickers;
+using Windows.Storage;
+using Microsoft.Win32;
 
 namespace APKInstaller.ViewModel.SettingsPages
 {
@@ -22,8 +25,10 @@ namespace APKInstaller.ViewModel.SettingsPages
         private readonly SettingsPage _page;
         private readonly ResourceManager _loader = new ResourceManager(typeof(SettingsStrings));
 
-        private IEnumerable<DeviceData>? _deviceList;
-        public IEnumerable<DeviceData>? DeviceList
+        public static SettingsViewModel Caches;
+
+        private IEnumerable<DeviceData> _deviceList;
+        public IEnumerable<DeviceData> DeviceList
         {
             get => _deviceList;
             set
@@ -103,6 +108,24 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
+        public string ADBPath
+        {
+            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
+            set
+            {
+                if (PackagedAppHelper.IsPackagedApp)
+                {
+                    SettingsHelper.Set(SettingsHelper.ShowDialogs, value);
+                }
+                else
+                {
+                    Settings.Default.ADBPath = value;
+                    Settings.Default.Save();
+                }
+                RaisePropertyChangedEvent();
+            }
+        }
+
         public static DateTime UpdateDate
         {
             get => PackagedAppHelper.IsPackagedApp ? JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate)) : Settings.Default.UpdateDate;
@@ -148,8 +171,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string? _gotoUpdateTag;
-        public string? GotoUpdateTag
+        private string _gotoUpdateTag;
+        public string GotoUpdateTag
         {
             get => _gotoUpdateTag;
             set
@@ -181,8 +204,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string? _updateStateMessage;
-        public string? UpdateStateMessage
+        private string _updateStateMessage;
+        public string UpdateStateMessage
         {
             get => _updateStateMessage;
             set
@@ -203,8 +226,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private string? _updateStateTitle;
-        public string? UpdateStateTitle
+        private string _updateStateTitle;
+        public string UpdateStateTitle
         {
             get => _updateStateTitle;
             set
@@ -214,9 +237,9 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string? name = null)
+        private void RaisePropertyChangedEvent([System.Runtime.CompilerServices.CallerMemberName] string name = null)
         {
             if (name != null) { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name)); }
         }
@@ -231,7 +254,11 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        public SettingsViewModel(SettingsPage Page) => _page = Page;
+        public SettingsViewModel(SettingsPage Page)
+        {
+            _page = Page;
+            Caches = this;
+        }
 
         public void OnDeviceChanged(object sender, DeviceDataEventArgs e)
         {
@@ -244,7 +271,7 @@ namespace APKInstaller.ViewModel.SettingsPages
         public async void CheckUpdate()
         {
             CheckingUpdate = true;
-            UpdateInfo? info = null;
+            UpdateInfo info = null;
             try
             {
                 info = await UpdateHelper.CheckUpdateAsync("Paving-Base", "APK-Installer-Classic");
@@ -283,7 +310,7 @@ namespace APKInstaller.ViewModel.SettingsPages
         public void ChooseDevice()
         {
             string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
-            DeviceData? device = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
+            DeviceData device = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
             if (device == null) { return; }
             foreach (DeviceData data in DeviceList)
             {
@@ -292,6 +319,23 @@ namespace APKInstaller.ViewModel.SettingsPages
                     _page.SelectDeviceBox.SelectedItem = data;
                     break;
                 }
+            }
+        }
+
+        public void ChangeADBPath()
+        {
+            OpenFileDialog FileOpen = new OpenFileDialog();
+            FileOpen.Filter = ".exe|*.exe";
+            FileOpen.Title = _loader.GetString("ChooseADB");
+            if (FileOpen.ShowDialog() == false)
+            {
+                return;
+            }
+
+            string file = FileOpen.FileName;
+            if (!string.IsNullOrEmpty(file))
+            {
+                ADBPath = file;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using AdvancedSharpAdbClient;
 using APKInstaller.Pages;
 using APKInstaller.Strings.Permissions;
+using ModernWpf;
 using ModernWpf.Media.Animation;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace APKInstaller.Helpers
     internal static partial class UIHelper
     {
         public static bool HasTitleBar => false;
-        public static double TitleBarHeight => 28;
+        public static double TitleBarHeight => 32;
+        public static double PageTitlePadding => HasTitleBar ? 0 : TitleBarHeight;
         public static double PageTitleHeight => HasTitleBar ? 48 : 48 + TitleBarHeight;
         public static Thickness StackPanelMargin => new Thickness(0, PageTitleHeight, 0, 0);
         public static Thickness ScrollViewerMargin => new Thickness(0, PageTitleHeight, 0, 0);
@@ -32,10 +34,10 @@ namespace APKInstaller.Helpers
 
     internal static partial class UIHelper
     {
-        public static MainPage? MainPage;
-        public static MainWindow? MainWindow;
+        public static MainPage MainPage;
+        public static MainWindow MainWindow;
 
-        public static void Navigate(Type pageType, NavigationTransitionInfo TransitionInfo, object? e = null)
+        public static void Navigate(Type pageType, NavigationTransitionInfo TransitionInfo, object e = null)
         {
             DispatcherHelper.RunOnMainThread(() =>
             {
@@ -100,9 +102,9 @@ namespace APKInstaller.Helpers
             return (double)(lists.ToList().IndexOf(list) + 1) * 100 / lists.Count();
         }
 
-        public static Uri? ValidateAndGetUri(this string uriString)
+        public static Uri ValidateAndGetUri(this string uriString)
         {
-            Uri? uri = null;
+            Uri uri = null;
             try
             {
                 uri = new Uri(uriString.Contains("://") ? uriString : uriString.Contains("//") ? uriString.Replace("//", "://") : $"http://{uriString}");

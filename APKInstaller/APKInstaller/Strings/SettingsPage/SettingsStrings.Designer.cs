@@ -70,6 +70,15 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 ADB Path 的本地化字符串。
+        /// </summary>
+        public static string ADBPathSettings_Header {
+            get {
+                return ResourceManager.GetString("ADBPathSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Auto download when package is from URL. 的本地化字符串。
         /// </summary>
         public static string AutoGetNetAPKSettings_Description {
@@ -84,6 +93,15 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string AutoGetNetAPKSettings_Header {
             get {
                 return ResourceManager.GetString("AutoGetNetAPKSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Change 的本地化字符串。
+        /// </summary>
+        public static string Change_Content {
+            get {
+                return ResourceManager.GetString("Change.Content", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string CheckUpdates_Content {
             get {
                 return ResourceManager.GetString("CheckUpdates.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Choose ADB 的本地化字符串。
+        /// </summary>
+        public static string ChooseADB {
+            get {
+                return ResourceManager.GetString("ChooseADB", resourceCulture);
             }
         }
         
@@ -160,6 +187,15 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Configs 的本地化字符串。
+        /// </summary>
+        public static string ConfigsSettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("ConfigsSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Connect device on network. 的本地化字符串。
         /// </summary>
         public static string ConnectDevice_Description {
@@ -178,6 +214,24 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Contact Me 的本地化字符串。
+        /// </summary>
+        public static string ContactMeSettings_Header {
+            get {
+                return ResourceManager.GetString("ContactMeSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊! 的本地化字符串。
+        /// </summary>
+        public static string ContactMeTextBlock_Text {
+            get {
+                return ResourceManager.GetString("ContactMeTextBlock.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Content 的本地化字符串。
         /// </summary>
         public static string ContentSettingsHeader_Header {
@@ -192,6 +246,24 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string DeviceSettingsHeader_Header {
             get {
                 return ResourceManager.GetString("DeviceSettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Supports 的本地化字符串。
+        /// </summary>
+        public static string DonateSettings_Header {
+            get {
+                return ResourceManager.GetString("DonateSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 APK Installer is an open source application, and it won&apos;t be inserted any ads for profit. If you like this app, don&apos;t forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕. 的本地化字符串。
+        /// </summary>
+        public static string DonateTextBlock_Text {
+            get {
+                return ResourceManager.GetString("DonateTextBlock.Text", resourceCulture);
             }
         }
         
@@ -223,6 +295,15 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Go to the page of test. 的本地化字符串。
+        /// </summary>
+        public static string GoToTestPage_Description {
+            get {
+                return ResourceManager.GetString("GoToTestPage.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Go to TestPage 的本地化字符串。
         /// </summary>
         public static string GoToTestPage_Header {
@@ -237,6 +318,15 @@ namespace APKInstaller.Strings.SettingsPage {
         public static string GoToUpdate_Content {
             get {
                 return ResourceManager.GetString("GoToUpdate.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Join Our Chat 的本地化字符串。
+        /// </summary>
+        public static string Group_Content {
+            get {
+                return ResourceManager.GetString("Group.Content", resourceCulture);
             }
         }
         
@@ -277,11 +367,29 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Rate On Store 的本地化字符串。
+        /// </summary>
+        public static string Rate_Content {
+            get {
+                return ResourceManager.GetString("Rate.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Release notes 的本地化字符串。
         /// </summary>
         public static string ReleaseNotes_Content {
             get {
                 return ResourceManager.GetString("ReleaseNotes.Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Reset settings of this application. 的本地化字符串。
+        /// </summary>
+        public static string ResetSettings_Description {
+            get {
+                return ResourceManager.GetString("ResetSettings.Description", resourceCulture);
             }
         }
         
@@ -349,11 +457,38 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Show Announcements on the top of Settings. 的本地化字符串。
+        /// </summary>
+        public static string ShowMessagesSettings_Description {
+            get {
+                return ResourceManager.GetString("ShowMessagesSettings.Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Is Show Announcements? 的本地化字符串。
+        /// </summary>
+        public static string ShowMessagesSettings_Header {
+            get {
+                return ResourceManager.GetString("ShowMessagesSettings.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Settings 的本地化字符串。
         /// </summary>
         public static string TitleBar_Title {
             get {
                 return ResourceManager.GetString("TitleBar.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Translate 的本地化字符串。
+        /// </summary>
+        public static string TranslateLink_Content {
+            get {
+                return ResourceManager.GetString("TranslateLink.Content", resourceCulture);
             }
         }
         
