@@ -127,7 +127,7 @@
     <value>Autodescargar cuando el paquete viene de URL.</value>
   </data>
   <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
-    <value>¿Autodescargar Paquetes Online?</value>
+    <value>¿Autodescargar paquetes online?</value>
   </data>
   <data name="Change.Content" xml:space="preserve">
     <value>Cambiar</value>
@@ -154,7 +154,7 @@
     <value>¿Cerrar ADB cuando se esté Cerrando el Instalador?</value>
   </data>
   <data name="CloseAPPSettings.Description" xml:space="preserve">
-    <value>Cerrar el Instalador después de que la APK haya sido instalada y ejecutar.</value>
+    <value>Cerrar el instalador después de que la APK haya sido instalada y ejecutar.</value>
   </data>
   <data name="CloseAPPSettings.Header" xml:space="preserve">
     <value>¿Cerrar el Instalador cuando esté Listo?</value>
@@ -172,7 +172,7 @@
     <value>Contactarme</value>
   </data>
   <data name="ContactMeTextBlock.Text" xml:space="preserve">
-    <value>Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊!</value>
+    <value>Sígueme en las redes sociales para los últimos desarrollos. Si encuentras algún error, por favor notifícamelo en PM. Intentaré todo lo que pueda para solucionar el problema. Si tienes una cuenta de Telegram, ¡bienvenido para chatear en Paving Base Group 😊!</value>
   </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
     <value>Contenido</value>
@@ -184,7 +184,7 @@
     <value>Soportes</value>
   </data>
   <data name="DonateTextBlock.Text" xml:space="preserve">
-    <value>APK Installer is an open source application, and it won't be inserted any ads for profit. If you like this app, don't forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕.</value>
+    <value>APK Installer es una aplicación de código abierto y no se insertarán anuncios para beneficio. Si te gusta esta aplicación, no te olvides de calificarla en la tienda. Por supuesto, lo mejor sería si pudieses donar un poco. Gracias por tu apoyo 💕.</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
     <value>EULA</value>
