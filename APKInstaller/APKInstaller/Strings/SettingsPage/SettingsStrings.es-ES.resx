@@ -121,7 +121,7 @@
     <value>Acerca de</value>
   </data>
   <data name="ADBPathSettings.Header" xml:space="preserve">
-    <value>ADB Path</value>
+    <value>Ruta ADB</value>
   </data>
   <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
     <value>Autodescargar cuando el paquete viene de URL.</value>
@@ -196,7 +196,7 @@
     <value>Encontrar Actualización</value>
   </data>
   <data name="GoToTestPage.Description" xml:space="preserve">
-    <value>Go to the page of test.</value>
+    <value>Ir a la página de test.</value>
   </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
     <value>Ir a la Página Test</value>
@@ -220,13 +220,13 @@
     <value>Otros</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
-    <value>Rate On Store</value>
+    <value>Valorar en la tienda</value>
   </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
     <value>Notas de la versión</value>
   </data>
   <data name="ResetSettings.Description" xml:space="preserve">
-    <value>Reset settings of this application.</value>
+    <value>Reiniciar los ajustes de esta aplicación.</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
     <value>Reiniciar aplicación</value>
@@ -250,16 +250,16 @@
     <value>¿Mostrar ayudantes?</value>
   </data>
   <data name="ShowMessagesSettings.Description" xml:space="preserve">
-    <value>Show Announcements on the top of Settings.</value>
+    <value>Mostrar los anuncios arriba de los ajustes.</value>
   </data>
   <data name="ShowMessagesSettings.Header" xml:space="preserve">
-    <value>Is Show Announcements?</value>
+    <value>¿Mostrar anuncios?</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
     <value>Ajustes</value>
   </data>
   <data name="TranslateLink.Content" xml:space="preserve">
-    <value>Translate</value>
+    <value>Traducir</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
     <value>Versión</value>
