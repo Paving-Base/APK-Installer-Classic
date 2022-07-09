@@ -1,12 +1,15 @@
 ﻿using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.DeviceCommands;
+using APKInstaller.Controls;
 using APKInstaller.Helpers;
 using APKInstaller.Pages.ToolPages;
+using ModernWpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -14,6 +17,7 @@ namespace APKInstaller.ViewModel.ToolPages
 {
     public class ProcessesViewModel : INotifyPropertyChanged
     {
+        public TitleBar TitleBar;
         public ComboBox DeviceComboBox;
         public List<DeviceData> devices;
         private readonly ProcessesPage _page;
@@ -52,47 +56,66 @@ namespace APKInstaller.ViewModel.ToolPages
             _page = page;
         }
 
-        public void GetDevices()
+        public async Task GetDevices()
         {
-            _page.TitleBar.ShowProgressRing();
-            devices = new AdvancedAdbClient().GetDevices();
-            DeviceList.Clear();
-            if (devices.Count > 0)
+            await Task.Run(async () =>
             {
-                foreach (DeviceData device in devices)
+                _page?.RunOnUIThread(TitleBar.ShowProgressRing);
+                devices = new AdvancedAdbClient().GetDevices();
+                await _page?.ExecuteOnUIThreadAsync(DeviceList.Clear);
+                if (devices.Count > 0)
                 {
-                    if (!string.IsNullOrEmpty(device.Name))
+                    foreach (DeviceData device in devices)
                     {
-                        DeviceList.Add(device.Name);
+                        if (!string.IsNullOrEmpty(device.Name))
+                        {
+                            await _page?.ExecuteOnUIThreadAsync(() => DeviceList.Add(device.Name));
+                        }
+                        else if (!string.IsNullOrEmpty(device.Model))
+                        {
+                            await _page?.ExecuteOnUIThreadAsync(() => DeviceList.Add(device.Model));
+                        }
+                        else if (!string.IsNullOrEmpty(device.Product))
+                        {
+                            await _page?.ExecuteOnUIThreadAsync(() => DeviceList.Add(device.Product));
+                        }
+                        else if (!string.IsNullOrEmpty(device.Serial))
+                        {
+                            await _page?.ExecuteOnUIThreadAsync(() => DeviceList.Add(device.Serial));
+                        }
+                        else
+                        {
+                            await _page?.ExecuteOnUIThreadAsync(() => DeviceList.Add("Device"));
+                        }
                     }
-                    else if (!string.IsNullOrEmpty(device.Model))
+                    await _page?.ExecuteOnUIThreadAsync(() =>
                     {
-                        DeviceList.Add(device.Model);
-                    }
-                    else if (!string.IsNullOrEmpty(device.Product))
-                    {
-                        DeviceList.Add(device.Product);
-                    }
-                    else if (!string.IsNullOrEmpty(device.Serial))
-                    {
-                        DeviceList.Add(device.Serial);
-                    }
-                    else
-                    {
-                        DeviceList.Add("Device");
-                    }
+                        DeviceComboBox.ItemsSource = DeviceList;
+                        if (DeviceComboBox.SelectedIndex == -1)
+                        {
+                            DeviceComboBox.SelectedIndex = 0;
+                        }
+                    });
                 }
-                DeviceComboBox.ItemsSource = DeviceList;
-                if (DeviceComboBox.SelectedIndex == -1)
+                else if (Processes != null)
                 {
-                    DeviceComboBox.SelectedIndex = 0;
+                    await _page?.ExecuteOnUIThreadAsync(() => Processes = null);
                 }
-            }
-            else if (Processes != null)
+                _page?.RunOnUIThread(TitleBar.HideProgressRing);
+            });
+        }
+
+        public async Task GetProcess()
+        {
+            await Task.Run(async () =>
             {
-                Processes = null;
-            }
-            _page.TitleBar.HideProgressRing();
+                _page?.RunOnUIThread(TitleBar.ShowProgressRing);
+                AdvancedAdbClient client = new();
+                DeviceData device = await _page?.ExecuteOnUIThreadAsync(() => { return devices[DeviceComboBox.SelectedIndex]; });
+                IEnumerable<AndroidProcess> list = DeviceExtensions.ListProcesses(client, device);
+                await _page?.ExecuteOnUIThreadAsync(() => Processes = list);
+                _page?.RunOnUIThread(TitleBar.HideProgressRing);
+            });
         }
     }
 

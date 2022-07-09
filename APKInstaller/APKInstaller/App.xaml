@@ -35,24 +35,9 @@
                 <ResourceDictionary Source="/APKInstaller;component/Themes/SettingsUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->
-            <CornerRadius
-                x:Key="ControlCornerRadius"
-                BottomLeft="4"
-                BottomRight="4"
-                TopLeft="4"
-                TopRight="4" />
-            <Style
-                x:Key="IconButtonStyle"
-                BasedOn="{StaticResource DefaultButtonStyle}"
-                TargetType="Button">
-                <Setter Property="Width" Value="40" />
-                <Setter Property="Height" Value="40" />
-                <Setter Property="Padding" Value="0" />
-                <Setter Property="Background" Value="Transparent" />
-                <Setter Property="BorderBrush" Value="Transparent" />
-            </Style>
             <converter:BoolNegationConverter x:Key="BoolNegationConverter" />
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converter:StringVisibilityConverter x:Key="StringVisibilityConverter" />
             <converter:IsEqualToVisibilityConverter x:Key="IsEqualToVisibilityConverter" />
         </ResourceDictionary>
     </Application.Resources>

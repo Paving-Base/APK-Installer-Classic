@@ -51,30 +51,24 @@
                 <DataTemplate>
                     <controls:Setting
                         Header="{Binding Name}"
+                        Icon="{Binding Icon}"
                         Loaded="Setting_Loaded"
                         Style="{DynamicResource ListViewItemContentSettingStyle}">
-                        <controls:Setting.Icon>
-                            <Grid>
-                                <ui:FontIcon
-                                    x:Name="IsActive"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                    Foreground="{DynamicResource SystemFillColorSuccessBrush}"
-                                    Glyph="&#xF5B0;"
-                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                <ui:FontIcon
-                                    x:Name="NotActive"
-                                    FontFamily="{DynamicResource SymbolThemeFontFamily}"
-                                    Foreground="{DynamicResource SystemFillColorCriticalBrush}"
-                                    Glyph="&#xE73B;"
-                                    Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}" />
-                            </Grid>
-                        </controls:Setting.Icon>
                         <controls:Setting.Description>
-                            <TextBlock>
-                                <Run Text="{Binding VersionInfo.VersionName}" />
-                                <Run Foreground="{DynamicResource CardPrimaryForegroundBrush}" Text=" | " />
-                                <Run Text="{Binding IsActive, Converter={StaticResource ApplicationConverter}, ConverterParameter='State'}" />
-                            </TextBlock>
+                            <Grid>
+                                <TextBlock x:Name="InfoText" Visibility="{Binding PackageName, Converter={StaticResource StringVisibilityConverter}}">
+                                    <Run Text="{Binding VersionInfo.VersionName}" />
+                                    <Run Foreground="{DynamicResource CardPrimaryForegroundBrush}" Text=" | " />
+                                    <Run Text="{Binding PackageName}" />
+                                    <Run Foreground="{DynamicResource CardPrimaryForegroundBrush}" Text=" | " />
+                                    <Run Text="{Binding IsActive, Converter={StaticResource ApplicationConverter}, ConverterParameter='State'}" />
+                                </TextBlock>
+                                <TextBlock x:Name="InfoTextWithoutName" Visibility="{Binding PackageName, Converter={StaticResource StringVisibilityConverter}, ConverterParameter='true'}">
+                                    <Run Text="{Binding VersionInfo.VersionName}" />
+                                    <Run Foreground="{DynamicResource CardPrimaryForegroundBrush}" Text=" | " />
+                                    <Run Text="{Binding IsActive, Converter={StaticResource ApplicationConverter}, ConverterParameter='State'}" />
+                                </TextBlock>
+                            </Grid>
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
                             <Button

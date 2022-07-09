@@ -27,6 +27,7 @@ namespace APKInstaller.Pages.ToolPages
             base.OnNavigatedTo(e);
             Provider = new ProcessesViewModel(this);
             DataContext = Provider;
+            Provider.TitleBar = TitleBar;
             ADBHelper.Monitor.DeviceChanged += OnDeviceChanged;
         }
 
@@ -36,7 +37,7 @@ namespace APKInstaller.Pages.ToolPages
             ADBHelper.Monitor.DeviceChanged -= OnDeviceChanged;
         }
 
-        private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => Provider?.GetDevices());
+        private void OnDeviceChanged(object sender, DeviceDataEventArgs e) => this.RunOnUIThread(() => _ = Provider?.GetDevices());
 
         private void TitleBar_BackRequested(TitleBar sender, object args)
         {
@@ -48,25 +49,18 @@ namespace APKInstaller.Pages.ToolPages
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AdvancedAdbClient client = new AdvancedAdbClient();
-            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider?.devices[(sender as ComboBox).SelectedIndex]);
+            _ = Provider.GetProcess();
         }
 
         private void TitleBar_RefreshEvent(TitleBar sender, object args)
         {
-            TitleBar.ShowProgressRing();
-            Provider?.GetDevices();
-            TitleBar.ShowProgressRing();
-            if (Provider?.devices == null) { return; }
-            AdvancedAdbClient client = new AdvancedAdbClient();
-            Provider.Processes = DeviceExtensions.ListProcesses(client, Provider?.devices[Provider.DeviceComboBox.SelectedIndex]);
-            TitleBar.HideProgressRing();
+            _ = Provider.GetDevices().ContinueWith((Task) => _ = Provider.GetProcess());
         }
 
-        private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             Provider.DeviceComboBox = sender as ComboBox;
-            await Task.Run(() => this.RunOnUIThread(() => Provider?.GetDevices()));
+            _ = Provider.GetDevices();
         }
     }
 }

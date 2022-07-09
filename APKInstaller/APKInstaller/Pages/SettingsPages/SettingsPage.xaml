@@ -31,7 +31,7 @@
                 <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
                     <ui:ListView
                         x:Name="SelectDeviceBox"
-                        Margin="0,0,0,-10"
+                        Margin="-3,0,-3,-4"
                         HorizontalContentAlignment="Stretch"
                         IsSelectionEnabled="{Binding IsOnlyWSA, Converter={StaticResource BoolNegationConverter}}"
                         ItemsSource="{Binding DeviceList, Mode=OneWay}"

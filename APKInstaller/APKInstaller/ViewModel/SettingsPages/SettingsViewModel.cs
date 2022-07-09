@@ -54,6 +54,7 @@ namespace APKInstaller.ViewModel.SettingsPages
                     Settings.Default.Save();
                 }
                 if (!value) { ChooseDevice(); }
+                RaisePropertyChangedEvent();
             }
         }
 
