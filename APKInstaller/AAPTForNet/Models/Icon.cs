@@ -7,7 +7,6 @@ namespace AAPTForNet.Models
 {
     public class Icon
     {
-
         private const int hdpiWidth = 72;
         public const string DefaultName = "ic_launcher.png";
 
@@ -67,7 +66,7 @@ namespace AAPTForNet.Models
         internal Icon(string iconName)
         {
             IconName = iconName ?? string.Empty;
-            RealPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "256x256.png");
+            RealPath = @"\Assets\256x256.png";
         }
 
         public override string ToString() => IconName;

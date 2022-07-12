@@ -20,7 +20,7 @@ namespace AAPTForNet
             XmlTree = 2,
         }
 
-        private static readonly string AppPath = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+        private static readonly string AppPath = AppDomain.CurrentDomain.BaseDirectory;
 #if NET5_0_OR_GREATER && !NETCOREAPP
         private static readonly string TempPath = Path.Combine(Path.GetTempPath(), @"APKInstaller\Caches", $"{Environment.ProcessId}", "AppPackages");
 #else

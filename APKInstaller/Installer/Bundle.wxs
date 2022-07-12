@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define Version="0.1.3" ?>
+<?define RepoDir="$(var.ProjectDir)..\..\" ?>
+<?define Icon="$(var.ProjectDir)..\APKInstaller\favicon.ico" ?>
+<Wix
+	xmlns="http://schemas.microsoft.com/wix/2006/wi"
+    xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+    xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+	<Bundle
+		Name="APK Installer $(var.Version)"
+		Version="$(var.Version)"
+		Manufacturer="wherewhere"
+		IconSourceFile="$(var.Icon)"
+		UpgradeCode="007605cc-93cc-4293-90f2-14a44aa902ba">
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" >
+            <bal:WixStandardBootstrapperApplication 
+              LicenseFile="$(var.ProjectDir)\License.rtf "
+              LogoFile="$(var.ProjectDir)\Images\logo44.png"
+              SuppressOptionsUI="no"
+              SuppressRepair="yes" />
+        </BootstrapperApplicationRef>
+
+		<!-- Only install/upgrade if the version is greater or equal than the currently installed version of PowerToys, to handle the case in which PowerToys was installed from old MSI (before WiX bootstrapper was used) -->
+		<!-- If the previous installation is a bundle installation, just let WiX run its logic. -->
+		<Variable Name="DetectedPowerToysVersion" Type="version" Value="0.0.0.0"/>
+		<Variable Name="TargetPowerToysVersion" Type="version" Value="$(var.Version)"/>
+		<util:ProductSearch Id="SearchInstalledPowerToysVersion" Variable="DetectedPowerToysVersion" UpgradeCode="fce45e18-9dec-44d0-9f5c-5b7c4aa2f2cc" Result="version" />
+		<bal:Condition Message="A later version of APK Installer is already installed." >TargetPowerToysVersion &gt;= DetectedPowerToysVersion OR WixBundleInstalled</bal:Condition>
+
+		<Variable Name="DetectedWindowsBuildNumber" Type="version" Value="0"/>
+		<util:RegistrySearch Id="SearchWindowsBuildNumber" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Value="CurrentBuildNumber" Result="value" Format="raw" Variable="DetectedWindowsBuildNumber" />
+		<bal:Condition Message="This application is only supported on Windows Vista SP2 (build 6002) or higher.">DetectedWindowsBuildNumber &gt;= 6002 OR WixBundleInstalled</bal:Condition>
+
+
+		<Chain>
+			<!-- TODO: Define the list of chained packages. -->
+			<MsiPackage
+				Compressed="yes"
+				SourceFile="$(var.APKInstaller.Installer.TargetPath)"/>
+		</Chain>
+	</Bundle>
+</Wix>

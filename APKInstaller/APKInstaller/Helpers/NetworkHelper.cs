@@ -12,7 +12,7 @@ namespace APKInstaller.Helpers
         /// <summary>
         /// Event raised when the network changes.
         /// </summary>
-        public event EventHandler? NetworkChanged;
+        public event EventHandler NetworkChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkHelper"/> class.

@@ -17,7 +17,7 @@ namespace APKInstaller.Helpers
         private const string KKPP_API = "https://v2.kkpp.cc/repos/{0}/{1}/releases/latest";
         private const string GITHUB_API = "https://api.github.com/repos/{0}/{1}/releases/latest";
 
-        public static async Task<UpdateInfo?> CheckUpdateAsync(string username, string repository, PackageVersion currentVersion)
+        public static async Task<UpdateInfo> CheckUpdateAsync(string username, string repository, PackageVersion currentVersion)
         {
             if (string.IsNullOrEmpty(username))
             {
@@ -41,7 +41,7 @@ namespace APKInstaller.Helpers
                 response.EnsureSuccessStatusCode();
             }
             string responseBody = await response.Content.ReadAsStringAsync();
-            UpdateInfo? result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
+            UpdateInfo result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
 
             if (result != null)
             {
@@ -79,7 +79,7 @@ namespace APKInstaller.Helpers
             return null;
         }
 
-        public static async Task<UpdateInfo?> CheckUpdateAsync(string username, string repository, Version? currentVersion)
+        public static async Task<UpdateInfo> CheckUpdateAsync(string username, string repository, Version currentVersion)
         {
             if (string.IsNullOrEmpty(username))
             {
@@ -102,7 +102,7 @@ namespace APKInstaller.Helpers
                 response = await client.GetAsync(url);
             }
             string responseBody = await response.Content.ReadAsStringAsync();
-            UpdateInfo? result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
+            UpdateInfo result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
 
             if (result != null)
             {
@@ -135,7 +135,7 @@ namespace APKInstaller.Helpers
             return null;
         }
 
-        public static async Task<UpdateInfo?> CheckUpdateAsync(string username, string repository)
+        public static async Task<UpdateInfo> CheckUpdateAsync(string username, string repository)
         {
             if (PackagedAppHelper.IsPackagedApp)
             {

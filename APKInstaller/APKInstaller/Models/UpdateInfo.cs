@@ -7,11 +7,11 @@ namespace APKInstaller.Models
     public class UpdateInfo
     {
         [JsonPropertyName("url")]
-        public string? ApiUrl { get; set; }
+        public string ApiUrl { get; set; }
         [JsonPropertyName("html_url")]
-        public string? ReleaseUrl { get; set; }
+        public string ReleaseUrl { get; set; }
         [JsonPropertyName("tag_name")]
-        public string? TagName { get; set; }
+        public string TagName { get; set; }
         [JsonPropertyName("prerelease")]
         public bool IsPreRelease { get; set; }
         [JsonPropertyName("created_at")]
@@ -19,9 +19,9 @@ namespace APKInstaller.Models
         [JsonPropertyName("published_at")]
         public DateTime PublishedAt { get; set; }
         [JsonPropertyName("assets")]
-        public List<Asset>? Assets { get; set; }
+        public List<Asset> Assets { get; set; }
         [JsonPropertyName("body")]
-        public string? Changelog { get; set; }
+        public string Changelog { get; set; }
         public bool IsExistNewVersion { get; set; }
     }
 
@@ -30,6 +30,6 @@ namespace APKInstaller.Models
         [JsonPropertyName("size")]
         public int Size { get; set; }
         [JsonPropertyName("browser_download_url")]
-        public string? Url { get; set; }
+        public string Url { get; set; }
     }
 }

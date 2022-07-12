@@ -22,7 +22,7 @@ namespace APKInstaller.Models
 
         public bool Equals(SystemVersionInfo other) => Major == other.Major && Minor == other.Minor && Build == other.Build && Revision == other.Revision;
 
-        public override bool Equals(object? obj) => obj is SystemVersionInfo other && Equals(other);
+        public override bool Equals(object obj) => obj is SystemVersionInfo other && Equals(other);
 
         public override int GetHashCode() => Major.GetHashCode() ^ Minor.GetHashCode() ^ Build.GetHashCode() ^ Revision.GetHashCode();
 

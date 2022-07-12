@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define Version="0.1.3" ?>
+<?define NFXVersion="net4.8" ?>
+<?define RepoDir="$(var.ProjectDir)..\..\" ?>
+<?define BinDir="$(var.ProjectDir)..\APKInstaller\bin\$(var.Configuration)\$(var.NFXVersion)\" ?>
+<Wix
+	xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<Product
+		Id="*"
+		Name="APK Installer"
+		Language="1033"
+		Version="$(var.Version)"
+		Manufacturer="wherewhere"
+		UpgradeCode="fce45e18-9dec-44d0-9f5c-5b7c4aa2f2cc">
+		<Package
+			InstallerVersion="200"
+			Compressed="yes"
+			InstallScope="perMachine"
+			InstallPrivileges="elevated"
+			Keywords="android,installer,apk,wsa"
+			Description="An Android Application Installer for Windows" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<Upgrade Id="fce45e18-9dec-44d0-9f5c-5b7c4aa2f2cc">
+			<UpgradeVersion
+				Minimum="0.0.0"
+				Maximum="$(var.Version)"
+				Property="PREVIOUSVERSIONSINSTALLED"
+				IncludeMinimum="yes"
+				IncludeMaximum="no" />
+		</Upgrade>
+
+		<MediaTemplate EmbedCab="yes" />
+
+		<Property Id="REINSTALLMODE" Value="amus" />
+		<Property Id="WINDOWSBUILDNUMBER" Secure="yes">
+			<RegistrySearch Id="BuildNumberSearch" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw" />
+		</Property>
+		<Condition Message="This application is only supported on Windows Vista SP2 (build 6002) or higher.">
+			<![CDATA[(WINDOWSBUILDNUMBER >= 6002)]]>
+		</Condition>
+
+		<Icon
+			Id="apkinstaller.exe"
+			SourceFile="$(var.ProjectDir)..\APKInstaller\favicon.ico" />
+		<Property
+			Id="ARPPRODUCTICON"
+			Value="APKInstaller.exe" />
+		<Feature
+			Id="ProductFeature"
+			Title="APKInstaller.Installer"
+			Level="1">
+			<ComponentGroupRef Id="CoreComponents" />
+		</Feature>
+		<SetProperty
+			Id="ARPINSTALLLOCATION"
+			Value="[INSTALLFOLDER]"
+			After="CostFinalize" />
+	</Product>
+
+	<Fragment>
+		<Directory
+			Id="TARGETDIR"
+			Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory
+					Id="INSTALLFOLDER"
+					Name="APK Installer Classic">
+					<Directory
+						Id="ADBFolder"
+						Name="ADB" />
+					<Directory
+						Id="AssetsFolder"
+						Name="Assets" />
+					<Directory
+						Id="ToolFolder"
+						Name="tool" />
+				</Directory>
+			</Directory>
+			
+			<Directory Id="ProgramMenuFolder" />
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<DirectoryRef
+			Id="INSTALLFOLDER"
+			FileSource="$(var.BinDir)">
+			<Component Id="apkinstaller_exe">
+				<File
+					Id="APKInstaller.exe"
+					KeyPath="yes"
+					Checksum="yes" />
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\.apk">
+					<RegistryValue
+						Type="string"
+						Value="wherewhere.APKInstaller.0" />
+				</RegistryKey>
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\.apks">
+					<RegistryValue
+						Type="string"
+						Value="wherewhere.APKInstaller.0" />
+				</RegistryKey>
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\.mapk">
+					<RegistryValue
+						Type="string"
+						Value="wherewhere.APKInstaller.0" />
+				</RegistryKey>
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\.xapk">
+					<RegistryValue
+						Type="string"
+						Value="wherewhere.APKInstaller.0" />
+				</RegistryKey>
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\apkinstaller">
+					<RegistryValue
+						Type="string"
+						Name="URL Protocol"
+						Value="APK Installer" />
+					<RegistryValue
+						Type="string"
+						Value="URL:APK Installer custom URI protocol" />
+					<RegistryKey
+						Key="DefaultIcon">
+						<RegistryValue
+							Type="string"
+							Value="[INSTALLFOLDER]Assets\logo256.ico" />
+					</RegistryKey>
+					<RegistryKey Key="shell\open\command">
+						<RegistryValue
+							Type="string"
+							Value="&quot;[INSTALLFOLDER]APKInstaller.exe&quot; &quot;%1&quot;" />
+					</RegistryKey>
+				</RegistryKey>
+				<RegistryKey
+					Root="HKLM"
+					Key="Software\Classes\wherewhere.APKInstaller.0">
+					<RegistryValue
+						Type="string"
+						Name="FriendlyTypeName"
+						Value="APK File" />
+					<RegistryValue
+						Type="string"
+						Value="APK Installer" />
+					<RegistryKey
+						Key="DefaultIcon">
+						<RegistryValue
+							Type="string"
+							Value="[INSTALLFOLDER]Assets\logo256.ico" />
+					</RegistryKey>
+					<RegistryKey Key="shell\open\command">
+						<RegistryValue
+							Type="string"
+							Value="&quot;[INSTALLFOLDER]APKInstaller.exe&quot; &quot;%1&quot;" />
+					</RegistryKey>
+				</RegistryKey>
+			</Component>
+			<Component Id="apkinstaller_exe_config">
+				<File
+					Id="APKInstaller.exe.config"
+					Checksum="yes" />
+			</Component>
+		</DirectoryRef>
+
+		<DirectoryRef Id="ProgramMenuFolder">
+			<Component Id="APKInstallerStartMenuShortcut">
+				<Shortcut
+					Id="ApplicationStartMenuShortcut"
+					Name="APK Installer"
+					Description="An Android Application Installer for Windows"
+					Icon="apkinstaller.exe"
+					IconIndex="0"
+					Target="[!APKInstaller.exe]"
+					WorkingDirectory="INSTALLFOLDER" />
+				<RemoveFolder
+					Id="CleanUpStartMenuShortCut"
+					Directory="ProgramMenuFolder"
+					On="uninstall" />
+				<!-- ApplicationStartMenuShortcut is implicitly installed in HKCU, so WIX won't allow changing this reg value to HKLM. -->
+				<RegistryValue
+					Root="HKCU"
+					Key="Software\wherewhere\APKInstaller"
+					Name="installed"
+					Type="integer"
+					Value="1"
+					KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+
+		<!-- ADB files -->
+		<DirectoryRef
+			Id="ADBFolder"
+			FileSource="$(var.BinDir)\ADB\">
+			<Component Id="adb_exe">
+				<File
+					Id="adb.exe"
+					Checksum="yes" />
+			</Component>
+			<Component Id="AdbWinApi_dll">
+				<File
+					Id="AdbWinApi.dll"
+					Checksum="yes" />
+			</Component>
+			<Component Id="AdbWinUsbApi_dll">
+				<File
+					Id="AdbWinUsbApi.dll"
+					Checksum="yes" />
+			</Component>
+		</DirectoryRef>
+
+		<!-- Assets files -->
+		<DirectoryRef
+			Id="AssetsFolder"
+			FileSource="$(var.BinDir)\Assets\">
+			<Component Id="logo_ico">
+				<File
+					Source="$(var.ProjectDir)\Images\logo256.ico"
+					Checksum="yes" />
+			</Component>
+		</DirectoryRef>
+		
+		<!-- AAPT Tool files -->
+		<DirectoryRef
+			Id="ToolFolder"
+			FileSource="$(var.BinDir)\tool\">
+			<Component Id="aapt_exe">
+				<File
+					Id="aapt.exe"
+					Checksum="yes" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup
+			Id="CoreComponents"
+			Directory="INSTALLFOLDER">
+			<ComponentRef Id="apkinstaller_exe" />
+			<ComponentRef Id="apkinstaller_exe_config" />
+			<ComponentRef Id="APKInstallerStartMenuShortcut" />
+			<ComponentRef Id="adb_exe" />
+			<ComponentRef Id="AdbWinApi_dll" />
+			<ComponentRef Id="AdbWinUsbApi_dll" />
+			<ComponentRef Id="logo_ico" />
+			<ComponentRef Id="aapt_exe" />
+		</ComponentGroup>
+	</Fragment>
+</Wix>
