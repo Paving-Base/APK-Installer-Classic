@@ -121,7 +121,7 @@
     <value>关于</value>
   </data>
   <data name="ADBPathSettings.Header" xml:space="preserve">
-    <value>ADB Path</value>
+    <value>ADB 路径</value>
   </data>
   <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
     <value>当安装包来自 URL 链接时自动下载。</value>
@@ -130,7 +130,7 @@
     <value>是否自动下载在线安装包？</value>
   </data>
   <data name="Change.Content" xml:space="preserve">
-    <value>Change</value>
+    <value>更改</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>检查失败</value>
@@ -160,7 +160,7 @@
     <value>当准备就绪后是否关闭安装程序？</value>
   </data>
   <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
-    <value>Configs</value>
+    <value>配置</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
     <value>通过网络连接设备。</value>
@@ -169,10 +169,10 @@
     <value>连接设备</value>
   </data>
   <data name="ContactMeSettings.Header" xml:space="preserve">
-    <value>Contact Me</value>
+    <value>与我联系</value>
   </data>
   <data name="ContactMeTextBlock.Text" xml:space="preserve">
-    <value>Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊!</value>
+    <value>在社交软件上关注我来获取最新地开发动向。如果你发现了什么 Bug，请通过私信告诉我。我会尽最大可能来解决这些问题。如果你有电报账号，欢迎来铺路根据地群组聊天😊!</value>
   </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
     <value>内容</value>
@@ -181,10 +181,10 @@
     <value>设备</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
-    <value>Supports</value>
+    <value>支持</value>
   </data>
   <data name="DonateTextBlock.Text" xml:space="preserve">
-    <value>APK Installer is an open source application, and it won't be inserted any ads for profit. If you like this app, don't forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕.</value>
+    <value>APK 安装程序是一个开源软件，它不会内置任何广告来盈利。如果你喜欢这个应用，不要忘了在商店里打上好评哦，当然如果可以捐赠一点点就更好了。感谢大家的支持💕！</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
     <value>用户协议</value>
@@ -196,7 +196,7 @@
     <value>找到新的更新</value>
   </data>
   <data name="GoToTestPage.Description" xml:space="preserve">
-    <value>Go to the page of test.</value>
+    <value>前往用于测试的页面。</value>
   </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
     <value>前往测试页面</value>
@@ -205,7 +205,7 @@
     <value>去更新</value>
   </data>
   <data name="Group.Content" xml:space="preserve">
-    <value>Join Our Chat</value>
+    <value>加入电报聊天</value>
   </data>
   <data name="LastChecked.Text" xml:space="preserve">
     <value>上次检查时间: </value>
@@ -220,13 +220,13 @@
     <value>其他</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
-    <value>Rate On Store</value>
+    <value>前往商店好评</value>
   </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
     <value>发行说明</value>
   </data>
   <data name="ResetSettings.Description" xml:space="preserve">
-    <value>Reset settings of this application.</value>
+    <value>重置此应用程序的设置。</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
     <value>重置应用</value>
@@ -250,16 +250,16 @@
     <value>是否显示帮助？</value>
   </data>
   <data name="ShowMessagesSettings.Description" xml:space="preserve">
-    <value>Show Announcements on the top of Settings.</value>
+    <value>在设置顶部显示公告。</value>
   </data>
   <data name="ShowMessagesSettings.Header" xml:space="preserve">
-    <value>Is Show Announcements?</value>
+    <value>是否显示公告？</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
     <value>设置</value>
   </data>
   <data name="TranslateLink.Content" xml:space="preserve">
-    <value>Translate</value>
+    <value>翻译</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
     <value>版本</value>
