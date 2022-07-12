@@ -120,11 +120,17 @@
   <data name="AboutSettingsHeader.Header" xml:space="preserve">
     <value>Acerca de</value>
   </data>
+  <data name="ADBPathSettings.Header" xml:space="preserve">
+    <value>Ruta ADB</value>
+  </data>
   <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
     <value>Autodescargar cuando el paquete viene de URL.</value>
   </data>
   <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
-    <value>¿Autodescargar Paquetes Online?</value>
+    <value>¿Autodescargar paquetes online?</value>
+  </data>
+  <data name="Change.Content" xml:space="preserve">
+    <value>Cambiar</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>Comprobación Fallida</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="CheckUpdates.Content" xml:space="preserve">
     <value>Comprobar Por Actualizaciones</value>
+  </data>
+  <data name="ChooseADB" xml:space="preserve">
+    <value>Elige ADB</value>
   </data>
   <data name="CleanCacheButton.Content" xml:space="preserve">
     <value>Limpiar caché</value>
@@ -145,10 +154,13 @@
     <value>¿Cerrar ADB cuando se esté Cerrando el Instalador?</value>
   </data>
   <data name="CloseAPPSettings.Description" xml:space="preserve">
-    <value>Cerrar el Instalador después de que la APK haya sido instalada y ejecutar.</value>
+    <value>Cerrar el instalador después de que la APK haya sido instalada y ejecutar.</value>
   </data>
   <data name="CloseAPPSettings.Header" xml:space="preserve">
     <value>¿Cerrar el Instalador cuando esté Listo?</value>
+  </data>
+  <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
+    <value>Configuraciones</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
     <value>Conecta el dispositivo a la red.</value>
@@ -156,11 +168,23 @@
   <data name="ConnectDevice.Header" xml:space="preserve">
     <value>Conectar Dispositivo</value>
   </data>
+  <data name="ContactMeSettings.Header" xml:space="preserve">
+    <value>Contactarme</value>
+  </data>
+  <data name="ContactMeTextBlock.Text" xml:space="preserve">
+    <value>Sígueme en las redes sociales para los últimos desarrollos. Si encuentras algún error, por favor notifícamelo en PM. Intentaré todo lo que pueda para solucionar el problema. Si tienes una cuenta de Telegram, ¡bienvenido para chatear en Paving Base Group 😊!</value>
+  </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
     <value>Contenido</value>
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>Dispositivo</value>
+  </data>
+  <data name="DonateSettings.Header" xml:space="preserve">
+    <value>Soportes</value>
+  </data>
+  <data name="DonateTextBlock.Text" xml:space="preserve">
+    <value>APK Installer es una aplicación de código abierto y no se insertarán anuncios para beneficio. Si te gusta esta aplicación, no te olvides de calificarla en la tienda. Por supuesto, lo mejor sería si pudieses donar un poco. Gracias por tu apoyo 💕.</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
     <value>EULA</value>
@@ -171,11 +195,17 @@
   <data name="FindUpdate" xml:space="preserve">
     <value>Encontrar Actualización</value>
   </data>
+  <data name="GoToTestPage.Description" xml:space="preserve">
+    <value>Ir a la página de test.</value>
+  </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
     <value>Ir a la Página Test</value>
   </data>
   <data name="GoToUpdate.Content" xml:space="preserve">
     <value>Ir a Actualizar</value>
+  </data>
+  <data name="Group.Content" xml:space="preserve">
+    <value>Únete a nuestro chat</value>
   </data>
   <data name="LastChecked.Text" xml:space="preserve">
     <value>Última Revisión: </value>
@@ -189,8 +219,14 @@
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
     <value>Otros</value>
   </data>
+  <data name="Rate.Content" xml:space="preserve">
+    <value>Valorar en la tienda</value>
+  </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
     <value>Notas de la versión</value>
+  </data>
+  <data name="ResetSettings.Description" xml:space="preserve">
+    <value>Reiniciar los ajustes de esta aplicación.</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
     <value>Reiniciar aplicación</value>
@@ -213,8 +249,17 @@
   <data name="ShowDialogsSettings.Header" xml:space="preserve">
     <value>¿Mostrar ayudantes?</value>
   </data>
+  <data name="ShowMessagesSettings.Description" xml:space="preserve">
+    <value>Mostrar los anuncios arriba de los ajustes.</value>
+  </data>
+  <data name="ShowMessagesSettings.Header" xml:space="preserve">
+    <value>¿Mostrar anuncios?</value>
+  </data>
   <data name="TitleBar.Title" xml:space="preserve">
     <value>Ajustes</value>
+  </data>
+  <data name="TranslateLink.Content" xml:space="preserve">
+    <value>Traducir</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
     <value>Versión</value>

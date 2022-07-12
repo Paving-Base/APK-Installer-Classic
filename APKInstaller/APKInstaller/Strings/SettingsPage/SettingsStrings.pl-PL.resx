@@ -120,11 +120,17 @@
   <data name="AboutSettingsHeader.Header" xml:space="preserve">
     <value>Informacje</value>
   </data>
+  <data name="ADBPathSettings.Header" xml:space="preserve">
+    <value>Ścieżka do ADB</value>
+  </data>
   <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
     <value>Automatycznie pobieraj pakiety z adresów URL.</value>
   </data>
   <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
     <value>Czy automatycznie pobierać pakiety z sieci?</value>
+  </data>
+  <data name="Change.Content" xml:space="preserve">
+    <value>Zmień</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
     <value>Błąd sprawdzania</value>
@@ -134,6 +140,9 @@
   </data>
   <data name="CheckUpdates.Content" xml:space="preserve">
     <value>Sprawdź aktualizacje</value>
+  </data>
+  <data name="ChooseADB" xml:space="preserve">
+    <value>Wybierz ADB</value>
   </data>
   <data name="CleanCacheButton.Content" xml:space="preserve">
     <value>Wyczyść pamięć podręczną</value>
@@ -150,17 +159,32 @@
   <data name="CloseAPPSettings.Header" xml:space="preserve">
     <value>Is Close Installer when Ready ?</value>
   </data>
+  <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
+    <value>Konfiguracje</value>
+  </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
     <value>Connect device on network.</value>
   </data>
   <data name="ConnectDevice.Header" xml:space="preserve">
     <value>Connect Device</value>
   </data>
+  <data name="ContactMeSettings.Header" xml:space="preserve">
+    <value>Kontakt ze mną</value>
+  </data>
+  <data name="ContactMeTextBlock.Text" xml:space="preserve">
+    <value>Obserwuj mnie w aplikacjach społecznościowych po najnowsze aktualizacje. Jeśli znajdziesz jakikolwiek błąd, zgłoś go w prywatnej wiadomości. Dołożę wszelkich starań, aby rozwiązać ten problem. Jeśli masz konto Telegram, zapraszam Cię do Paving Base Group 😊!</value>
+  </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
     <value>Content</value>
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>Urządzenie</value>
+  </data>
+  <data name="DonateSettings.Header" xml:space="preserve">
+    <value>Wsparcie</value>
+  </data>
+  <data name="DonateTextBlock.Text" xml:space="preserve">
+    <value>APK Installer to aplikacja o otwartym źródle i nie będzie tu żadnych reklam dla zysku. Jeśli lubisz tę aplikację, nie zapomnij ocenić jej w sklepie. Oczywiście możesz również rzucić trochę grosza. Dzięki za wsparcie 💕.</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
     <value>EULA</value>
@@ -171,11 +195,17 @@
   <data name="FindUpdate" xml:space="preserve">
     <value>Znajdź aktualizację</value>
   </data>
+  <data name="GoToTestPage.Description" xml:space="preserve">
+    <value>Przejdź do strony testu.</value>
+  </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
     <value>Go to TestPage</value>
   </data>
   <data name="GoToUpdate.Content" xml:space="preserve">
     <value>Go to Update</value>
+  </data>
+  <data name="Group.Content" xml:space="preserve">
+    <value>Dołącz do naszego czatu</value>
   </data>
   <data name="LastChecked.Text" xml:space="preserve">
     <value>Ostatnio sprawdzane:</value>
@@ -189,8 +219,14 @@
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
     <value>Others</value>
   </data>
+  <data name="Rate.Content" xml:space="preserve">
+    <value>Oceń w sklepie</value>
+  </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
     <value>Lista zmian</value>
+  </data>
+  <data name="ResetSettings.Description" xml:space="preserve">
+    <value>Wyzeruj ustawienia tej aplikacji.</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
     <value>Wyzeruj aplikację</value>
@@ -213,8 +249,17 @@
   <data name="ShowDialogsSettings.Header" xml:space="preserve">
     <value>Czy pokazać podpowiedzi?</value>
   </data>
+  <data name="ShowMessagesSettings.Description" xml:space="preserve">
+    <value>Pokazuj ogłoszenia na górze panelu ustawień.</value>
+  </data>
+  <data name="ShowMessagesSettings.Header" xml:space="preserve">
+    <value>Czy pokazywać ogłoszenia?</value>
+  </data>
   <data name="TitleBar.Title" xml:space="preserve">
     <value>Ustawienia</value>
+  </data>
+  <data name="TranslateLink.Content" xml:space="preserve">
+    <value>Przetłumacz</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
     <value>Wersja</value>
