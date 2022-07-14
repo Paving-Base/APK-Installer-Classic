@@ -124,7 +124,7 @@
     <value>ADB 已存在</value>
   </data>
   <data name="ADBMissing" xml:space="preserve">
-    <value>ADB is missing</value>
+    <value>找不到 ADB</value>
   </data>
   <data name="AppCapabilities.HeadText" xml:space="preserve">
     <value>功能:</value>
