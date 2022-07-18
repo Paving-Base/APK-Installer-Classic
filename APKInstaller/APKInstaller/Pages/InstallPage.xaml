@@ -14,7 +14,65 @@
     d:DataContext="{d:DesignInstance Type=viewmodel:InstallViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    AllowDrop="True"
+    DragOver="Page_DragOver"
+    Drop="Page_Drop"
     mc:Ignorable="d">
+    <ui:Page.Resources>
+        <ContextMenu x:Key="IconMenuFlyout">
+            <MenuItem Header="{x:Static str:InstallStrings.CopyFlyoutItem_Text}">
+                <MenuItem.Icon>
+                    <ui:FontIcon Glyph="&#xE8C8;" />
+                </MenuItem.Icon>
+                <MenuItem
+                    Click="CopyBitmapItem_Click"
+                    Header="{x:Static str:InstallStrings.IconFlyoutItem_Text}"
+                    Tag="{Binding ApkInfo.Icon.RealPath}">
+                    <MenuItem.Icon>
+                        <ui:FontIcon Glyph="&#xECAA;" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static str:InstallStrings.InfosFlyoutItem_Text}" Visibility="{Binding ApkInfo.PackageName, Converter={StaticResource StringVisibilityConverter}}">
+                    <MenuItem.Icon>
+                        <ui:FontIcon Glyph="&#xE946;" />
+                    </MenuItem.Icon>
+                    <MenuItem
+                        Click="CopyStringItem_Click"
+                        Header="{x:Static str:InstallStrings.AppNameFlyoutItem_Text}"
+                        Tag="{Binding ApkInfo.AppName}">
+                        <MenuItem.Icon>
+                            <ui:FontIcon Glyph="&#xED35;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Click="CopyStringItem_Click"
+                        Header="{x:Static str:InstallStrings.VersionCodeFlyoutItem_Text}"
+                        Tag="{Binding ApkInfo.VersionCode}">
+                        <MenuItem.Icon>
+                            <ui:FontIcon Glyph="&#xEC7A;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        Click="CopyStringItem_Click"
+                        Header="{x:Static str:InstallStrings.PackageNameFlyoutItem_Text}"
+                        Tag="{Binding ApkInfo.PackageName}">
+                        <MenuItem.Icon>
+                            <ui:FontIcon Glyph="&#xE7B8;" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem
+                    Click="CopyFileItem_Click"
+                    Header="{x:Static str:InstallStrings.APKFileFlyoutItem_Text}"
+                    Tag="{Binding ApkInfo.FullPath}"
+                    Visibility="{Binding ApkInfo.FullPath, Converter={StaticResource StringVisibilityConverter}}">
+                    <MenuItem.Icon>
+                        <ui:FontIcon Glyph="&#xE7B8;" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </ContextMenu>
+    </ui:Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -102,7 +160,10 @@
                     Margin="12,0,0,0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top">
-                    <controls:ImageEx x:Name="AppIcon" Source="{Binding ApkInfo.Icon.RealPath}" />
+                    <controls:ImageEx
+                        x:Name="AppIcon"
+                        ContextMenu="{StaticResource IconMenuFlyout}"
+                        Source="{Binding ApkInfo.Icon.RealPath}" />
                 </Border>
             </Grid>
             <Grid
@@ -127,6 +188,7 @@
                     Width="150"
                     Height="150"
                     HorizontalAlignment="Center"
+                    ContextMenu="{StaticResource IconMenuFlyout}"
                     Source="{Binding ApkInfo.Icon.RealPath}" />
             </Grid>
             <Grid

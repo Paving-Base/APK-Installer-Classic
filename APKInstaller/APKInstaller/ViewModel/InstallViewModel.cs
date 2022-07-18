@@ -29,6 +29,7 @@ using Windows.Storage;
 using Windows.System;
 using DownloadProgressChangedEventArgs = Downloader.DownloadProgressChangedEventArgs;
 using ModernWpf;
+using SharpCompress.Writers;
 
 namespace APKInstaller.ViewModel
 {
@@ -1384,6 +1385,15 @@ namespace APKInstaller.ViewModel
             }
         }
 
+        public async void OpenAPK(string path)
+        {
+            if (path != null)
+            {
+                _path = path;
+                await Refresh();
+            }
+        }
+
         public async void OpenAPK()
         {
             OpenFileDialog FileOpen = new OpenFileDialog();
@@ -1396,6 +1406,184 @@ namespace APKInstaller.ViewModel
 
             _path = FileOpen.FileName;
             await Refresh();
+        }
+        
+        public async void OpenAPK(IDataObject data)
+        {
+            bool finnish = false;
+
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(300);
+                if (!finnish)
+                {
+                    _page?.RunOnUIThread(() =>
+                    {
+                        WaitProgressText = _loader.GetString("CheckingPath");
+                        IsInitialized = finnish;
+                    });
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                if (data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    var items = data.GetData(DataFormats.FileDrop) as Array;
+                    if (items.Length == 1)
+                    {
+                        OpenPath(items.GetValue(0).ToString());
+                    }
+                    else if (items.Length >= 1)
+                    {
+                        CreateAPKS(items);
+                    }
+                }
+                else if (data.GetDataPresent(DataFormats.Text))
+                {
+                    OpenPath(data.GetData(DataFormats.Text) as string);
+                }
+                else if (data.GetDataPresent(DataFormats.UnicodeText))
+                {
+                    OpenPath(data.GetData(DataFormats.UnicodeText) as string);
+                }
+            });
+
+            finnish = true;
+            IsInitialized = true;
+
+            void OpenPath(string item)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    if (Directory.Exists(item))
+                    {
+                        List<string> apks = new();
+                        var files = Directory.GetFiles(item);
+                        CreateAPKS(files);
+                    }
+                    else if (File.Exists(item))
+                    {
+                        if (item.ToLower().EndsWith(".apk"))
+                        {
+                            finnish = true;
+                            OpenAPK(item);
+                            return;
+                        }
+                        try
+                        {
+                            using (IArchive archive = ArchiveFactory.Open(item))
+                            {
+                                foreach (IArchiveEntry entry in archive.Entries.Where(x => !x.Key.Contains('/')))
+                                {
+                                    if (entry.Key.ToLower().EndsWith(".apk"))
+                                    {
+                                        finnish = true;
+                                        OpenAPK(item);
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            finnish = true;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            void CreateAPKS(Array items)
+            {
+                List<string> apks = new();
+                foreach (object i in items)
+                {
+                    string item = i.ToString();
+                    if (!string.IsNullOrEmpty(item) && File.Exists(item))
+                    {
+                        if (item.ToLower().EndsWith(".apk"))
+                        {
+                            apks.Add(item);
+                            continue;
+                        }
+                        try
+                        {
+                            using (IArchive archive = ArchiveFactory.Open(item))
+                            {
+                                foreach (IArchiveEntry entry in archive.Entries.Where(x => !x.Key.Contains('/')))
+                                {
+                                    if (entry.Key.ToLower().EndsWith(".apk"))
+                                    {
+                                        finnish = true;
+                                        OpenAPK(item);
+                                        return;
+                                    }
+                                }
+                            }
+                            apks.Add(item);
+                            continue;
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                if (apks.Count == 1)
+                {
+                    finnish = true;
+                    OpenAPK(apks.First());
+                    return;
+                }
+                else if (apks.Count >= 1)
+                {
+                    var apklist = apks.Where(x => x.EndsWith(".apk"));
+                    if (apklist.Any())
+                    {
+                        string temp = Path.Combine(CachesHelper.TempPath, "NetAPKTemp.apks");
+
+                        if (!Directory.Exists(temp[..temp.LastIndexOf(@"\")]))
+                        {
+                            _ = Directory.CreateDirectory(temp[..temp.LastIndexOf(@"\")]);
+                        }
+                        else if (Directory.Exists(temp))
+                        {
+                            Directory.Delete(temp, true);
+                        }
+
+                        if (File.Exists(temp))
+                        {
+                            File.Delete(temp);
+                        }
+
+                        using (FileStream zip = File.OpenWrite(temp))
+                        {
+                            using (var zipWriter = WriterFactory.Open(zip, ArchiveType.Zip, CompressionType.Deflate))
+                            {
+                                foreach (string apk in apks.Where(x => x.EndsWith(".apk")))
+                                {
+                                    zipWriter.Write(Path.GetFileName(apk), apk);
+                                }
+                                finnish = true;
+                                OpenAPK(temp);
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var apkslist = apks.Where(x => !x.EndsWith(".apk"));
+                        if (apkslist.Count() == 1)
+                        {
+                            finnish = true;
+                            OpenAPK(apkslist.First());
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         protected virtual void Dispose(bool disposing)

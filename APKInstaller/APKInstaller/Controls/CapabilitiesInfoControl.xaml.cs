@@ -53,6 +53,8 @@ namespace APKInstaller.Controls
 
         private void GetTextBlock()
         {
+            RichTextBlockCapabilities.Text = string.Empty;
+            RichTextBlockFullCapabilities.Text = string.Empty;
             if (CapabilitiesList == null || !CapabilitiesList.Any()) { return; }
             int Line = 0;
             foreach (string capability in CapabilitiesList)

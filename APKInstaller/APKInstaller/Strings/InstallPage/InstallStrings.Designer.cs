@@ -88,11 +88,29 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 APK File 的本地化字符串。
+        /// </summary>
+        public static string APKFileFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("APKFileFlyoutItem.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Capabilities: 的本地化字符串。
         /// </summary>
         public static string AppCapabilities_HeadText {
             get {
                 return ResourceManager.GetString("AppCapabilities.HeadText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 App Name 的本地化字符串。
+        /// </summary>
+        public static string AppNameFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("AppNameFlyoutItem.Text", resourceCulture);
             }
         }
         
@@ -133,6 +151,15 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Checking Path... 的本地化字符串。
+        /// </summary>
+        public static string CheckingPath {
+            get {
+                return ResourceManager.GetString("CheckingPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Choose ADB 的本地化字符串。
         /// </summary>
         public static string ChooseADB {
@@ -156,6 +183,15 @@ namespace APKInstaller.Strings.InstallPage {
         public static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Copy 的本地化字符串。
+        /// </summary>
+        public static string CopyFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("CopyFlyoutItem.Text", resourceCulture);
             }
         }
         
@@ -253,11 +289,29 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 Icon 的本地化字符串。
+        /// </summary>
+        public static string IconFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("IconFlyoutItem.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 I Know 的本地化字符串。
         /// </summary>
         public static string IKnow {
             get {
                 return ResourceManager.GetString("IKnow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Infos 的本地化字符串。
+        /// </summary>
+        public static string InfosFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("InfosFlyoutItem.Text", resourceCulture);
             }
         }
         
@@ -361,6 +415,15 @@ namespace APKInstaller.Strings.InstallPage {
         }
         
         /// <summary>
+        ///   查找类似 More Info 的本地化字符串。
+        /// </summary>
+        public static string MoreInfoFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("MoreInfoFlyoutItem.Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Cannot find Android Device 的本地化字符串。
         /// </summary>
         public static string NoDevice {
@@ -438,6 +501,15 @@ namespace APKInstaller.Strings.InstallPage {
         public static string OpenAPK {
             get {
                 return ResourceManager.GetString("OpenAPK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Package Name 的本地化字符串。
+        /// </summary>
+        public static string PackageNameFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("PackageNameFlyoutItem.Text", resourceCulture);
             }
         }
         
@@ -555,6 +627,15 @@ namespace APKInstaller.Strings.InstallPage {
         public static string UpdateFormat {
             get {
                 return ResourceManager.GetString("UpdateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Version Code 的本地化字符串。
+        /// </summary>
+        public static string VersionCodeFlyoutItem_Text {
+            get {
+                return ResourceManager.GetString("VersionCodeFlyoutItem.Text", resourceCulture);
             }
         }
         

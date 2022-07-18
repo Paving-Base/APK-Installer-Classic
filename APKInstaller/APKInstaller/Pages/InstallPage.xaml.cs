@@ -1,10 +1,14 @@
-﻿using APKInstaller.Pages.SettingsPages;
+﻿using APKInstaller.Helpers;
+using APKInstaller.Pages.SettingsPages;
 using APKInstaller.ViewModel;
 using ModernWpf.Controls;
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Page = ModernWpf.Controls.Page;
 
 namespace APKInstaller.Pages
 {
@@ -90,6 +94,34 @@ namespace APKInstaller.Pages
                     Application.Current.Shutdown();
                     break;
             }
+        }
+
+        private void CopyFileItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem element = sender as MenuItem;
+            ClipboardHelper.CopyFile(element.Tag.ToString());
+        }
+
+        private void CopyStringItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem element = sender as MenuItem;
+            ClipboardHelper.CopyText(element.Tag.ToString());
+        }
+
+        private void CopyBitmapItem_Click(object sender, RoutedEventArgs e)
+        {
+            ClipboardHelper.CopyBitmap(((Image)AppIcon).Source as BitmapImage);
+        }
+
+        private void Page_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void Page_Drop(object sender, DragEventArgs e)
+        {
+            Provider.OpenAPK(e.Data);
+            e.Handled = true;
         }
     }
 }
