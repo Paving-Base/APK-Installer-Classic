@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?define Version="0.1.3" ?>
+<?define Version="0.1.4" ?>
 <?define RepoDir="$(var.ProjectDir)..\..\" ?>
 <?define Icon="$(var.ProjectDir)..\APKInstaller\favicon.ico" ?>
 <Wix
@@ -22,10 +22,10 @@
 
 		<!-- Only install/upgrade if the version is greater or equal than the currently installed version of PowerToys, to handle the case in which PowerToys was installed from old MSI (before WiX bootstrapper was used) -->
 		<!-- If the previous installation is a bundle installation, just let WiX run its logic. -->
-		<Variable Name="DetectedPowerToysVersion" Type="version" Value="0.0.0.0"/>
-		<Variable Name="TargetPowerToysVersion" Type="version" Value="$(var.Version)"/>
-		<util:ProductSearch Id="SearchInstalledPowerToysVersion" Variable="DetectedPowerToysVersion" UpgradeCode="fce45e18-9dec-44d0-9f5c-5b7c4aa2f2cc" Result="version" />
-		<bal:Condition Message="A later version of APK Installer is already installed." >TargetPowerToysVersion &gt;= DetectedPowerToysVersion OR WixBundleInstalled</bal:Condition>
+		<Variable Name="DetectedAPKInstallerVersion" Type="version" Value="0.0.0.0"/>
+		<Variable Name="TargetAPKInstallerVersion" Type="version" Value="$(var.Version)"/>
+		<util:ProductSearch Id="SearchInstalledPowerToysVersion" Variable="DetectedAPKInstallerVersion" UpgradeCode="fce45e18-9dec-44d0-9f5c-5b7c4aa2f2cc" Result="version" />
+		<bal:Condition Message="A later version of APK Installer is already installed." >TargetAPKInstallerVersion &gt;= DetectedAPKInstallerVersion OR WixBundleInstalled</bal:Condition>
 
 		<Variable Name="DetectedWindowsBuildNumber" Type="version" Value="0"/>
 		<util:RegistrySearch Id="SearchWindowsBuildNumber" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Value="CurrentBuildNumber" Result="value" Format="raw" Variable="DetectedWindowsBuildNumber" />

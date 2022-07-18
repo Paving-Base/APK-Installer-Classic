@@ -6,12 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.TestPage"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="TestPage"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <ui:Page.Resources>
+        <ResourceDictionary>
+            <ui:BindingProxy x:Key="TitleBar" Value="{x:Reference TitleBar}" />
+        </ResourceDictionary>
+    </ui:Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,17 +25,17 @@
         </Grid.RowDefinitions>
         <controls:TitleBar
             x:Name="TitleBar"
-            Title="Testings"
+            Title="{x:Static str:TestStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
             IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
             IsRefreshEnabled="True" />
         <ui:ScrollViewerEx Grid.Row="1">
             <StackPanel Margin="16">
-                <controls:SettingsGroup Margin="0,-8,0,0" Header="UI Test">
+                <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:TestStrings.UITestSettingsHeader_Header}">
                     <controls:Setting
-                        Description="Select Resize Mode of Window"
-                        Header="Resize Mode"
+                        Description="{x:Static str:TestStrings.ResizeModeSettings_Description}"
+                        Header="{x:Static str:TestStrings.ResizeModeSettings_Header}"
                         Icon="&#xE737;">
                         <controls:Setting.ActionContent>
                             <ComboBox
@@ -44,9 +50,88 @@
                             </ComboBox>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
+                    <Expander Style="{DynamicResource SettingExpanderStyle}">
+                        <Expander.Header>
+                            <controls:Setting
+                                Description="{x:Static str:TestStrings.ProgressSettings_Description}"
+                                Header="{x:Static str:TestStrings.ProcessesSettings_Header}"
+                                Icon="&#xF16A;"
+                                Style="{DynamicResource ExpanderHeaderSettingStyle}">
+                                <controls:Setting.ActionContent>
+                                    <ui:ToggleSwitch
+                                        IsOn="False"
+                                        Style="{DynamicResource ToggleSwitchSettingStyle}"
+                                        Toggled="ToggleSwitch_Toggled" />
+                                </controls:Setting.ActionContent>
+                            </controls:Setting>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <StackPanel>
+                                <controls:Setting
+                                    Description="{x:Static str:TestStrings.SetProgressValue_Description}"
+                                    Header="{x:Static str:TestStrings.SetProgressValue_Header}"
+                                    Style="{DynamicResource ExpanderContentSettingStyle}">
+                                    <controls:Setting.ActionContent>
+                                        <Slider
+                                            Width="180"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Center"
+                                            Maximum="100"
+                                            ValueChanged="Slider_ValueChanged" />
+                                    </controls:Setting.ActionContent>
+                                </controls:Setting>
+                                <controls:Setting
+                                    Description="{x:Static str:TestStrings.ShowRefreshButton_Description}"
+                                    Header="{x:Static str:TestStrings.ShowRefreshButton_Header}"
+                                    Style="{DynamicResource ExpanderContentSettingStyle}">
+                                    <controls:Setting.ActionContent>
+                                        <ui:ToggleSwitch IsOn="{Binding Value.IsRefreshButtonVisible, Source={StaticResource TitleBar}, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                                    </controls:Setting.ActionContent>
+                                </controls:Setting>
+                            </StackPanel>
+                        </Expander.Content>
+                    </Expander>
+                    <controls:Setting Header="{x:Static str:TestStrings.ThemeSettings_Header}" Icon="&#xE790;">
+                        <controls:Setting.Description>
+                            <ui:HyperlinkButton
+                                Click="Button_Click"
+                                Content="{x:Static str:TestStrings.WindowsColorButton_Content}"
+                                Tag="WindowsColor" />
+                        </controls:Setting.Description>
+                        <controls:Setting.ActionContent>
+                            <ComboBox
+                                Loaded="ThemeComboBox_Loaded"
+                                SelectionChanged="ThemeComboBox_SelectionChanged"
+                                x:Name="ThemeComboBox">
+                                <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeDark_Content}" />
+                                <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeLight_Content}" />
+                                <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeDefault_Content}" />
+                            </ComboBox>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
                     <controls:Setting
-                        Description="Select Backdorp Type for Windows 11"
-                        Header="Backdorp"
+                        Description="{x:Static str:TestStrings.BackdropSettings_Description}"
+                        Header="{x:Static str:TestStrings.BackdropSettings_Header}"
+                        Icon="&#xF2B7;">
+                        <controls:Setting.ActionContent>
+                            <ComboBox
+                                x:Name="LanguageComboBox"
+                                ItemsSource="{x:Static helper:LanguageHelper.SupportCultures}"
+                                Loaded="LanguageComboBox_Loaded"
+                                SelectionChanged="LanguageComboBox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <Run Text="{Binding DisplayName, Mode=OneWay}" />
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                    <controls:Setting
+                        Description="{x:Static str:TestStrings.BackdropSettings_Description}"
+                        Header="{x:Static str:TestStrings.BackdropSettings_Header}"
                         Icon="&#xE790;">
                         <controls:Setting.ActionContent>
                             <ComboBox
@@ -62,13 +147,13 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup Header="Android Test">
+                <controls:SettingsGroup Header="{x:Static str:TestStrings.AndroidTestSettingsHeader_Header}">
                     <Button
                         Click="Button_Click"
                         Style="{DynamicResource SettingButtonStyle}"
                         Tag="Applications">
                         <controls:Setting
-                            Header="Applications"
+                            Header="{x:Static str:TestStrings.ApplicationsSettings_Header}"
                             Icon="&#xE7B8;"
                             Style="{DynamicResource ButtonContentSettingStyle}" />
                     </Button>
@@ -77,7 +162,7 @@
                         Style="{DynamicResource SettingButtonStyle}"
                         Tag="Processes">
                         <controls:Setting
-                            Header="Processes"
+                            Header="{x:Static str:TestStrings.ProcessesSettings_Header}"
                             Icon="&#xE9D9;"
                             Style="{DynamicResource ButtonContentSettingStyle}" />
                     </Button>

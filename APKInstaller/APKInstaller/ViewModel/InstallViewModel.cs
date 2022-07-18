@@ -57,10 +57,10 @@ namespace APKInstaller.ViewModel
         public string VersionFormat => _loader.GetString("VersionFormat");
         public string PackageNameFormat => _loader.GetString("PackageNameFormat");
 
-        private static bool IsOnlyWSA => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
-        private static bool IsCloseAPP => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP) : Settings.Default.IsCloseAPP;
-        private static bool ShowDialogs => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs) : Settings.Default.ShowDialogs;
-        private static bool AutoGetNetAPK => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
+        private static bool IsOnlyWSA => SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA);
+        private static bool IsCloseAPP => SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP);
+        private static bool ShowDialogs => SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs);
+        private static bool AutoGetNetAPK => SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK);
 
         private ApkInfo _apkInfo = null;
         public ApkInfo ApkInfo
@@ -75,37 +75,18 @@ namespace APKInstaller.ViewModel
 
         public string ADBPath
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
+            get => SettingsHelper.Get<string>(SettingsHelper.ADBPath);
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                }
-                else
-                {
-                    Settings.Default.ADBPath = value;
-                    Settings.Default.Save();
-                }
+                SettingsHelper.Set(SettingsHelper.ADBPath, value);
                 RaisePropertyChangedEvent();
             }
         }
 
         public bool IsOpenApp
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp) : Settings.Default.IsOpenApp;
-            set
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ADBPath, value);
-                }
-                else
-                {
-                    Settings.Default.IsOpenApp = value;
-                    Settings.Default.Save();
-                }
-            }
+            get => SettingsHelper.Get<bool>(SettingsHelper.IsOpenApp);
+            set => SettingsHelper.Set(SettingsHelper.IsOpenApp, value);
         }
 
         private bool _isInstalling;
@@ -589,6 +570,7 @@ namespace APKInstaller.ViewModel
             }
             catch (Exception ex)
             {
+                IsInitialized = true;
                 PackageError(ex.Message);
             }
         }
@@ -1335,8 +1317,8 @@ namespace APKInstaller.ViewModel
                 }
                 else
                 {
-                    string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
-                    DeviceData? data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
+                    string DefaultDevice = SettingsHelper.Get<string>(SettingsHelper.DefaultDevice);
+                    DeviceData data = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
                     if (data != null && data.Name == device.Name && data.Model == device.Model && data.Product == device.Product)
                     {
                         _device = data;

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helper="clr-namespace:APKInstaller.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.ProcessesPage"
     xmlns:toolpages="clr-namespace:APKInstaller.ViewModel.ToolPages"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="ProcessesPage"
@@ -23,7 +24,7 @@
         </Grid.RowDefinitions>
         <controls:TitleBar
             x:Name="TitleBar"
-            Title="Processes"
+            Title="{x:Static str:ProcessesStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
             IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
@@ -33,7 +34,7 @@
             <ComboBox
                 x:Name="DeviceComboBox"
                 VerticalAlignment="Center"
-                ui:ControlHelper.PlaceholderText="Waiting for Device..."
+                ui:ControlHelper.PlaceholderText="{x:Static str:ProcessesStrings.DeviceComboBox_PlaceholderText}"
                 Loaded="ComboBox_Loaded"
                 SelectionChanged="ComboBox_SelectionChanged" />
         </controls:TitleBar>
@@ -47,11 +48,11 @@
             IsReadOnly="True"
             ItemsSource="{Binding Processes}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name, Converter={StaticResource TextConverter}, ConverterParameter='Name'}" Header="Name" />
-                <DataGridTextColumn Binding="{Binding ProcessId}" Header="ProcessId" />
-                <DataGridTextColumn Binding="{Binding State, Converter={StaticResource TextConverter}, ConverterParameter='State'}" Header="State" />
-                <DataGridTextColumn Binding="{Binding ResidentSetSize, Converter={StaticResource TextConverter}, ConverterParameter='Size'}" Header="Resident Set Size" />
-                <DataGridTextColumn Binding="{Binding Name}" Header="Detail" />
+                <DataGridTextColumn Binding="{Binding Name, Converter={StaticResource TextConverter}, ConverterParameter='Name'}" Header="{x:Static str:ProcessesStrings.Name_Header}" />
+                <DataGridTextColumn Binding="{Binding ProcessId}" Header="{x:Static str:ProcessesStrings.ProcessId_Header}" />
+                <DataGridTextColumn Binding="{Binding State, Converter={StaticResource TextConverter}, ConverterParameter='State'}" Header="{x:Static str:ProcessesStrings.State_Header}" />
+                <DataGridTextColumn Binding="{Binding ResidentSetSize, Converter={StaticResource TextConverter}, ConverterParameter='Size'}" Header="{x:Static str:ProcessesStrings.ResidentSetSize_Header}" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="{x:Static str:ProcessesStrings.Detail_Header}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

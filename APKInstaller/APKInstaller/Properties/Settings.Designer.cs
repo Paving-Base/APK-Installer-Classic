@@ -49,22 +49,10 @@ namespace APKInstaller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsDarkMode {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UpdateDate {
             get {
-                return ((bool)(this["IsDarkMode"]));
-            }
-            set {
-                this["IsDarkMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("01/05/2022 00:35:00")]
-        public global::System.DateTime UpdateDate {
-            get {
-                return ((global::System.DateTime)(this["UpdateDate"]));
+                return ((string)(this["UpdateDate"]));
             }
             set {
                 this["UpdateDate"] = value;
@@ -109,19 +97,7 @@ namespace APKInstaller.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsBackgroundColorFollowSystem {
-            get {
-                return ((bool)(this["IsBackgroundColorFollowSystem"]));
-            }
-            set {
-                this["IsBackgroundColorFollowSystem"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ADBPath {
             get {
                 return ((string)(this["ADBPath"]));
@@ -164,6 +140,30 @@ namespace APKInstaller.Properties {
             }
             set {
                 this["ShowDialogs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CurrentLanguage {
+            get {
+                return ((string)(this["CurrentLanguage"]));
+            }
+            set {
+                this["CurrentLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedAppTheme {
+            get {
+                return ((int)(this["SelectedAppTheme"]));
+            }
+            set {
+                this["SelectedAppTheme"] = value;
             }
         }
     }

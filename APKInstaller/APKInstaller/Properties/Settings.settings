@@ -8,11 +8,8 @@
     <Setting Name="IsOnlyWSA" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="IsDarkMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="UpdateDate" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)">01/05/2022 00:35:00</Value>
+    <Setting Name="UpdateDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsFirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -23,11 +20,8 @@
     <Setting Name="DefaultDevice" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="IsBackgroundColorFollowSystem" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="ADBPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\0</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AutoGetNetAPK" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -37,6 +31,12 @@
     </Setting>
     <Setting Name="ShowDialogs" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CurrentLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SelectedAppTheme" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

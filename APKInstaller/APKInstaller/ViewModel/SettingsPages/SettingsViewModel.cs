@@ -41,18 +41,10 @@ namespace APKInstaller.ViewModel.SettingsPages
 
         public bool IsOnlyWSA
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA) : Settings.Default.IsOnlyWSA;
+            get => SettingsHelper.Get<bool>(SettingsHelper.IsOnlyWSA);
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.IsOnlyWSA, value);
-                }
-                else
-                {
-                    Settings.Default.IsOnlyWSA = value;
-                    Settings.Default.Save();
-                }
+                SettingsHelper.Set(SettingsHelper.IsOnlyWSA, value);
                 if (!value) { ChooseDevice(); }
                 RaisePropertyChangedEvent();
             }
@@ -60,105 +52,46 @@ namespace APKInstaller.ViewModel.SettingsPages
 
         public static bool IsCloseADB
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB;
-            set
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.IsCloseADB, value);
-                }
-                else
-                {
-                    Settings.Default.IsCloseADB = value;
-                    Settings.Default.Save();
-                }
-            }
+            get => SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB);
+            set => SettingsHelper.Set(SettingsHelper.IsCloseADB, value);
         }
 
         public static bool IsCloseAPP
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP) : Settings.Default.IsCloseAPP;
-            set
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.IsCloseAPP, value);
-                }
-                else
-                {
-                    Settings.Default.IsCloseAPP = value;
-                    Settings.Default.Save();
-                }
-            }
+            get => SettingsHelper.Get<bool>(SettingsHelper.IsCloseAPP);
+            set => SettingsHelper.Set(SettingsHelper.IsCloseAPP, value);
         }
 
         public static bool ShowDialogs
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs) : Settings.Default.ShowDialogs;
-            set
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ShowDialogs, value);
-                }
-                else
-                {
-                    Settings.Default.ShowDialogs = value;
-                    Settings.Default.Save();
-                }
-            }
+            get => SettingsHelper.Get<bool>(SettingsHelper.ShowDialogs);
+            set => SettingsHelper.Set(SettingsHelper.ShowDialogs, value);
         }
 
         public string ADBPath
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.ADBPath) : Settings.Default.ADBPath;
+            get => SettingsHelper.Get<string>(SettingsHelper.ADBPath);
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.ShowDialogs, value);
-                }
-                else
-                {
-                    Settings.Default.ADBPath = value;
-                    Settings.Default.Save();
-                }
+                SettingsHelper.Set(SettingsHelper.ADBPath, value);
                 RaisePropertyChangedEvent();
             }
         }
 
-        public static DateTime UpdateDate
+        public DateTime UpdateDate
         {
-            get => PackagedAppHelper.IsPackagedApp ? JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate)) : Settings.Default.UpdateDate;
+            get => JsonSerializer.Deserialize<DateTime>(SettingsHelper.Get<string>(SettingsHelper.UpdateDate));
             set
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.UpdateDate, JsonSerializer.Serialize(value));
-                }
-                else
-                {
-                    Settings.Default.UpdateDate = value;
-                    Settings.Default.Save();
-                }
+                SettingsHelper.Set(SettingsHelper.UpdateDate, JsonSerializer.Serialize(value));
+                RaisePropertyChangedEvent();
             }
         }
 
         public static bool AutoGetNetAPK
         {
-            get => PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK) : Settings.Default.AutoGetNetAPK;
-            set
-            {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.AutoGetNetAPK, value);
-                }
-                else
-                {
-                    Settings.Default.AutoGetNetAPK = value;
-                    Settings.Default.Save();
-                }
-            }
+            get => SettingsHelper.Get<bool>(SettingsHelper.AutoGetNetAPK);
+            set => SettingsHelper.Set(SettingsHelper.AutoGetNetAPK, value);
         }
 
         private bool _checkingUpdate;
@@ -216,8 +149,8 @@ namespace APKInstaller.ViewModel.SettingsPages
             }
         }
 
-        private InfoBarSeverity? _updateStateSeverity;
-        public InfoBarSeverity? UpdateStateSeverity
+        private InfoBarSeverity _updateStateSeverity;
+        public InfoBarSeverity UpdateStateSeverity
         {
             get => _updateStateSeverity;
             set
@@ -310,7 +243,7 @@ namespace APKInstaller.ViewModel.SettingsPages
 
         public void ChooseDevice()
         {
-            string DefaultDevice = PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<string>(SettingsHelper.DefaultDevice) : Settings.Default.DefaultDevice;
+            string DefaultDevice = SettingsHelper.Get<string>(SettingsHelper.DefaultDevice);
             DeviceData device = string.IsNullOrEmpty(DefaultDevice) ? null : JsonSerializer.Deserialize<DeviceData>(DefaultDevice);
             if (device == null) { return; }
             foreach (DeviceData data in DeviceList)

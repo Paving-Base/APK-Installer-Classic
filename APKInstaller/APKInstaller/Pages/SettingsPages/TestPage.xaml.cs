@@ -1,12 +1,18 @@
 ﻿using APKInstaller.Helpers;
 using APKInstaller.Pages.ToolPages;
+using ModernWpf;
 using ModernWpf.Controls;
 using ModernWpf.Controls.Primitives;
+using SharpCompress.Common;
+using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using Windows.System;
 using Page = ModernWpf.Controls.Page;
 using TitleBar = APKInstaller.Controls.TitleBar;
+using WindowHelper = ModernWpf.Controls.Primitives.WindowHelper;
 
 namespace APKInstaller.Pages.SettingsPages
 {
@@ -24,12 +30,28 @@ namespace APKInstaller.Pages.SettingsPages
 
         public TestPage() => InitializeComponent();
 
+        private void ThemeComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboBox ComboBox = sender as ComboBox;
+            ElementTheme Theme = ThemeHelper.RootTheme;
+            ComboBox.SelectedIndex = 2 - (int)Theme;
+        }
+
+        private void LanguageComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboBox ComboBox = sender as ComboBox;
+            string lang = SettingsHelper.Get<string>(SettingsHelper.CurrentLanguage);
+            lang = string.IsNullOrWhiteSpace(lang) || lang == LanguageHelper.AutoLanguageCode ? LanguageHelper.GetCurrentLanguage() : lang;
+            CultureInfo culture = new(lang);
+            ComboBox.SelectedItem = culture;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             switch ((sender as FrameworkElement).Tag as string)
             {
                 case "OutPIP":
-                    UIHelper.MainWindow.ResizeMode = ResizeMode.CanResizeWithGrip;
+                    UIHelper.MainWindow.ResizeMode = ResizeMode.CanResize;
                     break;
                 case "EnterPIP":
                     UIHelper.MainWindow.ResizeMode = ResizeMode.NoResize;
@@ -39,6 +61,9 @@ namespace APKInstaller.Pages.SettingsPages
                     break;
                 case "Applications":
                     _ = Frame.Navigate(typeof(ApplicationsPage));
+                    break;
+                case "WindowsColor":
+                    _ = Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
                     break;
                 default:
                     break;
@@ -72,6 +97,30 @@ namespace APKInstaller.Pages.SettingsPages
             }
         }
 
+        private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox ComboBox = sender as ComboBox;
+            ThemeHelper.RootTheme = (ElementTheme)Enum.Parse(typeof(ElementTheme), (2 - ComboBox.SelectedIndex).ToString());
+        }
+
+        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox ComboBox = sender as ComboBox;
+            CultureInfo culture = ComboBox.SelectedItem as CultureInfo;
+            if (culture.Name != LanguageHelper.GetCurrentLanguage())
+            {
+                CultureInfo.DefaultThreadCurrentCulture = culture;
+                CultureInfo.DefaultThreadCurrentUICulture = culture;
+                SettingsHelper.Set(SettingsHelper.CurrentLanguage, culture.Name);
+            }
+            else
+            {
+                CultureInfo.DefaultThreadCurrentCulture = null;
+                CultureInfo.DefaultThreadCurrentUICulture = null;
+                SettingsHelper.Set(SettingsHelper.CurrentLanguage, string.Empty);
+            }
+        }
+
         private void BackdorpComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch ((sender as ComboBox).SelectedItem as string)
@@ -96,6 +145,20 @@ namespace APKInstaller.Pages.SettingsPages
                     WindowHelper.SetUseAcrylicBackdrop(UIHelper.MainWindow, true);
                     WindowHelper.SetUseAeroBackdrop(UIHelper.MainWindow, true);
                     break;
+            }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) => TitleBar.SetProgressValue(e.NewValue);
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if ((sender as ToggleSwitch).IsOn)
+            {
+                TitleBar.ShowProgressRing();
+            }
+            else
+            {
+                TitleBar.HideProgressRing();
             }
         }
     }

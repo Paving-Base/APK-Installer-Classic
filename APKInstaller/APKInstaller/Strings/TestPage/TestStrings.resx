@@ -117,157 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutSettingsHeader.Header" xml:space="preserve">
-    <value>About</value>
+  <data name="AndroidTestSettingsHeader.Header" xml:space="preserve">
+    <value>Android Test</value>
   </data>
-  <data name="ADBPathSettings.Header" xml:space="preserve">
-    <value>ADB Path</value>
+  <data name="ApplicationsSettings.Header" xml:space="preserve">
+    <value>Applications</value>
   </data>
-  <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
-    <value>Auto download when package is from URL.</value>
+  <data name="BackdropSettings.Description" xml:space="preserve">
+    <value>Select Backdrop Type for Windows 11</value>
   </data>
-  <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
-    <value>Is Auto Download Online Packages?</value>
+  <data name="BackdropSettings.Header" xml:space="preserve">
+    <value>Backdrop</value>
   </data>
-  <data name="Change.Content" xml:space="preserve">
-    <value>Change</value>
+  <data name="LanguageSettings.Description" xml:space="preserve">
+    <value>Select language and restart to change language</value>
   </data>
-  <data name="CheckFailed" xml:space="preserve">
-    <value>Check Failed</value>
+  <data name="LanguageSettings.Header" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="CheckingUpdates.Text" xml:space="preserve">
-    <value>Checking For Updates...</value>
+  <data name="ProcessesSettings.Header" xml:space="preserve">
+    <value>Processes</value>
   </data>
-  <data name="CheckUpdates.Content" xml:space="preserve">
-    <value>Check For Updates</value>
+  <data name="ProgressSettings.Description" xml:space="preserve">
+    <value>Test Progress Ring on the Title Bar</value>
   </data>
-  <data name="ChooseADB" xml:space="preserve">
-    <value>Choose ADB</value>
+  <data name="ProgressSettings.Header" xml:space="preserve">
+    <value>Progress</value>
   </data>
-  <data name="CleanCacheButton.Content" xml:space="preserve">
-    <value>Clear cache</value>
+  <data name="RadioThemeDark.Content" xml:space="preserve">
+    <value>Dark</value>
   </data>
-  <data name="CloseADBSettings.Description" xml:space="preserve">
-    <value>Close ADB may break other Installers when they still open.</value>
+  <data name="RadioThemeDefault.Content" xml:space="preserve">
+    <value>Windows Default</value>
   </data>
-  <data name="CloseADBSettings.Header" xml:space="preserve">
-    <value>Is Close ADB when Closing Installer?</value>
+  <data name="RadioThemeLight.Content" xml:space="preserve">
+    <value>Light</value>
   </data>
-  <data name="CloseAPPSettings.Description" xml:space="preserve">
-    <value>Close Installer after APK has installed and start.</value>
+  <data name="ResizeModeSettings.Description" xml:space="preserve">
+    <value>Select Resize Mode of Window</value>
   </data>
-  <data name="CloseAPPSettings.Header" xml:space="preserve">
-    <value>Is Close Installer when Ready ?</value>
+  <data name="ResizeModeSettings.Header" xml:space="preserve">
+    <value>Resize Mode</value>
   </data>
-  <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
-    <value>Configs</value>
+  <data name="SetProgressValue.Description" xml:space="preserve">
+    <value>Set the value of Progress Ring</value>
   </data>
-  <data name="ConnectDevice.Description" xml:space="preserve">
-    <value>Connect device on network.</value>
+  <data name="SetProgressValue.Header" xml:space="preserve">
+    <value>Progress Value</value>
   </data>
-  <data name="ConnectDevice.Header" xml:space="preserve">
-    <value>Connect Device</value>
+  <data name="ShowRefreshButton.Description" xml:space="preserve">
+    <value>Show Refresh Button on the Title Bar</value>
   </data>
-  <data name="ContactMeSettings.Header" xml:space="preserve">
-    <value>Contact Me</value>
+  <data name="ShowRefreshButton.Header" xml:space="preserve">
+    <value>Refresh Button</value>
   </data>
-  <data name="ContactMeTextBlock.Text" xml:space="preserve">
-    <value>Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊!</value>
-  </data>
-  <data name="ContentSettingsHeader.Header" xml:space="preserve">
-    <value>Content</value>
-  </data>
-  <data name="DeviceSettingsHeader.Header" xml:space="preserve">
-    <value>Device</value>
-  </data>
-  <data name="DisplaySettingsHeader.Header" xml:space="preserve">
-    <value>Display</value>
-  </data>
-  <data name="DonateSettings.Header" xml:space="preserve">
-    <value>Supports</value>
-  </data>
-  <data name="DonateTextBlock.Text" xml:space="preserve">
-    <value>APK Installer is an open source application, and it won't be inserted any ads for profit. If you like this app, don't forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕.</value>
-  </data>
-  <data name="EULA.Content" xml:space="preserve">
-    <value>EULA</value>
-  </data>
-  <data name="FeedbackLink.Content" xml:space="preserve">
-    <value>Feedback</value>
-  </data>
-  <data name="FindUpdate" xml:space="preserve">
-    <value>Find Update</value>
-  </data>
-  <data name="GoToTestPage.Description" xml:space="preserve">
-    <value>Go to the page of test.</value>
-  </data>
-  <data name="GoToTestPage.Header" xml:space="preserve">
-    <value>Go to TestPage</value>
-  </data>
-  <data name="GoToUpdate.Content" xml:space="preserve">
-    <value>Go to Update</value>
-  </data>
-  <data name="Group.Content" xml:space="preserve">
-    <value>Join Our Chat</value>
-  </data>
-  <data name="LastChecked.Text" xml:space="preserve">
-    <value>Last Checked: </value>
-  </data>
-  <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Disable it to connect to other device.</value>
-  </data>
-  <data name="OnlyWSASettings.Header" xml:space="preserve">
-    <value>Is Only for WSA?</value>
-  </data>
-  <data name="OthersSettingsHeader.Header" xml:space="preserve">
-    <value>Others</value>
-  </data>
-  <data name="Rate.Content" xml:space="preserve">
-    <value>Rate On Store</value>
-  </data>
-  <data name="ReleaseNotes.Content" xml:space="preserve">
-    <value>Release notes</value>
-  </data>
-  <data name="ResetSettings.Description" xml:space="preserve">
-    <value>Reset settings of this application.</value>
-  </data>
-  <data name="ResetSettings.Header" xml:space="preserve">
-    <value>Reset application</value>
-  </data>
-  <data name="ResetSettingsButton.Content" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="ResetSettingsConfirm.Content" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="ResetSettingsTitle.Text" xml:space="preserve">
-    <value>Are you sure you want to reset the app?</value>
-  </data>
-  <data name="SelectDeviceBox.Header" xml:space="preserve">
-    <value>Select Device</value>
-  </data>
-  <data name="ShowDialogsSettings.Description" xml:space="preserve">
-    <value>Show helpers when no device is connected?</value>
-  </data>
-  <data name="ShowDialogsSettings.Header" xml:space="preserve">
-    <value>Is Show Helpers?</value>
-  </data>
-  <data name="ShowMessagesSettings.Description" xml:space="preserve">
-    <value>Show Announcements on the top of Settings.</value>
-  </data>
-  <data name="ShowMessagesSettings.Header" xml:space="preserve">
-    <value>Is Show Announcements?</value>
+  <data name="ThemeSettings.Header" xml:space="preserve">
+    <value>App Theme</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
-    <value>Settings</value>
+    <value>Testing</value>
   </data>
-  <data name="TranslateLink.Content" xml:space="preserve">
-    <value>Translate</value>
+  <data name="TitleBarSettings.Description" xml:space="preserve">
+    <value>Extends Content Into TitleBar</value>
   </data>
-  <data name="UpdateSettingsHeader.Header" xml:space="preserve">
-    <value>Version</value>
+  <data name="TitleBarSettings.Header" xml:space="preserve">
+    <value>Title Bar</value>
   </data>
-  <data name="UpToDate" xml:space="preserve">
-    <value>Up To Date</value>
+  <data name="UITestSettingsHeader.Header" xml:space="preserve">
+    <value>UI Test</value>
+  </data>
+  <data name="WindowsColorButton.Content" xml:space="preserve">
+    <value>Windows Color Settings</value>
   </data>
 </root>

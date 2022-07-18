@@ -31,7 +31,7 @@ namespace APKInstaller
             {
                 CachesHelper.CleanAllCaches(true);
 
-                if (PackagedAppHelper.IsPackagedApp ? SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB) : Settings.Default.IsCloseADB)
+                if (SettingsHelper.Get<bool>(SettingsHelper.IsCloseADB))
                 {
                     try { new AdvancedAdbClient().KillAdb(); } catch { }
                 }

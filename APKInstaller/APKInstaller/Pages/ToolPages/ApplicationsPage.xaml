@@ -5,6 +5,7 @@
     xmlns:controls="clr-namespace:APKInstaller.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:str="clr-namespace:APKInstaller.Strings.ApplicationsPage"
     xmlns:toolpages="clr-namespace:APKInstaller.ViewModel.ToolPages"
     xmlns:ui="http://schemas.modernwpf.com/2019"
     Title="ApplicationsPage"
@@ -22,7 +23,7 @@
         </Grid.RowDefinitions>
         <controls:TitleBar
             x:Name="TitleBar"
-            Title="Applications"
+            Title="{x:Static str:ApplicationsStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
             IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
@@ -32,7 +33,7 @@
             <ComboBox
                 x:Name="DeviceComboBox"
                 VerticalAlignment="Center"
-                ui:ControlHelper.PlaceholderText="Waiting for Device..."
+                ui:ControlHelper.PlaceholderText="{x:Static str:ApplicationsStrings.DeviceComboBox_PlaceholderText}"
                 Loaded="ComboBox_Loaded"
                 SelectionChanged="ComboBox_SelectionChanged" />
         </controls:TitleBar>
@@ -85,7 +86,7 @@
                                 <MenuItem
                                     x:Name="Stop"
                                     Click="MenuFlyoutItem_Click"
-                                    Header="Stop"
+                                    Header="{x:Static str:ApplicationsStrings.Stop_Text}"
                                     Tag="{Binding Name}"
                                     Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <MenuItem.Icon>
@@ -98,7 +99,7 @@
                                 <MenuItem
                                     x:Name="Start"
                                     Click="MenuFlyoutItem_Click"
-                                    Header="Start"
+                                    Header="{x:Static str:ApplicationsStrings.Start_Text}"
                                     Tag="{Binding Name}"
                                     Visibility="{Binding IsActive, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter='true'}">
                                     <MenuItem.Icon>
@@ -111,7 +112,7 @@
                                 <MenuItem
                                     x:Name="Uninstall"
                                     Click="MenuFlyoutItem_Click"
-                                    Header="Uninstall"
+                                    Header="{x:Static str:ApplicationsStrings.Uninstall_Text}"
                                     Tag="{Binding Name}">
                                     <MenuItem.Icon>
                                         <ui:FontIcon FontFamily="{DynamicResource SymbolThemeFontFamily}" Glyph="&#xE74D;" />

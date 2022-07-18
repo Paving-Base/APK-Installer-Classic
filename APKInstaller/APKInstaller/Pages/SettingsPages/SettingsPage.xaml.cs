@@ -41,7 +41,7 @@ namespace APKInstaller.Pages.SettingsPages
             else
             {
                 Provider = new SettingsViewModel(this);
-                if (SettingsViewModel.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
+                if (Provider.UpdateDate == DateTime.MinValue) { Provider.CheckUpdate(); }
                 if (AdbServer.Instance.GetStatus().IsRunning)
                 {
                     ADBHelper.Monitor.DeviceChanged += Provider.OnDeviceChanged;
@@ -71,7 +71,14 @@ namespace APKInstaller.Pages.SettingsPages
                     _ = Launcher.LaunchUriAsync(new Uri("https://t.me/PavingBase"));
                     break;
                 case "Reset":
-                    ApplicationData.Current.LocalSettings.Values.Clear();
+                    if (PackagedAppHelper.IsPackagedApp)
+                    {
+                        ApplicationData.Current.LocalSettings.Values.Clear();
+                    }
+                    else
+                    {
+                        Settings.Default.Reset();
+                    }
                     SettingsHelper.SetDefaultSettings();
                     if (FlyoutService.GetFlyout(Reset) is Flyout flyout_reset)
                     {
@@ -114,15 +121,7 @@ namespace APKInstaller.Pages.SettingsPages
             object vs = (sender as ListView).SelectedItem;
             if (vs != null && vs is DeviceData device)
             {
-                if (PackagedAppHelper.IsPackagedApp)
-                {
-                    SettingsHelper.Set(SettingsHelper.DefaultDevice, JsonSerializer.Serialize(device));
-                }
-                else
-                {
-                    Settings.Default.DefaultDevice = JsonSerializer.Serialize(device);
-                    Settings.Default.Save();
-                }
+                SettingsHelper.Set(SettingsHelper.DefaultDevice, JsonSerializer.Serialize(device));
             }
         }
 

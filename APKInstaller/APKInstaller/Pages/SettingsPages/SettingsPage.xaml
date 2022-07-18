@@ -89,7 +89,7 @@
                         </Expander.Content>
                     </Expander>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ContentSettingsHeader_Header}">
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.DisplaySettingsHeader_Header}">
                     <controls:Setting
                         Description="{x:Static str:SettingsStrings.ShowDialogsSettings_Description}"
                         Header="{x:Static str:SettingsStrings.ShowDialogsSettings_Header}"
@@ -106,6 +106,8 @@
                             <ui:ToggleSwitch IsOn="{Binding AutoGetNetAPK, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
+                </controls:SettingsGroup>
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ContentSettingsHeader_Header}">
                     <controls:Setting
                         Description="{x:Static str:SettingsStrings.CloseAPPSettings_Description}"
                         Header="{x:Static str:SettingsStrings.CloseAPPSettings_Header}"

@@ -250,6 +250,15 @@ namespace APKInstaller.Strings.SettingsPage {
         }
         
         /// <summary>
+        ///   查找类似 Display 的本地化字符串。
+        /// </summary>
+        public static string DisplaySettingsHeader_Header {
+            get {
+                return ResourceManager.GetString("DisplaySettingsHeader.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Supports 的本地化字符串。
         /// </summary>
         public static string DonateSettings_Header {
