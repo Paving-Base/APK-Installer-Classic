@@ -180,6 +180,9 @@
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>Συσκευή</value>
   </data>
+  <data name="DisplaySettingsHeader.Header" xml:space="preserve">
+    <value>Display</value>
+  </data>
   <data name="DonateSettings.Header" xml:space="preserve">
     <value>Supports</value>
   </data>
