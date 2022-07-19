@@ -163,10 +163,10 @@
     <value>Konfiguracje</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
-    <value>Connect device on network.</value>
+    <value>Podłącz urządzenie w sieci.</value>
   </data>
   <data name="ConnectDevice.Header" xml:space="preserve">
-    <value>Connect Device</value>
+    <value>Połącz urządzenie</value>
   </data>
   <data name="ContactMeSettings.Header" xml:space="preserve">
     <value>Kontakt ze mną</value>
@@ -181,7 +181,7 @@
     <value>Urządzenie</value>
   </data>
   <data name="DisplaySettingsHeader.Header" xml:space="preserve">
-    <value>Display</value>
+    <value>Wyświetlanie</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
     <value>Wsparcie</value>
@@ -214,13 +214,13 @@
     <value>Ostatnio sprawdzane:</value>
   </data>
   <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Disable it to connect to other device.</value>
+    <value>Wyłącz to, aby połączyć z innym urządzeniem.</value>
   </data>
   <data name="OnlyWSASettings.Header" xml:space="preserve">
     <value>Is Only for WSA?</value>
   </data>
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
-    <value>Others</value>
+    <value>Pozostałe</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
     <value>Oceń w sklepie</value>
