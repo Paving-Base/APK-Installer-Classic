@@ -180,6 +180,9 @@
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>設備</value>
   </data>
+  <data name="DisplaySettingsHeader.Header" xml:space="preserve">
+    <value>顯示</value>
+  </data>
   <data name="DonateSettings.Header" xml:space="preserve">
     <value>支持</value>
   </data>
