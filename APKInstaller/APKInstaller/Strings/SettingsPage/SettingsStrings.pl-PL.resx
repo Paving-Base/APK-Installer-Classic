@@ -157,16 +157,16 @@
     <value>Zamknij instalator po zainstalowaniu aplikacji i uruchom ją.</value>
   </data>
   <data name="CloseAPPSettings.Header" xml:space="preserve">
-    <value>Is Close Installer when Ready ?</value>
+    <value>Zamknąć instalator po przygotowaniu?</value>
   </data>
   <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
     <value>Konfiguracje</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
-    <value>Connect device on network.</value>
+    <value>Podłącz urządzenie w sieci.</value>
   </data>
   <data name="ConnectDevice.Header" xml:space="preserve">
-    <value>Connect Device</value>
+    <value>Połącz urządzenie</value>
   </data>
   <data name="ContactMeSettings.Header" xml:space="preserve">
     <value>Kontakt ze mną</value>
@@ -175,13 +175,13 @@
     <value>Obserwuj mnie w aplikacjach społecznościowych po najnowsze aktualizacje. Jeśli znajdziesz jakikolwiek błąd, zgłoś go w prywatnej wiadomości. Dołożę wszelkich starań, aby rozwiązać ten problem. Jeśli masz konto Telegram, zapraszam Cię do Paving Base Group 😊!</value>
   </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
-    <value>Content</value>
+    <value>Zawartość</value>
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
     <value>Urządzenie</value>
   </data>
   <data name="DisplaySettingsHeader.Header" xml:space="preserve">
-    <value>Display</value>
+    <value>Wyświetlanie</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
     <value>Wsparcie</value>
@@ -202,10 +202,10 @@
     <value>Przejdź do strony testu.</value>
   </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
-    <value>Go to TestPage</value>
+    <value>Przejdź do strony testowania</value>
   </data>
   <data name="GoToUpdate.Content" xml:space="preserve">
-    <value>Go to Update</value>
+    <value>Przejdź do aktualizacji</value>
   </data>
   <data name="Group.Content" xml:space="preserve">
     <value>Dołącz do naszego czatu</value>
@@ -214,13 +214,13 @@
     <value>Ostatnio sprawdzane:</value>
   </data>
   <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Disable it to connect to other device.</value>
+    <value>Wyłącz to, aby połączyć z innym urządzeniem.</value>
   </data>
   <data name="OnlyWSASettings.Header" xml:space="preserve">
-    <value>Is Only for WSA?</value>
+    <value>Tylko dla WSA?</value>
   </data>
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
-    <value>Others</value>
+    <value>Pozostałe</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
     <value>Oceń w sklepie</value>

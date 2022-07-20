@@ -127,13 +127,13 @@
     <value>Falta ADB</value>
   </data>
   <data name="APKFileFlyoutItem.Text" xml:space="preserve">
-    <value>APK File</value>
+    <value>Archivo APK</value>
   </data>
   <data name="AppCapabilities.HeadText" xml:space="preserve">
     <value>Capacidades:</value>
   </data>
   <data name="AppNameFlyoutItem.Text" xml:space="preserve">
-    <value>App Name</value>
+    <value>Nombre de la aplicación</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
@@ -148,7 +148,7 @@
     <value>Comprobando ADB...</value>
   </data>
   <data name="CheckingPath" xml:space="preserve">
-    <value>Checking Path...</value>
+    <value>Comprobando la ruta...</value>
   </data>
   <data name="ChooseADB" xml:space="preserve">
     <value>Elige ADB</value>
@@ -160,7 +160,7 @@
     <value>Cerrar</value>
   </data>
   <data name="CopyFlyoutItem.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Copiar</value>
   </data>
   <data name="Devices" xml:space="preserve">
     <value>Dispositivos</value>
@@ -196,13 +196,13 @@
 4. Reabre APK Installer y continúa tu instalación</value>
   </data>
   <data name="IconFlyoutItem.Text" xml:space="preserve">
-    <value>Icon</value>
+    <value>Icono</value>
   </data>
   <data name="IKnow" xml:space="preserve">
     <value>Lo Sé</value>
   </data>
   <data name="InfosFlyoutItem.Text" xml:space="preserve">
-    <value>Infos</value>
+    <value>Información</value>
   </data>
   <data name="Install" xml:space="preserve">
     <value>Instalar</value>
@@ -240,7 +240,7 @@
     <value>Cargando...</value>
   </data>
   <data name="MoreInfoFlyoutItem.Text" xml:space="preserve">
-    <value>More Info</value>
+    <value>Más información</value>
   </data>
   <data name="NoDevice" xml:space="preserve">
     <value>No se puede encontrar el Dispositivo Android</value>
@@ -270,7 +270,7 @@
     <value>Abrir archivo APK</value>
   </data>
   <data name="PackageNameFlyoutItem.Text" xml:space="preserve">
-    <value>Package Name</value>
+    <value>Nombre del paquete</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
     <value>Nombre del Paquete: {0}</value>
@@ -317,7 +317,7 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="VersionCodeFlyoutItem.Text" xml:space="preserve">
-    <value>Version Code</value>
+    <value>Código de la versión</value>
   </data>
   <data name="VersionFormat" xml:space="preserve">
     <value>Versión: {0}</value>
