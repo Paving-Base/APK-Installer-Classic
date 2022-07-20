@@ -41,7 +41,7 @@ namespace APKInstaller.ViewModel
         private string APKTemp => Path.Combine(CachesHelper.TempPath, "NetAPKTemp.apk");
         private string ADBTemp => Path.Combine(CachesHelper.TempPath, "platform-tools.zip");
 
-#if DEBUG
+#if !DEBUG
         private Uri _url;
         private string _path = string.Empty;
 #else
