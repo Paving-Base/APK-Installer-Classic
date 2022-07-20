@@ -102,15 +102,15 @@
 		<value>Czekanie na urządzenie...</value>
 	</data>
 	<data name="Start.Text" xml:space="preserve">
-		<value>Start</value>
+		<value>Uruchom</value>
 	</data>
 	<data name="Stop.Text" xml:space="preserve">
-		<value>Stop</value>
+		<value>Zatrzymaj</value>
 	</data>
 	<data name="TitleBar.Title" xml:space="preserve">
-		<value>Applications</value>
+		<value>Aplikacje</value>
 	</data>
 	<data name="Uninstall.Text" xml:space="preserve">
-		<value>Uninstall</value>
+		<value>Odinstaluj</value>
 	</data>
 </root>
