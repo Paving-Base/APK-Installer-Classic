@@ -181,7 +181,7 @@
     <value>Device</value>
   </data>
   <data name="DisplaySettingsHeader.Header" xml:space="preserve">
-    <value>Display</value>
+    <value>表示</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
     <value>Supports</value>
