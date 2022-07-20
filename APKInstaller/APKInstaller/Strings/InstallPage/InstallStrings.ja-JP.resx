@@ -127,13 +127,13 @@
     <value>ADBが見つかりません</value>
   </data>
   <data name="APKFileFlyoutItem.Text" xml:space="preserve">
-    <value>APK File</value>
+    <value>APKファイル</value>
   </data>
   <data name="AppCapabilities.HeadText" xml:space="preserve">
     <value>対応機能:</value>
   </data>
   <data name="AppNameFlyoutItem.Text" xml:space="preserve">
-    <value>App Name</value>
+    <value>アプリ名</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>キャンセル</value>
@@ -148,7 +148,7 @@
     <value>ADBを確認中...</value>
   </data>
   <data name="CheckingPath" xml:space="preserve">
-    <value>Checking Path...</value>
+    <value>パスを確認中...</value>
   </data>
   <data name="ChooseADB" xml:space="preserve">
     <value>ADBを選択</value>
@@ -160,7 +160,7 @@
     <value>閉じる</value>
   </data>
   <data name="CopyFlyoutItem.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>コピー</value>
   </data>
   <data name="Devices" xml:space="preserve">
     <value>端末</value>
@@ -196,13 +196,13 @@
 4. APKインストーラを再起動し、インストールを続行します。</value>
   </data>
   <data name="IconFlyoutItem.Text" xml:space="preserve">
-    <value>Icon</value>
+    <value>アイコン</value>
   </data>
   <data name="IKnow" xml:space="preserve">
     <value>了解しました</value>
   </data>
   <data name="InfosFlyoutItem.Text" xml:space="preserve">
-    <value>Infos</value>
+    <value>情報</value>
   </data>
   <data name="Install" xml:space="preserve">
     <value>インストールする</value>
@@ -240,7 +240,7 @@
     <value>読み込み中…</value>
   </data>
   <data name="MoreInfoFlyoutItem.Text" xml:space="preserve">
-    <value>More Info</value>
+    <value>詳細</value>
   </data>
   <data name="NoDevice" xml:space="preserve">
     <value>Android端末が見つかりません</value>
@@ -270,7 +270,7 @@
     <value>APKファイルを開く</value>
   </data>
   <data name="PackageNameFlyoutItem.Text" xml:space="preserve">
-    <value>Package Name</value>
+    <value>パッケージ名</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
     <value>パッケージ名: {0}</value>
@@ -317,7 +317,7 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="VersionCodeFlyoutItem.Text" xml:space="preserve">
-    <value>Version Code</value>
+    <value>バージョンコード</value>
   </data>
   <data name="VersionFormat" xml:space="preserve">
     <value>バージョン: {0}</value>
