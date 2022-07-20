@@ -1,0 +1,3 @@
+files:
+  - source: /Documents/Announcements/Announcements.xml
+    translation: /Documents/Announcements/Announcements.%locale%.xaml
