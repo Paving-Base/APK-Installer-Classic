@@ -65,7 +65,7 @@ namespace APKInstaller.Pages.SettingsPages
             switch ((sender as FrameworkElement).Tag as string)
             {
                 case "Rate":
-                    _ = Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9P2JFQ43FPPG"));
+                    _ = Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9N3HJLJP8V15"));
                     break;
                 case "Group":
                     _ = Launcher.LaunchUriAsync(new Uri("https://t.me/PavingBase"));

@@ -91,7 +91,7 @@ namespace APKInstaller.Helpers
                 }
                 if (!LocalSettings.Values.ContainsKey(SelectedAppTheme))
                 {
-                    LocalSettings.Values.Add(SelectedAppTheme, ElementTheme.Default);
+                    LocalSettings.Values.Add(SelectedAppTheme, (int)ElementTheme.Default);
                 }
             }
             else

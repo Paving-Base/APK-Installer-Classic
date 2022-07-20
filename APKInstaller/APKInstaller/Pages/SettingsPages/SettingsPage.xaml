@@ -177,19 +177,19 @@
                                     <ui:HyperlinkButton
                                         Margin="0,0,2,0"
                                         Content="{x:Static str:SettingsStrings.FeedbackLink_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/issues" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/issues" />
                                     <ui:HyperlinkButton
                                         Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.TranslateLink_Content}"
-                                        NavigateUri="https://crowdin.com/project/APKInstaller" />
+                                        NavigateUri="https://crowdin.com/project/APK-Installer-Classic" />
                                     <ui:HyperlinkButton
                                         Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.ReleaseNotes_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/releases/latest" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest" />
                                     <ui:HyperlinkButton
                                         Margin="2,0"
                                         Content="{x:Static str:SettingsStrings.EULA_Content}"
-                                        NavigateUri="https://github.com/Paving-Base/APK-Installer/blob/main/Privacy.md" />
+                                        NavigateUri="https://github.com/Paving-Base/APK-Installer-Classic/blob/main/Privacy.md" />
                                 </StackPanel>
                             </StackPanel>
                         </controls:Setting.Description>

@@ -57,7 +57,7 @@ namespace APKInstaller.Helpers
                     ThemeManager.SetRequestedTheme(window, value);
                 }
 
-                SettingsHelper.Set(SettingsHelper.SelectedAppTheme, value);
+                SettingsHelper.Set(SettingsHelper.SelectedAppTheme, (int)value);
             }
         }
 
