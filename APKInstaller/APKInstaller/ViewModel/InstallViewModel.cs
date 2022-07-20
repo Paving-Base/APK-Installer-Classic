@@ -41,7 +41,7 @@ namespace APKInstaller.ViewModel
         private string APKTemp => Path.Combine(CachesHelper.TempPath, "NetAPKTemp.apk");
         private string ADBTemp => Path.Combine(CachesHelper.TempPath, "platform-tools.zip");
 
-#if !DEBUG
+#if DEBUG
         private Uri _url;
         private string _path = string.Empty;
 #else
@@ -928,7 +928,7 @@ namespace APKInstaller.ViewModel
                         {
                             CheckOnlinePackage();
                         }
-                        if (ShowDialogs && await ShowDeviceDialog())
+                        if (ShowDialogs && await _page.ExecuteOnUIThreadAsync(ShowDeviceDialog))
                         {
                             goto checkdevice;
                         }
@@ -1051,7 +1051,7 @@ namespace APKInstaller.ViewModel
                 {
                     CheckAPK();
                 }
-                else if (ShowDialogs && await ShowDeviceDialog())
+                else if (ShowDialogs && await _page.ExecuteOnUIThreadAsync(ShowDeviceDialog))
                 {
                     goto checkdevice;
                 }
@@ -1385,7 +1385,7 @@ namespace APKInstaller.ViewModel
             }
         }
 
-        public async void OpenAPK(string path)
+        public async Task OpenAPK(string path)
         {
             if (path != null)
             {
@@ -1425,34 +1425,34 @@ namespace APKInstaller.ViewModel
                 }
             });
 
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 if (data.GetDataPresent(DataFormats.FileDrop))
                 {
                     var items = data.GetData(DataFormats.FileDrop) as Array;
                     if (items.Length == 1)
                     {
-                        OpenPath(items.GetValue(0).ToString());
+                        await OpenPath(items.GetValue(0).ToString());
                     }
                     else if (items.Length >= 1)
                     {
-                        CreateAPKS(items);
+                        await CreateAPKS(items);
                     }
                 }
                 else if (data.GetDataPresent(DataFormats.Text))
                 {
-                    OpenPath(data.GetData(DataFormats.Text) as string);
+                    await OpenPath(data.GetData(DataFormats.Text) as string);
                 }
                 else if (data.GetDataPresent(DataFormats.UnicodeText))
                 {
-                    OpenPath(data.GetData(DataFormats.UnicodeText) as string);
+                    await OpenPath(data.GetData(DataFormats.UnicodeText) as string);
                 }
             });
 
             finnish = true;
             IsInitialized = true;
 
-            void OpenPath(string item)
+            async Task OpenPath(string item)
             {
                 if (!string.IsNullOrEmpty(item))
                 {
@@ -1460,14 +1460,14 @@ namespace APKInstaller.ViewModel
                     {
                         List<string> apks = new();
                         var files = Directory.GetFiles(item);
-                        CreateAPKS(files);
+                        await CreateAPKS(files);
                     }
                     else if (File.Exists(item))
                     {
                         if (item.ToLower().EndsWith(".apk"))
                         {
                             finnish = true;
-                            OpenAPK(item);
+                            await OpenAPK(item);
                             return;
                         }
                         try
@@ -1479,7 +1479,7 @@ namespace APKInstaller.ViewModel
                                     if (entry.Key.ToLower().EndsWith(".apk"))
                                     {
                                         finnish = true;
-                                        OpenAPK(item);
+                                        await OpenAPK(item);
                                         return;
                                     }
                                 }
@@ -1494,7 +1494,7 @@ namespace APKInstaller.ViewModel
                 }
             }
 
-            void CreateAPKS(Array items)
+            async Task CreateAPKS(Array items)
             {
                 List<string> apks = new();
                 foreach (object i in items)
@@ -1516,7 +1516,7 @@ namespace APKInstaller.ViewModel
                                     if (entry.Key.ToLower().EndsWith(".apk"))
                                     {
                                         finnish = true;
-                                        OpenAPK(item);
+                                        await OpenAPK(item);
                                         return;
                                     }
                                 }
@@ -1534,7 +1534,7 @@ namespace APKInstaller.ViewModel
                 if (apks.Count == 1)
                 {
                     finnish = true;
-                    OpenAPK(apks.First());
+                    await OpenAPK(apks.First());
                     return;
                 }
                 else if (apks.Count >= 1)
@@ -1567,7 +1567,7 @@ namespace APKInstaller.ViewModel
                                     zipWriter.Write(Path.GetFileName(apk), apk);
                                 }
                                 finnish = true;
-                                OpenAPK(temp);
+                                await OpenAPK(temp);
                                 return;
                             }
                         }
@@ -1578,7 +1578,7 @@ namespace APKInstaller.ViewModel
                         if (apkslist.Count() == 1)
                         {
                             finnish = true;
-                            OpenAPK(apkslist.First());
+                            await OpenAPK(apkslist.First());
                             return;
                         }
                     }

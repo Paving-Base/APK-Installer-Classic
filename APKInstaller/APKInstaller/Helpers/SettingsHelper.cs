@@ -19,6 +19,7 @@ namespace APKInstaller.Helpers
         public const string IsCloseADB = "IsCloseADB";
         public const string IsCloseAPP = "IsCloseAPP";
         public const string ShowDialogs = "ShowDialogs";
+        public const string ShowMessages = "ShowMessages";
         public const string AutoGetNetAPK = "AutoGetNetAPK";
         public const string DefaultDevice = "DefaultDevice";
         public const string CurrentLanguage = "CurrentLanguage";
@@ -76,6 +77,10 @@ namespace APKInstaller.Helpers
                 if (!LocalSettings.Values.ContainsKey(ShowDialogs))
                 {
                     LocalSettings.Values.Add(ShowDialogs, true);
+                }
+                if (!LocalSettings.Values.ContainsKey(ShowMessages))
+                {
+                    LocalSettings.Values.Add(ShowMessages, true);
                 }
                 if (!LocalSettings.Values.ContainsKey(AutoGetNetAPK))
                 {

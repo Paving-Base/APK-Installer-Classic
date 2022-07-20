@@ -26,7 +26,7 @@
             Title="{x:Static str:ApplicationsStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
-            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
+            IsBackEnabled="True"
             IsRefreshButtonVisible="True"
             IsRefreshEnabled="True"
             RefreshRequested="TitleBar_RefreshEvent">

@@ -166,5 +166,17 @@ namespace APKInstaller.Properties {
                 this["SelectedAppTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowMessages {
+            get {
+                return ((bool)(this["ShowMessages"]));
+            }
+            set {
+                this["ShowMessages"] = value;
+            }
+        }
     }
 }

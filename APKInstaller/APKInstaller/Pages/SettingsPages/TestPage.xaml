@@ -28,11 +28,11 @@
             Title="{x:Static str:TestStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
-            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}"
+            IsBackEnabled="True"
             IsRefreshEnabled="True" />
         <ui:ScrollViewerEx Grid.Row="1">
-            <StackPanel Margin="16">
-                <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:TestStrings.UITestSettingsHeader_Header}">
+            <StackPanel Margin="16,0,16,16">
+                <controls:SettingsGroup Header="{x:Static str:TestStrings.UITestSettingsHeader_Header}">
                     <controls:Setting
                         Description="{x:Static str:TestStrings.ResizeModeSettings_Description}"
                         Header="{x:Static str:TestStrings.ResizeModeSettings_Header}"
@@ -100,9 +100,9 @@
                         </controls:Setting.Description>
                         <controls:Setting.ActionContent>
                             <ComboBox
+                                x:Name="ThemeComboBox"
                                 Loaded="ThemeComboBox_Loaded"
-                                SelectionChanged="ThemeComboBox_SelectionChanged"
-                                x:Name="ThemeComboBox">
+                                SelectionChanged="ThemeComboBox_SelectionChanged">
                                 <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeDark_Content}" />
                                 <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeLight_Content}" />
                                 <ComboBoxItem Content="{x:Static str:TestStrings.RadioThemeDefault_Content}" />

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using Windows.System;
 using Page = ModernWpf.Controls.Page;
 using TitleBar = APKInstaller.Controls.TitleBar;
@@ -32,6 +33,8 @@ namespace APKInstaller.Pages.SettingsPages
 
         private void ThemeComboBox_Loaded(object sender, RoutedEventArgs e)
         {
+            //string a = XamlWriter.Save(Announcements);
+            //UIElement b = (UIElement)XamlReader.Parse(a);
             ComboBox ComboBox = sender as ComboBox;
             ElementTheme Theme = ThemeHelper.RootTheme;
             ComboBox.SelectedIndex = 2 - (int)Theme;

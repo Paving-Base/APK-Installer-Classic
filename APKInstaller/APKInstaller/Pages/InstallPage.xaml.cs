@@ -22,7 +22,7 @@ namespace APKInstaller.Pages
 
         public InstallPage() => InitializeComponent();
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (InstallViewModel.Caches != null)
@@ -68,7 +68,7 @@ namespace APKInstaller.Pages
 
         private async void InitialLoadingUI_Loaded(object sender, RoutedEventArgs e)
         {
-            await Provider.Refresh(!IsCaches);
+            await Provider?.Refresh(!IsCaches);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace APKInstaller.Pages
 
         private void Page_Drop(object sender, DragEventArgs e)
         {
-            Provider.OpenAPK(e.Data);
+            Provider?.OpenAPK(e.Data);
             e.Handled = true;
         }
     }

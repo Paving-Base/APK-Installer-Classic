@@ -25,10 +25,11 @@
             Title="{x:Static str:SettingsStrings.TitleBar_Title}"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="True"
-            IsBackEnabled="{Binding CanGoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ui:Frame}}" />
+            IsBackEnabled="True" />
         <ui:ScrollViewerEx Grid.Row="1">
-            <StackPanel Margin="16">
-                <controls:SettingsGroup Margin="0,-8,0,0" Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
+            <StackPanel Margin="16,0,16,16">
+                <controls:WebXAML Loaded="WebXAML_Loaded" Visibility="{Binding ShowMessages, Converter={StaticResource BoolToVisibilityConverter}}" />
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.DeviceSettingsHeader_Header}">
                     <ui:ListView
                         x:Name="SelectDeviceBox"
                         Margin="-3,0,-3,-4"
@@ -99,6 +100,16 @@
                         </controls:Setting.ActionContent>
                     </controls:Setting>
                     <controls:Setting
+                        Description="{x:Static str:SettingsStrings.ShowMessagesSettings_Description}"
+                        Header="{x:Static str:SettingsStrings.ShowMessagesSettings_Header}"
+                        Icon="&#xE789;">
+                        <controls:Setting.ActionContent>
+                            <ui:ToggleSwitch IsOn="{Binding ShowMessages, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
+                        </controls:Setting.ActionContent>
+                    </controls:Setting>
+                </controls:SettingsGroup>
+                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ContentSettingsHeader_Header}">
+                    <controls:Setting
                         Description="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Description}"
                         Header="{x:Static str:SettingsStrings.AutoGetNetAPKSettings_Header}"
                         Icon="&#xE896;">
@@ -106,8 +117,6 @@
                             <ui:ToggleSwitch IsOn="{Binding AutoGetNetAPK, Mode=TwoWay}" Style="{DynamicResource ToggleSwitchSettingStyle}" />
                         </controls:Setting.ActionContent>
                     </controls:Setting>
-                </controls:SettingsGroup>
-                <controls:SettingsGroup Header="{x:Static str:SettingsStrings.ContentSettingsHeader_Header}">
                     <controls:Setting
                         Description="{x:Static str:SettingsStrings.CloseAPPSettings_Description}"
                         Header="{x:Static str:SettingsStrings.CloseAPPSettings_Header}"
