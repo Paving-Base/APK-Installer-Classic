@@ -7,3 +7,11 @@ files:
     translation: /APKInstaller/APKInstaller/Strings/Permissions/%file_name%.%locale%.resx
   - source: /APKInstaller/APKInstaller/Strings/SettingsPage/SettingsStrings.resx
     translation: /APKInstaller/APKInstaller/Strings/SettingsPage/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/ApplicationsPage/ApplicationsStrings.resx
+    translation: /APKInstaller/APKInstaller/Strings/ApplicationsPage/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/ProcessesPage/ProcessesStrings.resx
+    translation: /APKInstaller/APKInstaller/Strings/ProcessesPage/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/TestPage/TestStrings.resx
+    translation: /APKInstaller/APKInstaller/Strings/TestPage/%file_name%.%locale%.resx
+  - source: /APKInstaller/APKInstaller/Strings/TitleBar/TitleBarStrings.resx
+    translation: /APKInstaller/APKInstaller/Strings/TitleBar/%file_name%.%locale%.resx
