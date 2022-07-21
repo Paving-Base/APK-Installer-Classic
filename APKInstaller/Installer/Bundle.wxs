@@ -11,7 +11,12 @@
 		Version="$(var.Version)"
 		Manufacturer="wherewhere"
 		IconSourceFile="$(var.Icon)"
-		UpgradeCode="007605cc-93cc-4293-90f2-14a44aa902ba">
+		Tag="android,installer,apk,wsa"
+		UpgradeCode="007605cc-93cc-4293-90f2-14a44aa902ba"
+		AboutUrl="https://github.com/Paving-Base/APK-Installer-Classic"
+		Copyright="Copyright © 2017 - 2022 PavingBase. All Rights Reserved."
+		HelpUrl="https://github.com/Paving-Base/APK-Installer-Classic/issues"
+		UpdateUrl="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest">
 		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" >
             <bal:WixStandardBootstrapperApplication 
               LicenseFile="$(var.ProjectDir)\License.rtf "
