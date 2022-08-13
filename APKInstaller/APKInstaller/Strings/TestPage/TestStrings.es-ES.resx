@@ -154,7 +154,7 @@
     <value>Claro</value>
   </data>
   <data name="ResizeModeSettings.Description" xml:space="preserve">
-    <value>Seleccionar el modo de redimensionar de Windows</value>
+    <value>Seleccionar el modo de redimensionar la ventana</value>
   </data>
   <data name="ResizeModeSettings.Header" xml:space="preserve">
     <value>Modo redimensionar</value>
