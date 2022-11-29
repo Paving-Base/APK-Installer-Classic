@@ -32,21 +32,24 @@ steps:
       git clone https://github.com/wherewhere/AdvancedSharpAdbClient.git --progress --branch main --single-branch --depth=1 $(Build.SourcesDirectory)\..\AdvancedSharpAdbClient
       exit
 
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
+- task: MSBuild@1
+  displayName: 'Restore Solution'
   inputs:
-    restoreSolution: '$(solution)'
+    platform: '$(buildPlatform)'
+    solution: '$(buildproject)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:restore
+                       /p:Configuration="$(buildConfiguration)"
+                       /p:Platform="$(buildPlatform)"'
+    maximumCpuCount: true
 
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
-    projects: 
+    projects: '$(buildproject)'
     configuration: '$(buildConfiguration)'
-    arguments: '-r win7-x64
-                -o $(build.artifactStagingDirectory)
-                -p:PublishSingleFile=true
-                -p:PublishReadyToRun=true'
+    arguments: '-o $(build.artifactStagingDirectory)
+                -p:PublishSingleFile=true'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
