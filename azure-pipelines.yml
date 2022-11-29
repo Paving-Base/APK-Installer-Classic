@@ -43,13 +43,21 @@ steps:
                        /p:Platform="$(buildPlatform)"'
     maximumCpuCount: true
 
-- task: DotNetCoreCLI@2
+- task: VSBuild@1
+  displayName: 'Build Solution'
   inputs:
-    command: publish
-    projects: '$(buildproject)'
+    platform: '$(buildPlatform)'
+    solution: '$(buildproject)'
     configuration: '$(buildConfiguration)'
-    arguments: '-o $(build.artifactStagingDirectory)
-                -p:PublishSingleFile=true'
+    msbuildArgs: '/p:PublishSingleFile=true'
+    maximumCpuCount: true
+
+- task: CopyFiles@2
+  displayName: 'Copy Generated Artifacts'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**\APKInstaller\bin\**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
