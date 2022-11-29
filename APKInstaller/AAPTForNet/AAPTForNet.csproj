@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<LangVersion>preview</LangVersion>
-    <TargetFramework>net4.8.1</TargetFramework>
+    <TargetFramework>net4.8</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">

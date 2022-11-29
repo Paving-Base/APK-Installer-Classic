@@ -3,14 +3,15 @@
 # APK Installer
 An Android Application Installer for Windows
 
+[![Build Status](https://dev.azure.com/wherewhere/APK-Installer/_apis/build/status/Paving-Base.APK-Installer-Classic?branchName=main)](https://dev.azure.com/wherewhere/APK-Installer/_build/latest?definitionId=9&branchName=main)
 [![Crowdin](https://badges.crowdin.net/APK-Installer-Classic/localized.svg)](https://crowdin.com/project/APK-Installer-Classic)
 
-<a href="https://github.com/Paving-Base/APK-Installer-Classic/blob/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/Paving-Base/APK-Installer-Classic.svg?label=License&style=flat-square"></a>
-<a href="https://github.com/Paving-Base/APK-Installer-Classic/issues"><img alt="GitHub" src="https://img.shields.io/github/issues/Paving-Base/APK-Installer-Classic.svg?label=Issues&style=flat-square"></a>
-<a href="https://github.com/Paving-Base/APK-Installer-Classic/stargazers"><img alt="GitHub" src="https://img.shields.io/github/stars/Paving-Base/APK-Installer-Classic.svg?label=Stars&style=flat-square"></a>
+[![LICENSE](https://img.shields.io/github/license/Paving-Base/APK-Installer-Classic.svg?label=License&style=flat-square)](https://github.com/Paving-Base/APK-Installer-Classic/blob/master/LICENSE "LICENSE")
+[![Issues](https://img.shields.io/github/issues/Paving-Base/APK-Installer-Classic.svg?label=Issues&style=flat-square)](https://github.com/Paving-Base/APK-Installer-Classic/issues "Issues")
+[![Stargazers](https://img.shields.io/github/stars/Paving-Base/APK-Installer-Classic.svg?label=Stars&style=flat-square)](https://github.com/Paving-Base/APK-Installer-Classic/stargazers "Stargazers")
 
-<a href="https://github.com/Paving-Base/APK-Installer-Classic/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/Paving-Base/APK-Installer-Classic/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a>
-<a href="https://pan.baidu.com/s/1AgAvyemIIDA3pLEYeiWR7g"><img alt="Baidu Netdisk" src="https://img.shields.io/badge/download-%e5%af%86%e7%a0%81%ef%bc%9aAPKI-magenta.svg?label=%e4%b8%8b%e8%bd%bd&logo=baidu&style=for-the-badge"></a>
+[![Microsoft Store](https://img.shields.io/badge/download-%e4%b8%8b%e8%bd%bd-magenta.svg?label=Microsoft%20Store&logo=Microsoft&style=for-the-badge&color=11a2f8)](https://www.microsoft.com/store/apps/9N3HJLJP8V15 "Microsoft Store")
+[![GitHub All Releases](https://img.shields.io/github/downloads/Paving-Base/APK-Installer-Classic/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge)](https://github.com/Paving-Base/APK-Installer-Classic/releases/latest "GitHub All Releases")
 
 ## 语言
  - [中文](README.md)
@@ -36,14 +37,14 @@ An Android Application Installer for Windows
 - 至少400MB的空余储存空间(用于储存安装包与安装应用)
 
 ### 使用应用安装脚本安装应用
-- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_Test.rar)`](https://github.com/Tangent-90/Coolapk-UWP/releases/latest "下载安装包")
+- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_Test.rar)`](https://github.com/Paving-Base/APK-Installer-Classic/releases/latest "下载安装包")
 - 如果没有应用安装脚本，下载[`Install.ps1`](Install.ps1)到目标目录
 ![Install.ps1](Images/Guides/Snipaste_2019-10-12_22-49-11.png)
 - 右击`Install.ps1`，选择“使用PowerShell运行”
 - 应用安装脚本将会引导您完成此过程的剩余部分
 
 ### 使用应用安装程序安装应用
-- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_Test.rar)`](https://github.com/Tangent-90/Coolapk-UWP/releases/latest "下载安装包")
+- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_Test.rar)`](https://github.com/Paving-Base/APK-Installer-Classic/releases/latest "下载安装包")
 - [开启旁加载模式](https://www.windowscentral.com/how-enable-windows-10-sideload-apps-outside-store)
   - 如果您想开发UWP应用，您可以开启[开发人员模式](https://docs.microsoft.com/zh-cn/windows/uwp/get-started/enable-your-device-for-development)，**对于大多数不需要做UWP开发的用户来说，开发人员模式是没有必要的**
 - 安装`Dependencies`文件夹下的适用于您的设备的所有依赖包
@@ -57,7 +58,7 @@ An Android Application Installer for Windows
 ![安装](Images/Guides/Snipaste_2019-10-13_12-42-40.png)
 
 ### 更新应用
-- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_x86_x64_arm_arm64.appxbundle)`](https://github.com/Tangent-90/Coolapk-UWP/releases/latest "下载安装包")
+- 下载并解压最新的[安装包`(APKInstaller (Package)_x.x.x.0_x86_x64_arm_arm64.appxbundle)`](https://github.com/Paving-Base/APK-Installer-Classic/releases/latest "下载安装包")
 - 双击`*.appxbundle`，单击更新，坐和放宽
 ![更新](Images/Guides/Snipaste_2019-10-13_16-01-09.png)
 
@@ -71,7 +72,6 @@ An Android Application Installer for Windows
 - [AAPTForNet](https://github.com/canheo136/QuickLook.Plugin.ApkViewer "AAPTForNet")
 - [Portable Downloader](https://github.com/madnik7/PortableDownloader "PortableDownloader")
 - [Advanced Sharp Adb Client](https://github.com/yungd1plomat/AdvancedSharpAdbClient "Advanced Sharp Adb Client")
-- [ModernWPF Community Toolkit](https://github.com/ModernWpf-Community/ModernWpfCommunityToolkit "Windows Community Toolkit")
 
 ## 鸣谢
 - 所有为 APK Installer 做出贡献的同志们
