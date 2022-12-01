@@ -4,7 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 trigger:
-- main
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - APKInstaller/**
+
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - APKInstaller/**
 
 pool:
   vmImage: 'windows-latest'
