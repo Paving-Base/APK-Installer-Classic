@@ -49,11 +49,10 @@ steps:
   displayName: 'Restore Solution'
   inputs:
     platform: '$(buildPlatform)'
-    solution: '$(buildproject)'
+    solution: '$(solution)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:restore
-                       /p:Configuration="$(buildConfiguration)"
-                       /p:Platform="$(buildPlatform)"'
+    msbuildArguments: '/t:restore'
+    msbuildArchitecture: 'x64'
     maximumCpuCount: true
 
 - task: VSBuild@1
@@ -63,6 +62,7 @@ steps:
     solution: '$(buildproject)'
     configuration: '$(buildConfiguration)'
     msbuildArgs: '/p:PublishSingleFile=true'
+    msbuildArchitecture: 'x64'
     maximumCpuCount: true
 
 - task: CopyFiles@2
@@ -73,6 +73,7 @@ steps:
     TargetFolder: '$(build.artifactstagingdirectory)'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
+  displayName: 'Publish Artifact'
   inputs:
+    ArtifactName: 'Publish Package'
     PathtoPublish: '$(build.artifactstagingdirectory)'
