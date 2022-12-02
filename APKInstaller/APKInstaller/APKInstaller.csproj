@@ -8,15 +8,15 @@
     <OutputType>WinExe</OutputType>
     <PackageProjectUrl>https://github.com/Paving-Base/APK-Installer-Classic</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Paving-Base/APK-Installer-Classic</RepositoryUrl>
-    <TargetFramework>net4.8.1</TargetFramework>
+    <TargetFramework>net4.8</TargetFramework>
     <UseWPF>true</UseWPF>
     <VersionPrefix>0.1.4</VersionPrefix>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-	<AllowedReferenceRelatedFileExtensions>.allowedextension</AllowedReferenceRelatedFileExtensions> 
-	<DebugType>embedded</DebugType>
+    <AllowedReferenceRelatedFileExtensions>.allowedextension</AllowedReferenceRelatedFileExtensions> 
+    <DebugType>embedded</DebugType>
     <Optimize>True</Optimize>
   </PropertyGroup>
 
@@ -44,8 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Downloader" Version="2.3.5" />
-    <PackageReference Include="SharpCompress" Version="0.31.0" />
+    <PackageReference Include="Downloader" Version="3.0.1" />
+    <PackageReference Include="SharpCompress" Version="0.32.2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' != '.NETCoreApp'">
@@ -58,7 +58,7 @@
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
     <PackageReference Include="IndexRange" Version="1.0.2" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="System.Text.Json" Version="6.0.4" />
+    <PackageReference Include="System.Text.Json" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
