@@ -101,7 +101,7 @@
 		<value>デバイスを待っています...</value>
 	</data>
   <data name="Start.Text" xml:space="preserve">
-		<value>Start</value>
+		<value>開始</value>
 	</data>
   <data name="Stop.Text" xml:space="preserve">
 		<value>Stop</value>
