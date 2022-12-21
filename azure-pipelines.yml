@@ -42,16 +42,16 @@ steps:
   inputs:
     script: |
       echo 'Cloning into sources folder at: $(Build.SourcesDirectory)\..\AdvancedSharpAdbClient'
-      git clone https://github.com/wherewhere/AdvancedSharpAdbClient.git --progress --branch main --single-branch --depth=1 $(Build.SourcesDirectory)\..\AdvancedSharpAdbClient
+      git clone https://github.com/yungd1plomat/AdvancedSharpAdbClient.git --progress --branch dev --single-branch --depth=1 $(Build.SourcesDirectory)\..\AdvancedSharpAdbClient
       exit
 
-- task: MSBuild@1
+- task: VSBuild@1
   displayName: 'Restore Solution'
   inputs:
     platform: '$(buildPlatform)'
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:restore'
+    msbuildArgs: '/t:restore'
     msbuildArchitecture: 'x64'
     maximumCpuCount: true
 
