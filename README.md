@@ -69,8 +69,8 @@ An Android Application Installer for Windows
 ## 使用到的模块
 - [MicaWPF](https://github.com/Simnico99/MicaWPF "MicaWPF")
 - [Modern WPF](https://github.com/Kinnara/ModernWpf "Modern WPF")
+- [Downloader](https://github.com/bezzad/Downloader "Downloader")
 - [AAPTForNet](https://github.com/canheo136/QuickLook.Plugin.ApkViewer "AAPTForNet")
-- [Portable Downloader](https://github.com/madnik7/PortableDownloader "PortableDownloader")
 - [Advanced Sharp Adb Client](https://github.com/yungd1plomat/AdvancedSharpAdbClient "Advanced Sharp Adb Client")
 
 ## 鸣谢
