@@ -127,10 +127,10 @@
     <value>ADB is missing</value>
   </data>
   <data name="APKFileFlyoutItem.Text" xml:space="preserve">
-    <value>APK File</value>
+    <value>앱 설치 파일</value>
   </data>
   <data name="AppCapabilities.HeadText" xml:space="preserve">
-    <value>Capabilities:</value>
+    <value>기능</value>
   </data>
   <data name="AppNameFlyoutItem.Text" xml:space="preserve">
     <value>App Name</value>
@@ -166,7 +166,7 @@
     <value>Devices</value>
   </data>
   <data name="Download" xml:space="preserve">
-    <value>Download</value>
+    <value>다운로드</value>
   </data>
   <data name="DownloadFailed" xml:space="preserve">
     <value>Download Failed</value>
