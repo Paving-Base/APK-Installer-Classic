@@ -118,73 +118,73 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutSettingsHeader.Header" xml:space="preserve">
-    <value>About</value>
+    <value>Despre</value>
   </data>
   <data name="ADBPathSettings.Header" xml:space="preserve">
-    <value>ADB Path</value>
+    <value>Locația ADB</value>
   </data>
   <data name="AutoGetNetAPKSettings.Description" xml:space="preserve">
-    <value>Auto download when package is from URL.</value>
+    <value>Descărcare automată când pachetul este de la URL.</value>
   </data>
   <data name="AutoGetNetAPKSettings.Header" xml:space="preserve">
-    <value>Is Auto Download Online Packages?</value>
+    <value>Descarcă automat pachetele online?</value>
   </data>
   <data name="Change.Content" xml:space="preserve">
-    <value>Change</value>
+    <value>Modifică</value>
   </data>
   <data name="CheckFailed" xml:space="preserve">
-    <value>Check Failed</value>
+    <value>Verificare eșuată</value>
   </data>
   <data name="CheckingUpdates.Text" xml:space="preserve">
-    <value>Checking For Updates...</value>
+    <value>Se caută actualizări...</value>
   </data>
   <data name="CheckUpdates.Content" xml:space="preserve">
-    <value>Check For Updates</value>
+    <value>Verifică pentru actualizări</value>
   </data>
   <data name="ChooseADB" xml:space="preserve">
-    <value>Choose ADB</value>
+    <value>Alegeți ADB</value>
   </data>
   <data name="CleanCacheButton.Content" xml:space="preserve">
-    <value>Clear cache</value>
+    <value>Ștergeți memoria cache</value>
   </data>
   <data name="CloseADBSettings.Description" xml:space="preserve">
-    <value>Close ADB may break other Installers when they still open.</value>
+    <value>Închiderea ADB-ului poate strica alte instalatoare care încă sunt deschise.</value>
   </data>
   <data name="CloseADBSettings.Header" xml:space="preserve">
-    <value>Is Close ADB when Closing Installer?</value>
+    <value>Închide ADB la închiderea instalatorului?</value>
   </data>
   <data name="CloseAPPSettings.Description" xml:space="preserve">
-    <value>Close Installer after APK has installed and start.</value>
+    <value>Închide instalatorul după ce APK-ul a fost instalat și pornit.</value>
   </data>
   <data name="CloseAPPSettings.Header" xml:space="preserve">
-    <value>Is Close Installer when Ready ?</value>
+    <value>Închide instalatorul atunci când aplicația este pregătită ?</value>
   </data>
   <data name="ConfigsSettingsHeader.Header" xml:space="preserve">
-    <value>Configs</value>
+    <value>Configurații</value>
   </data>
   <data name="ConnectDevice.Description" xml:space="preserve">
-    <value>Connect device on network.</value>
+    <value>Conectați dispozitiv în rețea.</value>
   </data>
   <data name="ConnectDevice.Header" xml:space="preserve">
-    <value>Connect Device</value>
+    <value>Conectare dispozitiv</value>
   </data>
   <data name="ContactMeSettings.Header" xml:space="preserve">
-    <value>Contact Me</value>
+    <value>Contactați-mă</value>
   </data>
   <data name="ContactMeTextBlock.Text" xml:space="preserve">
     <value>Follow me on social apps for the latest developments. If you find any bug, please report it to me in PM. I will try my best to solve the problem. If you have Telegram account, welcome to chat at Paving Base Group 😊!</value>
   </data>
   <data name="ContentSettingsHeader.Header" xml:space="preserve">
-    <value>Content</value>
+    <value>Conținut</value>
   </data>
   <data name="DeviceSettingsHeader.Header" xml:space="preserve">
-    <value>Device</value>
+    <value>Dispozitiv</value>
   </data>
   <data name="DisplaySettingsHeader.Header" xml:space="preserve">
-    <value>Display</value>
+    <value>Afișare</value>
   </data>
   <data name="DonateSettings.Header" xml:space="preserve">
-    <value>Supports</value>
+    <value>Suportați</value>
   </data>
   <data name="DonateTextBlock.Text" xml:space="preserve">
     <value>APK Installer is an open source application, and it won't be inserted any ads for profit. If you like this app, don't forget to rate it in the store. Of course, it would be better if you could donate a little. Thanks for your supports 💕.</value>
@@ -196,55 +196,55 @@
     <value>Feedback</value>
   </data>
   <data name="FindUpdate" xml:space="preserve">
-    <value>Find Update</value>
+    <value>Găsire actualizare</value>
   </data>
   <data name="GoToTestPage.Description" xml:space="preserve">
-    <value>Go to the page of test.</value>
+    <value>Mergeți la pagina de test.</value>
   </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
-    <value>Go to TestPage</value>
+    <value>Mergeți la pagina de test</value>
   </data>
   <data name="GoToUpdate.Content" xml:space="preserve">
-    <value>Go to Update</value>
+    <value>Mergi la Actualizare</value>
   </data>
   <data name="Group.Content" xml:space="preserve">
     <value>Join Our Chat</value>
   </data>
   <data name="LastChecked.Text" xml:space="preserve">
-    <value>Last Checked: </value>
+    <value>Ultima verificare:</value>
   </data>
   <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Disable it to connect to other device.</value>
+    <value>Dezactivați-l pentru a vă conecta la alte dispozitive.</value>
   </data>
   <data name="OnlyWSASettings.Header" xml:space="preserve">
-    <value>Is Only for WSA?</value>
+    <value>Este doar pentru WSA?</value>
   </data>
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
-    <value>Others</value>
+    <value>Altele</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
-    <value>Rate On Store</value>
+    <value>Evaluați în Microsoft Store</value>
   </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
     <value>Release notes</value>
   </data>
   <data name="ResetSettings.Description" xml:space="preserve">
-    <value>Reset settings of this application.</value>
+    <value>Resetați setările acestei aplicații.</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
-    <value>Reset application</value>
+    <value>Resetați aplicația</value>
   </data>
   <data name="ResetSettingsButton.Content" xml:space="preserve">
-    <value>Reset</value>
+    <value>Resetați</value>
   </data>
   <data name="ResetSettingsConfirm.Content" xml:space="preserve">
-    <value>Yes</value>
+    <value>Da</value>
   </data>
   <data name="ResetSettingsTitle.Text" xml:space="preserve">
-    <value>Are you sure you want to reset the app?</value>
+    <value>Ești sigur că vrei să resetezi aplicația?</value>
   </data>
   <data name="SelectDeviceBox.Header" xml:space="preserve">
-    <value>Select Device</value>
+    <value>Selectează Dispozitivul</value>
   </data>
   <data name="ShowDialogsSettings.Description" xml:space="preserve">
     <value>Show helpers when no device is connected?</value>
@@ -253,21 +253,21 @@
     <value>Is Show Helpers?</value>
   </data>
   <data name="ShowMessagesSettings.Description" xml:space="preserve">
-    <value>Show Announcements on the top of Settings.</value>
+    <value>Arată anunțurile în partea de sus a setărilor.</value>
   </data>
   <data name="ShowMessagesSettings.Header" xml:space="preserve">
-    <value>Is Show Announcements?</value>
+    <value>Arată Anunțurile?</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
-    <value>Settings</value>
+    <value>Setări</value>
   </data>
   <data name="TranslateLink.Content" xml:space="preserve">
-    <value>Translate</value>
+    <value>Traduceți</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
-    <value>Version</value>
+    <value>Versiune</value>
   </data>
   <data name="UpToDate" xml:space="preserve">
-    <value>Up To Date</value>
+    <value>Actualizat</value>
   </data>
 </root>
