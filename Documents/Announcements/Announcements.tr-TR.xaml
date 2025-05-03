@@ -3,7 +3,7 @@
     <ui:InfoBar Title="İşte duyuru (Bu mesajın neden kapatma düğmesi olmadığını sormayın)" IsClosable="False" IsOpen="True" Message="Gelecekte her türlü bildirimi burada görebilirsiniz. Bunları görmek istemiyorsanız aşağıdaki ayarlardan kapatabilirsiniz." Severity="Informational"/>
     <ui:InfoBar Title="Daha Fazla Çeviri" IsClosable="True" IsOpen="True" Message="Oluşturan kişi sadece Çince ve İngilizce bildiği için tüm çeviriler topluluğa bırakılmıştır. Bilmediğiniz bir dil görmek istemiyorsanız, tercüme etmek için Crowdin'e hoş geldiniz!" Severity="Informational">
         <ui:InfoBar.ActionButton>
-            <ui:HyperlinkButton HorizontalAlignment="Right" Content="Bana tıkla" NavigateUri="https://crowdin.com/project/APK-Installer-Classic"/>
+            <ui:HyperlinkButton HorizontalAlignment="Right" Content="Bana Tıkla" NavigateUri="https://crowdin.com/project/APK-Installer-Classic"/>
         </ui:InfoBar.ActionButton>
     </ui:InfoBar>
 </controls:SettingsGroup>
