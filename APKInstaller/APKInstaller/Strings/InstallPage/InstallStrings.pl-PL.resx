@@ -124,55 +124,55 @@
     <value>Wykryto ADB</value>
   </data>
   <data name="ADBMissing" xml:space="preserve">
-    <value>Nie wykryto ADB</value>
+    <value>Coco to jest ADB</value>
   </data>
   <data name="APKFileFlyoutItem.Text" xml:space="preserve">
-    <value>Plik APK</value>
+    <value>APK File</value>
   </data>
   <data name="AppCapabilities.HeadText" xml:space="preserve">
-    <value>Uprawnienia:</value>
+    <value>Capabilities:</value>
   </data>
   <data name="AppNameFlyoutItem.Text" xml:space="preserve">
-    <value>Nazwa aplikacji</value>
+    <value>ATP Same</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Anuluj</value>
+    <value>Cancel</value>
   </data>
   <data name="CannotOpenPackage" xml:space="preserve">
-    <value>Błąd otwierania pakietu aplikacji</value>
+    <value>Nie można otworzyć paczki aplikacji</value>
   </data>
   <data name="Checking" xml:space="preserve">
-    <value>Sprawdzanie...</value>
+    <value>Checking...</value>
   </data>
   <data name="CheckingADB" xml:space="preserve">
-    <value>Sprawdzanie ADB...</value>
-  </data>
-  <data name="CheckingPath" xml:space="preserve">
     <value>Sprawdzanie ścieżki...</value>
   </data>
+  <data name="CheckingPath" xml:space="preserve">
+    <value>Checking Path...</value>
+  </data>
   <data name="ChooseADB" xml:space="preserve">
-    <value>Wybierz ADB</value>
+    <value>Choose ADB</value>
   </data>
   <data name="ClickToRead" xml:space="preserve">
-    <value>Naciśnij tutaj, aby przeczytać</value>
+    <value>Click here to read them</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Zamknij</value>
+    <value>Klose</value>
   </data>
   <data name="CopyFlyoutItem.Text" xml:space="preserve">
-    <value>Kopiuj</value>
+    <value>Copy</value>
   </data>
   <data name="Devices" xml:space="preserve">
-    <value>Urządzenia</value>
+    <value>Devices</value>
   </data>
   <data name="Download" xml:space="preserve">
-    <value>Pobierz</value>
+    <value>Download</value>
   </data>
   <data name="DownloadFailed" xml:space="preserve">
-    <value>Błąd pobierania</value>
+    <value>Download Failed</value>
   </data>
   <data name="DownloadFailedInfo" xml:space="preserve">
-    <value>Sprawdź swoje połączenie z Internetem lub poprawność adresu URL i spróbuj ponownie.</value>
+    <value>Sprawdź połączenie z siecią lub adres URL i spróbuj ponownie.</value>
   </data>
   <data name="FindingWSA" xml:space="preserve">
     <value>Szukanie WSA...</value>
@@ -184,16 +184,16 @@
     <value>Wykryto WSA</value>
   </data>
   <data name="GoToSetting" xml:space="preserve">
-    <value>Przejdź do Ustawień</value>
+    <value>Otwórz Ustawienia</value>
   </data>
   <data name="HowToConnect" xml:space="preserve">
-    <value>Jak połączyć z WSA?</value>
+    <value>Jak połączyć urządzenie?</value>
   </data>
   <data name="HowToConnectInfo" xml:space="preserve">
-    <value>1. Upewnij się, że posiadasz najnowszą wersję APK Installer
-2. Upewnij się, że Podsystem Windows dla systemu Android jest zainstalowany i uruchomiony
-3. Włącz tryb programisty i upewnij się, że został nadany adres IP
-4. Otwórz ponownie APK Installer i kontynuuj instalację</value>
+    <value>1. Upewnij się, że instalator APK został zaktualizowany do najnowszej wersji
+2. Upewnij się, że podsystem Android jest zainstalowany i działa
+3. Włącz tryb dewelopera i upewnij się, że adres IP jest wyświetlany pomyślnie
+4. Otwórz ponownie Instalator APK i kontynuuj instalację</value>
   </data>
   <data name="IconFlyoutItem.Text" xml:space="preserve">
     <value>Ikona</value>
@@ -208,7 +208,7 @@
     <value>Zainstaluj</value>
   </data>
   <data name="InstalledFormat" xml:space="preserve">
-    <value>{0} jest gotowe!</value>
+    <value>{0} Jest gotowe!</value>
     <comment>{0} - AppName.</comment>
   </data>
   <data name="InstallFormat" xml:space="preserve">
@@ -255,22 +255,26 @@
     <value>Brak połączenia z Internetem</value>
   </data>
   <data name="NoInternetInfo" xml:space="preserve">
-    <value>Połącz się z Internetem przed uruchomieniem aplikacji.</value>
+    <value>Połącz się z Internetem przed otwarciem aplikacji.</value>
   </data>
   <data name="NoPackageWranning" xml:space="preserve">
     <value>Aby aplikacja funkcjonowała prawidłowo, uruchom pakiet aplikacji Androida.</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
   <data name="OnlinePackage" xml:space="preserve">
     <value>Pakiet z sieci</value>
   </data>
   <data name="OpenAPK" xml:space="preserve">
-    <value>Otwórz plik APK</value>
+    <value>Otwórz Plik APK</value>
   </data>
   <data name="PackageNameFlyoutItem.Text" xml:space="preserve">
-    <value>Nazwa pakietu</value>
+    <value>Rozmiar pakietu
+
+średni
+
+https://crowdin.com/editor/APKInstaller/321?view=multilingual#3905</value>
   </data>
   <data name="PackageNameFormat" xml:space="preserve">
     <value>Nazwa pakietu: {0}</value>
@@ -280,7 +284,7 @@
     <value>Zainstaluj ponownie</value>
   </data>
   <data name="ReinstallFormat" xml:space="preserve">
-    <value>{0} jest już zainstalowane</value>
+    <value>{0} Jest już zainstalowana</value>
     <comment>{0} - AppName.</comment>
   </data>
   <data name="ReinstallOutput" xml:space="preserve">
@@ -324,7 +328,7 @@
     <comment>{0} - AppVersion.</comment>
   </data>
   <data name="WaitDownload" xml:space="preserve">
-    <value>Czekam na pobranie...</value>
+    <value>Oczekiwanie na pobranie...</value>
   </data>
   <data name="WaitingDevice" xml:space="preserve">
     <value>Czekanie na urządzenie...</value>
@@ -334,10 +338,10 @@
     <comment>{0} - AppName.</comment>
   </data>
   <data name="WaitingWSAStart" xml:space="preserve">
-    <value>Czekanie na uruchomienie WSA...
-Może to zająć trochę czasu. Usiądź i odpręż się.</value>
+    <value>Oczekiwanie na start WSA...
+Może to zająć dużo czasu. Usiądź i zrelaksuj się</value>
   </data>
   <data name="WSARunning" xml:space="preserve">
-    <value>WSA jest uruchomione</value>
+    <value>WSA jest uruchomiona</value>
   </data>
 </root>
