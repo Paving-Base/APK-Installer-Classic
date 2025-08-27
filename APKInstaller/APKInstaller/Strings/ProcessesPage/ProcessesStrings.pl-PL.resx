@@ -104,7 +104,7 @@
 		<value>Czekanie na urządzenie...</value>
 	</data>
   <data name="Name.Header" xml:space="preserve">
-		<value>Tytuł</value>
+		<value>Imię i nazwisko</value>
 	</data>
   <data name="ProcessId.Header" xml:space="preserve">
 		<value>Procesy</value>
