@@ -98,22 +98,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Detail.Header" xml:space="preserve">
-		<value>Szczegóły</value>
+		<value>Szczegółowa</value>
 	</data>
   <data name="DeviceComboBox.PlaceholderText" xml:space="preserve">
-		<value>Oczekiwanie na urządzenie...</value>
+		<value>Czekanie na urządzenie...</value>
 	</data>
   <data name="Name.Header" xml:space="preserve">
-		<value>Nazwa</value>
+		<value>Tytuł</value>
 	</data>
   <data name="ProcessId.Header" xml:space="preserve">
-		<value>ID procesu</value>
+		<value>Procesy</value>
 	</data>
   <data name="ResidentSetSize.Header" xml:space="preserve">
 		<value>Rozmiar zestawu rezydentów</value>
 	</data>
   <data name="State.Header" xml:space="preserve">
-		<value>Status</value>
+		<value>Stan</value>
 	</data>
   <data name="TitleBar.Title" xml:space="preserve">
 		<value>Procesy</value>
