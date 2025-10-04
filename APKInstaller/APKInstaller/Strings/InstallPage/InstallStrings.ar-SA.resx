@@ -139,7 +139,9 @@
     <value>إلغاء</value>
   </data>
   <data name="CannotOpenPackage" xml:space="preserve">
-    <value>لا يمكن فتح حُزْمَة التطبيق</value>
+    <value>لا يمكن فتح حزمة التطبيق
+
+</value>
   </data>
   <data name="Checking" xml:space="preserve">
     <value>جارٍ التحقق...</value>
@@ -294,7 +296,7 @@
     <value>Select</value>
   </data>
   <data name="StartingADB" xml:space="preserve">
-    <value>Starting ADB Server...</value>
+    <value>بدء تشغيل خادم ADBchar@@0</value>
   </data>
   <data name="StartWSA" xml:space="preserve">
     <value>Start WSA</value>
