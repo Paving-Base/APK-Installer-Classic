@@ -142,25 +142,25 @@
     <value>Testuj pierścień postępu na pasku tytułu</value>
   </data>
   <data name="ProgressSettings.Header" xml:space="preserve">
-    <value>Postęp</value>
+    <value>Zaplanowane zadania</value>
   </data>
   <data name="RadioThemeDark.Content" xml:space="preserve">
     <value>Ciemny</value>
   </data>
   <data name="RadioThemeDefault.Content" xml:space="preserve">
-    <value>Użyj ustawienia systemu</value>
+    <value>Domyślny dla systemu Windows</value>
   </data>
   <data name="RadioThemeLight.Content" xml:space="preserve">
-    <value>Jasny</value>
+    <value>Światło</value>
   </data>
   <data name="ResizeModeSettings.Description" xml:space="preserve">
     <value>Wybierz tryb zmiany rozmiaru okna</value>
   </data>
   <data name="ResizeModeSettings.Header" xml:space="preserve">
-    <value>Tryb zmiany rozmiaru</value>
+    <value>Zmiana rozmiaru</value>
   </data>
   <data name="SetProgressValue.Description" xml:space="preserve">
-    <value>Ustaw wartość pierścienia postępu</value>
+    <value>Ustaw wartość koła progresu</value>
   </data>
   <data name="SetProgressValue.Header" xml:space="preserve">
     <value>Wartość postępu</value>
@@ -175,18 +175,18 @@
     <value>Motyw aplikacji</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
-    <value>Testowanie</value>
+    <value>W trakcie sprawdzania</value>
   </data>
   <data name="TitleBarSettings.Description" xml:space="preserve">
-    <value>Rozszerza zawartość na pasek tytułu</value>
+    <value>Rozszerza zawartość paska tytułowego</value>
   </data>
   <data name="TitleBarSettings.Header" xml:space="preserve">
-    <value>Pasek tytułu</value>
+    <value>Pasek tytułu </value>
   </data>
   <data name="UITestSettingsHeader.Header" xml:space="preserve">
-    <value>Test interfejsu</value>
+    <value>Test UI</value>
   </data>
   <data name="WindowsColorButton.Content" xml:space="preserve">
-    <value>Ustawienia kolorów Windows</value>
+    <value>Ustawienia koloru okien</value>
   </data>
 </root>

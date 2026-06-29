@@ -187,19 +187,19 @@
     <value>Wsparcie</value>
   </data>
   <data name="DonateTextBlock.Text" xml:space="preserve">
-    <value>APK Installer to aplikacja o otwartym źródle i nie będzie tu żadnych reklam dla zysku. Jeśli lubisz tę aplikację, nie zapomnij ocenić jej w sklepie. Oczywiście możesz również rzucić trochę grosza. Dzięki za wsparcie 💕.</value>
+    <value>Instalator APK jest aplikacją otwarto-źródłową, która nie dodaje żadnych reklam dla zysku. Jeśli podoba Ci się ta aplikacja, nie zapomnij ocenić jej w sklepie. Oczywiście miło by było, gdybyś mógł przekazać trochę dotacji. Dziękujemy za wsparcie.💕</value>
   </data>
   <data name="EULA.Content" xml:space="preserve">
-    <value>EULA</value>
+    <value>Licencja dla użytkownika końcowego</value>
   </data>
   <data name="FeedbackLink.Content" xml:space="preserve">
-    <value>Opinia</value>
+    <value>Siatka kotwicy</value>
   </data>
   <data name="FindUpdate" xml:space="preserve">
     <value>Znajdź aktualizację</value>
   </data>
   <data name="GoToTestPage.Description" xml:space="preserve">
-    <value>Przejdź do strony testu.</value>
+    <value>Idź do strony testowej.</value>
   </data>
   <data name="GoToTestPage.Header" xml:space="preserve">
     <value>Przejdź do strony testowania</value>
@@ -214,25 +214,25 @@
     <value>Ostatnio sprawdzane:</value>
   </data>
   <data name="OnlyWSASettings.Description" xml:space="preserve">
-    <value>Wyłącz to, aby połączyć z innym urządzeniem.</value>
+    <value>Wyłącz to, aby połączyć się z innymi urządzeniami.</value>
   </data>
   <data name="OnlyWSASettings.Header" xml:space="preserve">
-    <value>Tylko dla WSA?</value>
+    <value>Czy tylko dla WSA?</value>
   </data>
   <data name="OthersSettingsHeader.Header" xml:space="preserve">
-    <value>Pozostałe</value>
+    <value>Inne</value>
   </data>
   <data name="Rate.Content" xml:space="preserve">
     <value>Oceń w sklepie</value>
   </data>
   <data name="ReleaseNotes.Content" xml:space="preserve">
-    <value>Lista zmian</value>
+    <value>Informacje o wydaniu</value>
   </data>
   <data name="ResetSettings.Description" xml:space="preserve">
-    <value>Wyzeruj ustawienia tej aplikacji.</value>
+    <value>Zresetuj ustawienia tej aplikacji.</value>
   </data>
   <data name="ResetSettings.Header" xml:space="preserve">
-    <value>Wyzeruj aplikację</value>
+    <value>Zresetuj aplikację</value>
   </data>
   <data name="ResetSettingsButton.Content" xml:space="preserve">
     <value>Wyzeruj</value>
@@ -241,33 +241,33 @@
     <value>Tak</value>
   </data>
   <data name="ResetSettingsTitle.Text" xml:space="preserve">
-    <value>Czy na pewno chcesz wyzerować aplikację?</value>
+    <value>Czy na pewno chcesz zresetować aplikację?</value>
   </data>
   <data name="SelectDeviceBox.Header" xml:space="preserve">
-    <value>Wybierz urządzenie</value>
+    <value>Twoja Chmura</value>
   </data>
   <data name="ShowDialogsSettings.Description" xml:space="preserve">
-    <value>Pokazać podpowiedzi, gdy brak podłączonych urządzeń?</value>
+    <value>Pokazywać pomocników, gdy urządzenie nie jest podłączone?</value>
   </data>
   <data name="ShowDialogsSettings.Header" xml:space="preserve">
-    <value>Czy pokazać podpowiedzi?</value>
+    <value>Pokazuj pomocników?</value>
   </data>
   <data name="ShowMessagesSettings.Description" xml:space="preserve">
-    <value>Pokazuj ogłoszenia na górze panelu ustawień.</value>
+    <value>Pokaż ogłoszenia na górze ustawień.</value>
   </data>
   <data name="ShowMessagesSettings.Header" xml:space="preserve">
-    <value>Czy pokazywać ogłoszenia?</value>
+    <value>Czy wyświetla ogłoszenia?</value>
   </data>
   <data name="TitleBar.Title" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>Konfiguracja</value>
   </data>
   <data name="TranslateLink.Content" xml:space="preserve">
-    <value>Przetłumacz</value>
+    <value>Przetłumacz witrynę</value>
   </data>
   <data name="UpdateSettingsHeader.Header" xml:space="preserve">
-    <value>Wersja</value>
+    <value>Wersje</value>
   </data>
   <data name="UpToDate" xml:space="preserve">
-    <value>Masz najnowszą wersję</value>
+    <value>Aktualna na dzień</value>
   </data>
 </root>

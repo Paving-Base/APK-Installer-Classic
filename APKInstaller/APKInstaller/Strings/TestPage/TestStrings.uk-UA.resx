@@ -166,7 +166,7 @@
     <value>Progress Value</value>
   </data>
   <data name="ShowRefreshButton.Description" xml:space="preserve">
-    <value>Show Refresh Button on the Title Bar</value>
+    <value></value>
   </data>
   <data name="ShowRefreshButton.Header" xml:space="preserve">
     <value>Refresh Button</value>
